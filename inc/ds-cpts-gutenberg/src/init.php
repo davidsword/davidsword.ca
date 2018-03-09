@@ -1,69 +1,81 @@
 <?php
-/**
- * Blocks Initializer
- *
- * Enqueue CSS/JS of all the blocks.
- *
- * @since 	1.0.0
- * @package CGB
- */
-
-// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Enqueue Gutenberg block assets for both frontend + backend.
- *
- * `wp-blocks`: includes block type registration and related functions.
- *
- * @since 1.0.0
- */
-function ds_cpts_gutenberg_cgb_block_assets() {
-	// Styles.
+add_action( 'enqueue_block_assets', function () {
 	wp_enqueue_style(
-		'ds_cpts_gutenberg-cgb-style-css', // Handle.
-		//plugins_url( '', dirname( __FILE__ ) ), // Block style CSS.
+		'ds_cpts_gutenberg-cgb-style-css',
 		get_template_directory_uri().'/inc/ds-cpts-gutenberg/dist/blocks.style.build.css',
-		array( 'wp-blocks' ) // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __FILE__ ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
+		array( 'wp-blocks' )
 	);
-} // End function ds_cpts_gutenberg_cgb_block_assets().
+});
 
-// Hook: Frontend assets.
-add_action( 'enqueue_block_assets', 'ds_cpts_gutenberg_cgb_block_assets' );
-
-/**
- * Enqueue Gutenberg block assets for backend editor.
- *
- * `wp-blocks`: includes block type registration and related functions.
- * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
- * `wp-i18n`: To internationalize the block's text.
- *
- * @since 1.0.0
- */
-function ds_cpts_gutenberg_cgb_editor_assets() {
-	// Scripts.
-
-//
+// Hook: Editor assets.
+add_action( 'enqueue_block_editor_assets', function () {
 	wp_enqueue_script(
 		'ds_cpts_gutenberg-cgb-block-js', // Handle.
 		get_template_directory_uri().'/inc/ds-cpts-gutenberg/dist/blocks.build.js',
-		//plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ) // Dependencies, defined above.
-		// filemtime( plugin_dir_path( __FILE__ ) . 'block.js' ) // Version: filemtime — Gets file modification time.
 	);
 
-	// Styles.
 	wp_enqueue_style(
 		'ds_cpts_gutenberg-cgb-block-editor-css', // Handle.
 		get_template_directory_uri().'/inc/ds-cpts-gutenberg/dist/blocks.editor.build.css',
-		//plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
 		array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __FILE__ ) . 'editor.css' ) // Version: filemtime — Gets file modification time.
 	);
-} // End function ds_cpts_gutenberg_cgb_editor_assets().
+});
 
-// Hook: Editor assets.
-add_action( 'enqueue_block_editor_assets', 'ds_cpts_gutenberg_cgb_editor_assets' );
+
+
+// Hook server side rendering into render callback
+register_block_type( 'cgb/block-ds-cpts-gutenberg', [
+	'render_callback' => function () {
+		ob_start();
+		query_posts( ['post_type' => 'projects', 'posts_per_page' => 3] );
+		?>
+		<div class='grid projects fromGutenberg'>
+			<h2 class='fromGutenberg--title'>Recent Projects</h2>
+			<?php
+			// @TODO this should be `get template part`
+			if ( have_posts() ) : while ( have_posts() ) : the_post();
+			$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), "medium" );
+			?>
+			<a href='<?= get_permalink() ?>'>
+				<img src='<?= $img[0] ?>' />
+			</a>
+			<article class="<?= is_singular() ? "article_single" : "article_list" ?>">
+				<strong><a href='<?= get_permalink() ?>'><?php the_title() ?></a></strong>
+				<div class='entry'>
+					<?php the_excerpt() ?>
+				</div>
+			</article>
+			<?php endwhile; endif;?>
+		</div><!-- /grid projects -->
+		<?php
+		wp_reset_query();
+		return ob_get_clean();
+	},
+] );
+
+// Hook server side rendering into render callback
+register_block_type( 'cgb/block-ds-cpts-gutenberg-code', [
+	'render_callback' => function () {
+		ob_start();
+		query_posts( ['post_type' => 'post', 'posts_per_page' => 5] );
+		?>
+		<div class='grid code fromGutenberg'>
+			<h2 class='fromGutenberg--title'>Recent Code</h2>
+
+			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				<div class='date nomargin'>
+					<?= get_the_date(); ?>
+				</div>
+				<h2 class='blog_title'><a href='<?= get_permalink() ?>'><?php the_title() ?> &raquo;</a></h2>
+			<?php endwhile; endif; ?>
+		</div><!-- /fromGutenberg -->
+		<?php
+		wp_reset_query();
+		return ob_get_clean();
+	},
+] );

@@ -25,16 +25,16 @@ const { withAPIData } = wp.components; // Import registerBlockType() from wp.blo
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-ds-cpts-gutenberg', {
+registerBlockType( 'cgb/block-ds-cpts-gutenberg-code', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'RECENT Projects' ), // Block title.
+	title: __( 'RECENT Code' ), // Block title.
 	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-	keywords: [ 'projects' ],
+	keywords: [ 'code' ],
 
 	edit: withAPIData( () => {
         return {
-            posts: '/wp/v2/projects?per_page=4&_embed'
+            posts: '/wp/v2/posts?per_page=5&_embed'
         };
       } )( ( { posts, className } ) => {
           if ( ! posts.data ) {
@@ -45,44 +45,41 @@ registerBlockType( 'cgb/block-ds-cpts-gutenberg', {
           }
           var post = posts.data[ 0 ];
 
+		  function mydateformat(date) {
+			  var dateObj = new Date(date);
+			  var month = dateObj.getUTCMonth() + 1; //months from 1-12
+			  var day = dateObj.getUTCDate();
+			  var year = dateObj.getUTCFullYear();
+
+			  if (day < 10)
+			  	day = "0" + day;
+
+			  if (month < 10)
+			  	month = "0" + month;
+
+			  return "" + year + month + day;
+
+		  }
 		  // return (
 		  // );
 
 			return (
 				<div className={ className }>
-					<h2>Recent Projects</h2>
+					<h2>Recent Code</h2>
+					<div class='grid'>
 					{ posts.data.map( ( post, i ) =>
-						[ <div class='grid'>
-							<a href={ post.link }>
-								<img src={ post._embedded['wp:featuredmedia'][0].source_url } />
-							</a>
-							{ console.log( post.excerpt ) }
-							<div>
-								<strong>{ post.title.rendered }</strong><br />
-								{ post.excerpt.rendered }
-							</div>
-						</div> ]
+						[
+							<span>{ mydateformat(post.date) }</span>
+							,
+							<h2>{ post.title.rendered } &raquo;</h2>
+						]
 					) }
+					</div>
 				</div>
 			);
       } ),
 
 	save: function( props ) {
-		return (
-			<div className={ props.className }>
-				<p>— Hello from the frontend.</p>
-				<p>
-					CGB BLOCK: <code>ds-cpts-gutenberg</code> is a new Gutenberg block.
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
-		);
+		return null;
 	},
 } );

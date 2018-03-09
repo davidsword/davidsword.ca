@@ -533,20 +533,6 @@ main {
 			}
 		}
 
-		/* BLOG POSTS ---------------------------------- */
-		&#article_holder.article_list {
-            padding-bottom: @space*2;
-            grid-template-columns: 80px 1fr;
-            align-items: stretch;
-            align-content: start;
-            &, * {
-                line-height: @lheight;
-            }
-			.date {
-                //margin-bottom: @space;
-			}
-		}
-
 		/* NAVIGATION ---------------------------------- */
         hr.above_navigation {
             display: none !important;
@@ -596,15 +582,27 @@ main {
     width: @width;
 }
 
+
+// @TODO, this is repeated for gutenberg blocks, so annoying
 .grid {
     display: grid;
     grid-gap: @space;
-    align-items: center;;
+    align-items: center;
+
+    &.fromGutenberg {
+        margin: 20px auto 50px auto;
+    }
+    h2.fromGutenberg--title {
+        grid-column: 1 / span 2;
+    }
 
     &.projects {
         grid-template-columns: 320px 1fr;
-        & > a img {
-            max-width: 100%;
+        & > a {
+            border: none !important;
+            img {
+                max-width: 100%;
+            }
         }
     }
 
@@ -614,7 +612,21 @@ main {
     & > a img {
         max-width: 100%;
     }
+
+    &.code {
+        padding-bottom: @space*2;
+        grid-template-columns: 80px 1fr;
+        align-items: stretch;
+        align-content: start;
+        &, * {
+            line-height: @lheight;
+        }
+        .date {
+            //margin-bottom: @space;
+        }
+    }
 }
+
 
 
 /* =========================================================================================================================

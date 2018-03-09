@@ -78,8 +78,8 @@ if ($swrdbs['dev']) {
 	if ( function_exists('yoast_breadcrumb') ) {
 		//if (is_single() || wp_get_post_parent_id(get_the_ID()))
 
-		if (is_post_type_archive('images'))
-			yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+		//if (is_post_type_archive('images'))
+			//yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 	}
 	?>
 

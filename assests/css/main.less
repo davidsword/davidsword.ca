@@ -502,6 +502,11 @@ main {
 	background: @white;
 	//box-shadow: 0 0 @space rgba(0,0,0,0.3);
 	section {
+        .single & article {
+            .date {
+                margin-bottom: @space;
+            }
+        }
 		.entry {
 			.divi_no & {
 				.marg;
@@ -590,21 +595,39 @@ main {
     align-items: center;
 
     &.fromGutenberg {
-        margin: 20px auto 50px auto;
+        margin: 30px auto 50px auto;
     }
+    .fromGutenbergViewAll,
     h2.fromGutenberg--title {
         grid-column: 1 / span 2;
     }
 
-    &.projects {
-        grid-template-columns: 320px 1fr;
-        & > a {
-            border: none !important;
-            img {
-                max-width: 100%;
-            }
+    &.images {
+        .fromGutenbergViewAll,
+        h2.fromGutenberg--title {
+            grid-column: 1 / span 4;
         }
     }
+
+    .fromGutenbergViewAll {
+        display: none;
+        text-align: right;
+        font-style: italic;
+        display: inline-block;
+        border: none !important;
+    }
+
+    &.projects {
+        grid-template-columns: 320px 1fr;
+    }
+
+    & > a {
+        border: none !important;
+        img {
+            max-width: 100%;
+        }
+    }
+
 
     &.images {
         grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
@@ -614,7 +637,6 @@ main {
     }
 
     &.code {
-        padding-bottom: @space*2;
         grid-template-columns: 80px 1fr;
         align-items: stretch;
         align-content: start;
@@ -899,4 +921,12 @@ footer {
     background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjU1Ljk2OCw1LjMyOUMxMTQuNjI0LDUuMzI5LDAsMTIwLjQwMSwwLDI2Mi4zNTNjMCwxMTMuNTM2LDczLjM0NCwyMDkuODU2LDE3NS4xMDQsMjQzLjg3MiAgICBjMTIuOCwyLjM2OCwxNy40NzItNS41NjgsMTcuNDcyLTEyLjM4NGMwLTYuMTEyLTAuMjI0LTIyLjI3Mi0wLjM1Mi00My43MTJjLTcxLjIsMTUuNTItODYuMjQtMzQuNDY0LTg2LjI0LTM0LjQ2NCAgICBjLTExLjYxNi0yOS42OTYtMjguNDE2LTM3LjYtMjguNDE2LTM3LjZjLTIzLjI2NC0xNS45MzYsMS43MjgtMTUuNjE2LDEuNzI4LTE1LjYxNmMyNS42OTYsMS44MjQsMzkuMiwyNi40OTYsMzkuMiwyNi40OTYgICAgYzIyLjg0OCwzOS4yNjQsNTkuOTM2LDI3LjkzNiw3NC41MjgsMjEuMzQ0YzIuMzA0LTE2LjYwOCw4LjkyOC0yNy45MzYsMTYuMjU2LTM0LjM2OCAgICBjLTU2LjgzMi02LjQ5Ni0xMTYuNjA4LTI4LjU0NC0xMTYuNjA4LTEyNy4wMDhjMC0yOC4wNjQsOS45ODQtNTEuMDA4LDI2LjM2OC02OC45OTJjLTIuNjU2LTYuNDk2LTExLjQyNC0zMi42NCwyLjQ5Ni02OCAgICBjMCwwLDIxLjUwNC02LjkxMiw3MC40LDI2LjMzNmMyMC40MTYtNS42OTYsNDIuMzA0LTguNTQ0LDY0LjA5Ni04LjY0YzIxLjcyOCwwLjEyOCw0My42NDgsMi45NDQsNjQuMDk2LDguNjcyICAgIGM0OC44NjQtMzMuMjQ4LDcwLjMzNi0yNi4zMzYsNzAuMzM2LTI2LjMzNmMxMy45NTIsMzUuMzkyLDUuMTg0LDYxLjUwNCwyLjU2LDY4YzE2LjQxNiwxNy45ODQsMjYuMzA0LDQwLjkyOCwyNi4zMDQsNjguOTkyICAgIGMwLDk4LjcyLTU5Ljg0LDEyMC40NDgtMTE2Ljg2NCwxMjYuODE2YzkuMTg0LDcuOTM2LDE3LjM3NiwyMy42MTYsMTcuMzc2LDQ3LjU4NGMwLDM0LjM2OC0wLjMyLDYyLjA4LTAuMzIsNzAuNDk2ICAgIGMwLDYuODgsNC42MDgsMTQuODgsMTcuNiwxMi4zNTJDNDM4LjcyLDQ3Mi4xNDUsNTEyLDM3NS44NTcsNTEyLDI2Mi4zNTNDNTEyLDEyMC40MDEsMzk3LjM3Niw1LjMyOSwyNTUuOTY4LDUuMzI5eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
 }
 
-/* fin. */
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.7.1 - http://noelboss.github.io/featherlight/
+ * Copyright 2017, NoÃ«l Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all{.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:0 0 0 0;border-bottom:0 solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#111;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:0;width:0;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#111;background:rgba(255,255,255,.3);color:#111;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch;overflow-y:scroll}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:0 0;border-bottom:0 solid transparent}}
+@media all{.featherlight-next,.featherlight-previous{display:block;position:absolute;top:25px;right:25px;bottom:0;left:80%;cursor:pointer;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:rgba(0,0,0,0)}.featherlight-previous{left:25px;right:80%}.featherlight-next:hover,.featherlight-previous:hover{ }.featherlight-next span,.featherlight-previous span{display:none;position:absolute;top:50%;left:5%;width:82%;text-align:center;font-size:80px;line-height:80px;margin-top:-40px;color:rgba(255,255,255,0);font-style:normal;font-weight:400}.featherlight-next span{right:5%;left:auto}.featherlight-next:hover span,.featherlight-previous:hover span{display:inline-block}.featherlight-loading .featherlight-next,.featherlight-loading .featherlight-previous,.featherlight-swipe-aware .featherlight-next,.featherlight-swipe-aware .featherlight-previous{display:none}}@media only screen and (max-device-width:1024px){.featherlight-next:hover,.featherlight-previous:hover{background:0 0}.featherlight-next span,.featherlight-previous span{display:block}}@media only screen and (max-width:1024px){.featherlight-next,.featherlight-previous{top:10px;right:10px;left:85%}.featherlight-previous{left:10px;right:85%}.featherlight-next span,.featherlight-previous span{margin-top:-30px;font-size:40px;}}

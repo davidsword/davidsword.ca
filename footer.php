@@ -2,7 +2,8 @@
 	<footer>
 		<p>
 			👨🏻‍💻
-			Built with
+			<a href='mailto:david@davidsword.ca'>david@davidsword.ca</a> &nbsp; | &nbsp;
+			built with
 			<a href='https://atom.io' target='_Blank'>Atom</a>,
 			<a href='http://a.co/aiKUMd3' target='_Blank'>coffee</a>,
 			<a href='https://wordpress.org' target='_Blank'>Wordpress</a>,

@@ -8,6 +8,10 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 		jQuery('.menu-item-4707').addClass('current-menu-item');
 	}
 
+	if (jQuery('body').hasClass('single-post')) {
+		jQuery('.current_page_parent').addClass('current-menu-item');
+	}
+
 	/* WAYPOINTS banner change ---------------------------------- */
 	setTimeout(swrdbs_init_waypoint, 500);
 	function swrdbs_init_waypoint() {
@@ -38,11 +42,20 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 
 
 	// FIRE LIGHTBOX ----------------------------------
-	// if (jQuery('.gallery').length > 0) {
-	// 	jQuery('.gallery a').each(function(index){
+	// if (jQuery('.grid.images').length > 0) {
+	// 	jQuery('.grid.images a').each(function(index){
 	// 		jQuery(this).attr('data-lightbox','image_gallery');
 	// 	});
 	// }
+	if (jQuery('.grid.images')) {
+		const gallery = jQuery('.grid.images a[data-lightbox]').featherlightGallery({
+	        previousIcon: '&#9664;',
+	        nextIcon: '&#9654;',
+	        galleryFadeIn: 300,
+	        galleryFadeOut: 300
+	    });
+    }
+
 
 
 	// GRAVITY FORMS: Labels -> Placeholders ----------------------------------

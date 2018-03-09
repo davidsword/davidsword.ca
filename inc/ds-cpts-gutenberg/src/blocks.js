@@ -11,3 +11,4 @@
 
 import './projects/projects.js';
 import './code/code.js';
+import './images/images.js';

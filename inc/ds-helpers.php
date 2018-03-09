@@ -1,7 +1,7 @@
 <?php
 
-global $wp_rewrite;
-$wp_rewrite->flush_rules();
+//global $wp_rewrite;
+//$wp_rewrite->flush_rules();
 
 // [YEARS] shortcode
 add_shortcode('years', function ($atts) {

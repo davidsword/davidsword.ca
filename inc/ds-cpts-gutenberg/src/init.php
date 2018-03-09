@@ -51,6 +51,7 @@ register_block_type( 'cgb/block-ds-cpts-gutenberg', [
 				</div>
 			</article>
 			<?php endwhile; endif;?>
+			<!-- <a href="<?php echo get_post_type_archive_link('projects') ?>" class="fromGutenbergViewAll">View More »</a> -->
 		</div><!-- /grid projects -->
 		<?php
 		wp_reset_query();
@@ -73,7 +74,38 @@ register_block_type( 'cgb/block-ds-cpts-gutenberg-code', [
 				</div>
 				<h2 class='blog_title'><a href='<?= get_permalink() ?>'><?php the_title() ?> &raquo;</a></h2>
 			<?php endwhile; endif; ?>
+			<!-- <a href="<?php echo get_post_type_archive_link('post') ?>" class="fromGutenbergViewAll">View More »</a> -->
 		</div><!-- /fromGutenberg -->
+		<?php
+		wp_reset_query();
+		return ob_get_clean();
+	},
+] );
+
+
+// Hook server side rendering into render callback
+register_block_type( 'cgb/block-ds-cpts-gutenberg-images', [
+	'render_callback' => function () {
+		ob_start();
+		query_posts( ['post_type' => 'images', 'posts_per_page' => 4] );
+		?>
+		<div class='grid images fromGutenberg'>
+			<h2 class='fromGutenberg--title'>Recent Images</h2>
+		<?php
+		$c = 1;
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+		if ($c > 4) continue;
+		$full = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), "full" );
+		$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), "medium" );
+		?>
+		<a href='<?= $full[0] ?>' data-lightbox>
+			<img src='<?= $img[0] ?>' alt="<?php echo get_the_title() ?>" />
+		</a>
+		<?php
+		$c++;
+		endwhile; endif; ?>
+		<a href="<?php echo get_post_type_archive_link('images') ?>" class="fromGutenbergViewAll">View More »</a>
+		</div>
 		<?php
 		wp_reset_query();
 		return ob_get_clean();

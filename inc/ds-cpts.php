@@ -42,7 +42,10 @@ add_action( 'init', function () {
         'hierarchical' => false,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-format-gallery',
-        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ]
+        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+		'show_in_rest'       => true,
+		'rest_base' => 'images',
+  		'rest_controller_class' => 'WP_REST_Posts_Controller',
     ];
     register_post_type($cptSlug,$args);
 });
@@ -191,8 +194,10 @@ add_filter('pre_get_posts', 'exclude_categorys');
 function exclude_categorys($query) {
     global $mycats;
 
-	if ( isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'images')
-		$query->set( 'posts_per_page', '24' );
+	if ( isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'images') {
+		if (!isset($_GET['per_page'])) //rest api call
+			$query->set( 'posts_per_page', '24' );
+	}
 
 	return $query;
 }

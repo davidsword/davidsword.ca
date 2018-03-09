@@ -201,13 +201,33 @@ add_action( 'wp_enqueue_scripts', function () {
 	);
 	wp_enqueue_script( 'swrdbs_js' );
 
+
+	wp_register_script(
+		'ds_gist',
+		get_template_directory_uri() . '/assests/gist.js',
+		['main'],
+		null,
+		true
+	);
+	wp_enqueue_script( 'swrdbs_js' );
+
+
 	/* LIGHTBOX ---------------------------------- */
 	//if ( has_post_format( 'gallery' ) ) {
 	wp_register_script(
 		'lightbox',
-		get_template_directory_uri() . '/assests/js/jquery.lightbox.js',
+		get_template_directory_uri() . '/assests/js/_featherlight.js',
 		['jquery','swrdbs_js'],
-		swrdbs_return_filemtime('/assests/js/jquery.lightbox.js'),
+		swrdbs_return_filemtime('/assests/js/_featherlight.js'),
+		true
+	);
+	wp_enqueue_script( 'lightbox');
+
+	wp_register_script(
+		'lightbox_swipe',
+		get_template_directory_uri() . '/assests/js/_swipe.js',
+		['jquery','swrdbs_js'],
+		swrdbs_return_filemtime('/assests/js/_swipe.js'),
 		true
 	);
 	wp_enqueue_script( 'lightbox');
@@ -296,7 +316,7 @@ add_filter('the_content',function ($the_content) {
  *
  *
  */
-add_action( 'get_footer', function () {
+add_action( 'wp_footer', function () {
 	global $swrdbs;
 
 	/* MAIN CSS ---------------------------------- */
@@ -314,10 +334,7 @@ add_action( 'get_footer', function () {
 	//if ( has_post_format( 'gallery' ) ) {
 	wp_register_style(
 		'lightbox',
-		get_template_directory_uri() . '/assests/js/jquery.lightbox.css',
-		['main'],
-		swrdbs_return_filemtime('/assests/js/jquery.lightbox.css'),
-		true
+		get_template_directory_uri() . '/assests/js/jquery.lightbox.css'
 	);
 	wp_enqueue_style( 'lightbox');
 	//}

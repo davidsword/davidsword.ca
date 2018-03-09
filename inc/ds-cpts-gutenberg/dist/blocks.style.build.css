@@ -1,0 +1,17 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-cgb-block-ds-cpts-gutenberg > div.grid {
+  display: grid;
+  grid-gap: 20px;
+  -ms-flex-align: center;
+      align-items: center;
+  grid-template-columns: 300px 1fr; }

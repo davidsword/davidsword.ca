@@ -87,7 +87,10 @@ add_action( 'init', function () {
         'hierarchical' => false,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-book',
-        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ]
+        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+		'show_in_rest'       => true,
+  		'rest_base'          => 'projects',
+  		'rest_controller_class' => 'WP_REST_Posts_Controller',
     ];
     register_post_type($cptSlug,$args);
 });

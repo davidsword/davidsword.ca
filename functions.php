@@ -10,9 +10,11 @@ global $wp_customize, $post, $swrdbs;
 require('inc/helpers.php');
 require('inc/customizer.php');
 
-// things needed for davidsword.ca, regardless of theme (concider a lazy plugin)
-include('inc/ds_post_types.php');
-include('inc/ds_helpers.php');
+// things needed for davidsword.ca, carried over through every theme
+// regardless of theme (concider it a lazy plugin)
+include('inc/ds-cpts.php');
+include('inc/ds-cpts-gutenberg/plugin.php'); // the "plugin" :joy:
+include('inc/ds-helpers.php');
 
 /* =====================================================================================================
    THEME CONFIGURE, visual and theme development side of things

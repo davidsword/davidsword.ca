@@ -18,24 +18,24 @@ add_shortcode('years', function ($atts) {
 
 // GISTS
 add_filter('the_content', function ($content) {
-	global $mycats, $post;
-	$pattern = '/https:\/\/gist\.github\.com\/davidsword\/(.+?|(.+?)\#(.+?))<\/p>\n/';
-	$replacement = "/https:\/\/gist\.github\.com\/davidsword\/(.+?|(.+?)\#(.+?))<\/p>\n/";
-	preg_match_all($pattern, $content, $matches);
-	foreach ($matches[0] as $gistURL) {
-		$pos = strpos($gistURL, '#');
-		if ($pos === false) {
-		    $content = preg_replace(
-		    "/https:\/\/gist\.github\.com\/davidsword\/(.+?)<\/p>\n/",
-		    "<code class='oembed-gist' data-gist-id=$1 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>",
-		    $content);
-		} else {
-		    $content = preg_replace(
-		    "/https:\/\/gist\.github\.com\/davidsword\/(.+?)\#(.+?)<\/p>\n/",
-		    "<code class='oembed-gist' data-gist-id=$1 data-gist-file=$2 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>",
-		    $content);
-		}
-	}
+	// global $mycats, $post;
+	// $pattern = '/https:\/\/gist\.github\.com\/davidsword\/(.+?|(.+?)\#(.+?))<\/p>\n/';
+	// $replacement = "/https:\/\/gist\.github\.com\/davidsword\/(.+?|(.+?)\#(.+?))<\/p>\n/";
+	// preg_match_all($pattern, $content, $matches);
+	// foreach ($matches[0] as $gistURL) {
+	// 	$pos = strpos($gistURL, '#');
+	// 	if ($pos === false) {
+	// 	    $content = preg_replace(
+	// 	    "/https:\/\/gist\.github\.com\/davidsword\/(.+?)<\/p>\n/",
+	// 	    "<code class='oembed-gist' data-gist-id=$1 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>",
+	// 	    $content);
+	// 	} else {
+	// 	    $content = preg_replace(
+	// 	    "/https:\/\/gist\.github\.com\/davidsword\/(.+?)\#(.+?)<\/p>\n/",
+	// 	    "<code class='oembed-gist' data-gist-id=$1 data-gist-file=$2 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>",
+	// 	    $content);
+	// 	}
+	// }
 	return $content;
 });
 

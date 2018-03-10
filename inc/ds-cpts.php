@@ -267,6 +267,6 @@ add_filter('pre_get_posts', function ($query) {
 
 // prevent SINGLE for ramblings and images
 add_action('wp',function(){
-	if (!is_admin() && is_singular( ['ramblings','images','art'] ))
+	if (!is_admin() && is_singular( ['images','art'] )) //'ramblings',
 		wp_redirect( get_post_type_archive_link( get_post_type() ) );
 });

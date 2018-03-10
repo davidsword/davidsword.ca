@@ -342,8 +342,8 @@ header#head {
 			position: relative;
             font-size: 15px;
             display: inline-block;
+            list-style-type: none;
 		}
-		ul, ul li, li { list-style-type: none; }
 		& > ul {
 	        & > li {
 	            z-index: 22;
@@ -371,6 +371,10 @@ header#head {
                         border-color: @black;
                     }
 				}
+
+                ul {
+                    display: none !important; // "hidden" pages
+                }
 	        }
 		}
         a.icon {
@@ -425,6 +429,12 @@ main {
             }
         }
 
+        // 🔥 SINGLE RAMBLINGS ----------------------------------
+        .single-ramblings & {
+            h2 {
+                margin-bottom: @space;
+            }
+        }
         // 🔥 SINGLE CODE POST ----------------------------------
         .single & {
             article {
@@ -586,13 +596,13 @@ main {
             .inbl;
             .lhght;
             padding:4px 0;
-            margin: 0 4px;
+            margin: 0 6px;
             margin-right:7px;
             //border-bottom:1px solid transparent;
             //color: fade(@black,50%);
         }
         a:hover {
-            border-color: fade(@black,30%);
+            //border-color: fade(@black,30%);
         }
         span.current {
             color: @black;

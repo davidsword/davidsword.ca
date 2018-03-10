@@ -1,8 +1,7 @@
 <?php defined('ABSPATH') || exit; global $swrdbs; ?>
 	<footer>
 		<p>
-			👨🏻‍💻
-			<a href='mailto:david@davidsword.ca'>david@davidsword.ca</a> &nbsp; | &nbsp;
+			<a href='mailto:david@davidsword.ca'>david@davidsword.ca</a> &nbsp; 👨🏻‍💻 &nbsp;
 			built with
 			<a href='https://atom.io' target='_Blank'>Atom</a>,
 			<a href='http://a.co/aiKUMd3' target='_Blank'>coffee</a>,

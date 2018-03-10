@@ -16,7 +16,7 @@ include('inc/ds-cpts.php');
 include('inc/ds-cpts-gutenberg/plugin.php'); // the "plugin" :joy:
 include('inc/ds-helpers.php');
 
-
+//🔥 @TODO make redirect for /apps-services-and-hardware-i-use-every-daya/
 
 
 /* =====================================================================================================
@@ -112,33 +112,18 @@ add_action('admin_notices','swrdbs_plugin_check');
 // add_filter( 'mce_css', 'swrdbs_tinymce_css' );
 
 // TOOLKIT CONFIGURE, not `$swrdbs` options because these can be used on any theme
-if (class_exists('Sword_Toolkit')) {
-	$swordToolkit = new Sword_Toolkit;
-	$swordToolkit->config([ // will run on config
-		'remove_blog' 			=> true,
-		'remove_admin_bar' 		=> true,
-		'remove_search' 		=> true,
-		'remove_menu_pages'		=> ['plugins.php','widgets.php'],
-		'remove_menu_sub_pages' => [
-			'index.php' => 'my-sites.php',
-			'options-general.php' => 'options-discussion.php',
-			'options-general.php' => 'options-writing.php',
-			'options-general.php' => 'options-reading.php',
-			'options-general.php' => 'options-permalink.php',
-			'options-general.php' => 'options-media.php',
-			'options-general.php' => 'loginlockdown.php',
-			'options-general.php' => 'attachments',
-			'themes.php' => 'themes.php',
-			'themes.php' => 'widgets.php',
-			'tools.php' => 'tools.php'
-		],
-		'remove_jquery_migrate' => true,
-		'remove_wp_head_junk' => true,
-		'remove_rest_api' => true,
-		'remove_emojis' => true,
-		'redirect_if_attachment' => true,
-	]);
-}
+apply_filters('sword_toolkit_config', [
+	'remove_menu_pages'		=> ['widgets.php'],
+	'remove_menu_sub_pages' => [
+		'themes.php' => 'widgets.php',
+	],
+	'remove_jquery_migrate' => true,
+	'remove_wp_head_junk' => true,
+	'remove_emojis' => true,
+	'redirect_if_attachment' => true,
+]);
+
+do_action('sword_toolkit');
 
 /* =====================================================================================================
    PLUGINS CONFIGURE
@@ -185,86 +170,49 @@ add_action( 'wp_enqueue_scripts', function () {
 	global $swrdbs;
 
 	/* jQUERY ---------------------------------- */
-	wp_deregister_script( 'jquery');
-    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery' );
+	//wp_deregister_script( 'jquery');
+    //wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+    //wp_enqueue_script( 'jquery' );
 
 
 	/* MAIN JS ---------------------------------- */
-	$mainjs = ($swrdbs['dev']) ? 'main.js' : 'main.min.js';
-	wp_register_script(
+	$mainjs = 'main.js';//($swrdbs['dev']) ? 'main.js' : 'main.min.js';
+
+	wp_enqueue_script(
 		'swrdbs_js',
 		get_template_directory_uri() . '/assests/js/'.$mainjs,
-		['jquery'],
-		swrdbs_return_filemtime('/assests/js/'.$mainjs),
+		['jquery','ds_gist','lightbox'],
+		time(),
 		true
 	);
-	wp_enqueue_script( 'swrdbs_js' );
 
-
-	wp_register_script(
+	/* GIST ---------------------------------- */
+	wp_enqueue_script(
 		'ds_gist',
-		get_template_directory_uri() . '/assests/gist.js',
-		['main'],
-		null,
+		get_template_directory_uri() . '/assests/js/gist.js',
+		['jquery'],
+		time(),
 		true
 	);
-	wp_enqueue_script( 'swrdbs_js' );
-
 
 	/* LIGHTBOX ---------------------------------- */
-	//if ( has_post_format( 'gallery' ) ) {
-	wp_register_script(
+	wp_enqueue_script(
 		'lightbox',
-		get_template_directory_uri() . '/assests/js/_featherlight.js',
-		['jquery','swrdbs_js'],
-		swrdbs_return_filemtime('/assests/js/_featherlight.js'),
+		get_template_directory_uri() . '/assests/js/featherlight.js',
+		['jquery'],
+		time(),
 		true
 	);
-	wp_enqueue_script( 'lightbox');
 
-	wp_register_script(
+	/* SWIPE ---------------------------------- */
+	wp_enqueue_script(
 		'lightbox_swipe',
-		get_template_directory_uri() . '/assests/js/_swipe.js',
-		['jquery','swrdbs_js'],
-		swrdbs_return_filemtime('/assests/js/_swipe.js'),
+		get_template_directory_uri() . '/assests/js/swipe.js',
+		['jquery'],
+		time(),
 		true
 	);
-	wp_enqueue_script( 'lightbox');
-	//}
 
-	/* YOUTUBE BACKGROUND ---------------------------------- */
-	if (swrdbs_has_hero_video()) {
-		wp_register_script(
-			'youtubebackground',
-			get_template_directory_uri() . '/assests/js/jquery.youtubebackground.js',
-			['jquery','swrdbs_js'],
-			swrdbs_return_filemtime('/assests/js/jquery.youtubebackground.js'),
-			true
-		);
-		wp_enqueue_script( 'youtubebackground' );
-	}
-
-	/* ANIMATE ON SCROLL ---------------------------------- */
-	/*
-	wp_register_script(
-	   'aos',
-	   get_template_directory_uri() . '/assests/js/jquery.aos.js',
-	   ['jquery'],
-	   swrdbs_return_filemtime('/assests/js/jquery.aos.js'),
-	   true
-	);
-	wp_enqueue_script( 'aos');*/
-
-	/* WAYPOINTS ---------------------------------- */
-	wp_register_script(
-		'waypoints',
-		get_template_directory_uri() . '/assests/js/jquery.waypoints.js',
-		['jquery','swrdbs_js'],
-		swrdbs_return_filemtime('/assests/js/jquery.waypoints.js'),
-		true
-	);
-	wp_enqueue_script( 'waypoints' );
 });
 
 
@@ -321,42 +269,20 @@ add_action( 'wp_footer', function () {
 
 	/* MAIN CSS ---------------------------------- */
 	if (!$swrdbs['dev']) {
-		wp_register_style(
+		wp_enqueue_style(
 			'main',
 			get_template_directory_uri() . '/style.css',
 			[],
 			swrdbs_return_filemtime('/style.css' )
 		);
-		wp_enqueue_style( 'main');
 	}
 
 	/* LIGHTBOX ---------------------------------- */
-	//if ( has_post_format( 'gallery' ) ) {
-	wp_register_style(
+	wp_enqueue_style(
 		'lightbox',
-		get_template_directory_uri() . '/assests/js/jquery.lightbox.css'
+		get_template_directory_uri() . '/assests/css/jquery.lightbox.css'
 	);
-	wp_enqueue_style( 'lightbox');
-	//}
 
-	/* ANIMATE ON SCROLL ---------------------------------- */
-	/*
-	wp_register_style(
-	   'aos',
-	   get_template_directory_uri() . '/assests/js/jquery.aos.css',
-	   ['main'],
-	   swrdbs_return_filemtime('/assests/js/jquery.aos.css' )
-	);
-	wp_enqueue_style( 'aos');
-	*/
-
-	// GOOGLE FONT ----------------------------------
-	/*
-	if (isset($swrdbs['google_font']) && !empty($swrdbs['google_font'])) {
-		wp_register_style('gfont',  $swrdbs['google_font'], '', '');
-		wp_enqueue_style( 'gfont');
-	}
-	*/
 } );
 
 

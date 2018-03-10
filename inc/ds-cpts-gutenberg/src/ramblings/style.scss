@@ -1,0 +1,14 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-cgb-block-ds-cpts-gutenberg-ramblings  {
+	.grid {
+	    display: grid;
+	    grid-gap: 20px;
+	    align-items: center;
+		grid-template-columns: 100px 1fr;
+	}
+}

@@ -23,6 +23,30 @@ add_action( 'after_setup_theme', function () {
 // 		echo "<hr />";
 // 	}
 // });
+// our migrator
+
+add_action('admin_notices',function(){
+	$posts = get_posts('numberposts=999&post_type=post');
+	foreach ($posts as $apost) {
+		$pattern = '/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})/';
+		$replacement = "banna";
+		preg_match_all($pattern, $apost->post_content, $matches);
+
+		foreach ($matches[0] as $gistURL) {
+			$newcontent = preg_replace(
+			$pattern,
+			"\n[gist url='https://gist.github.com/davidsword/$1']\n",
+			$apost->post_content);
+		}
+
+		 //echo "<pre style=background:black;color:white> {$apost->ID}👋 ".print_r( htmlspecialchars($newcontent) ,true)."</pre>";
+        // wp_update_post( [
+             // 'ID' => $apost->ID,
+             // 'post_content' => $newcontent
+         // ] );
+	}
+});
+
 
 
 
@@ -43,12 +67,40 @@ add_action( 'init', function () {
         'menu_position' => 5,
         'menu_icon' => 'dashicons-format-gallery',
         'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
-		'show_in_rest'       => true,
-		'rest_base' => 'images',
+		'show_in_rest' => true,
+		'rest_base' => $cptSlug,
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		'exclude_from_search' => true
     ];
     register_post_type($cptSlug,$args);
 });
+
+add_action( 'init', function () {
+    $cptName = 'art';
+    $cptSlug = 'art';
+    $args = [
+        'labels' => ds_make_labels($cptName),
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-format-gallery',
+        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+		'show_in_rest'       => true,
+		'rest_base' => $cptSlug,
+  		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		'exclude_from_search' => true
+    ];
+    register_post_type($cptSlug,$args);
+});
+
+
 
 
 add_action( 'init', function () {
@@ -67,7 +119,11 @@ add_action( 'init', function () {
         'hierarchical' => false,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-megaphone',
-        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ]
+        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+		'show_in_rest'       => true,
+		'rest_base' => $cptSlug,
+  		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		'exclude_from_search' => true
     ];
     register_post_type($cptSlug,$args);
 });
@@ -189,15 +245,28 @@ add_action( 'save_post', function ( $post_id = '') {
 
 
 
-
-add_filter('pre_get_posts', 'exclude_categorys');
-function exclude_categorys($query) {
+// set limit on front end main archive page
+add_filter('pre_get_posts', function ($query) {
     global $mycats;
 
-	if ( isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'images') {
-		if (!isset($_GET['per_page'])) //rest api call
-			$query->set( 'posts_per_page', '24' );
-	}
+//	echo "<pre style=background:black;color:white>👋 ".print_r($query,true)."</pre>";
+
+	// ONLY ON FRONT END ARCHIVES PAGE
+	if (
+		!is_admin() &&
+		isset($query->query['post_type']) &&
+		$query->query['post_type'] == 'images' &&
+		$query->is_archive == 1 &&
+		!isset($query->query['posts_per_page'])
+	) //rest api call
+		$query->set( 'posts_per_page', '24' );
 
 	return $query;
-}
+});
+
+
+// prevent SINGLE for ramblings and images
+add_action('wp',function(){
+	if (!is_admin() && is_singular( ['ramblings','images','art'] ))
+		wp_redirect( get_post_type_archive_link( get_post_type() ) );
+});

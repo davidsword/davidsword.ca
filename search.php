@@ -5,29 +5,29 @@
 	<main>
 		<section>
 
-			<h1 class='page_title'>Search Results</h1>
-			<div class='entry search_results'>
+			<form role="search" method="get" id="searchform" action="<?= home_url( '/' ); ?>">
+				<input type="text" name="s" id="s" <?= (is_search()) ? "value=\"".str_replace('"','',get_search_query())."\"" : ''; ?> placeholder='Search Site...' />
+				<input type="submit" id="searchsubmit" value="Search" class='notext' />
+			</form>
 
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+			<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-					$text = get_the_excerpt();
-					if (empty($text))
-						$text = strip_shortcodes(strip_tags(get_the_content()));
+				$text = get_the_excerpt();
+				if (empty($text))
+					$text = strip_shortcodes(strip_tags(get_the_content()));
 
-					if (empty($text))
-						$text = "";
-					?>
-					<div class='search_result'>
-						<a class='search_result_title' href='<?= the_permalink() ?>'><?php the_title() ?></a><br />
-						<a href='<?= the_permalink() ?>' class='search_result_link'><?= the_permalink() ?></a>
-						<p><?= swrdbs_return_chopstring($text,150)  ?></p>
-					</div>
+				if (empty($text))
+					$text = "";
+				?>
+				<div class='search_result'>
+					<a class='search_result_title' href='<?= the_permalink() ?>'><?php the_title() ?></a><br />
+					<a href='<?= the_permalink() ?>' class='search_result_link'><?= the_permalink() ?></a>
+					<p><?= swrdbs_return_chopstring($text,150)  ?></p>
+				</div>
 
-				<?php endwhile; else : ?>
-				<p style='text-align:center;padding-bottom:100px;'>No posts found. Try another keyword instead.</p>
-				<?php endif; ?>
-
-			</div><!--/entry search_results-->
+			<?php endwhile; else : ?>
+			<p style='text-align:center;padding-bottom:100px;'>No posts found. Try another keyword instead.</p>
+			<?php endif; ?>
 
 		</section>
 	</main>

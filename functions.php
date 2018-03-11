@@ -6,12 +6,12 @@ defined('ABSPATH') || exit;
 
 global $wp_customize, $post, $swrdbs;
 
-// load resources
+// load required for theme
 require('inc/helpers.php');
 require('inc/customizer.php');
 
-// things needed for davidsword.ca, carried over through every theme
-// regardless of theme (concider it a lazy plugin)
+// things needed for davidsword.ca, these things will be carried over through every theme
+// regardless of theme (..concider it a lazy plugin as it's purely functional, but strictly ds.ca)
 include('inc/ds-cpts.php');
 include('inc/ds-cpts-gutenberg/plugin.php'); // the "plugin" :joy:
 include('inc/ds-helpers.php');

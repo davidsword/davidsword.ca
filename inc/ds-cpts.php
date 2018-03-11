@@ -25,27 +25,27 @@ add_action( 'after_setup_theme', function () {
 // });
 // our migrator
 
-add_action('admin_notices',function(){
-	$posts = get_posts('numberposts=999&post_type=post');
-	foreach ($posts as $apost) {
-		$pattern = '/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})/';
-		$replacement = "banna";
-		preg_match_all($pattern, $apost->post_content, $matches);
-
-		foreach ($matches[0] as $gistURL) {
-			$newcontent = preg_replace(
-			$pattern,
-			"\n[gist url='https://gist.github.com/davidsword/$1']\n",
-			$apost->post_content);
-		}
-
-		 //echo "<pre style=background:black;color:white> {$apost->ID}👋 ".print_r( htmlspecialchars($newcontent) ,true)."</pre>";
-        // wp_update_post( [
-             // 'ID' => $apost->ID,
-             // 'post_content' => $newcontent
-         // ] );
-	}
-});
+// add_action('admin_notices',function(){
+// 	$posts = get_posts('numberposts=999&post_type=post');
+// 	foreach ($posts as $apost) {
+// 		$pattern = '/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})/';
+// 		$replacement = "banna";
+// 		preg_match_all($pattern, $apost->post_content, $matches);
+//
+// 		foreach ($matches[0] as $gistURL) {
+// 			$newcontent = preg_replace(
+// 			$pattern,
+// 			"\n[gist url='https://gist.github.com/davidsword/$1']\n",
+// 			$apost->post_content);
+// 		}
+//
+// 		 //echo "<pre style=background:black;color:white> {$apost->ID}👋 ".print_r( htmlspecialchars($newcontent) ,true)."</pre>";
+//         // wp_update_post( [
+//              // 'ID' => $apost->ID,
+//              // 'post_content' => $newcontent
+//          // ] );
+// 	}
+// });
 
 
 

@@ -22,8 +22,8 @@
 
 			<div class='clear navigation'>
 				<?php
-				previous_post_link('%link','&laquo; Prev');
-				next_post_link('%link','Next &raquo;');
+				next_post_link('%link','&laquo; Next');
+				previous_post_link('%link','Prev &raquo;');
 				?>
 			</div><!--/navigation-->
 

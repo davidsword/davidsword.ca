@@ -25,9 +25,11 @@
 /* !(1) SETUP */
 /* -----------------------------------------------------------------------------------------------------------------------*/
 
+// if you invert these colors, the site will invert. it's called coding properly
 @black:  	#333;
 @white:  	#fff;
 @gray:   	#999;
+
 @c1: 	 	royalblue; // primary colour
 @c2: 	 	tomato; // accent
 
@@ -41,10 +43,29 @@
 @t1:     	Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
   Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 			//@TODO emoji support, browser default
-@t2:     	Hack, Monaco, Menlo, Consolas, Courier New, monospace;
+@t2:     	Monaco, Menlo, Consolas, Courier New, monospace;
 
 @thmb_w: 	168px;
 @thmb_h: 	168px;
+
+// from sword syntax, for GISTs
+@syntax-text-color: fade(@white,70%);
+@syntax-background-color: @black;
+@syntax-bracket-matcher: fade(@white,20%);
+@syntax-constant: #e279d0;
+@syntax-entity: #6ba9df;
+@syntax-keyword: @syntax-constant;
+@syntax-markup-attribute: @syntax-constant;
+@syntax-markup-tag: @syntax-entity;
+@syntax-numeric: #d27070; //#8aa2ff
+@syntax-property: #6dbdac;
+@syntax-string: #7b82bd;
+@syntax-style-at-rule: @syntax-entity;
+@syntax-style-class: @syntax-entity;
+@syntax-style-id: @syntax-constant;
+@syntax-support: #B98EFF;
+@syntax-variable: @syntax-entity;
+
 
 /* reset css */ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center, dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline } main, aside, header, footer { display: block; }
 *, *:before, *:after { box-sizing: inherit; }
@@ -79,7 +100,7 @@ small, .small 	{ font-size: 0.8em; .lhght; }
 	background: fade(yellow,40%);
 }
 body {
-    background: white;
+    background: @white;
     font-family: @t1;
     font-size: @fontsize;
     color: @black;
@@ -214,12 +235,12 @@ table {
 	}
 }
 pre, code {
+    padding: 2px 4px;
+    color: fade(@black, 90%);
+    background: fade(@black, 4%);
+    border: 1px solid fade(@black, 15%);
+    font-size: 14px;
     font-family: @t2;
-    padding: 0 8px;
-    color: #444;
-    background: #f8f8f8;
-    border: 1px solid #eaeaea;
-    font-size: 1rem;
 }
 
 code {
@@ -227,7 +248,15 @@ code {
 }
 pre {
 	display: block;
-	padding: 10px;
+    border: none;
+	padding: 15px;
+    background: @syntax-background-color;
+    color: @syntax-text-color;
+    line-height: 1.5em !important;
+    font-size: 14px;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-bottom: @space;
 }
 
 img {
@@ -299,10 +328,9 @@ header#head {
         }
 		a {
 			//font-family: Hack, monospace;
-			color: @black;
+			color: fade(@black,85%); //bit softer, take away focus
             letter-spacing: normal;
-            font-weight: bold;
-            color: #666;
+            font-weight: 400;
             padding-left: 40px;
             position: relative;
 			&:before {
@@ -313,7 +341,7 @@ header#head {
 				display: inline-block;
 				width: 30px;
 				height: 30px;
-				background: rgba(0,0,0,0.5);
+				background: @gray;
 				z-index:1;
                 margin-right: 10px;
                 background-image: url(http://localhost/wordpress/davidsword-2018/wp-content/uploads/sites/3/2016/10/logoyo.jpg);
@@ -413,6 +441,10 @@ main {
     .marg;
     max-width: @width;
 	section {
+
+        .inlineFeaturedImage {
+            margin-bottom: @space;
+        }
 
         // 🔥 SINGLE PROJECTS ----------------------------------
         .single-projects & {
@@ -518,7 +550,7 @@ main {
 		/* SEARCH RESULTS ---------------------------------- */
         #searchform {
             border: 1px solid fade(@black, 30%);
-            background: white;
+            background: @white;
             padding: 5px 5px 5px;
             border-radius: 3px;
             display: grid;
@@ -697,6 +729,9 @@ footer {
 
 
 html body .oembed-gist {
+    &,* {
+        border: none;
+    }
 	&.big-gist {
 		max-height: 300px;
 	}
@@ -744,59 +779,73 @@ html body .oembed-gist {
 		}
 	}
 	.gist {
-		border-radius: 3px;
+        table tbody tr:nth-child(odd) {background: transparent; }
 		line-height: 1.5em !important;
+        border: 10px solid @syntax-background-color;
+        border-radius: 4px;
+        *,
+        .gist-file,
+        .blob-wrapper {
+            border-radius: 0px;
+        }
+        > * > * {
+            background: @syntax-background-color;
+        }
+
 		.highlight {
-			background: #31343f;
+		    background: @syntax-background-color;
 		}
 		.blob-num { // line number
-			color: rgba(255,255,255,0.1);
+			color: @syntax-bracket-matcher;
 			line-height: 1.5em !important;
 		}
 		.blob-code {
 			line-height: 1.5em !important;
-			font-size: 12px;
+			font-size: 14px;
 		}
 		.blob-code-inner { // add action, <?, get_file(), {, }, :, ;, (, ),
-			color: #80a0b2; //blue
+			color: @syntax-entity;
 		}
 		.pl-smi { // $variables
-			color: #b6b8b8;
+			color: @syntax-text-color;
 		}
 		.pl-e { // #css, class=
-			color: #999;
+			color: @syntax-keyword;
 		}
 		.pl-en { // function names
-			color: #80a0b2; //blue
+			color: @syntax-entity; //blue
 		}
-		.pl-c1 { // width: height:, false
-			color: #9c7fa9;
+		.pl-c1 { // width: height:, false, intgers
+			color: @syntax-property;
 		}
 		.pl-v { // ---root-var
-			color: #d16f64;
+			color: @syntax-numeric;
 		}
-		.pl-k { // >, function
-			color: #83b68f;
+		.pl-k { // >, function, " . "
+			color: @syntax-constant;
 		}
 		.pl-ent { //div, style
-			color: #b6b8b8;
+			color: @syntax-string;
 		}
 		.pl-s { // "strings"
-			color: #c36f73; //red
+			color: @syntax-string; //red
 		}
 		.pl-pds { // quotes, double quotes
-			color: #d16f64; // dark red
+			color: @syntax-string;
 		}
 		.pl-c {
-			color: rgba(255,255,255,0.15);
+			color: @syntax-bracket-matcher; // comments
 		}
 		.pl-sra,
 		.pl-sr { //regex escapes
-			color: #face5c; //yellow
+			color: @syntax-property; //yellow
 		}
 		.pl-bu { //min-device-width
-			color: #6bada6;
+			color: @syntax-support;
 		}
+        .pl-pse { // <?php, ?>
+            color: @syntax-constant;
+        }
 	}
 }
 // for who knows fuck what reason, the text on iOS will shrink on gists with > x lines.

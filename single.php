@@ -24,8 +24,21 @@
 				<?php endif ?>
 
 				<?php if (is_singular( 'post' )) : ?>
-					<div class='date single_date'>
-						<?= get_the_date(); ?>
+					<div class='postMeta'>
+						<div class='postMeta--date postMeta--single-date'>
+							<?= get_the_date(); ?>
+						</div>
+						<div class='postMeta--tags'>
+							<?php
+							$terms = wp_get_post_terms( get_the_ID(), 'category' );
+							foreach ($terms as $term) {
+								$link = get_term_link($term->term_id,'category');
+								?>
+								<a href='<?= $link ?>'>#<?= $term->name ?></a>
+								<?php
+							}
+							?>
+						</div>
 					</div>
 				<?php endif ?>
 
@@ -40,8 +53,8 @@
 
 			<div class='clear navigation'>
 				<?php
-				next_post_link('%link','&laquo; Next');
-				previous_post_link('%link','Prev &raquo;');
+				next_post_link('%link','&laquo; Prev');
+				previous_post_link('%link','Next &raquo;');
 				?>
 			</div><!--/navigation-->
 

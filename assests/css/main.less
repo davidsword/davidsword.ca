@@ -173,6 +173,9 @@ main { // content links
 .underline {
     border-bottom: 1px solid fade(@black,50%);
 }
+.gray {
+    color: @gray;
+}
 
 /* DOCUMENT ELEMENTS ---------------------------------- */
 p {
@@ -442,6 +445,9 @@ main {
     max-width: @width;
 	section {
 
+        .termTitle {
+            margin-bottom: @space;
+        }
         .inlineFeaturedImage {
             margin-bottom: @space;
         }
@@ -470,8 +476,21 @@ main {
         // 🔥 SINGLE CODE POST ----------------------------------
         .single & {
             article {
-                .date {
-                    color: @gray;
+                .postMeta {
+					& > div {
+						display: inline-block;
+					}
+					&, a:link, a:visited {
+                    	color: @gray;
+						border-color: transparent;
+					}
+					a:hover, a:active {
+                    	color: @c1;
+						border-color: @c1;
+					}
+					.postMeta--date {
+						margin-right: 10px;
+					}
                     margin-bottom: @space;
                 }
             }

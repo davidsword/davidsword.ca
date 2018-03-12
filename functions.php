@@ -121,6 +121,7 @@ apply_filters('sword_toolkit_config', [
 	'remove_wp_head_junk' => true,
 	'remove_emojis' => true,
 	'redirect_if_attachment' => true,
+	'remove_post_tags' => true,
 ]);
 
 do_action('sword_toolkit');

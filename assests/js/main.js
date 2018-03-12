@@ -28,16 +28,17 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 
 	// HIGHLIGHT NAVIGATION ----------------------------------
 	if (jQuery('body').hasClass('single-projects')) {
-		jQuery('.menu-item-object-projects').addClass('current-menu-item');
+		jQuery('.menu-item-object-projects').addClass('current-menu-item'); // "PROJECTS"
 	}
 	if (jQuery('body').hasClass('post-type-archive-images') ||
 		jQuery('body').hasClass('post-type-archive-art') ||
 		jQuery('body').hasClass('post-type-archive-ramblings') ||
 		jQuery('body').hasClass('single-ramblings')) {
-			jQuery('.menu-item-4707').addClass('current-menu-item');
+			jQuery('.menu-item-4707').addClass('current-menu-item'); // "ABOUT"
 	}
-	if (jQuery('body').hasClass('single-post')) {
-		jQuery('.current_page_parent').addClass('current-menu-item');
+	if (jQuery('body').hasClass('single-post') ||
+	(jQuery('body').hasClass('archive') && jQuery('body').hasClass('category')) ) {
+		jQuery('.current_page_parent').addClass('current-menu-item'); // "CODE"
 	}
 
 	// FIRE LIGHTBOX ----------------------------------

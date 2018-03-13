@@ -209,7 +209,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script(
 		'lightbox',
 		get_template_directory_uri() . '/assests/js/featherlight.js',
-		['jquery'],
+		[ 'jquery', 'lightbox_swipe' ],
 		time(),
 		true
 	);

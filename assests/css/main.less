@@ -563,6 +563,7 @@ main {
                     float: left;
                     width: 320px;
                     clear: left;
+                    margin-bottom: @space;
                 }
                 > article {
                     float: right;
@@ -622,8 +623,11 @@ main {
             .fromGutenbergViewAll,
             h2.fromGutenberg--title {
                 //grid-column: 1 / -1;
-                grid-column-start: 1;
-                grid-column-end: -1;
+                //grid-column-start: 1;
+                //grid-column-end: -1;
+            }
+            h2.fromGutenberg--title {
+                margin-bottom: @space;
             }
             .fromGutenbergViewAll {
                 justify-self: end;
@@ -860,12 +864,24 @@ footer {
         }
     }
 
+    .post-type-archive-images main section .grid.images  > a[data-lightbox] {
+        width: ~"calc(33.333% - 14px)";
+    }
+
 
     main section .grid {
         &.images {
-            grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+            //one day
+            //grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
         }
         &.projects {
+            > a,
+            > article {
+                float: none;
+                display: block;
+                clear: both;
+                width: auto;;
+            }
             article {
                 max-width: 380px;
                 margin: 0 0 40px 0;
@@ -873,7 +889,13 @@ footer {
             }
         }
         &.code {
-            display: block;
+            > h2,
+            > .date {
+                float: none;
+                display: block;
+                clear: both;
+                width: auto;;
+            }
             .date.nomargin {
                 margin-top: @space;
                 &:first-child {

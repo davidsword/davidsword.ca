@@ -24,7 +24,7 @@ include('inc/ds-helpers.php');
 /* ----------------------------------------------------------------------------------------------------- */
 
 $swrdbs = [
-	'theme_varient' => '2.0.2',
+	'theme_varient' => '2.0.3',
 	'dev' => false,
 	'dev_user_id' => 1,
 	'hero_title' => true,
@@ -119,7 +119,7 @@ apply_filters('sword_toolkit_config', [
 	],
 	'remove_jquery_migrate' => true,
 	'remove_wp_head_junk' => true,
-	'remove_emojis' => true,
+	'remove_emojis' => false,
 	'redirect_if_attachment' => true,
 	'remove_post_tags' => true,
 ]);
@@ -224,6 +224,24 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 
+	/* MAIN CSS ---------------------------------- */
+	if (!$swrdbs['dev']) {
+		wp_enqueue_style(
+			'main',
+			get_template_directory_uri() . '/style.css',
+			[],
+			swrdbs_return_filemtime('/style.css' )
+		);
+	}
+
+	/* LIGHTBOX ---------------------------------- */
+	add_action( 'wp_footer', function () {
+		wp_enqueue_style(
+			'lightbox',
+			get_template_directory_uri() . '/assests/css/jquery.lightbox.css'
+		);
+	});
+
 });
 
 
@@ -275,26 +293,7 @@ add_filter('the_content',function ($the_content) {
  *
  *
  */
-add_action( 'wp_footer', function () {
-	global $swrdbs;
 
-	/* MAIN CSS ---------------------------------- */
-	if (!$swrdbs['dev']) {
-		wp_enqueue_style(
-			'main',
-			get_template_directory_uri() . '/style.css',
-			[],
-			swrdbs_return_filemtime('/style.css' )
-		);
-	}
-
-	/* LIGHTBOX ---------------------------------- */
-	wp_enqueue_style(
-		'lightbox',
-		get_template_directory_uri() . '/assests/css/jquery.lightbox.css'
-	);
-
-} );
 
 
 /* =====================================================================================================

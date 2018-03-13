@@ -72,7 +72,6 @@ register_block_type( 'cgb/block-ds-cpts-gutenberg-images', [
 		query_posts( ['post_type' => 'images', 'posts_per_page' => 4] );
 		?>
 		<div class='grid images fromGutenberg'>
-			<h2 class='fromGutenberg--title'>Recent Images</h2>
 			<?php get_template_part( 'partials/loop', 'images' ); ?>
 			<a href="<?php echo get_post_type_archive_link('images') ?>" class="fromGutenbergViewAll">View More »</a>
 		</div>
@@ -91,7 +90,6 @@ register_block_type( 'cgb/block-ds-cpts-gutenberg-art', [
 		query_posts( ['post_type' => 'art', 'posts_per_page' => 4] );
 		?>
 		<div class='grid images images__art fromGutenberg'>
-			<h2 class='fromGutenberg--title'>Recent Artwork</h2>
 			<?php get_template_part( 'partials/loop', 'images' ); ?>
 			<a href="<?php echo get_post_type_archive_link('art') ?>" class="fromGutenbergViewAll">View More »</a>
 		</div>

@@ -68,7 +68,7 @@
 
 
 /* reset css */ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center, dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline } main, aside, header, footer { display: block; }
-*, *:before, *:after { box-sizing: inherit; }
+*, *:before, *:after { box-sizing: inherit; } 
 
 /* =========================================================================================================================
 /* !(2) PRIMARY CLASSES AND ELEMENTS */
@@ -107,6 +107,7 @@ body {
     line-height: @lheight;
 	min-height: 100%;
     font-weight: 300;
+    word-break: break-word;
 }
 
 /* HEADINGS ---------------------------------- */
@@ -237,6 +238,7 @@ table {
 		text-align: left;
 	}
 }
+.skilltags>span,
 pre, code {
     padding: 2px 4px;
     color: fade(@black, 90%);
@@ -245,7 +247,7 @@ pre, code {
     font-size: 14px;
     font-family: @t2;
 }
-
+.skilltags>span,
 code {
 	margin-right: 5px;
 }
@@ -347,7 +349,7 @@ header#head {
 				background: @gray;
 				z-index:1;
                 margin-right: 10px;
-                background-image: url(http://localhost/wordpress/davidsword-2018/wp-content/uploads/sites/3/2016/10/logoyo.jpg);
+                background-image: url(https://davidsword.ca/files/2016/10/logoyo.jpg);
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: 100%;
@@ -439,6 +441,18 @@ header#head {
 	  *				<div class='navigation'>
 	  */
 /*-------------------------------------------------------------------------------------------------------------------*/
+.excerpt {
+    & , p {
+        font-size: 30px;
+        line-height: 1.85em;
+        font-style: normal;
+        color: black;
+    }
+}
+p.wp-block-subhead {
+    .excerpt;
+}
+
 
 main {
     .marg;
@@ -460,10 +474,9 @@ main {
                     //.underline;
                 }
             }
+            p.wp-block-subhead,
             .excerpt p {
                 text-align: center;
-                font-size: 30px;
-                line-height: 1.85em;
             }
         }
 
@@ -495,12 +508,6 @@ main {
                 }
             }
         }
-		.excerpt p {
-			.cntr;
-			font-size: 1.5em;
-			line-height: @lheight;
-			font-weight: 300;
-		}
 
         // 🔥 GRID ----------------------------------
         // @TODO, this is repeated for gutenberg blocks, so annoying
@@ -508,28 +515,41 @@ main {
             display: grid;
             grid-gap: @space;
             align-items: center;
+            max-width: 100%;
             & > a {
                 border: none;
-                img { max-width: 100%; }
             }
+            img { max-width: 100%; }
 
             // 🔥 IMAGE GRID ----------------------------------
             &.images {
-                grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+                grid-template-columns: repeat(4, minmax(120px,1fr));
                 .fromGutenbergViewAll,
                 h2.fromGutenberg--title {
-                    grid-column: 1 / span 4;
+                    grid-column-start: 1;
+                    grid-column-end: -1;
+                }
+                & > a[data-lightbox] {
+                    object-fit: cover;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    &:before { // keep things square
+                        content:'';
+                	    padding-top:100%;
+                	    float:left;
+                    }
                 }
             }
 
             // 🔥 PROJECTS GRID ----------------------------------
             &.projects {
-                grid-template-columns: 320px 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             }
 
             // 🔥 POST (CODE) GRID ----------------------------------
             &.code {
-                grid-template-columns: 80px 1fr;
+                grid-template-columns: 100px 1fr;
                 align-items: stretch;
                 align-content: start;
                 &, * {
@@ -553,7 +573,9 @@ main {
             }
             .fromGutenbergViewAll,
             h2.fromGutenberg--title {
-                grid-column: 1 / span 2;
+                //grid-column: 1 / -1;
+                grid-column-start: 1;
+                grid-column-end: -1;
             }
             .fromGutenbergViewAll {
                 justify-self: end;
@@ -709,7 +731,129 @@ footer {
 /* !(11) RESPONSIVE */
 /* -----------------------------------------------------------------------------------------------------------------------*/
 
-@media screen and (max-width: @width) {
+@media screen and (max-width: (@width+50)) {
+    header#head,
+    main,
+    footer {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    header#head nav#main {
+        a.icon_git,
+        label#hamburger-icon {
+            .icon;
+            width: 32px;
+            height: 32px;
+            background-size: 60%;
+            position: absolute;
+            top: -10px;
+            right: 5%;
+            transition: none;
+            margin: 0;
+            background-color: white;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        label#hamburger-icon {
+            .icon_hamburger;
+            display: block;
+        }
+        ul {
+            display: none;
+            position: absolute;
+            top: 22px;
+            right: 5%;
+            padding: 10px 0;
+            background: @black;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            li {
+                display: block;
+                a {
+                    display: block;
+                    padding: 10px;
+                    min-width: 105px;
+                    border:none;
+                    text-align: center;
+                    font-size: 17px;
+                    margin: 0;
+                }
+                &.hovering>a,
+                a:hover {
+					border-color: fade(@black,30%);
+	            }
+	            /* CURRENT PAGE ---------------------------------- */
+                //&.current_page_parent > a,
+                &.current-menu-item > a,
+		        &.current_page_ancestor > a,
+		        &.current_page_item > a {
+                    &:link, &:visited {
+                        color: @white;
+                        //border-color: @black;
+                    }
+				}
+
+            }
+        }
+        input#hamburger:checked ~ label#hamburger-icon {
+            background-color: @black;
+            .icon_hamburger_white;
+        }
+        input#hamburger:checked ~ ul {
+            display: block !important;
+        }
+        a.icon_git {
+            right: 50px;
+        }
+    }
+
+
+    main section .grid {
+        &.images {
+            grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+        }
+        &.projects {
+            article {
+                max-width: 380px;
+                margin: 0 0 40px 0;
+                padding: 0 5%;
+            }
+        }
+        &.code {
+            display: block;
+            .date.nomargin {
+                margin-top: @space;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    p.wp-block-subhead,
+    .excerpt p {
+        font-size: 26px;
+        line-height: 1.7em;
+    }
+    main section .grid {
+        &.projects {
+            article {
+                padding: 0;
+            }
+        }
+    }
+
+    main .navigation a.prev:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 
 }
 
@@ -728,7 +872,9 @@ footer {
 /* !(14) BASE64 SVG ICONS */
 /* -----------------------------------------------------------------------------------------------------------------------*/
 
-.icon { .inbl; width: 16px; height: 16px; background-size: 16px 16px; vertical-align: -2px; margin-right: 3px; }
+.icon { .inbl; width: 16px; height: 16px; background-size: 16px 16px; vertical-align: -2px; margin-right: 3px;             background-repeat: no-repeat;
+            background-position: center;
+ }
 .icon_hamburger() { background-image:url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCI+CiAgPGc+CiAgICA8cGF0aCBkPSJNMjQsM2MwLTAuNi0wLjQtMS0xLTFIMUMwLjQsMiwwLDIuNCwwLDN2MmMwLDAuNiwwLjQsMSwxLDFoMjJjMC42LDAsMS0wLjQsMS0xVjN6IiBmaWxsPSIjMDAwMDAwIi8+CiAgICA8cGF0aCBkPSJNMjQsMTFjMC0wLjYtMC40LTEtMS0xSDFjLTAuNiwwLTEsMC40LTEsMXYyYzAsMC42LDAuNCwxLDEsMWgyMmMwLjYsMCwxLTAuNCwxLTFWMTF6IiBmaWxsPSIjMDAwMDAwIi8+CiAgICA8cGF0aCBkPSJNMjQsMTljMC0wLjYtMC40LTEtMS0xSDFjLTAuNiwwLTEsMC40LTEsMXYyYzAsMC42LDAuNCwxLDEsMWgyMmMwLjYsMCwxLTAuNCwxLTFWMTl6IiBmaWxsPSIjMDAwMDAwIi8+CiAgPC9nPgo8L3N2Zz4K) }
 .icon_hamburger_white() { background-image:url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCI+CiAgPGc+CiAgICA8cGF0aCBkPSJNMjQsM2MwLTAuNi0wLjQtMS0xLTFIMUMwLjQsMiwwLDIuNCwwLDN2MmMwLDAuNiwwLjQsMSwxLDFoMjJjMC42LDAsMS0wLjQsMS0xVjN6IiBmaWxsPSIjRkZGRkZGIi8+CiAgICA8cGF0aCBkPSJNMjQsMTFjMC0wLjYtMC40LTEtMS0xSDFjLTAuNiwwLTEsMC40LTEsMXYyYzAsMC42LDAuNCwxLDEsMWgyMmMwLjYsMCwxLTAuNCwxLTFWMTF6IiBmaWxsPSIjRkZGRkZGIi8+CiAgICA8cGF0aCBkPSJNMjQsMTljMC0wLjYtMC40LTEtMS0xSDFjLTAuNiwwLTEsMC40LTEsMXYyYzAsMC42LDAuNCwxLDEsMWgyMmMwLjYsMCwxLTAuNCwxLTFWMTl6IiBmaWxsPSIjRkZGRkZGIi8+CiAgPC9nPgo8L3N2Zz4K) }
 .icon_close() { background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGcgaWQ9Imljb21vb24taWdub3JlIj48L2c+PHBhdGggZD0iTTMxLjcwOCAyNS43MDhjLTAtMC0wLTAtMC0wbC05LjcwOC05LjcwOCA5LjcwOC05LjcwOGMwLTAgMC0wIDAtMCAwLjEwNS0wLjEwNSAwLjE4LTAuMjI3IDAuMjI5LTAuMzU3IDAuMTMzLTAuMzU2IDAuMDU3LTAuNzcxLTAuMjI5LTEuMDU3bC00LjU4Ni00LjU4NmMtMC4yODYtMC4yODYtMC43MDItMC4zNjEtMS4wNTctMC4yMjktMC4xMyAwLjA0OC0wLjI1MiAwLjEyNC0wLjM1NyAwLjIyOCAwIDAtMCAwLTAgMGwtOS43MDggOS43MDgtOS43MDgtOS43MDhjLTAtMC0wLTAtMC0wLTAuMTA1LTAuMTA0LTAuMjI3LTAuMTgtMC4zNTctMC4yMjgtMC4zNTYtMC4xMzMtMC43NzEtMC4wNTctMS4wNTcgMC4yMjlsLTQuNTg2IDQuNTg2Yy0wLjI4NiAwLjI4Ni0wLjM2MSAwLjcwMi0wLjIyOSAxLjA1NyAwLjA0OSAwLjEzIDAuMTI0IDAuMjUyIDAuMjI5IDAuMzU3IDAgMCAwIDAgMCAwbDkuNzA4IDkuNzA4LTkuNzA4IDkuNzA4Yy0wIDAtMCAwLTAgMC0wLjEwNCAwLjEwNS0wLjE4IDAuMjI3LTAuMjI5IDAuMzU3LTAuMTMzIDAuMzU1LTAuMDU3IDAuNzcxIDAuMjI5IDEuMDU3bDQuNTg2IDQuNTg2YzAuMjg2IDAuMjg2IDAuNzAyIDAuMzYxIDEuMDU3IDAuMjI5IDAuMTMtMC4wNDkgMC4yNTItMC4xMjQgMC4zNTctMC4yMjkgMC0wIDAtMCAwLTBsOS43MDgtOS43MDggOS43MDggOS43MDhjMCAwIDAgMCAwIDAgMC4xMDUgMC4xMDUgMC4yMjcgMC4xOCAwLjM1NyAwLjIyOSAwLjM1NiAwLjEzMyAwLjc3MSAwLjA1NyAxLjA1Ny0wLjIyOWw0LjU4Ni00LjU4NmMwLjI4Ni0wLjI4NiAwLjM2Mi0wLjcwMiAwLjIyOS0xLjA1Ny0wLjA0OS0wLjEzLTAuMTI0LTAuMjUyLTAuMjI5LTAuMzU3eiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg==) }

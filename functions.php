@@ -25,7 +25,7 @@ include('inc/ds-helpers.php');
 
 $swrdbs = [
 	'theme_varient' => '2.0.0',
-	'dev' => true,
+	'dev' => false,
 	'dev_user_id' => 1,
 	'hero_title' => true,
 	'hero_w' => 1600,
@@ -157,6 +157,15 @@ function swrdbs_move_monsterinsights() {
    - the_content
    - get_footer
 /* ----------------------------------------------------------------------------------------------------- */
+
+add_action( 'enqueue_block_editor_assets', function () {
+	wp_enqueue_style(
+		'ds_guteneditor', // Handle.
+		get_template_directory_uri().'/assests/css/gutenberg.css',
+		null, // Dependencies, defined above.
+		time()
+	);
+});
 
 /**
  * Enqueue scripts into Wordpress

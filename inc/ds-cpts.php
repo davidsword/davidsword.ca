@@ -25,27 +25,44 @@ add_action( 'after_setup_theme', function () {
 // });
 // our migrator
 
-// add_action('admin_notices',function(){
-// 	$posts = get_posts('numberposts=999&post_type=post');
-// 	foreach ($posts as $apost) {
-// 		$pattern = '/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})/';
-// 		$replacement = "banna";
-// 		preg_match_all($pattern, $apost->post_content, $matches);
-//
-// 		foreach ($matches[0] as $gistURL) {
-// 			$newcontent = preg_replace(
-// 			$pattern,
-// 			"\n[gist url='https://gist.github.com/davidsword/$1']\n",
-// 			$apost->post_content);
-// 		}
-//
-// 		 //echo "<pre style=background:black;color:white> {$apost->ID}👋 ".print_r( htmlspecialchars($newcontent) ,true)."</pre>";
-//         // wp_update_post( [
-//              // 'ID' => $apost->ID,
-//              // 'post_content' => $newcontent
-//          // ] );
-// 	}
-// });
+add_action('admin_notices!',function(){
+	$posts = get_posts('numberposts=999&post_type=attachment&order_by=ID');
+	foreach ($posts as $apost) {
+
+		$img = wp_get_attachment_image_src( $apost->ID , "thumbnail" );
+
+
+		if (
+			($apost->ID < 4190 && $apost->ID > 3993) ||
+			($apost->ID <  2936 && $apost->ID > 2901) ||
+			($apost->ID <  729 && $apost->ID > 692) ||
+			in_array($apost->ID,[820,818,664])
+		) {
+			if (isset($img[1])) {
+				echo "{$apost->ID} <img src='{$img[0]}' width=40 height=40 /><hr />";
+				// create our new post
+			    $myp = array();
+			    $myp['post_type']  = 'art';
+			    $myp['post_title'] 		= $apost->post_name;
+			    //$myp['post_date'] 		= $post_date;
+			    //$myp['post_date_gmt'] 	= $post_date_gmt;
+				$myp['post_status']     = 'publish';
+				$myp['comment_status']  = 'closed';
+				// $newid = wp_insert_post($myp);
+				// if ($newid)
+				// 	set_post_thumbnail( $newid, $apost->ID );
+			}
+		}
+
+
+
+		 //echo "<pre style=background:black;color:white> {$apost->ID}👋 ".print_r( htmlspecialchars($newcontent) ,true)."</pre>";
+        // wp_update_post( [
+             // 'ID' => $apost->ID,
+             // 'post_content' => $newcontent
+         // ] );
+	}
+});
 
 
 
@@ -174,7 +191,7 @@ function ds_make_labels($cptName) {
 }
 
 
-
+add_filter('manage_art_posts_columns', 'ds_makethumbnailcol');
 add_filter('manage_images_posts_columns', 'ds_makethumbnailcol');
 add_filter('manage_projects_posts_columns', 'ds_makethumbnailcol');
 function ds_makethumbnailcol($columns){
@@ -255,11 +272,21 @@ add_filter('pre_get_posts', function ($query) {
 	if (
 		!is_admin() &&
 		isset($query->query['post_type']) &&
-		$query->query['post_type'] == 'images' &&
+		($query->query['post_type'] == 'images' || $query->query['post_type'] == 'art') &&
 		$query->is_archive == 1 &&
 		!isset($query->query['posts_per_page'])
-	) //rest api call
+	)
 		$query->set( 'posts_per_page', '24' );
+
+		// ONLY ON FRONT END ARCHIVES PAGE
+		if (
+			!is_admin() &&
+			isset($query->query['post_type']) &&
+			($query->query['post_type'] == 'projects') &&
+			$query->is_archive == 1 &&
+			!isset($query->query['posts_per_page'])
+		)
+			$query->set( 'posts_per_page', '6' );
 
 	return $query;
 });

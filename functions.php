@@ -24,7 +24,7 @@ include('inc/ds-helpers.php');
 /* ----------------------------------------------------------------------------------------------------- */
 
 $swrdbs = [
-	'theme_varient' => '2.0.0',
+	'theme_varient' => '2.0.1',
 	'dev' => false,
 	'dev_user_id' => 1,
 	'hero_title' => true,
@@ -187,7 +187,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	/* MAIN JS ---------------------------------- */
 	$mainjs = ($swrdbs['dev']) ? 'main.js' : 'main.min.js';
-	$ver = ($swrdbs['dev']) ? time() : false;
+	$ver = ($swrdbs['dev']) ? time() : $swrdbs['theme_varient'];
 
 	wp_enqueue_script(
 		'swrdbs_js',

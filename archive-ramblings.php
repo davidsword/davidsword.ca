@@ -5,7 +5,7 @@
 	<main>
 		<section>
 
-			<div class='grid code'>
+			<div class='grid ramblings'>
 				<?php get_template_part( 'partials/loop', 'ramblings' ); ?>
 			</div>
 

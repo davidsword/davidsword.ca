@@ -2,7 +2,7 @@
     <div class='date nomargin'>
         <h2><a href='<?= get_permalink() ?>'><?= get_the_date(); ?></a></h2>
     </div>
-    <div>
+    <div class='ramble'>
         <?php get_template_part( 'partials/inline', 'ftrimg' ); ?>
         <div class='entry'>
             <?php the_content() ?>

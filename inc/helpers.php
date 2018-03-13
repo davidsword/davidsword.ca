@@ -400,7 +400,9 @@ function swrdbs_return_youtube_video_from_url($youtube_url) {
  */
 function swrdbs_plugin_check() {
 	global $swrdbs;
-	return;
+
+	return; // ignore this for now
+
 	// only user id=1
 	// yes this isn't perfect, but generally this will work for our sites 99% of the time
 	$current_user = wp_get_current_user();

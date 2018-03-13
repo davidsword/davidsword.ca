@@ -136,17 +136,17 @@ add_action('wp_print_styles', function(){ wp_dequeue_style('gforms_css'); });
 add_filter('gform_init_scripts_footer', '__return_true'); // push js to footer
 
 // MONSTER INSIGHTS
-add_action( 'wp_enqueue_scripts', 'swrdbs_move_monsterinsights', 99);
-function swrdbs_move_monsterinsights() {
-	wp_dequeue_script( 'monsterinsights-lite-frontend-script'); // get outta the header
-	wp_enqueue_script(
-		'monsterinsights-lite-frontend-script', // "monsterinsights-lite" for non-upgraded
-		plugins_url().'/google-analytics-for-wordpress/assests/js/frontend.min.js',
-		[], // no depends
-		get_bloginfo('version'), // refresh cache once in a while
-		true // move to footer
-	);
-}
+// add_action( 'wp_enqueue_scripts', 'swrdbs_move_monsterinsights', 99);
+// function swrdbs_move_monsterinsights() {
+// 	wp_dequeue_script( 'monsterinsights-lite-frontend-script'); // get outta the header
+// 	wp_enqueue_script(
+// 		'monsterinsights-lite-frontend-script', // "monsterinsights-lite" for non-upgraded
+// 		plugins_url().'/google-analytics-for-wordpress/assests/js/frontend.min.js',
+// 		[], // no depends
+// 		get_bloginfo('version'), // refresh cache once in a while
+// 		true // move to footer
+// 	);
+// }
 
 
 

@@ -186,13 +186,14 @@ add_action( 'wp_enqueue_scripts', function () {
 
 
 	/* MAIN JS ---------------------------------- */
-	$mainjs = 'main.js';//($swrdbs['dev']) ? 'main.js' : 'main.min.js';
+	$mainjs = ($swrdbs['dev']) ? 'main.js' : 'main.min.js';
+	$ver = ($swrdbs['dev']) ? time() : false;
 
 	wp_enqueue_script(
 		'swrdbs_js',
 		get_template_directory_uri() . '/assests/js/'.$mainjs,
 		['jquery','ds_gist','lightbox'],
-		time(),
+		$ver,
 		true
 	);
 
@@ -201,7 +202,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'ds_gist',
 		get_template_directory_uri() . '/assests/js/gist.js',
 		['jquery'],
-		time(),
+		$ver,
 		true
 	);
 
@@ -210,7 +211,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'lightbox',
 		get_template_directory_uri() . '/assests/js/featherlight.js',
 		[ 'jquery', 'lightbox_swipe' ],
-		time(),
+		$ver,
 		true
 	);
 
@@ -219,7 +220,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'lightbox_swipe',
 		get_template_directory_uri() . '/assests/js/swipe.js',
 		['jquery'],
-		time(),
+		$ver,
 		true
 	);
 

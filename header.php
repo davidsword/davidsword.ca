@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 
+<!-- connected to github -->
+
 <title><?php wp_title() ?></title>
 
 <!-- #### META #### -->

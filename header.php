@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 
-<!-- connected to github -->
+<!-- connected to github.com/davidsword/davidsword.ca-2018 -->
+<!-- v<?php echo $swrdbs['theme_varient'] ?> -->
 
 <title><?php wp_title() ?></title>
 

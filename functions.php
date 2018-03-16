@@ -113,18 +113,19 @@ add_action('admin_notices','swrdbs_plugin_check');
 // add_filter( 'mce_css', 'swrdbs_tinymce_css' );
 
 // TOOLKIT CONFIGURE, not `$swrdbs` options because these can be used on any theme
-apply_filters('sword_toolkit_config', [
-	'remove_menu_pages'		=> ['widgets.php'],
-	'remove_menu_sub_pages' => [
-		'themes.php' => 'widgets.php',
-	],
-	'remove_jquery_migrate' => true,
-	'remove_wp_head_junk' => true,
-	'redirect_if_attachment' => true,
-	'remove_post_tags' => true,
-]);
-
-do_action('sword_toolkit');
+add_filter('sword_toolkit', function() {
+	return [
+		'remove_menu_pages'		=> ['widgets.php'],
+		'remove_menu_sub_pages' => [
+			'themes.php' => 'widgets.php',
+		],
+		'remove_jquery_migrate' => true,
+		'remove_wp_head_junk' => true,
+		'redirect_if_attachment' => true,
+		'remove_post_tags' => true,
+		'remove_emojis' => false,
+	];
+});
 
 /* =====================================================================================================
    PLUGINS CONFIGURE

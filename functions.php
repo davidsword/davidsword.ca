@@ -16,8 +16,6 @@ include('inc/ds-cpts.php');
 include('inc/ds-cpts-gutenberg/plugin.php'); // the "plugin" :joy:
 include('inc/ds-helpers.php');
 
-//🔥 @TODO make redirect for /apps-services-and-hardware-i-use-every-daya/
-
 
 /* =====================================================================================================
    THEME CONFIGURE, visual and theme development side of things
@@ -65,9 +63,10 @@ add_theme_support( 'custom-logo', [
 	'header-text' => ['site-title', 'site-description'],
 ]);
 
-add_post_type_support( 'page', ['post-formats','excerpt'] );
+add_post_type_support( 'page', 'excerpt' );
 add_image_size('slideshow',$swrdbs['hero_w'],$swrdbs['hero_h'],true);
 //add_theme_support( 'post-formats', ['gallery'] );
+
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' , ['post' , 'page'] );
@@ -79,6 +78,8 @@ add_action( 'after_setup_theme', function () {
         '#eee',
         '#444'
     );
+
+	remove_theme_support( 'post-formats' );
 });
 
 // wordpress overwrite width default settings
@@ -119,7 +120,6 @@ apply_filters('sword_toolkit_config', [
 	],
 	'remove_jquery_migrate' => true,
 	'remove_wp_head_junk' => true,
-	'remove_emojis' => false,
 	'redirect_if_attachment' => true,
 	'remove_post_tags' => true,
 ]);

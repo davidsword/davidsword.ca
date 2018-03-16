@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-<!-- connected to github.com/davidsword/davidsword.ca-2018 -->
+<!-- github.com/davidsword/davidsword.ca-2018 -->
 <!-- v<?php echo $swrdbs['theme_varient'] ?> -->
 
 <title><?php wp_title() ?></title>
@@ -43,9 +43,7 @@ if (isset($swrdbs['province']) && !empty(($swrdbs['province'].$swrdbs['city'].$s
 endif;
 ?>
 
-
-<!-- temp -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500" rel="stylesheet">
 
 
 <!-- #### FEED #### -->

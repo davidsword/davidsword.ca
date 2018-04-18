@@ -29,7 +29,7 @@ add_action( 'enqueue_block_editor_assets', function () {
 	);
 });
 
-
+if ( function_exists('register_block_type') ) {
 
 // Hook server side rendering into render callback
 register_block_type( 'cgb/block-ds-cpts-gutenberg', [
@@ -116,3 +116,6 @@ register_block_type( 'cgb/block-ds-cpts-gutenberg-ramblings', [
 		return ob_get_clean();
 	},
 ] );
+
+
+}

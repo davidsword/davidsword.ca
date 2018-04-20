@@ -4,6 +4,24 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' , ['images' , 'projects', 'ramblings'] );
 });
 
+add_action('the_content_feed',function($content){
+	//if (is_feed()) {
+		$content .= "<a href='".get_permalink()."'>".get_permalink()."</a>";
+	//}
+
+	return $content;
+});
+
+add_filter('request', function ($qv) {
+	// if (isset($_GET['ramblings']))
+		// $qv['post_type'] = ['ramblings'];
+    // else
+
+	$qv['post_type'] = ['post','projects','images'];
+
+    return $qv;
+});
+
 // our migrator
 // add_action('admin_notice',function(){
 // 	$posts = get_posts('numberposts=-1&post_type=post');

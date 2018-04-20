@@ -5,10 +5,9 @@ add_action( 'after_setup_theme', function () {
 });
 
 add_action('the_content_feed',function($content){
-	//if (is_feed()) {
+	if (is_feed()) {
 		$content .= "<a href='".get_permalink()."'>".get_permalink()."</a>";
-	//}
-
+	}
 	return $content;
 });
 
@@ -17,7 +16,7 @@ add_filter('request', function ($qv) {
 		// $qv['post_type'] = ['ramblings'];
     // else
 
-	$qv['post_type'] = ['post','projects','images'];
+	//$qv['post_type'] = ['post','projects','images'];
 
     return $qv;
 });

@@ -232,7 +232,7 @@ add_action( 'wp_enqueue_scripts', function () {
 			'main',
 			get_template_directory_uri() . '/style.css',
 			[],
-			swrdbs_return_filemtime('/style.css' )
+			false
 		);
 	}
 

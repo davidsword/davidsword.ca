@@ -4,21 +4,22 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' , ['images' , 'projects', 'ramblings'] );
 });
 
-add_action('the_content_feed',function($content){
+// add_action('the_content_feed',function($content){
+	// if (is_feed()) {
+		// $content .= "<a href='".get_permalink()."'>".get_permalink()."</a>";
+	// }
+	// return "b ".$content;
+// });
+
+add_action('the_excerpt_rss',function($content){
+	if (isset($_GET['post_type']) && $_GET['post_type'] == 'images') {
+		$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()), "large" );
+		$content .= "<img src='{$img[0]}' />";
+	}
 	if (is_feed()) {
-		$content .= "<a href='".get_permalink()."'>".get_permalink()."</a>";
+		$content .= "<br /><br /><a href='".get_permalink()."'>".get_permalink()."</a>";
 	}
 	return $content;
-});
-
-add_filter('request', function ($qv) {
-	// if (isset($_GET['ramblings']))
-		// $qv['post_type'] = ['ramblings'];
-    // else
-
-	//$qv['post_type'] = ['post','projects','images'];
-
-    return $qv;
 });
 
 // our migrator

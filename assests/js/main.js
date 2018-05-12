@@ -41,7 +41,7 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 	}
 	if (jQuery('body').hasClass('post-type-archive-images') ||
 		jQuery('body').hasClass('post-type-archive-art') ||
-		jQuery('body').hasClass('post-type-archive-ramblings') ||
+		//jQuery('body').hasClass('post-type-archive-ramblings') ||
 		jQuery('body').hasClass('single-ramblings')) {
 			jQuery('.menu-item-4707').addClass('current-menu-item'); // "ABOUT"
 	}

@@ -34,7 +34,6 @@ add_action('the_excerpt_rss',function($content){
 // 		echo "<hr />";
 // 	}
 // });
-// our migrator
 
 add_action('admin_notices!',function(){
 	$posts = get_posts('numberposts=999&post_type=attachment&order_by=ID');

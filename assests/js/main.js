@@ -40,14 +40,14 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 		jQuery('.menu-item-object-projects').addClass('current-menu-item'); // "PROJECTS"
 	}
 	if (jQuery('body').hasClass('post-type-archive-images') ||
-		jQuery('body').hasClass('post-type-archive-art')
-		//jQuery('body').hasClass('post-type-archive-ramblings') ||
+		jQuery('body').hasClass('post-type-archive-art') ) {
+		// ||
 		//jQuery('body').hasClass('single-ramblings'))
-		{
+
 			jQuery('.menu-item-4707').addClass('current-menu-item'); // "ABOUT"
 	}
 
-	if (jQuery('body').hasClass('single-ramblings') {
+	if (jQuery('body').hasClass('single-ramblings' || jQuery('body').hasClass('post-type-archive-ramblings')) {
 			jQuery('.menu-item-5693').addClass('current-menu-item'); // "RAMBLINGS"
 	}
 

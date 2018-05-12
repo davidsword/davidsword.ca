@@ -23,7 +23,7 @@ include('inc/ds-helpers.php');
 /* ----------------------------------------------------------------------------------------------------- */
 
 $swrdbs = [
-	'theme_varient' => '2.0.5',
+	'theme_varient' => '2.0.5.1',
 	'dev' => false,
 	'dev_user_id' => 1,
 	'hero_title' => true,

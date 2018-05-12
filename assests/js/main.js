@@ -46,6 +46,15 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 		{
 			jQuery('.menu-item-4707').addClass('current-menu-item'); // "ABOUT"
 	}
+
+	if (jQuery('body').hasClass('single-ramblings') {
+			jQuery('.menu-item-5693').addClass('current-menu-item'); // "RAMBLINGS"
+	}
+
+	if (jQuery('body').hasClass('single-post') {
+			jQuery('.menu-item-4749').addClass('current-menu-item'); // "CODE"
+	}
+
 	if (jQuery('body').hasClass('single-post') ||
 	(jQuery('body').hasClass('archive') && jQuery('body').hasClass('category')) ) {
 		jQuery('.current_page_parent').addClass('current-menu-item'); // "CODE"

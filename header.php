@@ -2,6 +2,29 @@
 <html lang="en">
 <head>
 
+<!--
+
+👋🏻 Why hello there!
+
+👀 Interested in my source code?
+🎉 I'm flattered!
+✋🏻 Let me save you some trouble:
+
+👷🏻‍ This is a custom frankentheme for myself built off of github.com/davidsword/sword-base
+👥 I share the code on github anyone wants to fork or see how I did somthing
+🤷🏼‍ it's not really intended to be used as-is for anyone but me, but its forkable
+✅ The code is tidy, HTML5 & CSS3 (unprocessed at wp-content/themes/davidsword-2018/style.less)
+✅ Google PageSpeed was 87/72.
+   https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fdavidsword.ca
+✅ GtMetrix Pagespeed is 91% (0.5s load, 166KB weight, 28 Requests)
+   https://gtmetrix.com/reports/davidsword.ca/u6t6vPtS/retest
+✅ YSlow is 74%
+
+🌷 Have a great rest of your day!
+
+-->
+
+<!-- synced with WPPusher -->
 <!-- github.com/davidsword/davidsword.ca-2018 -->
 <!-- v<?php echo $swrdbs['theme_varient'] ?> -->
 
@@ -13,8 +36,10 @@
 <meta name="robots" content="index, follow" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- #### WORDPRESS ENQUEUE'D & PLUGINS #### -->
+<!-- #### WORDPRESS wp_head #### -->
 <?php wp_head() ?>
+
+<!-- #### /WORDPRESS wp_head #### -->
 
 <!-- #### TWITTER CARDS #### -->
 <meta name="twitter:card" content="summary_large_image">
@@ -43,7 +68,6 @@ if (isset($swrdbs['province']) && !empty(($swrdbs['province'].$swrdbs['city'].$s
 endif;
 ?>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500" rel="stylesheet">
 
 
 <!-- #### FEED #### -->

@@ -9,7 +9,7 @@ Tags: clean, minimal, custom
 
 == Description ==
 
-David Sword's site for 2018. Its too custom and the abilities too narrow to release. But keeping open source incase anyone wants to fork it or see how I did somthing.
+David Sword's site for 2018. Its too custom and the abilities too narrow to release. But keeping open source incase anyone wants to fork it or see how I did something.
 
 == Installation ==
 

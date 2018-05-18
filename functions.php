@@ -29,12 +29,7 @@ $swrdbs = [
 	'hero_title' => true,
 	'hero_w' => 1600,
 	'hero_h' => 900,
-	'js_plugins' => [
-		'lightbox',
-		'youtubebackground',
-		'waypoints',
-		'aos'
-	],
+	'js_plugins' => [],
 	'plugins_required' => [ // "required", well, heavily suggested
 		'sword-toolkit/sword-toolkit.php',
 		'wordpress-seo/wp-seo.php', // Yoast SEO
@@ -210,17 +205,17 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	/* LIGHTBOX ---------------------------------- */
 	wp_enqueue_script(
-		'lightbox',
+		'featherlight',
 		get_template_directory_uri() . '/assests/js/featherlight.js',
-		[ 'jquery', 'lightbox_swipe' ],
+		[ 'jquery', 'featherlight_swipe' ],
 		$ver,
 		true
 	);
 
 	/* SWIPE ---------------------------------- */
 	wp_enqueue_script(
-		'lightbox_swipe',
-		get_template_directory_uri() . '/assests/js/swipe.js',
+		'featherlight_swipe',
+		get_template_directory_uri() . '/assests/js/featherlight.swipe.js',
 		['jquery'],
 		$ver,
 		true

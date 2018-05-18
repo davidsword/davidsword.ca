@@ -66,12 +66,16 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 
 	// FIRE LIGHTBOX ----------------------------------
 	if (jQuery('.grid.images')) {
-		const gallery = jQuery('.grid.images a[data-lightbox]').featherlightGallery({
-	        previousIcon: '&#9664;',
-	        nextIcon: '&#9654;',
-	        galleryFadeIn: 300,
-	        galleryFadeOut: 300
-	    });
+		//const gallery = jQuery('.grid.images a[data-lightbox]')
+		// make a lightbox gallery for each group/gallery
+		jQuery('.grid.images').each(function(){
+			jQuery(this).find('a[data-lightbox]').featherlightGallery({
+		        previousIcon: '&#9664;',
+		        nextIcon: '&#9654;',
+		        galleryFadeIn: 300,
+		        galleryFadeOut: 300
+		    });
+		})
     }
 
 });

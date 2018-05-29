@@ -23,7 +23,7 @@ include('inc/ds-helpers.php');
 /* ----------------------------------------------------------------------------------------------------- */
 
 $swrdbs = [
-	'theme_varient' => '2.0.7',
+	'theme_varient' => '2.0.8',
 	'dev' => false, //WP_DEBUG affect entire networks, this restricts to just theme
 	'dev_user_id' => 1,
 	'hero_title' => true,

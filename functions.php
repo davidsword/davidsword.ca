@@ -23,7 +23,7 @@ include('inc/ds-helpers.php');
 /* ----------------------------------------------------------------------------------------------------- */
 
 $swrdbs = [
-	'theme_varient' => '2.0.6',
+	'theme_varient' => '2.0.8',
 	'dev' => false,
 	'dev_user_id' => 1,
 	'hero_title' => true,
@@ -70,6 +70,9 @@ add_image_size('slideshow',$swrdbs['hero_w'],$swrdbs['hero_h'],true);
 
 
 add_action( 'after_setup_theme', function () {
+	// gutenberg
+	add_theme_support( 'wp-block-styles' );
+
 	add_theme_support( 'post-thumbnails' , ['post' , 'page'] );
 	add_theme_support( 'html5', ['comment-list','comment-form','search-form','gallery','caption'] );
 	add_theme_support( 'align-wide' );

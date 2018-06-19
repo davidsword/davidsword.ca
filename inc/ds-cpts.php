@@ -82,8 +82,8 @@ add_action( 'init', function () {
     $cptSlug = 'images';
     $args = [
         'labels' => ds_make_labels($cptName),
-        'public' => true,
-        'publicly_queryable' => true,
+        'public' => false,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'query_var' => true,
@@ -131,7 +131,7 @@ add_action( 'init', function () {
 
 
 add_action( 'init', function () {
-    $cptName = 'Ramblings';
+    $cptName = 'Status';
     $cptSlug = 'ramblings';
     $args = [
         'labels' => ds_make_labels($cptName),

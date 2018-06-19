@@ -102,14 +102,14 @@ register_block_type( 'cgb/block-ds-cpts-gutenberg-art', [
 
 
 // Hook server side rendering into render callback
-register_block_type( 'cgb/block-ds-cpts-gutenberg-ramblings', [
+register_block_type( 'cgb/block-ds-cpts-gutenberg-status', [
 	'render_callback' => function () {
 		ob_start();
-		query_posts( ['post_type' => 'ramblings', 'posts_per_page' => 3] );
+		query_posts( ['post_type' => 'status', 'posts_per_page' => 3] );
 		?>
-		<div class='grid ramblings fromGutenberg'>
-			<h2 class='fromGutenberg--title'>Recent Ramblings</h2>
-			<?php get_template_part( 'partials/loop', 'ramblings' ); ?>
+		<div class='grid status fromGutenberg'>
+			<h2 class='fromGutenberg--title'>Recent status</h2>
+			<?php get_template_part( 'partials/loop', 'status' ); ?>
 		</div><!-- /fromGutenberg -->
 		<?php
 		wp_reset_query();

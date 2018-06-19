@@ -1,7 +1,7 @@
 <?php
 
 add_action( 'after_setup_theme', function () {
-	add_theme_support( 'post-thumbnails' , ['images' , 'projects', 'ramblings'] );
+	add_theme_support( 'post-thumbnails' , ['images' , 'projects', 'status'] );
 });
 
 add_action('the_excerpt_rss',function($content){
@@ -249,9 +249,9 @@ add_filter( 'add_attachment', function ($attachment_id) {
 
 
 
-// RAMBLINGS - change title to excerpt of post_content
+// status - change title to excerpt of post_content
 add_action( 'save_post', function ( $post_id = '') {
-	if (get_post_type($post_id) == 'ramblings') {
+	if (get_post_type($post_id) == 'status') {
     	$ramble = get_post($post_id);
 		$newTitle = trim(substr(strip_tags(nl2br($ramble->post_content)),0,50));
 		if (strlen($ramble->post_content) > 50)
@@ -302,8 +302,8 @@ add_filter('pre_get_posts', function ($query) {
 });
 
 
-// prevent SINGLE for ramblings and images
+// prevent SINGLE for status and images
 add_action('wp',function(){
-	if (!is_admin() && is_singular( ['images','art'] )) //'ramblings',
+	if (!is_admin() && is_singular( ['images','art'] )) //'status',
 		wp_redirect( get_post_type_archive_link( get_post_type() ) );
 });

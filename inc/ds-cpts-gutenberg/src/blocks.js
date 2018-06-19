@@ -13,4 +13,4 @@ import './projects/projects.js';
 import './code/code.js';
 import './images/images.js';
 import './art/art.js';
-import './ramblings/ramblings.js';
+import './status/status.js';

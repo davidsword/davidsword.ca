@@ -25,16 +25,16 @@ const { withAPIData } = wp.components; // Import registerBlockType() from wp.blo
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-ds-cpts-gutenberg-ramblings', {
+registerBlockType( 'cgb/block-ds-cpts-gutenberg-status', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'RECENT Ramblings' ), // Block title.
+	title: __( 'RECENT status' ), // Block title.
 	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-	keywords: [ 'ramblings' ],
+	keywords: [ 'status' ],
 
 	edit: withAPIData( () => {
         return {
-            posts: '/wp/v2/ramblings?per_page=5&_embed'
+            posts: '/wp/v2/status?per_page=5&_embed'
         };
       } )( ( { posts, className } ) => {
           if ( ! posts.data ) {
@@ -63,7 +63,7 @@ registerBlockType( 'cgb/block-ds-cpts-gutenberg-ramblings', {
 
 			return (
 				<div className={ className }>
-					<h2>Recent Ramblings</h2>
+					<h2>Recent status</h2>
 					<div class='grid'>
 					{ posts.data.map( ( post, i ) =>
 						[

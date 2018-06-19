@@ -132,7 +132,7 @@ add_action( 'init', function () {
 
 add_action( 'init', function () {
     $cptName = 'Status';
-    $cptSlug = 'ramblings';
+    $cptSlug = 'status';
     $args = [
         'labels' => ds_make_labels($cptName),
         'public' => true,

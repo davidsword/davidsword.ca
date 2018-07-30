@@ -6,7 +6,10 @@
 	<section>
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
+			<?php
+			$isPostPaged = strstr($post->post_content, '<!--nextpage-->');
+			$paged = get_query_var( 'page', 1 );
+			?>
 			<article>
 				<h2>
 					<!--
@@ -14,7 +17,14 @@
 						<a href="<?= get_post_type_archive_link('post') ?>">Code</a> &raquo;
 					<?php endif ?>
 					-->
-					<span><?php the_title() ?></span>
+					<span><?php the_title();
+					if ($isPostPaged && $paged > 0) {
+						echo " (Page {$paged})";
+					}
+					?></span>
+					<?php
+
+					?>
 				</h2>
 
 				<?php if (is_singular( 'projects' )) : ?>
@@ -30,6 +40,11 @@
 						</div>
 						<div class='postMeta--tags'>
 							<?php
+							if ($isPostPaged) {
+								?>
+								<a href="<?php echo get_permalink(get_option('page_for_posts')) ?>">Blog</a> &raquo;
+								<?php
+							}
 							$terms = wp_get_post_terms( get_the_ID(), 'category' );
 							foreach ($terms as $term) {
 								$link = get_term_link($term->term_id,'category');
@@ -53,8 +68,13 @@
 
 			<div class='clear navigation'>
 				<?php
-				next_post_link('%link','&laquo; Prev');
-				previous_post_link('%link','Next &raquo;');
+				wp_link_pages(array(
+					'before' => '<p>' . __( 'Post Pages:', 'twentyfourteen' )." &nbsp; ",
+				));
+				if (!$isPostPaged) {
+					next_post_link('%link','&laquo; Prev Post');
+					previous_post_link('%link','Next Post &raquo;');
+				}
 				?>
 			</div><!--/navigation-->
 

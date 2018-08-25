@@ -1,3 +1,4 @@
+/* eslint-disable */
 jQuery(document).ready(function() { // executes when HTML-Document is loaded and DOM is ready
 
 	// remove "SHOW MORE" on small GISTS
@@ -73,5 +74,4 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 	        galleryFadeOut: 300
 	    });
     }
-
 });

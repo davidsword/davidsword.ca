@@ -24,7 +24,7 @@ include('inc/ds-helpers.php');
 
 $swrdbs = [
 	'theme_varient' => '2.0.9',
-	'dev' => false,
+	'dev' => true,
 	'dev_user_id' => 1,
 	'hero_title' => true,
 	'hero_w' => 1600,
@@ -198,6 +198,14 @@ add_action( 'wp_enqueue_scripts', function () {
 		'swrdbs_js',
 		get_template_directory_uri() . '/assests/js/'.$mainjs,
 		['jquery','ds_gist','lightbox'],
+		$ver,
+		true
+	);
+
+	wp_enqueue_script(
+		'darkmode',
+		get_template_directory_uri() . '/assests/js/darkmode.js',
+		[],
 		$ver,
 		true
 	);

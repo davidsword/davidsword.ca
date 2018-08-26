@@ -96,7 +96,7 @@ if ($swrdbs['dev']) {
 			<label for="hamburger" id="hamburger-icon"></label>
 			<ul><?php wp_nav_menu('container=&items_wrap=%3$s&title_li=&theme_location=main-nav'); ?> </ul>
 			<a href='https://github.com/davidsword' target='_Blank' class='icon icon_git'></a>
-			<a href='#' title="DARK MODE!" class='icon icon_darkmode'></a>
+			<a href='#' title="🌗😎🌗 DARK MODE!" class='icon icon_darkmode'></a>
 		</nav>
 	</header>
 	<?php

@@ -3,7 +3,7 @@
 /* =======================================================================================================================*/
 /* TABLE OF CONTENTS
 /* -----------------------------------------------------------------------------------------------------------------------*/
-/*    (1) SETUP
+/*    (1) SETUP 
 /*    (2) PRIMARY CLASSES AND ELEMENTS
 /*    (3) WORDPRESS THEME/CORE CLASSES
 /*    (4) HEADER
@@ -796,6 +796,7 @@ footer {
     }
 
     header#head nav#main {
+		a.icon_darkmode,
         a.icon_git,
         label#hamburger-icon {
             .icon;
@@ -866,6 +867,10 @@ footer {
         a.icon_git {
             right: 50px;
         }
+		.icon.icon_darkmode {
+			right: 85px;
+			background-size: 18px;
+		}
     }
 
     .post-type-archive-images main section .grid.images  > a[data-lightbox] {
@@ -1169,5 +1174,18 @@ body.darkmode {
 	.icon.icon_git {
 		opacity: 0.9;
 		filter: invert(100%);
+		background-color: transparent !important;
+	}
+
+	@media screen and (max-width: (@width+50)) {
+		header#head nav#main label#hamburger-icon {
+			background-color: transparent;
+			filter: invert(100%);
+		}
+		header#head nav#main ul,
+		header#head nav#main input#hamburger:checked ~ label#hamburger-icon {
+			filter: invert(0%);
+			background-color: #111;
+		}
 	}
 }

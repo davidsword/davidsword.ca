@@ -7,7 +7,7 @@
 
 			Proudly powered by
 			<a href='http://a.co/6rrglTj' target='_Blank'>coffee</a> &amp;
-			<a href='https://wordpress.org' target='_Blank'>Wordpress</a>
+			<a href='https://wordpress.org' target='_Blank'>WordPress</a>
 
 			&nbsp; | &nbsp;
 

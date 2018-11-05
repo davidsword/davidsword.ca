@@ -3,7 +3,7 @@
 // add all post types to main RSS feed.
 add_filter('request', function ( $qv ) {
     if ( isset( $qv['feed'] ) ) {
-        $qv['post_type'] = get_post_types();
+        $qv['post_type'] = [ 'post', 'images', 'projects', 'status' ];
     }
     return $qv;
 } );

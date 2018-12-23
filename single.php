@@ -63,6 +63,10 @@
 					<?php the_content() ?>
 				</div>
 
+				<div class='comments'>
+					<?php comment_form(); ?>
+				</div>
+
 			</article>
 
 

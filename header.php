@@ -1,8 +1,16 @@
-<?php defined('ABSPATH') || exit; global $swrdbs; ?><!DOCTYPE html>
+<?php
+
+defined('ABSPATH') || exit;
+global $swrdbs;
+$theme = wp_get_theme();
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 
 <!--
+
+v<?php echo $theme->get( 'Version' ); ?>
 
 👋🏻 Why hello there!
 

@@ -2,7 +2,7 @@
 Contributors: davidsword
 Requires at least: 4.9.6
 Tested up to: 4.9.6
-Version: 2.0.13
+Version: 2.0.14
 License: 	  MIT
 License URI:  https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE
 Tags: clean, minimal, custom

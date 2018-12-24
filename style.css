@@ -4,10 +4,10 @@ Theme URI:    https://davidsword.ca/
 Description:  David Sword's site for 2018
 Author: 	  David Sword
 Author URI:   davidsword.ca
-Version:  	  2.0.13
+Version:  	  2.0.15
 License: 	  MIT
 License URI:  https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE
 */
 
-@import 'assests/css/main.css?20180826';
+@import 'assests/css/main.css';
 @import 'assests/css/comments.css';

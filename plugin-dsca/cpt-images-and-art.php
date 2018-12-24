@@ -1,13 +1,20 @@
 <?php
 /**
-
+ * For IMAGEs and ART custom post types
+ *
+ * @package dsca
  */
 
-add_action('init', function () {
-	$cptName = 'Images';
-	$cptSlug = 'images';
+/**
+ * Register IMAGES
+ *
+ * This is for sort the "instagram" like posts.
+ */
+add_action( 'init', function () {
+	$cpt_name = 'Images';
+	$cpt_slug = 'images';
 	$args = [
-		'labels' => dsca_make_labels($cptName),
+		'labels' => dsca_make_labels( $cpt_name ),
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true,
@@ -19,20 +26,25 @@ add_action('init', function () {
 		'hierarchical' => false,
 		'menu_position' => 5,
 		'menu_icon' => 'dashicons-format-gallery',
-		'supports' => ['title', 'editor', 'thumbnail'],
+		'supports' => [ 'title', 'editor', 'thumbnail' ],
 		'show_in_rest' => true,
-		'rest_base' => $cptSlug,
+		'rest_base' => $cpt_slug,
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'exclude_from_search' => true
 	];
-	register_post_type($cptSlug, $args);
+	register_post_type( $cpt_slug, $args );
 });
 
-add_action('init', function () {
-	$cptName = 'art';
-	$cptSlug = 'art';
+/**
+ * Register ART
+ *
+ * This is just a copy of IMAGE but for somthing else.
+ */
+add_action( 'init', function () {
+	$cpt_name = 'art';
+	$cpt_slug = 'art';
 	$args = [
-		'labels' => dsca_make_labels($cptName),
+		'labels' => dsca_make_labels( $cpt_name ),
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true,
@@ -44,72 +56,84 @@ add_action('init', function () {
 		'hierarchical' => false,
 		'menu_position' => 5,
 		'menu_icon' => 'dashicons-format-gallery',
-		'supports' => ['title', 'editor', 'thumbnail'],
+		'supports' => [ 'title', 'editor', 'thumbnail' ],
 		'show_in_rest' => true,
-		'rest_base' => $cptSlug,
+		'rest_base' => $cpt_slug,
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'exclude_from_search' => true
 	];
-	register_post_type($cptSlug, $args);
+	register_post_type( $cpt_slug, $args );
 });
 
+/**
+ * Automatically Create post when uploading IMAGE post
+ *
+ * All files are named YYYYMMDD{-##}.jpg, so "listen" for files like that
+ * being uploaded to Media Library. When one is seen create post and assign category
+ * and date from file name.
+ */
+add_filter( 'add_attachment', function ( $attachment_id ) {
 
-
-
-// if it's an image for the image section,
-// create post and assign category and date from file name
-// when we upload a media item
-add_filter( 'add_attachment', function ($attachment_id) {
-	$attachment = get_post($attachment_id);
+	// get the current image uploaded.
+	$attachment = get_post( $attachment_id );
 	$att_title = $attachment->post_title;
-	if( !preg_match("/^([0-9-]{8}|[0-9-]{10,11})$/i", $att_title) ) return;
-	// get the attachments filename, build date
-	$post_date = date('Y-m-d H:i:s',strtotime($att_title." 00:00:01"));
-	$gmt_offset = get_option( 'gmt_offset' ) * 3600;
-	$post_date_gmt = date('Y-m-d H:i:s',(strtotime($att_title." 00:00:01") + $gmt_offset ));
-	// create our new post
-	$myp = array();
-	$myp['post_type']  = 'images';
-	$myp['post_title'] 		= $att_title;
-	$myp['post_date'] 		= $post_date;
-	$myp['post_date_gmt'] 	= $post_date_gmt;
-	$myp['post_status']     = 'publish';
-	$myp['comment_status']  = 'closed';
-	$newid = wp_insert_post($myp);
-	// set upload media as thumbnail to new post
-	if ($newid)
+
+	// winner winner chicken dinner?
+	if ( ! preg_match( '/^([0-9-]{8}|[0-9-]{10,11})$/i', $att_title ) ) {
+		return;
+	}
+	// get the attachments filename, build date.
+	$post_date     = date( 'Y-m-d H:i:s', strtotime( $att_title . " 00:00:01" ) );
+	$gmt_offset    = get_option( 'gmt_offset' ) * 3600;
+	$post_date_gmt = date( 'Y-m-d H:i:s', ( strtotime( $att_title . " 00:00:01" ) + $gmt_offset ) );
+
+	// create our new post.
+	$myp                   = [];
+	$myp['post_type']      = 'images';
+	$myp['post_title']     = $att_title;
+	$myp['post_date']      = $post_date;
+	$myp['post_date_gmt']  = $post_date_gmt;
+	$myp['post_status']    = 'publish';
+	$myp['comment_status'] = 'closed';
+	$newid                 = wp_insert_post( $myp );
+
+	// set upload media as thumbnail to new post.
+	if ( $newid ) {
 		set_post_thumbnail( $newid, $attachment->ID );
+	}
 }, 10, 2 );
 
 
-
-add_action('the_excerpt_rss', function ($content) {
-	if (isset($_GET['post_type']) && $_GET['post_type'] == 'images') {
-		$img = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), "large");
-		$content .= "<img src='{$img[0]}' />";
+/**
+ * if IMAGE and is rss feed: include Featured Image
+ */
+add_action('the_excerpt_rss', function ( $cnt ) {
+	if ( isset( $_GET['post_type'] ) && 'images' === $_GET['post_type'] ) {
+		$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+		$cnt .= "<img src='{$img[0]}' />";
 	}
 	// if (is_feed()) {
-	// 	$content .= "<br /><br /><a href='".get_permalink()."'>".get_permalink()."</a>";
+	// 	$cnt .= "<br /><br /><a href='".get_permalink()."'>".get_permalink()."</a>";
 	// }
-	return $content;
+	return $cnt;
 });
 
 
-// set limit on front end main archive page
-add_filter('pre_get_posts', function ($query) {
-	// ONLY ON FRONT END ARCHIVES PAGE
-	if (!is_admin() &&
-		isset($query->query['post_type']) && ($query->query['post_type'] == 'images' || $query->query['post_type'] == 'art') &&
-		$query->is_archive == 1 &&
-		!isset($query->query['posts_per_page']))
-		$query->set('posts_per_page', '24');
+/**
+ * Set limit on front end main archive page.
+ *
+ * We're tiling the images on output, 4 columns, so we need to set the
+ * per page to a multiple of that.
+ */
+add_filter('pre_get_posts', function ( $query ) {
 
-		// ONLY ON FRONT END ARCHIVES PAGE
-	if (!is_admin() &&
-		isset($query->query['post_type']) && ($query->query['post_type'] == 'projects') &&
-		$query->is_archive == 1 &&
-		!isset($query->query['posts_per_page']))
-		$query->set('posts_per_page', '6');
+	$is_img = ( isset( $query->query['post_type'] ) && in_array( $query->query['post_type'], [ 'images', 'art' ], true ) );
+	$is_archive = ( $query->is_archive == 1 );
+
+	// ONLY ON FRONT END ARCHIVES PAGE.
+	if ( ! is_admin() && $is_img && $is_archive && ! isset( $query->query['posts_per_page'] ) ) {
+		$query->set( 'posts_per_page', '24');
+	}
 
 	return $query;
 });
@@ -118,8 +142,8 @@ add_filter('pre_get_posts', function ($query) {
  * Prevent single pages for STATUS and IMAGE cpts
  */
 add_action('wp', function () {
-	if (!is_admin() && is_singular(['images', 'art'])) {
-		wp_safe_redirect(get_post_type_archive_link(get_post_type()));
+	if ( ! is_admin() && is_singular( [ 'images', 'art' ] ) ) {
+		wp_safe_redirect( get_post_type_archive_link( get_post_type() ) );
 		exit;
 	}
 });

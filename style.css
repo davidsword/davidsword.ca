@@ -1,7 +1,7 @@
 /*
 Theme Name:   davidsword-2018
 Theme URI:    https://davidsword.ca/
-Description:  David Sword's site for 2018
+Description:  David Sword's site for 2018 and beyond!
 Author: 	  David Sword
 Author URI:   davidsword.ca
 Version:  	  2.0.15
@@ -9,5 +9,11 @@ License: 	  MIT
 License URI:  https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE
 */
 
-@import 'assests/css/main.css';
-@import 'assests/css/comments.css';
+/**
+ * Compiled from LESSCSS via GruntJS.
+ *
+ * run `grunt watch` during dev
+ * run `grunt less`  for build
+ *
+ **/
+@import 'assests/css/style.css';

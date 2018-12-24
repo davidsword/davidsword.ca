@@ -1,22 +1,7 @@
 === David Sword 2018 ===
-Contributors: davidsword
+Contributors:      davidsword
 Requires at least: 5.0.0
-Tested up to: 5.0.2
-Version: 2.0.15
-License: 	  MIT
-License URI:  https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE
-Tags: clean, minimal, custom
-
-== Description ==
-
-David Sword's site for 2018. Its too custom and the abilities too narrow to release. But keeping open source incase anyone wants to fork it or see how I did something.
-
-== Installation ==
-
-1. Download and install WPPusher
-2. Setup `davidsword/davidsword.ca-2018` into WPPusher's theme
-3. Enable via Appearance > Themes
-
-== Changelog ==
-
-See github commits https://github.com/davidsword/davidsword.ca-2018/
+Tested up to:      5.0.2
+Version:           2.0.15
+License: 	       MIT
+License URI:       https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE

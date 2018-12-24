@@ -1,0 +1,195 @@
+.inbl 	    { display: inline-block; }
+.padd 	    { padding: @space }
+.over 	    { overflow: hidden }
+.marg 	    { margin: 0px auto }
+.zero 	    { padding: 0; margin: 0; }
+.full 	    { width: 100%; }
+.space 	    { height: @space; }
+.lhght 	    { line-height: 1em; }
+.none 	    { display: none; }
+.nofloat    { float: none; }
+.block 	    { display: block; }
+.cntr 	    { text-align: center; }
+.clear, .clearfix { clear:both; }
+small, .small 	{ font-size: 0.8em; .lhght; }
+.meta 		{ .small; color: @gray; }
+.tran 		{ transition: 0.6s all ease}
+.notran 	{ transition: 0s all ease !important}
+.container 	{ .clear; .marg; .over; max-width: @width; }
+.fluid 		{ .zero; width: 90%; padding: @space 5%; }
+
+/* Body ---------------------------------- */
+::selection {
+	background: fade(yellow,40%);
+}
+body {
+    background: @white;
+    font-family: @t1;
+    font-size: @fontsize;
+    color: @black;
+    line-height: @lheight;
+	min-height: 100%;
+    font-weight: 300;
+    word-break: break-word;
+}
+
+/* HEADINGS ---------------------------------- */
+h1,h2 {
+	.clear;
+	text-decoration: none;
+	line-height: 1.2em;
+    margin-bottom: @space;
+    padding-bottom: 0px;
+    font-weight: 300;
+}
+h1 {
+	&, a  {
+		font-size: 1.5rem;
+		font-weight: 300;
+		color: @black;
+	}
+    a:link, a:visited {
+        border: none;
+    }
+	border-bottom: 1px solid fade(@black, 10%);
+	margin-top: @space/2;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+h2 {
+    &,a {
+        font-size: @fontsize;
+        font-weight: 400;
+        border-bottom: 1px solid transparent;
+    }
+    a:hover, a:active {
+        color: @c1;
+        border-bottom: 1px solid @c1;
+    }
+	margin-bottom: @space/4;
+}
+
+h3, h4, h5, h6 { /* shouldnt use these */
+	font-size: 14px;
+    color: red;
+    text-transform: uppercase;
+}
+
+
+/* LINKS ---------------------------------- */
+a { .tran }
+a:link, a:visited {
+	color: @black;
+	text-decoration: none;
+}
+a:hover, a:active {
+
+}
+main { // content links
+    a:link, a:visited {
+        border-bottom: 1px solid fade(@c1,50%);
+    }
+    a:hover, a:active {
+    	color: @c1;
+    	border-bottom-color: @c1;
+    }
+}
+.underline {
+    border-bottom: 1px solid fade(@black,50%);
+}
+.gray {
+    color: @gray;
+}
+
+/* DOCUMENT ELEMENTS ---------------------------------- */
+p {
+	padding-bottom: @space;
+	line-height: @lheight;
+}
+hr, .line {
+	.clear;
+	background: fade(@black, 10%);
+	height:1px;
+	line-height:5px;
+	outline:none;
+	border:0;
+	margin: @space*2 0;
+}
+blockquote  {
+	padding: @space/2 0 @space/2 @space;
+	margin: 0 0 @space 0;
+	border-left: 2px solid fade(@black,30%);;
+	quotes: none;
+	p:last-child { padding-bottom: 0; }
+	&:before, &:after {
+		content: '';
+	}
+}
+ins { background: yellow; }
+address { padding: @space }
+strong { font-weight: 400; }
+del { color: red; }
+em, i { font-style: italic; }
+
+main {
+	ol, ul {
+		margin:@space/3 0 @space @space*2;
+	}
+	ol li {
+		list-style-type:decimal;
+		ol { margin-bottom: 5px;
+			li { list-style-type:lower-latin; }
+		}
+	}
+	ul li {
+		list-style-type: square;
+		ul { margin-left: @space; margin-bottom:@space/3 }
+	}
+}
+table {
+	.full;
+	margin-bottom:@space;
+	tbody tr:nth-child(odd) {
+		background: fade(@black, 5%);
+		text-align:left;
+	}
+	td, th {
+		padding:5px;
+	}
+	th {
+		font-weight: bold;
+		text-align: left;
+	}
+}
+.skilltags>span,
+pre, code {
+    padding: 2px 4px;
+    color: fade(@black, 90%);
+    background: fade(@black, 4%);
+    border: 1px solid fade(@black, 15%);
+    font-size: 14px;
+    font-family: @t2;
+}
+.skilltags>span,
+code {
+	margin-right: 5px;
+}
+pre {
+	display: block;
+    border: none;
+	padding: 15px;
+    background: @syntax-background-color;
+    line-height: 1.5em !important;
+    font-size: 14px;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-bottom: @space;
+	&, code {
+		color: @syntax-text-color;
+	}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

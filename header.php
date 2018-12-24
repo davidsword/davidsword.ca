@@ -82,11 +82,6 @@ endif;
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for Posts" href="<?php bloginfo('rss2_url'); ?>" />
 <?php /*<link rel="alternate" type="application/atom+xml" title="Atom 0.3 - <?php bloginfo('name'); ?> " href="<?php bloginfo('atom_url'); ?>" />*/ ?>
 
-<?php
-if ($swrdbs['dev']) {
-	swrdbs_less();
-} ?>
-
 </head>
 <body <?php body_class() ?>>
 
@@ -98,7 +93,7 @@ if ($swrdbs['dev']) {
 	//swrdbs_make_card()
 	?>
 	<header id='head'>
-		<h1><a style='background-image: url(<?php echo swrdbs_get_logo(); ?>)' href='<?php bloginfo('url') ?>'><?php echo bloginfo('name') ?></a></h1>
+		<h1><a href='<?php bloginfo('url') ?>'><?php echo bloginfo('name') ?></a></h1>
 		<nav id='main'>
 			<input id="hamburger" type="checkbox" />
 			<label for="hamburger" id="hamburger-icon"></label>
@@ -107,13 +102,3 @@ if ($swrdbs['dev']) {
 			<a href='#' title="🌗😎🌗 DARK MODE!" class='icon icon_darkmode'></a>
 		</nav>
 	</header>
-	<?php
-	if ( function_exists('yoast_breadcrumb') ) {
-		//if (is_single() || wp_get_post_parent_id(get_the_ID()))
-
-		//if (is_post_type_archive('images'))
-			//yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-	}
-	?>
-
-	<?php echo swrdbs_make_hero() ?>

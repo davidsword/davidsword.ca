@@ -1,20 +1,23 @@
 <?php
-defined('ABSPATH') || exit;
+/**
+ * Functions for this theme.
+ *
+ * See README.TXT for theme doc.
+ *
+ * @package davidsword-2018
+ */
 
-// see README.MD for starter theme docs
-// see README.TXT for theme doc
+defined( 'ABSPATH' ) || exit;
 
 global $wp_customize, $post, $swrdbs;
 
-// load required for theme
-require('inc/helpers.php');
-require('inc/customizer.php');
-
-// things needed for davidsword.ca, these things will be carried over through every theme
-// regardless of theme (..concider it a lazy plugin as it's purely functional, but strictly ds.ca)
-include('inc/ds-cpts.php');
-include('inc/ds-cpts-gutenberg/plugin.php'); // the "plugin" :joy:
-include('inc/ds-helpers.php');
+/**
+ * The davidsword.ca plugin.
+ *
+ * Regardless of theme, this functionality is carried over.
+ * Storing in theme since all my themes will be custom and centeralized codebase is eaiser.
+ */
+require 'plugin-dsca/index.php';
 
 
 
@@ -23,33 +26,12 @@ include('inc/ds-helpers.php');
 /* ----------------------------------------------------------------------------------------------------- */
 
 $swrdbs = [
-	'theme_varient' => '2.0.13',
+	'theme_varient' => '2.0.14',
 	'dev' => false,
 	'dev_user_id' => 1,
 	'hero_title' => true,
 	'hero_w' => 1600,
 	'hero_h' => 900,
-	'js_plugins' => [
-		'lightbox',
-		'youtubebackground',
-		'waypoints',
-		'aos'
-	],
-	'plugins_required' => [ // "required", well, heavily suggested
-		'sword-toolkit/sword-toolkit.php',
-		'wordpress-seo/wp-seo.php', // Yoast SEO
-		'login-lockdown/loginlockdown.php',
-		'login-logo/login-logo.php',
-		'broken-link-checker/broken-link-checker.php',
-		'gravityforms/gravityforms.php',
-		'divi-builder/divi-builder.php'
-	],
-	'plugins_blacklist' => [
-		'google-analyticator/google-analyticator.php',
-		'google-sitemap-generator/sitemap.php',
-		'attachments/index.php',
-		'all-in-one-event-calendar/all-in-one-event-calendar.php'
-	],
 ];
 
 // turn on errors ASAP, uses $swrdbs['dev'] boolean
@@ -65,9 +47,6 @@ add_theme_support( 'custom-logo', [
 ]);
 
 add_post_type_support( 'page', 'excerpt' );
-add_image_size('slideshow',$swrdbs['hero_w'],$swrdbs['hero_h'],true);
-//add_theme_support( 'post-formats', ['gallery'] );
-
 
 add_action( 'after_setup_theme', function () {
 	// gutenberg
@@ -83,7 +62,7 @@ add_action( 'after_setup_theme', function () {
         '#444'
     );
 
-	remove_theme_support( 'post-formats' );
+	// remove_theme_support( 'post-formats' );
 });
 
 // wordpress overwrite width default settings
@@ -273,7 +252,6 @@ add_action('body_class', function ($classes) {
 		$classes[] = 'inner_page';
 	if ($swrdbs['dev'])
 		$classes[] = 'swrdbsdev';
-	$classes[] = (swrdbs_has_hero()) ? 'hero_yes' : 'hero_no';
 	return $classes;
 });
 
@@ -312,7 +290,6 @@ add_filter('the_content',function ($the_content) {
 /* =====================================================================================================
    MAIN CONTENT FUNCTIONS main functions of the theme
    - swrdbs_make_card (business schema card)
-   - swrdbs_make_hero (banner)
 /* ----------------------------------------------------------------------------------------------------- */
 
 /**
@@ -384,80 +361,3 @@ function swrdbs_make_card() {
 
 	return $return;
 }
-
-
-/**
- * Make Slideshow OR 'Featured Image' banner image(s)
- *
- * @since 1.0.0
- *
- * @see `swrdbs_make_scripts`
- * @return string HTML of banner or not
- */
-function swrdbs_make_hero() {
-    global $swrdbs, $wpdb;
-
-	return;
-
-    $nobanner = "<div id='nobanner'><!-- --></div>";
-
-    // these special pages dont get anything
-    if (is_archive() || is_search() || is_404()) {
-    	echo $nobanner;
-    	return;
-    }
-
-	// but normal pages with a hero selected will
-    $pg 	= (is_home()) ? get_option('page_for_posts') : get_the_ID();
-    $thispg = get_post($pg);
-	$img 	= wp_get_attachment_image_src( get_post_thumbnail_id($thispg->ID), 'slideshow' );
-	$video  = swrdbs_has_hero_video($thispg->ID);
-	if ($video || (is_single() && isset($img[1])) || isset($img[1])) {
-
-        echo "
-        <div id='hero'>
-			<div class='panel parallax' style='background-image:url({$img[0]});'>
-	        <div class='panel_meta'>";
-	    if ($swrdbs['hero_title']) {
-	    	echo (!empty($thispg->post_title))   ? "<h1>{$thispg->post_title}</h1>" : '';
-	        echo (!empty($thispg->post_excerpt)) ? "<h2>{$thispg->post_excerpt}</h2>" : '';
-	    }
-	    echo "
-	        </div>
-	        <div class='downarrow'><span class='icon'></span></div>
-        </div>
-        </div>";
-	    if ($video) {
-			add_action('wp_footer',function(){
-				$video  = swrdbs_has_hero_video($thispg->ID);
-				?>
-				<script data-src='functions.php:swrdbs_make_hero()'>
-				jQuery(window).load(function() {
-					jQuery('#hero .panel').YTPlayer({
-					    videoId: '<?php echo $video ?>',
-					    width: jQuery(window).width(),
-					    ratio: 16 / 9,
-					    mute: true
-					});
-					jQuery( window ).resize(ytplayer_resize);
-					ytplayer_resize();
-					function ytplayer_resize() {
-						if (jQuery( window ).width() < 680) {
-							jQuery('.ytplayer-container').hide()
-						} else {
-							jQuery('.ytplayer-container').show()
-						}
-					}
-				});
-				</script>
-				<?php
-			});
-	    }
-    }
-	// unless no hero is selected for the page
-    else {
-        echo $nobanner;
-    }
-}
-
-/*fin*/

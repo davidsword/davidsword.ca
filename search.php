@@ -5,8 +5,8 @@
 	<main>
 		<section>
 
-			<form role="search" method="get" id="searchform" action="<?= home_url( '/' ); ?>">
-				<input type="text" name="s" id="s" <?= (is_search()) ? "value=\"".str_replace('"','',get_search_query())."\"" : ''; ?> placeholder='Search Site...' />
+			<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+				<input type="text" name="s" id="s" <?php echo (is_search()) ? "value=\"".str_replace('"','',get_search_query())."\"" : ''; ?> placeholder='Search Site...' />
 				<input type="submit" id="searchsubmit" value="Search" class='notext' />
 			</form>
 
@@ -20,9 +20,9 @@
 					$text = "";
 				?>
 				<div class='search_result'>
-					<a class='search_result_title' href='<?= the_permalink() ?>'><?php the_title() ?></a><br />
-					<a href='<?= the_permalink() ?>' class='search_result_link'><?= the_permalink() ?></a>
-					<p><?= swrdbs_return_chopstring($text,150)  ?></p>
+					<a class='search_result_title' href='<?php echo the_permalink() ?>'><?php the_title() ?></a><br />
+					<a href='<?php echo the_permalink() ?>' class='search_result_link'><?php echo the_permalink() ?></a>
+					<p><?php echo swrdbs_return_chopstring($text,150)  ?></p>
 				</div>
 
 			<?php endwhile; else : ?>

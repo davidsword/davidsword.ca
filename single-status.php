@@ -9,7 +9,7 @@
 
 			<article>
 				<h2>
-					<a href="<?= get_post_type_archive_link('status') ?>">status</a> &raquo; <span><?= get_the_date(); ?></span>
+					<a href="<?php echo get_post_type_archive_link('status') ?>">status</a> &raquo; <span><?php echo get_the_date(); ?></span>
 				</h2>
 
 				<?php get_template_part( 'partials/inline', 'ftrimg' ); ?>

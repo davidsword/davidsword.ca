@@ -98,8 +98,8 @@ function swrdbs_modify_admin_header(){
 	<script type='text/javascript'>
 		jQuery(document).ready(function() {
 			/* add home icon to PAGE list ---------------------------------- */
-			if (jQuery('tr#post-<?= get_option('page_on_front') ?>').length > 0) {
-				jQuery('tr#post-<?= get_option('page_on_front') ?> td.post-title strong').prepend('<div class="dashicons dashicons-admin-home" style="opacity:0.3;font-size:20px !important;margin-right:15px;"></div>')
+			if (jQuery('tr#post-<?php echo get_option('page_on_front') ?>').length > 0) {
+				jQuery('tr#post-<?php echo get_option('page_on_front') ?> td.post-title strong').prepend('<div class="dashicons dashicons-admin-home" style="opacity:0.3;font-size:20px !important;margin-right:15px;"></div>')
 			}
 
 			/* remove h and address from tinymce dropdown ---------------------------------- */
@@ -120,7 +120,7 @@ function swrdbs_modify_admin_header(){
 			}
 
 			if (jQuery('#postimagediv').length > 0) {
-				jQuery('#postimagediv h3').after('<p style="padding: 5px 10px 0 10px;" class="small description"><code><?= $swrdbs['hero_w'] ?> &times; <?= $swrdbs['hero_h']?></code>, if too big or small images will crop and scale automatically.</p>')
+				jQuery('#postimagediv h3').after('<p style="padding: 5px 10px 0 10px;" class="small description"><code><?php echo $swrdbs['hero_w'] ?> &times; <?php echo $swrdbs['hero_h']?></code>, if too big or small images will crop and scale automatically.</p>')
 			}
 
 			if (jQuery('#pageparentdiv').length > 0) {
@@ -692,7 +692,7 @@ function swrdbs_hero_video_add( $post ) {
 	$video = get_post_meta(get_the_ID(),'video',true);
 	?>
 	<label for='video'>Featured Youtube Video:</label>
-	<input type="text" class='code' id='video' name="video" value="<?= $video ?>"  /><br />
+	<input type="text" class='code' id='video' name="video" value="<?php echo $video ?>"  /><br />
 	<p class='description'>
 	  Enter the URL of a Youtube video video you wish to show as the background image on this page.
 	  The video code can be found in the URL of a youtube video <code>https://www.youtube.com/watch?v=<span style='background:yellow'>e9MMjppMkio</span>&ftr=true</code>
@@ -868,7 +868,7 @@ function swrdbs_errors() {
 function swrdbs_less() {
 	?>
 	<!-- #### LESSCSS #### -->
-	<link rel="stylesheet/less" type="text/css" href="<?= get_template_directory_uri() . '/assests/css/main.less?v='.time(); ?>" />
+	<link rel="stylesheet/less" type="text/css" href="<?php echo get_template_directory_uri() . '/assests/css/main.less?v='.time(); ?>" />
 	<script type="text/javascript">less = { env: 'development' };</script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
 	<?php

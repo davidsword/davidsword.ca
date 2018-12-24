@@ -14,7 +14,7 @@
 				<h2>
 					<!--
 					<?php if (is_singular( 'post' )) : ?>
-						<a href="<?= get_post_type_archive_link('post') ?>">Code</a> &raquo;
+						<a href="<?php echo get_post_type_archive_link('post') ?>">Code</a> &raquo;
 					<?php endif ?>
 					-->
 					<span><?php the_title();
@@ -36,7 +36,7 @@
 				<?php if (is_singular( 'post' )) : ?>
 					<div class='postMeta'>
 						<div class='postMeta--date postMeta--single-date'>
-							<?= get_the_date(); ?>
+							<?php echo get_the_date(); ?>
 						</div>
 						<div class='postMeta--tags'>
 							<?php
@@ -49,7 +49,7 @@
 							foreach ($terms as $term) {
 								$link = get_term_link($term->term_id,'category');
 								?>
-								<a href='<?= $link ?>'>#<?= $term->name ?></a>
+								<a href='<?php echo $link ?>'>#<?php echo $term->name ?></a>
 								<?php
 							}
 							?>

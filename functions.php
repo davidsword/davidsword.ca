@@ -434,7 +434,7 @@ function swrdbs_make_hero() {
 				<script data-src='functions.php:swrdbs_make_hero()'>
 				jQuery(window).load(function() {
 					jQuery('#hero .panel').YTPlayer({
-					    videoId: '<?= $video ?>',
+					    videoId: '<?php echo $video ?>',
 					    width: jQuery(window).width(),
 					    ratio: 16 / 9,
 					    mute: true

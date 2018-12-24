@@ -10,7 +10,7 @@
 			</div>
 
 			<div class='clear navigation'>
-				<?= paginate_links(); ?>
+				<?php echo paginate_links(); ?>
 			</div><!--/navigation-->
 
 		</section>

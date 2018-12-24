@@ -6,7 +6,7 @@
 		<section>
 
 			<?php if (is_archive() && is_category()) : ?>
-				<div class='termTitle gray'>#<?= single_cat_title('',false) ?></div>
+				<div class='termTitle gray'>#<?php echo single_cat_title('',false) ?></div>
 			<?php endif ?>
 
 			<div class='grid code'>
@@ -14,7 +14,7 @@
 			</div>
 
 			<div class='clear navigation'>
-				<?= paginate_links(); ?>
+				<?php echo paginate_links(); ?>
 			</div><!--/navigation-->
 
 		</section>

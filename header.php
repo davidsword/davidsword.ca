@@ -40,7 +40,7 @@ v<?php echo $theme->get( 'Version' ); ?>
 
 <!-- #### META #### -->
 <meta charset="utf-8">
-<meta name="author" content="<?= get_bloginfo('name') ?>" />
+<meta name="author" content="<?php echo get_bloginfo('name') ?>" />
 <meta name="robots" content="index, follow" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -55,8 +55,8 @@ v<?php echo $theme->get( 'Version' ); ?>
 $username = swrdbs_return_twitteruser_from_url();
 if (!empty($swrdbs['twitterurl']) && !empty($username)) :
 ?>
-<meta name="twitter:site" content="<?= $username[3] ?>">
-<meta name="twitter:creator" content="<?= $username[3] ?>">
+<meta name="twitter:site" content="<?php echo $username[3] ?>">
+<meta name="twitter:creator" content="<?php echo $username[3] ?>">
 <?php endif ?>
 
 <!-- #### ENABLE RESPONSIVE #### -->
@@ -98,7 +98,7 @@ if ($swrdbs['dev']) {
 	//swrdbs_make_card()
 	?>
 	<header id='head'>
-		<h1><a style='background-image: url(<?= swrdbs_get_logo(); ?>)' href='<?php bloginfo('url') ?>'><?= bloginfo('name') ?></a></h1>
+		<h1><a style='background-image: url(<?php echo swrdbs_get_logo(); ?>)' href='<?php bloginfo('url') ?>'><?php echo bloginfo('name') ?></a></h1>
 		<nav id='main'>
 			<input id="hamburger" type="checkbox" />
 			<label for="hamburger" id="hamburger-icon"></label>
@@ -116,4 +116,4 @@ if ($swrdbs['dev']) {
 	}
 	?>
 
-	<?= swrdbs_make_hero() ?>
+	<?php echo swrdbs_make_hero() ?>

@@ -2,10 +2,10 @@
 
 // add all post types to main RSS feed.
 add_filter('request', function ( $qv ) {
-    if ( isset( $qv['feed'] ) ) {
-        $qv['post_type'] = [ 'post', 'images', 'projects', 'status' ];
-    }
-    return $qv;
+	if ( isset( $qv['feed'] ) ) {
+		$qv['post_type'] = [ 'post', 'images', 'projects', 'status' ];
+	}
+	return $qv;
 } );
 
 add_action( 'after_setup_theme', function () {
@@ -21,6 +21,14 @@ add_action('the_excerpt_rss',function($content){
 		$content .= "<br /><br /><a href='".get_permalink()."'>".get_permalink()."</a>";
 	}
 	return $content;
+});
+
+add_action('the_title_rss', function ($title) {
+	if ( 'status' === get_post_type() && is_feed() ) {
+		$parts = explode( ' ', $title );
+		return $parts[0];
+	}
+	return $title;
 });
 
 // our migrator
@@ -59,11 +67,11 @@ add_action('admin_notices!',function(){
 			if (isset($img[1])) {
 				echo "{$apost->ID} <img src='{$img[0]}' width=40 height=40 /><hr />";
 				// create our new post
-			    $myp = array();
-			    $myp['post_type']  = 'art';
-			    $myp['post_title'] 		= $apost->post_name;
-			    //$myp['post_date'] 		= $post_date;
-			    //$myp['post_date_gmt'] 	= $post_date_gmt;
+				$myp = array();
+				$myp['post_type']  = 'art';
+				$myp['post_title'] 		= $apost->post_name;
+				//$myp['post_date'] 		= $post_date;
+				//$myp['post_date_gmt'] 	= $post_date_gmt;
 				$myp['post_status']     = 'publish';
 				$myp['comment_status']  = 'closed';
 				// $newid = wp_insert_post($myp);
@@ -75,10 +83,10 @@ add_action('admin_notices!',function(){
 
 
 		 //echo "<pre style=background:black;color:white> {$apost->ID}👋 ".print_r( htmlspecialchars($newcontent) ,true)."</pre>";
-        // wp_update_post( [
-             // 'ID' => $apost->ID,
-             // 'post_content' => $newcontent
-         // ] );
+		// wp_update_post( [
+			 // 'ID' => $apost->ID,
+			 // 'post_content' => $newcontent
+		 // ] );
 	}
 });
 
@@ -86,126 +94,126 @@ add_action('admin_notices!',function(){
 
 
 add_action( 'init', function () {
-    $cptName = 'Images';
-    $cptSlug = 'images';
-    $args = [
-        'labels' => ds_make_labels($cptName),
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'query_var' => true,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'has_archive' => true,
-        'hierarchical' => false,
-        'menu_position' => 5,
-        'menu_icon' => 'dashicons-format-gallery',
-        'supports' => [ 'title', 'editor', 'thumbnail' ],
+	$cptName = 'Images';
+	$cptSlug = 'images';
+	$args = [
+		'labels' => ds_make_labels($cptName),
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-format-gallery',
+		'supports' => [ 'title', 'editor', 'thumbnail' ],
 		'show_in_rest' => true,
 		'rest_base' => $cptSlug,
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'exclude_from_search' => true
-    ];
-    register_post_type($cptSlug,$args);
+	];
+	register_post_type($cptSlug,$args);
 });
 
 add_action( 'init', function () {
-    $cptName = 'art';
-    $cptSlug = 'art';
-    $args = [
-        'labels' => ds_make_labels($cptName),
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'query_var' => true,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'has_archive' => true,
-        'hierarchical' => false,
-        'menu_position' => 5,
-        'menu_icon' => 'dashicons-format-gallery',
-        'supports' => [ 'title', 'editor', 'thumbnail' ],
+	$cptName = 'art';
+	$cptSlug = 'art';
+	$args = [
+		'labels' => ds_make_labels($cptName),
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-format-gallery',
+		'supports' => [ 'title', 'editor', 'thumbnail' ],
 		'show_in_rest'       => true,
 		'rest_base' => $cptSlug,
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'exclude_from_search' => true
-    ];
-    register_post_type($cptSlug,$args);
+	];
+	register_post_type($cptSlug,$args);
 });
 
 
 
 
 add_action( 'init', function () {
-    $cptName = 'Status';
-    $cptSlug = 'status';
-    $args = [
-        'labels' => ds_make_labels($cptName),
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'query_var' => true,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'has_archive' => true,
-        'hierarchical' => false,
-        'menu_position' => 5,
-        'menu_icon' => 'dashicons-megaphone',
-        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+	$cptName = 'Status';
+	$cptSlug = 'status';
+	$args = [
+		'labels' => ds_make_labels($cptName),
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-megaphone',
+		'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
 		'show_in_rest'       => true,
 		'rest_base' => $cptSlug,
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'exclude_from_search' => true
-    ];
-    register_post_type($cptSlug,$args);
+	];
+	register_post_type($cptSlug,$args);
 });
 
 
 
 add_action( 'init', function () {
-    $cptName = 'Projects';
-    $cptSlug = 'projects';
-    $args = [
-        'labels' => ds_make_labels($cptName),
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'query_var' => true,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'has_archive' => true,
-        'hierarchical' => false,
-        'menu_position' => 5,
-        'menu_icon' => 'dashicons-book',
-        'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+	$cptName = 'Projects';
+	$cptSlug = 'projects';
+	$args = [
+		'labels' => ds_make_labels($cptName),
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-book',
+		'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
 		'show_in_rest'       => true,
   		'rest_base'          => 'projects',
   		'rest_controller_class' => 'WP_REST_Posts_Controller',
-    ];
-    register_post_type($cptSlug,$args);
+	];
+	register_post_type($cptSlug,$args);
 });
 
 
 function ds_make_labels($cptName) {
-    return [
-        'name' => _x($cptName, 'post type general name'),
-        'singular_name' => _x($cptName, 'post type singular name'),
-        'add_new' => _x('Add New', $cptName),
-        'add_new_item' => __('Add New '.$cptName),
-        'edit_item' => __('Edit '.$cptName),
-        'new_item' => __('New '.$cptName),
-        'all_items' => __('All '.$cptName),
-        'view_item' => __('View '.$cptName),
-        'search_items' => __('Search '.$cptName),
-        'not_found' =>  __('No '.$cptName.' found'),
-        'not_found_in_trash' => __('No '.$cptName.' found in Trash'),
-        'parent_item_colon' => '',
-        'menu_name' => $cptName
-    ];
+	return [
+		'name' => _x($cptName, 'post type general name'),
+		'singular_name' => _x($cptName, 'post type singular name'),
+		'add_new' => _x('Add New', $cptName),
+		'add_new_item' => __('Add New '.$cptName),
+		'edit_item' => __('Edit '.$cptName),
+		'new_item' => __('New '.$cptName),
+		'all_items' => __('All '.$cptName),
+		'view_item' => __('View '.$cptName),
+		'search_items' => __('Search '.$cptName),
+		'not_found' =>  __('No '.$cptName.' found'),
+		'not_found_in_trash' => __('No '.$cptName.' found in Trash'),
+		'parent_item_colon' => '',
+		'menu_name' => $cptName
+	];
 }
 
 
@@ -216,8 +224,8 @@ function ds_makethumbnailcol($columns){
 	unset($columns['date']);
 	unset($columns['comments']);
 	unset($columns['author']);
-    $columns['img_thumbnail'] = '';
-    return $columns;
+	$columns['img_thumbnail'] = '';
+	return $columns;
 }
 
 add_action('manage_posts_custom_column',function ($column_name,$id){
@@ -241,11 +249,11 @@ add_filter( 'add_attachment', function ($attachment_id) {
 	$gmt_offset = get_option( 'gmt_offset' ) * 3600;
 	$post_date_gmt = date('Y-m-d H:i:s',(strtotime($att_title." 00:00:01") + $gmt_offset ));
 	// create our new post
-    $myp = array();
-    $myp['post_type']  = 'images';
-    $myp['post_title'] 		= $att_title;
-    $myp['post_date'] 		= $post_date;
-    $myp['post_date_gmt'] 	= $post_date_gmt;
+	$myp = array();
+	$myp['post_type']  = 'images';
+	$myp['post_title'] 		= $att_title;
+	$myp['post_date'] 		= $post_date;
+	$myp['post_date_gmt'] 	= $post_date_gmt;
 	$myp['post_status']     = 'publish';
 	$myp['comment_status']  = 'closed';
 	$newid = wp_insert_post($myp);
@@ -260,20 +268,20 @@ add_filter( 'add_attachment', function ($attachment_id) {
 // status - change title to excerpt of post_content
 add_action( 'save_post', function ( $post_id = '') {
 	if (get_post_type($post_id) == 'status') {
-    	$ramble = get_post($post_id);
+		$ramble = get_post($post_id);
 		$newTitle = trim(substr(strip_tags(nl2br($ramble->post_content)),0,50));
 		if (strlen($ramble->post_content) > 50)
 			$newTitle .= "...";
 		if ($newTitle != $ramble->post_title) {
 			$newSlug = sanitize_title(substr(strip_tags($ramble->post_content),0,50));
-            $myp 				= array();
-            $myp['ID'] 			= $ramble->ID;
+			$myp 				= array();
+			$myp['ID'] 			= $ramble->ID;
 			$myp['post_title'] 	= $newTitle;
 			$myp['post_name'] 	= $newSlug;
 			$myp['guid'] 		= str_replace($ramble->name, $newSlug, $ramble->guid);
-            wp_update_post($myp);
-        }
-    }
+			wp_update_post($myp);
+		}
+	}
 });
 
 
@@ -282,7 +290,7 @@ add_action( 'save_post', function ( $post_id = '') {
 
 // set limit on front end main archive page
 add_filter('pre_get_posts', function ($query) {
-    global $mycats;
+	global $mycats;
 
 //	echo "<pre style=background:black;color:white>👋 ".print_r($query,true)."</pre>";
 

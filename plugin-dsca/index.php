@@ -8,8 +8,11 @@
  * @package plugin-dsca
  */
 
-require 'cpts-register.php';
+require 'cpt-images-and-art.php';
+require 'cpt-projects.php';
+require 'cpt-status.php';
 require 'cpts.php';
-require 'cpts-gutenberg/blocks.php';
+
+require 'blocks/blocks.php';
 require 'functions.php';
 require 'shortcodes.php';

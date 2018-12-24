@@ -1,4 +1,12 @@
-<?php defined('ABSPATH') || exit; global $swrdbs; ?>
+<?php
+/**
+ * Footer
+ *
+ * @package davidsword-2018
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
 	<footer>
 		<p>
 			<a href='mailto:david@davidsword.ca'>david@davidsword.ca</a>
@@ -17,7 +25,7 @@
 	</footer>
 
 
-	<?php wp_footer() ?>
+	<?php wp_footer(); ?>
 
 </body>
 </html>

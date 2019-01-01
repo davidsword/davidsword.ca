@@ -2,6 +2,6 @@
 Contributors:      davidsword
 Requires at least: 5.0.0
 Tested up to:      5.0.2
-Version:           2.0.15
-License: 	       MIT
-License URI:       https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE
+Version:           2.0.16
+License:           GPLv2 or later
+License URI:       http://www.gnu.org/licenses/gpl-2.0.html

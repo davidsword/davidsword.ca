@@ -1,48 +1,54 @@
 // @TODO this should be in `/plugin-dsca/` and use a compiler there.
 
-@syntax-text-color:       fade(@white,70%);
+@syntax-text-color: fade(@white, 70%);
 @syntax-background-color: @black;
-@syntax-bracket-matcher:  fade(@white,20%);
+@syntax-bracket-matcher: fade(@white, 20%);
 
-@syntax-constant:       #e279d0;
-@syntax-entity:         #6ba9df;
-@syntax-numeric:        #d27070;
-@syntax-property:       #6dbdac;
-@syntax-string:         #7b82bd;
-@syntax-support:        #B98EFF;
-                        //#8aa2ff
+@syntax-constant: #e279d0;
+@syntax-entity: #6ba9df;
+@syntax-numeric: #d27070;
+@syntax-property: #6dbdac;
+@syntax-string: #7b82bd;
+@syntax-support: #B98EFF;
+//#8aa2ff
 
-@syntax-keyword:          @syntax-constant;
+@syntax-keyword: @syntax-constant;
 @syntax-markup-attribute: @syntax-constant;
-@syntax-markup-tag:       @syntax-entity;
-@syntax-style-at-rule:    @syntax-entity;
-@syntax-style-class:      @syntax-entity;
-@syntax-style-id:         @syntax-constant;
-@syntax-variable:         @syntax-entity;
+@syntax-markup-tag: @syntax-entity;
+@syntax-style-at-rule: @syntax-entity;
+@syntax-style-class: @syntax-entity;
+@syntax-style-id: @syntax-constant;
+@syntax-variable: @syntax-entity;
 
 html body .oembed-gist {
-    margin-bottom: @space;
-    &,* {
-        border: none;
-    }
+	margin-bottom: @space;
+
+	&,
+	* {
+		border: none;
+	}
+
 	&.big-gist {
 		max-height: 300px;
 	}
+
 	overflow: hidden;
 	transition: 2s all ease;
 	position: relative;
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 	line-height: 0;
+
 	.gist-file {
 		border: none !important;
 		margin-bottom: 0 !important;
 	}
+
 	&:after {
 		transition: 0.5s all ease;
 		position: absolute;
-		bottom:0;
-		width:100%;
+		bottom: 0;
+		width: 100%;
 		padding: 5px 0;
 		background: black;
 		content: " Show More ";
@@ -61,93 +67,135 @@ html body .oembed-gist {
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
 	}
+
 	&:hover:after {
 		opacity: 1;
 	}
+
 	&.reveal {
 		max-height: 99999px;
 		overflow: auto;
+
 		&:after {
 			display: none;
 		}
 	}
+
 	.gist {
-        table tbody tr:nth-child(odd) {background: transparent; }
+		table tbody tr:nth-child(odd) {
+			background: transparent;
+		}
+
 		line-height: 1.5em !important;
-        border: 10px solid @syntax-background-color;
-        border-radius: 4px;
-        *,
-        .gist-file,
-        .blob-wrapper {
-            border-radius: 0px;
-        }
-        > * > * {
-            background: @syntax-background-color;
-        }
+		border: 10px solid @syntax-background-color;
+		border-radius: 4px;
+
+		*,
+		.gist-file,
+		.blob-wrapper {
+			border-radius: 0px;
+		}
+
+		>*>* {
+			background: @syntax-background-color;
+		}
 
 		.highlight {
-		    background: @syntax-background-color;
+			background: @syntax-background-color;
 		}
-		.blob-num { // line number
+
+		.blob-num {
+			// line number
 			color: @syntax-bracket-matcher;
 			line-height: 1.5em !important;
 		}
+
 		.blob-code {
 			line-height: 1.5em !important;
 			font-size: 14px;
 		}
-		.blob-code-inner { // add action, <?, get_file(), {, }, :, ;, (, ),
+
+		.blob-code-inner {
+			// add action, <?, get_file(), {, }, :, ;, (, ),
 			color: @syntax-entity;
 		}
-		.pl-smi { // $variables
+
+		.pl-smi {
+			// $variables
 			color: @syntax-text-color;
 		}
-		.pl-e { // #css, class=
+
+		.pl-e {
+			// #css, class=
 			color: @syntax-keyword;
 		}
-		.pl-en { // function names
+
+		.pl-en {
+			// function names
 			color: @syntax-entity; //blue
 		}
-		.pl-c1 { // width: height:, false, intgers
+
+		.pl-c1 {
+			// width: height:, false, intgers
 			color: @syntax-property;
 		}
-		.pl-v { // ---root-var
+
+		.pl-v {
+			// ---root-var
 			color: @syntax-numeric;
 		}
-		.pl-k { // >, function, " . "
+
+		.pl-k {
+			// >, function, " . "
 			color: @syntax-constant;
 		}
-		.pl-ent { //div, style
+
+		.pl-ent {
+			//div, style
 			color: @syntax-string;
 		}
-		.pl-s { // "strings"
+
+		.pl-s {
+			// "strings"
 			color: @syntax-string; //red
 		}
-		.pl-pds { // quotes, double quotes
+
+		.pl-pds {
+			// quotes, double quotes
 			color: @syntax-string;
 		}
+
 		.pl-c {
 			color: @syntax-bracket-matcher; // comments
 		}
+
 		.pl-sra,
-		.pl-sr { //regex escapes
+		.pl-sr {
+			//regex escapes
 			color: @syntax-property; //yellow
 		}
-		.pl-bu { //min-device-width
+
+		.pl-bu {
+			//min-device-width
 			color: @syntax-support;
 		}
-        .pl-pse { // <?php, ?>
-            color: @syntax-constant;
-        }
+
+		.pl-pse {
+			// <?php, ?>
+			color: @syntax-constant;
+		}
 	}
 }
+
 // for who knows fuck what reason, the text on iOS will shrink on gists with > x lines.
 // for fuck sake. to solve this, we'll just push the font size down on the bigger gists
 @media screen and (max-width: 500px) {
+
 	html body .oembed-gist.big-gist .gist .blob-num,
 	html body .oembed-gist.big-gist .gist .blob-code {
 		font-size: 8px;
 	}
+
 	html body .oembed-gist.small-gist .gist .blob-num,
 	html body .oembed-gist.small-gist .gist .blob-code {
 		font-size: 12px;

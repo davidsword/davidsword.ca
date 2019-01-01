@@ -16,7 +16,11 @@ get_header();
 		<section>
 
 			<div class='grid status'>
-				<?php get_template_part( 'partials/loop', 'status' ); ?>
+				<?php
+					get_template_part( 'partials/status', 'goodreads' );
+
+					get_template_part( 'partials/loop', 'status' );
+				?>
 			</div>
 
 			<div class='clear navigation'>

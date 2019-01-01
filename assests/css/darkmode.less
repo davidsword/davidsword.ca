@@ -1,0 +1,101 @@
+// DARK MODE!
+// Bunch of CSS overwrites.
+
+.icon.icon_darkmode {
+	background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMnB4IiBoZWlnaHQ9IjMycHgiPgo8Zz4KCTxwYXRoIGQ9Ik04LDN2MTBjMi43NjIsMCw1LTIuMjM4LDUtNVMxMC43NjIsMyw4LDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8cGF0aCBkPSJNOCwwQzMuNTgyLDAsMCwzLjU4MiwwLDhzMy41ODIsOCw4LDhzOC0zLjU4Miw4LThTMTIuNDE4LDAsOCwweiBNOCwxNGMtMy4zMTMsMC02LTIuNjg3LTYtNiAgIHMyLjY4Ny02LDYtNnM2LDIuNjg3LDYsNlMxMS4zMTMsMTQsOCwxNHoiIGZpbGw9IiMwMDAwMDAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K);
+}
+
+body.darkmode {
+	background: #222;
+
+	.pending-review-notice {
+		color: #222;
+	}
+
+	.grid.projects>a {
+		text-decoration: none !important;
+		border: none !important;
+	}
+
+	header#head nav#main>ul>li {
+
+		&.current-menu-item>a:link,
+		&.current_page_ancestor>a:link,
+		&.current_page_item>a:link,
+		&.current-menu-item>a:visited,
+		&.current_page_ancestor>a:visited,
+		&.current_page_item>a:visited {
+			color: #eee;
+			border-color: #eee;
+		}
+	}
+
+	.oembed-gist .gist .highlight,
+	code.oembed-gist,
+	.oembed-gist .gist,
+	.skilltags>span,
+	pre,
+	code {
+		color: #eee;
+		background: #111 !important;
+		border-color: #111 !important;
+	}
+
+	.page-numbers.current,
+	&,
+	header#head h1 a,
+	a:link,
+	a:visited {
+		color: #eee;
+	}
+
+	blockquote {
+		border-left: #666;
+	}
+
+	.wp-block-subhead,
+	.excerpt p {
+		color: #ddd;
+		opacity: 1;
+	}
+
+	main section .grid .fromGutenbergViewAll:hover,
+	main section .grid .fromGutenbergViewAll:active,
+	a:hover,
+	a:visited:hover,
+	a:active {
+		color: rgba(52, 104, 166, 1) !important;
+	}
+
+	main section .grid .fromGutenbergViewAll,
+	main a:link,
+	main a:visited {
+		border-bottom: 1px solid rgba(52, 104, 166, 1);
+	}
+
+	footer p,
+	footer p a:link,
+	footer p a:visited {
+		color: #666;
+	}
+
+	.icon.icon_darkmode,
+	.icon.icon_git {
+		opacity: 0.9;
+		filter: invert(100%);
+		background-color: transparent !important;
+	}
+
+	@media screen and (max-width: (@width+50)) {
+		header#head nav#main label#hamburger-icon {
+			background-color: transparent;
+			filter: invert(100%);
+		}
+
+		header#head nav#main ul,
+		header#head nav#main input#hamburger:checked~label#hamburger-icon {
+			filter: invert(0%);
+			background-color: #111;
+		}
+	}
+}

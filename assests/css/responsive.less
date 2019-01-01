@@ -1,0 +1,167 @@
+@media screen and (max-width: (@width+50)) {
+
+	header#head,
+	main,
+	footer {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+
+	header#head nav#main {
+
+		a.icon_darkmode,
+		a.icon_git,
+		label#hamburger-icon {
+			.icon;
+			width: 32px;
+			height: 32px;
+			background-size: 60%;
+			position: absolute;
+			top: -10px;
+			right: 5%;
+			transition: none;
+			margin: 0;
+			background-color: white;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+			opacity: 0.7;
+		}
+
+		label#hamburger-icon {
+			.icon_hamburger;
+			display: block;
+		}
+
+		ul {
+			display: none;
+			position: absolute;
+			top: 22px;
+			right: 5%;
+			padding: 10px 0;
+			background: @black;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			border-bottom-right-radius: 3px;
+
+			li {
+				display: block;
+
+				a {
+					display: block;
+					padding: 10px;
+					min-width: 105px;
+					border: none;
+					text-align: center;
+					font-size: 17px;
+					margin: 0;
+				}
+
+				&.hovering>a,
+				a:hover {
+					border-color: fade(@black, 30%);
+				}
+
+				/* CURRENT PAGE ---------------------------------- */
+				&.current-menu-item>a,
+				&.current_page_ancestor>a,
+				&.current_page_item>a {
+
+					&:link,
+					&:visited {
+						color: @white;
+					}
+				}
+
+			}
+		}
+
+		input#hamburger:checked~label#hamburger-icon {
+			background-color: @black;
+			.icon_hamburger_white;
+			opacity: 1;
+		}
+
+		input#hamburger:checked~ul {
+			display: block !important;
+		}
+
+		a.icon_git {
+			right: 50px;
+		}
+
+		.icon.icon_darkmode {
+			right: 85px;
+			background-size: 18px;
+		}
+	}
+
+	.post-type-archive-images main section .grid.images>a[data-lightbox] {
+		width: ~"calc(33.333% - 14px)";
+	}
+
+
+	main section .grid {
+		&.projects {
+
+			>a,
+			>article {
+				float: none;
+				display: block;
+				clear: both;
+				width: auto;
+				;
+			}
+
+			article {
+				max-width: 380px;
+				margin: 0 0 40px 0;
+				padding: 0 5%;
+			}
+		}
+
+		&.code {
+
+			>h2,
+			>.date {
+				float: none;
+				display: block;
+				clear: both;
+				width: auto;
+				;
+			}
+
+			.date.nomargin {
+				margin-top: @space;
+
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+
+	p.wp-block-subhead,
+	.excerpt p {
+		font-size: 26px;
+		line-height: 1.7em;
+	}
+
+	main section .grid {
+		&.projects {
+			article {
+				padding: 0;
+			}
+		}
+	}
+
+	main .navigation a.prev:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+}

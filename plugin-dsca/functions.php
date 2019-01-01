@@ -84,6 +84,14 @@ add_action( 'wp_enqueue_scripts', function () {
 		$ver,
 		true
 	);
+	add_action( 'wp_footer', function() use ( $ver ) {
+		wp_enqueue_style(
+			'featherlight',
+			get_template_directory_uri() . '/plugin-dsca/assets/featherlight.css',
+			[],
+			$ver
+		);
+	});
 
 	/* SWIPE ---------------------------------- */
 	wp_enqueue_script(

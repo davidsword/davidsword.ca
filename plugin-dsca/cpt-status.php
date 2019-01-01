@@ -67,13 +67,11 @@ add_action('save_post', function ( $post_id = '' ) {
 });
 
 /**
- * STATUS title change to just first word (emoji) when RSS feed.
+ * STATUS remove title from RSS feed.
  */
 add_action('the_title_rss', function ( $title ) {
 	if ( 'status' === get_post_type() && is_feed() ) {
-		// @TODO conditionalize date.
-		$parts = explode( ' ', $title );
-		return $parts[0];
+		return ''; //
 	}
 	return $title;
 });

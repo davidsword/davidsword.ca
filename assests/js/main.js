@@ -1,35 +1,40 @@
 /* eslint-disable */
-jQuery(document).ready(function() { // executes when HTML-Document is loaded and DOM is ready
+jQuery(document).ready(function () { // executes when HTML-Document is loaded and DOM is ready
 
 	// MOBILE NAV ----------------------------------
-	jQuery('#hamburger').on('click',function(){
+	jQuery('#hamburger').on('click', function () {
 		jQuery('#hamburger').toggleClass('open');
 	});
 
 	// HIGHLIGHT NAVIGATION ----------------------------------
-	if (jQuery('body').hasClass('single-projects')) {
-		jQuery('.menu-item-object-projects').addClass('current-menu-item'); // "PROJECTS"
-	}
-	if (jQuery('body').hasClass('post-type-archive-images') ||
-		jQuery('body').hasClass('post-type-archive-art') ) {
-		jQuery('.menu-item-4707').addClass('current-menu-item'); // "ABOUT"
+
+	// "PROJECTS".
+	if ( bhc('single-projects') ) {
+		jQuery('.menu-item-object-projects').addClass('current-menu-item');
 	}
 
-	if (
-		jQuery('body').hasClass('single-status') || jQuery('body').hasClass('post-type-archive-status')
-	) {
-			jQuery('.menu-item-object-status').addClass('current-menu-item'); // "status"
+	// "status".
+	if ( bhc('single-status') || bhc('post-type-archive-status') ) {
+		jQuery('.menu-item-object-status').addClass('current-menu-item');
 	}
 
-	if (jQuery('body').hasClass('single-post')) {
-			jQuery('.menu-item-4749').addClass('current-menu-item'); // "CODE"
+	// "CODE"
+	if ( bhc('single-post') ) {
+		jQuery('.menu-item-4749').addClass('current-menu-item'); // @TODO this should be dynamic.
+	}
+	if ( bhc('single-post') || ( bhc('archive') && bhc('category') ) ) {
+		jQuery('.current_page_parent').addClass('current-menu-item');
 	}
 
-	if (
-        jQuery('body').hasClass('single-post') ||
-	    (jQuery('body').hasClass('archive') && jQuery('body').hasClass('category'))
-    ) {
-		jQuery('.current_page_parent').addClass('current-menu-item'); // "CODE"
+	/**
+	 * Wrapper for Body Has Class check.
+	 *
+	 * Makes things eaiser to read.
+	 *
+	 * @param string the class
+	 */
+	function bhc(className) {
+		return jQuery('body').hasClass(className);
 	}
 
 });

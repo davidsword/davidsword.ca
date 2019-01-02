@@ -2,23 +2,11 @@
 
 Custom theme for https://davidsword.ca/
 
-Be mindful: there's two npm instances here!
 
+#### 🚀 GruntJS
 
-
-#### 🚀 /assests/css/style.css
-
-Is compiled from `/assests/css/*.less` via GruntJS.
+`/assests/css/style.css` is compiled from `/assests/css/*.less` via .
 
 > run `grunt watch` during dev
 >
 > run `grunt less`  for build
-
-
-#### 🚀 /plugin-dsca/blocks/
-
-Is Gutenberg blogs for the functionality. Built from https://github.com/ahmadawais/create-guten-block
-
-> run `npm start`     for dev
->
-> run `npm run build` for build

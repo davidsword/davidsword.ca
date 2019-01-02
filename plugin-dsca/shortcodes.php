@@ -46,3 +46,22 @@ add_shortcode('skilltags', function ( $args, $content ) {
 	}
 	return "<div class='skilltags'>" . $return . '</div>';
 });
+
+/**
+ * For the "Uses" or "About" page, list off all plugins used on site_admin_notice(  )
+ *
+ * Note that this includes inactive plugins, so keep the plugins tidy.
+ *
+ * @return string of html, list of plufins and links to their site.
+ */
+add_shortcode('list_plugins', function(){
+	$list_plugins = [];
+	$plugins = get_plugins();
+	foreach ( $plugins as $plugin ) {
+		if ( in_array( $plugin['Name'], [ 'Gutenberg', 'Classic Editor' ] ) ) {
+			continue;
+		}
+		$list_plugins[] = "<a href='{$plugin['PluginURI']}'>{$plugin['Name']}</a>";
+	}
+	return implode( ', ', $list_plugins );
+});

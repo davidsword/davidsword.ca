@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 	<footer>
 		<p>
-			<a href='mailto:david@davidsword.ca'>david@davidsword.ca</a>
+			<a href='mailto:<?php echo get_option('admin_email'); ?>'><?php echo get_option('admin_email'); ?></a>
 
 			&nbsp; | &nbsp;
 

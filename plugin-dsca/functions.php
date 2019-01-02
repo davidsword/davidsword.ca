@@ -106,21 +106,19 @@ add_action( 'wp_enqueue_scripts', function () {
 });
 
 /**
- * Sword Toolkit
+ * Redirect if Attachment
  *
- * Toggle off features of WordPress
- *
- * @see https://github.com/davidsword/sword-toolkit
+ * No page for files - we'll just redirect straight to media
  */
-add_filter('sword_toolkit', function() {
-	return [
-		'remove_menu_pages'      => [ 'widgets.php' ],
-		'remove_menu_sub_pages'  => [
-			'themes.php' => 'widgets.php',
-		],
-		'remove_jquery_migrate'  => true,
-		'redirect_if_attachment' => true,
-	];
+add_action( 'init' ,function () {
+	global $post;
+	if (isset($post) && is_object($post)) {
+		$media = wp_get_attachment_url( $post->ID);
+		if ( !is_admin() && is_attachment() ) {
+			header('Location: '.$media);
+			wp_die( 'No attachments page.' );
+		}
+	}
 });
 
 /**

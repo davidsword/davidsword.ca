@@ -119,10 +119,7 @@ add_filter('sword_toolkit', function() {
 			'themes.php' => 'widgets.php',
 		],
 		'remove_jquery_migrate'  => true,
-		'remove_wp_head_junk'    => true,
 		'redirect_if_attachment' => true,
-		'remove_post_tags'       => true,
-		'remove_emojis'          => false,
 	];
 });
 

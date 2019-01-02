@@ -13,6 +13,6 @@ require 'cpt-projects.php';
 require 'cpt-status.php';
 require 'cpts.php';
 
-require 'blocks/blocks.php';
+//require 'blocks/blocks.php';
 require 'functions.php';
 require 'shortcodes.php';

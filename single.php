@@ -52,11 +52,6 @@ get_header();
 						</div>
 						<div class='postMeta--tags'>
 							<?php
-							if ( $is_post_paged ) {
-								?>
-								<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">Blog</a> &raquo;
-								<?php
-							}
 							$terms = wp_get_post_terms( get_the_ID(), 'category' );
 							foreach ( $terms as $term ) {
 								$link = get_term_link( $term->term_id, 'category' );
@@ -82,10 +77,16 @@ get_header();
 
 			<div class='clear navigation'>
 				<?php
-				wp_link_pages(array(
-					'before' => '<p>Post Pages: &nbsp; ',
-				));
-				if ( ! $is_post_paged ) {
+				if ( $is_post_paged ) {
+					wp_link_pages(array(
+						'before' => '<p>Post Pages: &nbsp; ',
+					));
+					?>
+					<div>
+						<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">&laquo; Back to all posts</a>
+					</div>
+					<?php
+				} else {
 					next_post_link( '%link', '&laquo; Prev Post' );
 					previous_post_link( '%link', 'Next Post &raquo;' );
 				}

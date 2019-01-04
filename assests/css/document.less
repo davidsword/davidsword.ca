@@ -1,94 +1,8 @@
-.inbl {
-	display: inline-block;
-}
-
-.padd {
-	padding: @space
-}
-
-.over {
-	overflow: hidden
-}
-
-.marg {
-	margin: 0px auto
-}
-
-.zero {
-	padding: 0;
-	margin: 0;
-}
-
-.full {
-	width: 100%;
-}
-
-.space {
-	height: @space;
-}
-
-.lhght {
-	line-height: 1em;
-}
-
-.none {
-	display: none;
-}
-
-.nofloat {
-	float: none;
-}
-
-.block {
-	display: block;
-}
-
-.cntr {
-	text-align: center;
-}
-
-.clear,
-.clearfix {
-	clear: both;
-}
-
-small,
-.small {
-	font-size: 0.8em;
-	.lhght;
-}
-
-.meta {
-	.small;
-	color: @gray;
-}
-
-.tran {
-	transition: 0.6s all ease
-}
-
-.notran {
-	transition: 0s all ease !important
-}
-
-.container {
-	.clear;
-	.marg;
-	.over;
-	max-width: @width;
-}
-
-.fluid {
-	.zero;
-	width: 90%;
-	padding: @space 5%;
-}
-
-/* Body ---------------------------------- */
 ::selection {
 	background: fade(yellow, 40%);
 }
 
+/* Body ---------------------------------- */
 body {
 	background: @white;
 	font-family: @t1;
@@ -103,7 +17,7 @@ body {
 /* HEADINGS ---------------------------------- */
 h1,
 h2 {
-	.clear;
+	clear: both;
 	text-decoration: none;
 	line-height: 1.2em;
 	margin-bottom: @space;
@@ -112,26 +26,10 @@ h2 {
 }
 
 h1 {
-
-	&,
-	a {
-		font-size: 1.5rem;
-		font-weight: 300;
-		color: @black;
-	}
-
-	a:link,
-	a:visited {
-		border: none;
-	}
-
-	border-bottom: 1px solid fade(@black, 10%);
-	margin-top: @space/2;
-	margin-bottom: 15px;
-	padding-bottom: 10px;
+	// nothing should use <h1> except for the pages main header.
 }
 
-h2 {
+h2 { // Used for titles of posts.
 
 	&,
 	a {
@@ -149,7 +47,24 @@ h2 {
 	margin-bottom: @space/4;
 }
 
-h3,
+h3 { // Used for inline headings within a post.
+
+	&,
+	a {
+		font-size: @fontsize+0.2em; // yes, bigger than h2, these are in the content.
+		font-weight: 400;
+		border-bottom: 1px solid transparent;
+	}
+
+	a:hover,
+	a:active {
+		color: @c1;
+		border-bottom: 1px solid @c1;
+	}
+
+	margin-bottom: @space;
+
+}
 h4,
 h5,
 h6 {
@@ -162,7 +77,7 @@ h6 {
 
 /* LINKS ---------------------------------- */
 a {
-	.tran
+	transition: 0.6s all ease
 }
 
 a:link,
@@ -171,12 +86,8 @@ a:visited {
 	text-decoration: none;
 }
 
-a:hover,
-a:active {}
+main { // content links
 
-main {
-
-	// content links
 	a:link,
 	a:visited {
 		border-bottom: 1px solid fade(@c1, 50%);
@@ -189,14 +100,6 @@ main {
 	}
 }
 
-.underline {
-	border-bottom: 1px solid fade(@black, 50%);
-}
-
-.gray {
-	color: @gray;
-}
-
 /* DOCUMENT ELEMENTS ---------------------------------- */
 p {
 	padding-bottom: @space;
@@ -204,18 +107,18 @@ p {
 }
 
 hr,
-.line {
-	.clear;
-	background: fade(@black, 10%);
+HR.wp-block-separator { // via gutenberg.
+	clear: both;
+	background: fade(@black, 40%);
 	height: 1px;
 	line-height: 5px;
 	outline: none;
 	border: 0;
-	margin: @space*2 0;
+	margin: @space*2 AUTO @space*2+20px auto; // the "20px" is from the padding-bottom of <p>.
 }
 
 blockquote {
-	padding: @space/2 0 @space/2 @space;
+	padding: 0 0 0 @space;
 	margin: 0 0 @space 0;
 	border-left: 2px solid fade(@black, 30%);
 	;
@@ -229,6 +132,11 @@ blockquote {
 	&:after {
 		content: '';
 	}
+}
+
+small {
+	font-size: 0.8em;
+	line-height: 1em;
 }
 
 ins {
@@ -253,7 +161,7 @@ i {
 	font-style: italic;
 }
 
-main {
+main { // as to not use in header or footer.
 
 	ol,
 	ul {
@@ -283,7 +191,7 @@ main {
 }
 
 table {
-	.full;
+	width: 100%;;
 	margin-bottom: @space;
 
 	tbody tr:nth-child(odd) {
@@ -302,10 +210,7 @@ table {
 	}
 }
 
-.skilltags>span,
-// @TODO use <code> instead
-pre,
-code {
+pre, code {
 	padding: 2px 4px;
 	color: fade(@black, 90%);
 	background: fade(@black, 4%);
@@ -314,8 +219,6 @@ code {
 	font-family: @t2;
 }
 
-.skilltags>span,
-// @TODO use <code> instead
 code {
 	margin-right: 5px;
 }
@@ -346,4 +249,30 @@ figcaption {
 	line-height: 1em;
 	margin-top: 0;
 	margin-bottom: 2em;
+}
+
+/* CUSTOM CLASSES ---------------------------------- */
+
+.gray {
+	color: @gray;
+}
+
+#editor .big, // gutenberg.
+.big { // excerpts and sub headings.
+	&,
+	p {
+		font-size: 30px;
+		line-height: 1.85em;
+		font-style: normal;
+		color: @black;
+	}
+}
+
+#editor .notice, // gutenberg.
+.notice {
+	background-color:#ffe454;
+	font-size:17px;
+	text-align:center;
+	margin-bottom: 20px; // same as "padding" for <p> tags.
+	padding: 10px;
 }

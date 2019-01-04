@@ -28,32 +28,9 @@
 	}
 }
 
-p.wp-block-subhead,
-.excerpt {
-
-	&,
-	p {
-		font-size: 30px;
-		line-height: 1.85em;
-		font-style: normal;
-		color: black;
-	}
-}
-
-.pending-review-notice {
-	background-color:#ffe454;
-	font-size:17px;
-	text-align:center;
-	margin-bottom: 20px;
-}
-
-html body #goodrds { // GoodReads plugin.
-	padding-bottom: 35px;
-}
-
-// @TODO clean up this nesting.
+// @TODO reduce the nesting.
 main {
-	.marg;
+	margin: 0px auto;
 	max-width: @width;
 
 	section {
@@ -69,10 +46,6 @@ main {
 		.single-projects & {
 			h2 {
 				text-align: center;
-
-				span {
-					//.underline;
-				}
 			}
 
 			p.wp-block-subhead,
@@ -306,17 +279,17 @@ main {
 	}
 
 	.navigation {
-		.cntr;
-		.over;
-		.clear;
+		text-align: center;
+		overflow: hidden;
+		clear: both;
 		padding: 0 0 0 0;
 		margin-top: 30px;
 
 		a,
 		span.current,
 		span.dots {
-			.inbl;
-			.lhght;
+			display: inline-block;
+			line-height: 1em;
 			padding: 4px 0;
 			margin: 0 6px;
 			margin-right: 7px;

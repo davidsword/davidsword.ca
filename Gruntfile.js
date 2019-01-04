@@ -10,17 +10,18 @@ module.exports = function(grunt) {
 				options: {
 					compress: true
 				},
-			files: {
-				"./assests/css/style.css": "./assests/css/style.less"
+				files: {
+					"./assests/css/style.css": "./assests/css/style.less",
+					"./assests/css/style-editor.css": "./assests/css/style-editor.less"
+				}
 			}
+		},
+		// running `grunt watch` will watch for changes
+		watch: {
+			files: "./assests/css/*.less",
+			tasks: ["less"]
 		}
-	},
-	// running `grunt watch` will watch for changes
-	watch: {
-		files: "./assests/css/*.less",
-		tasks: ["less"]
-	}
-});
+	});
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 };

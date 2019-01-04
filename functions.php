@@ -34,7 +34,15 @@ add_action( 'after_setup_theme', function () {
 	// gutenberg.
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'wp-block-styles' );
-	add_theme_support( 'editor-color-palette', '#a156b4', '#d0a5db', '#eee', '#444' );
+
+	// Create colour palette for gutenberg.
+	$my_colours = [ '#333', '#fff', '#999', '#4d77e2', '#fc6f56', '#ffe454', '#e279d0', '#6ba9df', '#d27070', '#6dbdac', '#7b82bd', '#B98EFF', '#8aa2ff' ];
+	$palette    = [];
+	foreach ( $my_colours as $colour ) {
+		$palette[] = [ 'color' => $colour ];
+	}
+	add_theme_support( 'editor-color-palette', $palette );
+
 });
 
 // Navigation.
@@ -51,8 +59,8 @@ register_nav_menu( 'main-nav', 'Main Navigation' );
  */
 add_action( 'wp_enqueue_scripts', function () {
 
-	/* MAIN JS ---------------------------------- */
-	$ver = ( WP_DEBUG ) ? time() : wp_get_theme()->get( 'Version' );
+	$is_localhost = ( 'vvv.davidswor' === $_SERVER['HTTP_HOST'] );
+	$ver = ( WP_DEBUG || $is_localhost ) ? time() : wp_get_theme()->get( 'Version' );
 
 	wp_enqueue_script(
 		'swrdbs_js',
@@ -70,7 +78,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 
-	/* Main Style ---------------------------------- */
 	wp_enqueue_style(
 		'main',
 		get_template_directory_uri() . '/style.css',
@@ -78,6 +85,22 @@ add_action( 'wp_enqueue_scripts', function () {
 		$ver
 	);
 });
+
+/**
+ * Enquque Editor Script
+ *
+ * Just for gutenberg. Compiled with Grunt.
+ *
+ * @see assests/css/style-editor.less
+ */
+add_action( 'enqueue_block_editor_assets', function () {
+	wp_enqueue_style(
+		'dsca-editor-css',
+		get_template_directory_uri() . '/assests/css/style-editor.css',
+		[ 'wp-edit-blocks' ]
+	);
+}, 99 );
+
 
 /**
  * Chop the length of a string without breaking word.

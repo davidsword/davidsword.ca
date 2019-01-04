@@ -14,67 +14,6 @@ body {
 	word-break: break-word;
 }
 
-/* HEADINGS ---------------------------------- */
-h1,
-h2 {
-	clear: both;
-	text-decoration: none;
-	line-height: 1.2em;
-	margin-bottom: @space;
-	padding-bottom: 0px;
-	font-weight: 300;
-}
-
-h1 {
-	// nothing should use <h1> except for the pages main header.
-}
-
-h2 { // Used for titles of posts.
-
-	&,
-	a {
-		font-size: @fontsize;
-		font-weight: 400;
-		border-bottom: 1px solid transparent;
-	}
-
-	a:hover,
-	a:active {
-		color: @c1;
-		border-bottom: 1px solid @c1;
-	}
-
-	margin-bottom: @space/4;
-}
-
-h3 { // Used for inline headings within a post.
-
-	&,
-	a {
-		font-size: @fontsize+0.2em; // yes, bigger than h2, these are in the content.
-		font-weight: 400;
-		border-bottom: 1px solid transparent;
-	}
-
-	a:hover,
-	a:active {
-		color: @c1;
-		border-bottom: 1px solid @c1;
-	}
-
-	margin-bottom: @space;
-
-}
-h4,
-h5,
-h6 {
-	/* shouldnt use these */
-	font-size: 14px;
-	color: red;
-	text-transform: uppercase;
-}
-
-
 /* LINKS ---------------------------------- */
 a {
 	transition: 0.6s all ease
@@ -86,7 +25,8 @@ a:visited {
 	text-decoration: none;
 }
 
-main { // content links
+main {
+	// content links
 
 	a:link,
 	a:visited {
@@ -100,69 +40,9 @@ main { // content links
 	}
 }
 
-/* DOCUMENT ELEMENTS ---------------------------------- */
-p {
-	padding-bottom: @space;
-	line-height: @lheight;
-}
-
-hr,
-HR.wp-block-separator { // via gutenberg.
-	clear: both;
-	background: fade(@black, 40%);
-	height: 1px;
-	line-height: 5px;
-	outline: none;
-	border: 0;
-	max-width: 100px;
-	margin: @space*2 AUTO @space*2+20px auto; // the "20px" is from the padding-bottom of <p>.
-}
-
-blockquote {
-	padding: 0 0 0 @space;
-	margin: 0 0 @space 0;
-	border-left: 2px solid fade(@black, 30%);
-	;
-	quotes: none;
-
-	p:last-child {
-		padding-bottom: 0;
-	}
-
-	&:before,
-	&:after {
-		content: '';
-	}
-}
-
-small {
-	font-size: 0.8em;
-	line-height: 1em;
-}
-
-ins {
-	background: yellow;
-}
-
-address {
-	padding: @space
-}
-
-strong {
-	font-weight: 400;
-}
-
-del, strikethrough { // same in my books.
-	opacity: 50%;
-	text-decoration: line-through;
-}
-
-em,
-i {
-	font-style: italic;
-}
-
-main { // as to not use in header or footer.
+/* Lists ---------------------------------- */
+main {
+	// as to not use in header or footer.
 
 	ol,
 	ul {
@@ -189,91 +69,4 @@ main { // as to not use in header or footer.
 			margin-bottom: @space/3
 		}
 	}
-}
-
-table {
-	width: 100%;;
-	margin-bottom: @space;
-
-	tbody tr:nth-child(odd) {
-		background: fade(@black, 5%);
-		text-align: left;
-	}
-
-	td,
-	th {
-		padding: 5px;
-	}
-
-	th {
-		font-weight: bold;
-		text-align: left;
-	}
-}
-
-pre, code {
-	padding: 2px 4px;
-	color: fade(@black, 90%);
-	background: fade(@black, 4%);
-	border: 1px solid fade(@black, 15%);
-	font-size: 14px;
-	font-family: @t2;
-}
-
-code {
-	margin-right: 5px;
-}
-
-pre {
-	display: block;
-	border: none;
-	padding: 15px;
-	background: @black;
-	line-height: 1.5em !important;
-	font-size: 14px;
-	word-wrap: break-word;
-	word-break: break-all;
-	margin-bottom: @space;
-
-	&,
-	code {
-		color: fade(@white, 70%);
-	}
-}
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-figcaption {
-	line-height: 1em;
-	margin-top: 0;
-	margin-bottom: 2em;
-}
-
-/* CUSTOM CLASSES ---------------------------------- */
-
-.gray {
-	color: @gray;
-}
-
-#editor .big, // gutenberg.
-.big { // excerpts and sub headings.
-	&,
-	p {
-		font-size: 30px;
-		line-height: 1.85em;
-		font-style: normal;
-		color: @black;
-	}
-}
-
-.editor-writing-flow .notice, // gutenberg.
-.notice {
-	background-color:#ffe454;
-	font-size:17px;
-	text-align:center;
-	margin-bottom: 20px; // same as "padding" for <p> tags.
-	padding: 10px;
 }

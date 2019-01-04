@@ -1,10 +1,6 @@
 // DARK MODE!
 // Bunch of CSS overwrites.
 
-.icon.icon_darkmode {
-	background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMnB4IiBoZWlnaHQ9IjMycHgiPgo8Zz4KCTxwYXRoIGQ9Ik04LDN2MTBjMi43NjIsMCw1LTIuMjM4LDUtNVMxMC43NjIsMyw4LDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8cGF0aCBkPSJNOCwwQzMuNTgyLDAsMCwzLjU4MiwwLDhzMy41ODIsOCw4LDhzOC0zLjU4Miw4LThTMTIuNDE4LDAsOCwweiBNOCwxNGMtMy4zMTMsMC02LTIuNjg3LTYtNiAgIHMyLjY4Ny02LDYtNnM2LDIuNjg3LDYsNlMxMS4zMTMsMTQsOCwxNHoiIGZpbGw9IiMwMDAwMDAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K);
-}
-
 body.darkmode {
 	background: #222;
 
@@ -83,7 +79,12 @@ body.darkmode {
 		background-color: transparent !important;
 	}
 
-	@media screen and (max-width: (@width+50)) {
+}
+
+// Responsive ---
+
+@media screen and (max-width: @tablet) {
+	body.darkmode {
 		header#head nav#main label#hamburger-icon {
 			background-color: transparent;
 			filter: invert(100%);

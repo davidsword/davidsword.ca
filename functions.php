@@ -64,16 +64,8 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	wp_enqueue_script(
 		'swrdbs_js',
-		get_template_directory_uri() . '/assests/js/main.js',
+		get_template_directory_uri() . '/assests/js/index.js',
 		[ 'jquery' ],
-		$ver,
-		true
-	);
-
-	wp_enqueue_script(
-		'darkmode',
-		get_template_directory_uri() . '/assests/js/darkmode.js',
-		[],
 		$ver,
 		true
 	);

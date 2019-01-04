@@ -1,9 +1,11 @@
 /**
  * @see https://github.com/gruntjs/grunt-contrib-less
  * @see https://github.com/gruntjs/grunt-contrib-watch
+ * @see https://github.com/gruntjs/grunt-contrib-uglify
  */
 module.exports = function(grunt) {
 	grunt.initConfig({
+		// LESSCSS compiling.
 		// running `grunt less` will compile once
 		less: {
 			development: {
@@ -16,12 +18,30 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		// running `grunt watch` will watch for changes
+		// JAVASCRIPT minification.
+		// running `grunt uglify` will compile once.
+		uglify: {
+			my_target: {
+				files: {
+					'./assests/js/index.js': ['./assests/js/*.js', '!./assests/js/index.js']
+				}
+			}
+		},
+		// WATCH during dev.
+		// running `grunt watch` will watch for changes and run either.
 		watch: {
-			files: "./assests/css/*.less",
-			tasks: ["less"]
-		}
+			lesswatch: {
+				files: "./assests/css/*.less",
+				tasks: ["less"]
+			},
+			jswatch: {
+				files: "./assests/js/*.js",
+				tasks: ["uglify"]
+			}
+		},
+
 	});
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 };

@@ -116,8 +116,6 @@ header#head {
 			opacity: 0.6;
 			margin-left: 10px;
 
-			&.icon_git {}
-
 			&:hover {
 				opacity: 1;
 			}
@@ -125,4 +123,103 @@ header#head {
 	}
 }
 
-//header#head
+// Responsive ---
+
+@media screen and (max-width: @tablet) {
+	header#head {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+	header#head nav#main {
+
+		a.icon_darkmode,
+		a.icon_git,
+		label#hamburger-icon {
+			.icon;
+			width: 32px;
+			height: 32px;
+			background-size: 60%;
+			position: absolute;
+			top: -10px;
+			right: 5%;
+			transition: none;
+			margin: 0;
+			background-color: white;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+			opacity: 0.7;
+		}
+
+		label#hamburger-icon {
+			.icon_hamburger;
+			display: block;
+		}
+
+		ul {
+			display: none;
+			position: absolute;
+			top: 22px;
+			right: 5%;
+			padding: 10px 0;
+			background: @black;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			border-bottom-right-radius: 3px;
+
+			li {
+				display: block;
+
+				a {
+					display: block;
+					padding: 10px;
+					min-width: 105px;
+					border: none;
+					text-align: center;
+					font-size: 17px;
+					margin: 0;
+				}
+
+				&.hovering>a,
+				a:hover {
+					border-color: fade(@black, 30%);
+				}
+
+				/* CURRENT PAGE ---------------------------------- */
+				&.current-menu-item>a,
+				&.current_page_ancestor>a,
+				&.current_page_item>a {
+
+					&:link,
+					&:visited {
+						color: @white;
+					}
+				}
+
+			}
+		}
+
+		input#hamburger:checked~label#hamburger-icon {
+			background-color: @black;
+			.icon_hamburger_white;
+			opacity: 1;
+		}
+
+		input#hamburger:checked~ul {
+			display: block !important;
+		}
+
+		a.icon_git {
+			right: 50px;
+		}
+
+		.icon.icon_darkmode {
+			right: 85px;
+			background-size: 18px;
+		}
+	}
+
+}
+
+@media screen and (max-width: @phone) {
+
+}

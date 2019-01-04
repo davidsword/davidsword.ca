@@ -18,12 +18,7 @@ defined( 'ABSPATH' ) || exit;
 
 			&nbsp; | &nbsp;
 
-			Built in 🇨🇦 with
-			<a href='https://davidsword.ca/uses/'>all this stuff</a>
-
-			&nbsp; | &nbsp;
-
-			<a href='https://davidsword.ca/🍺/'>🍻</a>
+			Built in 🇨🇦 <a href='https://davidsword.ca/🍺/'>🍻</a>
 		</p>
 	</footer>
 

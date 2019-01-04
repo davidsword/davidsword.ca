@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"./assests/css/style.css": "./assests/css/style.less",
-					"./assests/css/style-editor.css": "./assests/css/style-editor.less"
+					"./assests/css/style-editor.css": "./assests/css/style-editor.less",
+					"./assests/css/style.css": "./assests/css/style.less"
 				}
 			}
 		},

@@ -22,7 +22,7 @@ get_header();
 
 				if ( ! empty( $post->post_excerpt ) ) :
 					?>
-					<div class='excerpt'>
+					<div class='big'>
 						<?php the_excerpt(); ?>
 					</div>
 					<?php

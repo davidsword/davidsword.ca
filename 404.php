@@ -18,7 +18,7 @@ get_header();
 			<h1 class='page_title heading_404'>ERROR 404</h1>
 
 			<div class='entry'>
-				<div id='excerpt'>
+				<div class='big'>
 					<p>Oh no! Sorry - page not found.</p>
 				</div>
 				<p>

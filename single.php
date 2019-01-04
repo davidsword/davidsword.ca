@@ -40,7 +40,7 @@ get_header();
 				</h2>
 
 				<?php if ( is_singular( 'projects' ) ) : ?>
-					<div class='excerpt'>
+					<div class='big'>
 						<?php echo the_excerpt(); ?>
 					</div>
 				<?php endif ?>

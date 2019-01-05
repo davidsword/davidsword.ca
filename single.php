@@ -46,11 +46,11 @@ get_header();
 				<?php endif ?>
 
 				<?php if ( is_singular( 'post' ) ) : ?>
-					<div class='postMeta'>
-						<div class='postMeta--date postMeta--single-date'>
+					<div class='post_meta'>
+						<div class='post_meta--date post_meta--single-date'>
 							<?php echo get_the_date(); ?>
 						</div>
-						<div class='postMeta--tags'>
+						<div class='post_meta--tags'>
 							<?php
 							$terms = wp_get_post_terms( get_the_ID(), 'category' );
 							foreach ( $terms as $term ) {

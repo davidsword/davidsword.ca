@@ -52,10 +52,18 @@ via https://github.com/davidsword/davidsword.ca-2018
 	<header id='head'>
 		<h1><a href='<?php bloginfo( 'url' ); ?>'><?php echo bloginfo( 'name' ); ?></a></h1>
 		<nav id='main'>
-			<input id="hamburger" type="checkbox" />
-			<label for="hamburger" id="hamburger-icon"></label>
-			<ul><?php wp_nav_menu( 'container=&items_wrap=%3$s&title_li=&theme_location=main-nav' ); ?> </ul>
 			<a href='https://github.com/davidsword' target='_Blank' class='icon icon_git'></a>
 			<a href='#' title="Dark Mode" class='icon icon_darkmode'></a>
+			<a href="#" class="icon icon_hamburger"></a>
+			<ul>
+				<?php
+				wp_nav_menu( [
+					'container'      => '',
+					'items_wrap'     => '%3$s',
+					'title_li'       => '',
+					'theme_location' => 'main-nav',
+				] );
+				?>
+			</ul>
 		</nav>
 	</header>

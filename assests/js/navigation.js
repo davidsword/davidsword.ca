@@ -1,24 +1,26 @@
 /* eslint-disable */
 jQuery(document).ready(function () { // executes when HTML-Document is loaded and DOM is ready
 
-	// MOBILE NAV ----------------------------------
-	jQuery('#hamburger').on('click', function () {
-		jQuery('#hamburger').toggleClass('open');
+	// NAV ----------------------------------
+	nav = jQuery('.icon_hamburger');
+	nav.on('click', function (e) {
+		e.preventDefault();
+		nav.toggleClass('icon_hamburger--white open');
+		jQuery('#main > ul').toggle();
+		return false;
 	});
 
-	// HIGHLIGHT NAVIGATION ----------------------------------
-
-	// "PROJECTS".
+	// "PROJECTS" highlighting.
 	if ( bhc('single-projects') ) {
 		jQuery('.menu-item-object-projects').addClass('current-menu-item');
 	}
 
-	// "status".
+	// "status" highlighting.
 	if ( bhc('single-status') || bhc('post-type-archive-status') ) {
 		jQuery('.menu-item-object-status').addClass('current-menu-item');
 	}
 
-	// "CODE"
+	// "CODE" highlighting.
 	if ( bhc('single-post') ) {
 		jQuery('.menu-item-4749').addClass('current-menu-item'); // @TODO this should be dynamic.
 	}

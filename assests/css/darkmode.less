@@ -13,16 +13,35 @@ body.darkmode {
 		border: none !important;
 	}
 
-	header#head nav#main>ul>li {
+	header#head nav#main {
+		.icon {
+			opacity: 0.9;
+			filter: invert(100%);
+			&.open { //hamburger.
+				filter: invert(0%);
+				opacity: 1;
+				background-color: #111;
+			}
+		}
+		ul {
+			background: #111;
 
-		&.current-menu-item>a:link,
-		&.current_page_ancestor>a:link,
-		&.current_page_item>a:link,
-		&.current-menu-item>a:visited,
-		&.current_page_ancestor>a:visited,
-		&.current_page_item>a:visited {
-			color: #eee;
-			border-color: #eee;
+			li {
+				&.current-menu-item>a:link,
+				&.current_page_ancestor>a:link,
+				&.current_page_item>a:link,
+				&.current-menu-item>a:visited,
+				&.current_page_ancestor>a:visited,
+				&.current_page_item>a:visited {
+					// color: #eee;
+					// border-color: #eee;
+				}
+				a:hover,
+				a:visited:hover {
+					text-decoration: none;
+					color: fade(@white, 70%);
+				}
+			}
 		}
 	}
 
@@ -72,28 +91,4 @@ body.darkmode {
 		color: #666;
 	}
 
-	.icon.icon_darkmode,
-	.icon.icon_git {
-		opacity: 0.9;
-		filter: invert(100%);
-		background-color: transparent !important;
-	}
-
-}
-
-// Responsive ---
-
-@media screen and (max-width: @tablet) {
-	body.darkmode {
-		header#head nav#main label#hamburger-icon {
-			background-color: transparent;
-			filter: invert(100%);
-		}
-
-		header#head nav#main ul,
-		header#head nav#main input#hamburger:checked~label#hamburger-icon {
-			filter: invert(0%);
-			background-color: #111;
-		}
-	}
 }

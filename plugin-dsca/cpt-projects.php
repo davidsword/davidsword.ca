@@ -45,7 +45,7 @@ add_filter('pre_get_posts', function ( $query ) {
 
 	// ONLY ON FRONT END ARCHIVES PAGE.
 	if ( ! is_admin() && $is_project && $is_archive && ! isset( $query->query['posts_per_page'] ) ) {
-			$query->set( 'posts_per_page', '6' );
+			$query->set( 'posts_per_page', '-1' );
 	}
 
 	return $query;

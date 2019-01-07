@@ -39,14 +39,9 @@ get_header();
 					</span>
 				</h2>
 
-				<?php if ( is_singular( 'projects' ) ) : ?>
-					<div class='big'>
-						<?php echo the_excerpt(); ?>
-					</div>
-				<?php endif ?>
-
 				<?php if ( is_singular( 'post' ) ) : ?>
 					<div class='post_meta'>
+						<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">Blog</a> &raquo;
 						<div class='post_meta--date post_meta--single-date'>
 							<?php echo get_the_date(); ?>
 						</div>
@@ -81,15 +76,9 @@ get_header();
 					wp_link_pages(array(
 						'before' => '<p>Post Pages: &nbsp; ',
 					));
-					?>
-					<div>
-						<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">&laquo; Back to all posts</a>
-					</div>
-					<?php
-				} else {
-					next_post_link( '%link', '&laquo; Prev Post' );
-					previous_post_link( '%link', 'Next Post &raquo;' );
 				}
+				next_post_link( '%link', '&laquo; Prev Post' );
+				previous_post_link( '%link', 'Next Post &raquo;' );
 				?>
 			</div><!--/navigation-->
 

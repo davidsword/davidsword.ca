@@ -89,7 +89,8 @@ add_action( 'enqueue_block_editor_assets', function () {
 	wp_enqueue_style(
 		'dsca-editor-css',
 		get_template_directory_uri() . '/assests/css/style-editor.css',
-		[ 'wp-edit-blocks' ]
+		[ 'wp-edit-blocks' ],
+		time()
 	);
 }, 99 );
 

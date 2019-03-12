@@ -8,9 +8,19 @@
 defined('ABSPATH') || die();
 
 /**
- * Add excerpts into PAGE post types.
+ * Adjust posts. Add formats and excerpts.
  */
-add_post_type_support( 'page', 'excerpt' );
+add_action( 'init', function() {
+	add_post_type_support( 'page', 'excerpt' );
+	/**
+	 * Status has no title, just a blurb.
+	 * Image is just an image, not title or blurb.
+	 *
+	 * These formats typically stay in their own categories, but this is more future-friendly
+	 * to specify how the post should look via a post_format instead of a category.
+	 */
+	add_theme_support( 'post-formats', array( 'status', 'image' ) );
+} );
 
 /**
  * Remove tags from POST post type.
@@ -20,6 +30,88 @@ add_post_type_support( 'page', 'excerpt' );
 add_action('init', function () {
 	unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 });
+
+/**
+ * Return all custom post types for this DSCA davidsword.ca plugin
+ *
+ * @return array of cpts
+ */
+function dsca_get_all_post_types() {
+	return [ 'post', 'projects' ]; //'images', , 'status' now post formsts
+}
+
+/**
+ * Add all post types to main RSS feed.
+ *
+ * @param $qv array
+ * @return array
+ */
+add_filter('request', function ( $qv ) {
+	if ( isset( $qv['feed'] ) ) {
+		$qv['post_type'] = dsca_get_all_post_types();
+	}
+	return $qv;
+} );
+
+/**
+ * Set IMAGES PROJECTS and STATUS to use post-thumbnails
+ */
+add_action( 'after_setup_theme', function () {
+	add_theme_support( 'post-thumbnails', dsca_get_all_post_types() );
+});
+
+/**
+ * Display the post thumbnail in the edit page table for eaiser management
+ *
+ * @param array $columns from wp api.
+ * @return array
+ */
+function ds_makethumbnailcol( $columns ) {
+	unset( $columns['date'] );
+	unset( $columns['comments'] );
+	unset( $columns['author'] );
+	$columns['img_thumbnail'] = '';
+	return $columns;
+}
+add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
+add_filter( 'manage_projects_posts_columns', 'ds_makethumbnailcol' );
+
+/**
+ * Display the post thumbnail in the edit page table for eaiser management
+ */
+add_action('manage_posts_custom_column', function ( $column_name, $id ) {
+	if ( 'img_thumbnail' === $column_name ) {
+		echo "<a href='" . get_edit_post_link() . "'>";
+		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
+		echo '</a>';
+	}
+}, 999, 2);
+
+/**
+ * Dynamically Generate Labels for cpts admin interface.
+ *
+ * I'm really not sure why core doesn't do this.
+ *
+ * @param string $cpt name of the CPT, singular.
+ * @return array of labels
+ */
+function dsca_make_labels( $cpt ) {
+	return [
+		'name'               => $cpt,
+		'singular_name'      => $cpt,
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New ' . $cpt,
+		'edit_item'          => 'Edit ' . $cpt,
+		'new_item'           => 'New ' . $cpt,
+		'all_items'          => 'All ' . $cpt,
+		'view_item'          => 'View ' . $cpt,
+		'search_items'       => 'Search ' . $cpt,
+		'not_found'          => 'No ' . $cpt . ' found',
+		'not_found_in_trash' => 'No ' . $cpt . ' found in Trash',
+		'parent_item_colon'  => '',
+		'menu_name'          => $cpt,
+	];
+}
 
 /**
  * Convert a GIST link the the_content into an embed for `assets/gist.js`
@@ -201,3 +293,13 @@ function dsca_bbq_badrequests() {
 		exit;
 	}
 }
+
+/**
+ * No PRIVATE posts on front end.
+ */
+add_filter('posts_where', function ($where) {
+    if( is_admin() ) return $where;
+
+    global $wpdb;
+    return " $where AND {$wpdb->posts}.post_status != 'private' ";
+});

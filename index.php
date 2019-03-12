@@ -22,8 +22,8 @@ get_header();
 				</div>
 			<?php endif ?>
 
-			<div class='grid code'>
-				<?php get_template_part( 'partials/loop', 'post' ); ?>
+			<div class='articles'>
+				<?php get_template_part( 'partials/loop', 'standard' ); ?>
 			</div>
 
 			<div class='clear navigation'>

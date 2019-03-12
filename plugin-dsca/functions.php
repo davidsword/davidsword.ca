@@ -8,9 +8,12 @@
 defined('ABSPATH') || die();
 
 /**
- * Add excerpts into PAGE post types.
+ * Adjust posts. Add formats and excerpts.
  */
-add_post_type_support( 'page', 'excerpt' );
+add_action( 'init', function() {
+	add_post_type_support( 'page', 'excerpt' );
+	add_theme_support( 'post-formats', array( 'link', 'status', 'image', 'quote', 'aside' ) );
+} );
 
 /**
  * Remove tags from POST post type.

@@ -8,11 +8,10 @@
  * @package plugin-dsca
  */
 
-require 'cpt-images-and-art.php';
+require 'post-format-image.php';
+require 'post-format-status.php';
 require 'cpt-projects.php';
-require 'cpt-status.php';
-require 'cpts.php';
 
-//require 'blocks/blocks.php';
 require 'functions.php';
+require 'template-functions.php';
 require 'shortcodes.php';

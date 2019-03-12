@@ -9,10 +9,6 @@ defined( 'ABSPATH' ) || exit;
 ?>
 	<footer>
 		<p>
-			<a href='mailto:<?php echo get_option('admin_email'); ?>'><?php echo get_option('admin_email'); ?></a>
-
-			&nbsp; | &nbsp;
-
 			Proudly powered by
 			<a href='https://wordpress.org' target='_Blank'>WordPress</a>
 

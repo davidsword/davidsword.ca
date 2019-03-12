@@ -38,159 +38,175 @@ main {
 			margin-bottom: @space;
 		}
 
-		.inlineFeaturedImage {
+		.ftr_img {
 			margin-bottom: @space;
 		}
 
-		// 🔥 SINGLE PROJECTS ----------------------------------
-		.single-projects & {
-			h2 {
-				text-align: center;
-			}
+		// ✅ DEFAULT -------------------------------------------
+		.articles {
 
-			p.big,
-			.big p {
-				text-align: center;
-			}
 		}
+		article {
+			//margin-bottom: @space*2;
+			//display: flex;
+		}
+		.list {
+			//margin: auto;
+		}
+		.list--left {
+			//width: 200px;
+		}
+		.list--right {
+		}
+
+		// 🔥 SINGLE PROJECTS ----------------------------------
+		// .single-projects & {
+		// 	h2 {
+		// 		text-align: center;
+		// 	}
+
+		// 	p.big,
+		// 	.big p {
+		// 		text-align: center;
+		// 	}
+		// }
 
 		// 🔥 SINGLE status ----------------------------------
-		.single-status & {
-			h2 {
-				margin-bottom: @space;
-			}
-		}
+		// .single-status & {
+		// 	h2 {
+		// 		margin-bottom: @space;
+		// 	}
+		// }
 
 		// 🔥 SINGLE CODE POST ----------------------------------
-		.single & {
-			article {
-				.post_meta {
-					&>div {
-						display: inline-block;
-					}
+		// .single & {
+		// 	article {
+		// 		.post_meta {
+		// 			&>div {
+		// 				display: inline-block;
+		// 			}
 
-					&,
-					a:link,
-					a:visited {
-						color: @gray;
-						border-color: transparent;
-					}
+		// 			&,
+		// 			a:link,
+		// 			a:visited {
+		// 				color: @gray;
+		// 				border-color: transparent;
+		// 			}
 
-					a:hover,
-					a:active {
-						color: @c1;
-						border-color: @c1;
-					}
+		// 			a:hover,
+		// 			a:active {
+		// 				color: @c1;
+		// 				border-color: @c1;
+		// 			}
 
-					.post_meta--date {
-						margin-right: 10px;
-					}
+		// 			.post_meta--date {
+		// 				margin-right: 10px;
+		// 			}
 
-					margin-bottom: @space;
-				}
-			}
-		}
+		// 			margin-bottom: @space;
+		// 		}
+		// 	}
+		// }
 
 		// 🔥 GRID ----------------------------------
-		.grid {
-			display: block;
-			overflow: hidden;
-			align-items: center;
-			max-width: 100%;
+		// .grid {
+		// 	display: block;
+		// 	overflow: hidden;
+		// 	align-items: center;
+		// 	max-width: 100%;
 
-			&>a {
-				border: none;
-			}
+		// 	&>a {
+		// 		border: none;
+		// 	}
 
-			img {
-				max-width: 100%;
-			}
+		// 	img {
+		// 		max-width: 100%;
+		// 	}
 
 			// 🔥 IMAGE GRID ----------------------------------
-			&.images {
-				&>a[data-lightbox] {
-					display: block;
-					float: left;
-					width: ~"calc(25% - 14px)";
-					margin: 7px;
-					background-size: cover;
-					background-position: center;
-					background-repeat: no-repeat;
+			// &.images {
+			// 	&>a[data-lightbox] {
+			// 		display: block;
+			// 		float: left;
+			// 		width: ~"calc(25% - 14px)";
+			// 		margin: 7px;
+			// 		background-size: cover;
+			// 		background-position: center;
+			// 		background-repeat: no-repeat;
 
-					&:before {
-						// keep things square
-						content: '';
-						padding-top: 100%;
-						float: left;
-					}
-				}
-			}
+			// 		&:before {
+			// 			// keep things square
+			// 			content: '';
+			// 			padding-top: 100%;
+			// 			float: left;
+			// 		}
+			// 	}
+			// }
 
 			// 🔥 PROJECTS GRID ----------------------------------
-			&.projects {
-				>a {
-					float: left;
-					width: 320px;
-					clear: left;
-					margin-bottom: @space;
-				}
+			// &.projects {
+			// 	>a {
+			// 		float: left;
+			// 		width: 320px;
+			// 		clear: left;
+			// 		margin-bottom: @space;
+			// 	}
 
-				>article {
-					float: right;
-					padding-top: @space;
-					width: ~"calc(100% - 340px)";
-				}
-			}
+			// 	>article {
+			// 		float: right;
+			// 		padding-top: @space;
+			// 		width: ~"calc(100% - 340px)";
+			// 	}
+			// }
 
 			// 🔥 POST (CODE) GRID ----------------------------------
-			&.code {
-				>.date {
-					float: left;
-					width: 100px;
-					clear: right;
+			// &.code {
+			// 	>.date {
+			// 		float: left;
+			// 		width: 100px;
+			// 		clear: right;
+			// 	}
 
-				}
+			// 	>h2.blog_title {
+			// 		float: right;
+			// 		width: ~"calc(100% - 100px)";
+			// 		clear: none;
+			// 		margin-bottom: @space;
+			// 		margin-top: 0;
+			// 	}
 
-				>h2.blog_title {
-					float: right;
-					width: ~"calc(100% - 100px)";
-					clear: none;
-					margin-bottom: @space;
-					margin-top: 0;
-				}
+			// 	&,
+			// 	* {
+			// 		line-height: @lheight;
+			// 	}
 
-				&,
-				* {
-					line-height: @lheight;
-				}
+			// 	a:link,
+			// 	a:visited {
+			// 		border-color: fade(@c1, 50%);
+			// 	}
 
-				a:link,
-				a:visited {
-					border-color: fade(@c1, 50%);
-				}
-
-				a:hover,
-				a:active {
-					border-color: @c1;
-				}
-			}
+			// 	a:hover,
+			// 	a:active {
+			// 		border-color: @c1;
+			// 	}
+			// }
 
 			// 🔥 STATUS GRID ----------------------------------
-			&.status {
-				display: block;
+			// &.status {
+			// 	display: block;
 
-				&>.date {
-					float: left;
-					margin-top: 7px;
-				}
+			// 	&>.date {
+			// 		float: left;
+			// 		margin-top: 7px;
+			// 	}
 
-				&>.ramble {
-					float: none;
-					margin-left: 100px;
-				}
-			}
+			// 	&>.ramble {
+			// 		float: none;
+			// 		margin-left: 100px;
+			// 	}
+			// }
 
-		}
+		// }
 
 	}
 

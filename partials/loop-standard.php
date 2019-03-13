@@ -11,7 +11,9 @@ if ( have_posts() ) :
 		?>
 		<article <?php post_class(); ?>>
 			<time class='date list list--left date--nomargin'>
-				<?php the_date(); ?>
+				<a href='<?php echo get_permalink(); ?>'>
+					<?php echo get_the_date(); ?>
+				</a>
 			</time>
 			<div class='entry list list--right'>
 				<?php
@@ -21,7 +23,7 @@ if ( have_posts() ) :
 					// we don't need to show anything else for `image` post formats. Img only.
 					$format = get_post_format() ? : 'standard';
 					if ( 'image' !== $format ) {
-						get_template_part( 'partials/format', 'standard' );
+						get_template_part( 'partials/format', $format );
 					}
 				?>
 			</div>

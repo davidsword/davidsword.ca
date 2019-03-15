@@ -15,16 +15,22 @@ get_header();
 	<main>
 		<section>
 
-			<?php if ( is_archive() && is_category() ) : ?>
+			<?php /*if ( is_archive() && is_category() ) : ?>
 				<div class='termTitle gray'>
 					<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">Blog</a> &raquo;
 					#<?php echo single_cat_title( '', false ); ?>
 				</div>
-			<?php endif ?>
+			<?php endif*/ ?>
 
-			<div class='articles'>
-				<?php get_template_part( 'partials/loop', 'standard' ); ?>
-			</div>
+			<?php
+			if ( have_posts() ) :
+				while ( have_posts() ) :
+					the_post();
+					get_template_part( 'partials/article', get_post_type() );
+					get_template_part( 'partials/post' , 'nav' );
+				endwhile;
+			endif;
+			?>
 
 			<div class='clear navigation'>
 				<?php echo paginate_links(); ?>

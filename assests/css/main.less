@@ -1,129 +1,35 @@
-@-webkit-keyframes fadein {
-	from {
-		opacity: 0
-	}
-
-	to {
-		opacity: 1
-	}
-}
-
-@-moz-keyframes fadein {
-	from {
-		opacity: 0
-	}
-
-	to {
-		opacity: 1
-	}
-}
-
-@keyframes fadein {
-	from {
-		opacity: 0
-	}
-
-	to {
-		opacity: 1
-	}
-}
-
-// @TODO reduce the nesting.
+/**
+ * @TODO reduce the nesting.
+ */
 main {
-	padding: 21rem 10rem 10rem 0;
-	width: calc( ( ( 100vw - 20rem ) * .75 ) - 4rem );
-	margin: 0 0 0 auto;
-	display: block;
-	position: relative;
 	section {
-		.termTitle {
+		.dsca_featured_image {
+			margin-top: @space;
 			margin-bottom: @space;
 		}
 
-		.ftr_img {
-			margin-bottom: @space;
-		}
-
-		// ✅ DEFAULT -------------------------------------------
-		.articles {
-
-		}
 		article {
 			max-width: 1000px;
 			padding-bottom: @space*2;
 			margin-bottom: @space*3;
 			//display: flex;
 			border-bottom: 1px solid fade(@black, 10%);
-		}
-		.list {
-			//margin: auto;
-		}
-		.list--left {
-			//width: 135px;
-		}
-		.list--right {
-			//flex: 1;
-		}
-		.date {
-			opacity: 0.25;
-			&, a {
-				border: none;
+			&:last-child {
+				border-bottom: none;
 			}
 		}
-		.date--normargin {
-			margin: 0;
+		.post_meta {
+			font-size: 0.9em;
+			&, a {
+				color: fade( @gray, 80% );
+				border: none;
+			}
+			.post_meta__date {
+				display: inline-block;
+				padding-right: 10px;
+			}
 		}
 
-		// 🔥 SINGLE PROJECTS ----------------------------------
-		// .single-projects & {
-		// 	h2 {
-		// 		text-align: center;
-		// 	}
-
-		// 	p.big,
-		// 	.big p {
-		// 		text-align: center;
-		// 	}
-		// }
-
-		// 🔥 SINGLE status ----------------------------------
-		// .single-status & {
-		// 	h2 {
-		// 		margin-bottom: @space;
-		// 	}
-		// }
-
-		// 🔥 SINGLE CODE POST ----------------------------------
-		// .single & {
-		// 	article {
-		// 		.post_meta {
-		// 			&>div {
-		// 				display: inline-block;
-		// 			}
-
-		// 			&,
-		// 			a:link,
-		// 			a:visited {
-		// 				color: @gray;
-		// 				border-color: transparent;
-		// 			}
-
-		// 			a:hover,
-		// 			a:active {
-		// 				color: @c1;
-		// 				border-color: @c1;
-		// 			}
-
-		// 			.post_meta--date {
-		// 				margin-right: 10px;
-		// 			}
-
-		// 			margin-bottom: @space;
-		// 		}
-		// 	}
-		// }
-
-		// 🔥 GRID ----------------------------------
 		// .grid {
 		// 	display: block;
 		// 	overflow: hidden;
@@ -138,7 +44,6 @@ main {
 		// 		max-width: 100%;
 		// 	}
 
-			// 🔥 IMAGE GRID ----------------------------------
 			// &.images {
 			// 	&>a[data-lightbox] {
 			// 		display: block;
@@ -158,71 +63,6 @@ main {
 			// 	}
 			// }
 
-			// 🔥 PROJECTS GRID ----------------------------------
-			// &.projects {
-			// 	>a {
-			// 		float: left;
-			// 		width: 320px;
-			// 		clear: left;
-			// 		margin-bottom: @space;
-			// 	}
-
-			// 	>article {
-			// 		float: right;
-			// 		padding-top: @space;
-			// 		width: ~"calc(100% - 340px)";
-			// 	}
-			// }
-
-			// 🔥 POST (CODE) GRID ----------------------------------
-			// &.code {
-			// 	>.date {
-			// 		float: left;
-			// 		width: 100px;
-			// 		clear: right;
-			// 	}
-
-			// 	>h2.blog_title {
-			// 		float: right;
-			// 		width: ~"calc(100% - 100px)";
-			// 		clear: none;
-			// 		margin-bottom: @space;
-			// 		margin-top: 0;
-			// 	}
-
-			// 	&,
-			// 	* {
-			// 		line-height: @lheight;
-			// 	}
-
-			// 	a:link,
-			// 	a:visited {
-			// 		border-color: fade(@c1, 50%);
-			// 	}
-
-			// 	a:hover,
-			// 	a:active {
-			// 		border-color: @c1;
-			// 	}
-			// }
-
-			// 🔥 STATUS GRID ----------------------------------
-			// &.status {
-			// 	display: block;
-
-			// 	&>.date {
-			// 		float: left;
-			// 		margin-top: 7px;
-			// 	}
-
-			// 	&>.ramble {
-			// 		float: none;
-			// 		margin-left: 100px;
-			// 	}
-			// }
-
-		// }
-
 	}
 
 	.navigation {
@@ -236,7 +76,6 @@ main {
 		span.current,
 		span.dots {
 			display: inline-block;
-			line-height: 1em;
 			padding: 4px 0;
 			margin: 0 6px;
 			margin-right: 7px;
@@ -251,87 +90,23 @@ main {
 			border: none !important;
 		}
 
-		#backtoblog {
-			color: red !important;
-			background: red !important;
-		}
 	}
 }
 
-// Responsive ---
-
+/**
+ * 📱 RESPONSIVE
+ */
 @media screen and (max-width: @tablet) {
 
-	main {
-		padding-left: 5%;
-		padding-right: 5%;
-	}
-
-	main section .grid {
-		&.images>a[data-lightbox] {
-			width: ~"calc(33.333% - 14px)";
-		}
-		&.projects {
-
-			>a,
-			>article {
-				float: none;
-				display: block;
-				clear: both;
-				width: auto;
-			}
-
-			article {
-				max-width: 380px;
-				margin: 0 auto 40px auto;
-				padding: 0 5%;
-			}
-		}
-
-		&.code {
-
-			>h2.blog_title,
-			>.date {
-				float: none;
-				display: block;
-				clear: both;
-				width: auto;
-			}
-
-			.date.nomargin {
-				margin-top: @space;
-
-				&:first-child {
-					margin-top: 0;
-				}
-			}
-		}
-
-		&.status {
-			.date.nomargin {
-				display: block;
-				float: none;
-			}
-			.ramble {
-				margin-left: 0;
-			}
-		}
-	}
 
 }
 
 @media screen and (max-width: @phone) {
-	main section .grid {
-		&.projects {
-			article {
-				padding: 0;
-			}
-		}
-	}
 
 	main .navigation a.prev:after {
 		content: '';
 		display: block;
 		clear: both;
 	}
+
 }

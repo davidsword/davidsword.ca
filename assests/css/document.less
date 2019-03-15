@@ -6,9 +6,9 @@
 body {
 	background: @white;
 	font-family: @t1;
-	font-size: 2rem;
+	font-size: @font-size;
+	line-height: 1.8em;
 	color: @black;
-	line-height: @lheight;
 	min-height: 100%;
 	font-weight: 300;
 	word-break: break-word;
@@ -16,7 +16,6 @@ body {
 
 p {
 	padding-bottom: @space;
-	line-height: @lheight;
 }
 
 strong {
@@ -44,13 +43,17 @@ main {
 
 	a:link,
 	a:visited {
-		border-bottom: 1px solid fade(@c1, 50%);
+		border-bottom: 1px solid fade(@mainColour, 50%);
+	}
+	a.noborder:link,
+	a.noborder:visited {
+		border-bottom: none;
 	}
 
 	a:hover,
 	a:active {
-		color: @c1;
-		border-bottom-color: @c1;
+		color: @mainColour;
+		border-bottom-color: @mainColour;
 	}
 }
 

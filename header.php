@@ -77,9 +77,6 @@ via https://github.com/davidsword/davidsword.ca-2018
 						'theme_location' => 'sec-nav',
 					] );
 					?>
-					<li>
-						<a href='https://github.com/davidsword' target='_Blank' class='icon icon_git'>Github/davidsword</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

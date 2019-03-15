@@ -9,8 +9,8 @@
  * Register post type
  */
 add_action( 'init' , function () {
-	$cpt_name = 'Projects';
-	$cpt_slug = 'projects';
+	$cpt_name = 'Project';
+	$cpt_slug = 'projects'; //@TODO should be singular.
 	$args = [
 		'labels' => dsca_make_labels( $cpt_name ),
 		'public' => true,
@@ -101,23 +101,6 @@ add_action('manage_posts_custom_column', function ( $column_name, $id ) {
 		}
 	}
 }, 999, 2);
-
-/**
- * Append the flag onto the excerpt for output.
- *
- * This way instead of via partials/loop-projects is cleaner for longevity
- * and to reuse on future themes,
- */
-add_filter( 'the_excerpt', function( $excerpt ) {
-	if ( 'projects' === get_post_type() && is_archive() ) {
-		$flag = dsca_get_flag( get_the_ID() );
-		if ( false !== $flag ) {
-			$excerpt = wp_strip_all_tags( $excerpt ); // remove wrapping "<p>".
-			$excerpt = "<p>{$excerpt} &nbsp; {$flag}</p>";
-		}
-	}
-	return $excerpt;
-});
 
 /**
  * Helper function to get the Projects FLAG tax

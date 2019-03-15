@@ -10,11 +10,11 @@ defined( 'ABSPATH' ) || exit;
 	<footer>
 		<p>
 			Proudly powered by
-			<a href='https://wordpress.org' target='_Blank'>WordPress</a>
-
-			&nbsp; | &nbsp;
-
-			Built in 🇨🇦 <a href='https://davidsword.ca/🍺/'>🍻</a>
+			<a href='https://wordpress.org' target='_Blank'>WordPress</a> 💪
+			&nbsp;
+			Built in 🇨🇦
+			&nbsp;
+			Cheers! <a href='https://davidsword.ca/🍺/'>🍻</a>
 		</p>
 	</footer>
 

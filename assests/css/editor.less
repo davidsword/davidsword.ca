@@ -3,7 +3,6 @@ h1,
 h2 {
 	clear: both;
 	text-decoration: none;
-	line-height: 1.8em;
 	margin-bottom: @space;
 	padding-bottom: 0px;
 	font-weight: 300;
@@ -18,15 +17,15 @@ h2 {
 
 	&,
 	a {
-		font-size: @fontsize;
+		font-size: 1.2em;
 		font-weight: 500;
 		border-bottom: 1px solid transparent;
 	}
 
 	a:hover,
 	a:active {
-		color: @c1;
-		border-bottom: 1px solid @c1;
+		color: @mainColour;
+		border-bottom: 1px solid @mainColour;
 	}
 
 	margin-bottom: @space/4;
@@ -37,15 +36,15 @@ h3 {
 
 	&,
 	a {
-		font-size: @fontsize+0.2em; // yes, bigger than <h2>, these are in the content.
-		font-weight: 400;
+		font-size: 1.1em;
+		font-weight: 500;
 		border-bottom: 1px solid transparent;
 	}
 
 	a:hover,
 	a:active {
-		color: @c1;
-		border-bottom: 1px solid @c1;
+		color: @mainColour;
+		border-bottom: 1px solid @mainColour;
 	}
 
 	margin-bottom: @space;
@@ -55,7 +54,6 @@ h3 {
 h4,
 h5,
 h6 { // shouldnt use these. This style notifies of that.
-	font-size: 14px;
 	color: red;
 	font-weight: bold;
 }
@@ -93,8 +91,7 @@ blockquote {
 }
 
 small {
-	font-size: 0.8em;
-	line-height: 1em;
+
 }
 
 ins {
@@ -141,12 +138,14 @@ table {
 
 pre,
 code {
-	padding: 2px 4px;
+	padding: 0 10px;
+	border-radius: 2px;
 	color: fade(@black, 90%);
 	background: fade(@black, 4%);
 	border: 1px solid fade(@black, 15%);
-	font-size: 14px;
 	font-family: @t2;
+	font-size: 0.8em;
+	display: inline-block;
 }
 
 code {
@@ -158,8 +157,6 @@ pre {
 	border: none;
 	padding: 15px;
 	background: @black;
-	line-height: 1.5em !important;
-	font-size: 14px;
 	word-wrap: break-word;
 	word-break: break-all;
 	margin-bottom: @space;
@@ -176,7 +173,6 @@ img {
 }
 
 figcaption {
-	line-height: 1em;
 	margin-top: 0;
 	margin-bottom: 2em;
 }
@@ -193,8 +189,6 @@ figcaption {
 	// excerpts and sub headings.
 	&,
 	p {
-		font-size: 2.2rem;
-		line-height: 1.85em;
 		font-style: normal;
 		color: @black;
 	}
@@ -203,7 +197,6 @@ figcaption {
 .editor-writing-flow .notice, // gutenberg.
 .notice {
 	background-color: #ffe454;
-	font-size: 17px;
 	text-align: center;
 	margin-bottom: 20px; // same as "padding" for <p> tags.
 	padding: 10px;
@@ -214,8 +207,7 @@ figcaption {
 @media screen and (max-width: @phone) {
 	.big {
 		&, p {
-			font-size: 26px;
-			line-height: 1.7em;
+
 		}
 	}
 }

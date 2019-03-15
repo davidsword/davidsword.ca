@@ -52,8 +52,6 @@ html body .oembed-gist {
 		padding: 5px 0;
 		background: black;
 		content: " Show More ";
-		line-height: 12px !important;
-		font-size: 12px !important;
 		display: block;
 		text-align: center;
 		z-index: 999;
@@ -85,11 +83,8 @@ html body .oembed-gist {
 		table tbody tr:nth-child(odd) {
 			background: transparent;
 		}
-
-		line-height: 1.5em !important;
 		border: 10px solid @syntax-background-color;
 		border-radius: 4px;
-
 		*,
 		.gist-file,
 		.blob-wrapper {
@@ -107,12 +102,9 @@ html body .oembed-gist {
 		.blob-num {
 			// line number
 			color: @syntax-bracket-matcher;
-			line-height: 1.5em !important;
 		}
 
 		.blob-code {
-			line-height: 1.5em !important;
-			font-size: 14px;
 		}
 
 		.blob-code-inner {
@@ -190,11 +182,11 @@ html body .oembed-gist {
 @media screen and (max-width: @phone) {
 	html body .oembed-gist.big-gist .gist .blob-num,
 	html body .oembed-gist.big-gist .gist .blob-code {
-		font-size: 8px;
+
 	}
 
 	html body .oembed-gist.small-gist .gist .blob-num,
 	html body .oembed-gist.small-gist .gist .blob-code {
-		font-size: 12px;
+
 	}
 }

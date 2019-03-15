@@ -1,33 +1,13 @@
 header#head {
-	padding: 10rem 0 0 10rem;
-    width: calc( ( ( 100vw - 20rem ) * .25 ) );
-	display: flex;
-	overflow: auto;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	top: 0;
-	margin: 0 auto;
-	.head__inner {
-		flex-direction: column;
-		width: 100%;
-		display: flex;
-		&:last-child {
-			margin-bottom: 0;
-		}
-		&:first-child {
-			margin-top: 0;
-		}
-	}
 	h1 {
-		//float: left;
 		width: 200px;
 		padding: 0;margin: 0;
 		border: none;
-		line-height: 1em;
 		position: relative;
 		padding-left: 75px+(@space/2);
+		margin-left: -75px - (@space/2);
 		margin-bottom: 10rem;
+		line-height: 1em;
 		&:before {
 			position: absolute;
 			left: 0;
@@ -52,14 +32,11 @@ header#head {
 			letter-spacing: normal;
 			font-weight: 400;
 			transition: 0.6s all ease;
-			font-size: 24px;
-			line-height: 1em;
 		}
 		.description {
 			display:inline-block;
-			font-size: 18px;
-			color: #999;
-			line-height: 1em;
+			color: @gray;
+			font-size: 0.8em;
 		}
 	}
 
@@ -85,8 +62,6 @@ header#head {
 				a:link {
 					display: inline-block;
 					text-decoration: none;
-					font-size: 1.5rem;
-					line-height: 1em;
 					border-bottom: 1px solid transparent;
 					color: fade( #000, 70% );
 				}
@@ -96,6 +71,11 @@ header#head {
 					border-bottom: 1px solid fade( @black, 50% );
 				}
 
+				// Projects page highlighting on single.
+				.single-projects &.menu-item-object-projects > a,
+				// Blog page highlighting on single.
+				.single-post &.menu-item-home > a,
+				// Normal highlighting.
 				&.current-menu-item>a,
 				&.current_page_ancestor>a,
 				&.current_page_item>a {
@@ -103,12 +83,11 @@ header#head {
 					&:link,
 					&:visited {
 						color: fade( #000, 90% );
-						border-bottom: 1px solid fade( @c1, 50% );
+						border-bottom: 1px solid fade( @mainColour, 50% );
 					}
 				}
 
 				a.icon {
-					line-height: 1.2em;
 					text-indent: -1000px;
 					width: 1.8rem;
 					height: 1.8rem;

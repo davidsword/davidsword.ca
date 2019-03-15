@@ -30,9 +30,11 @@
 
 // @TODO reduce the nesting.
 main {
-	margin: 0px auto;
-	max-width: @width;
-
+	padding: 21rem 10rem 10rem 0;
+	width: calc( ( ( 100vw - 20rem ) * .75 ) - 4rem );
+	margin: 0 0 0 auto;
+	display: block;
+	position: relative;
 	section {
 		.termTitle {
 			margin-bottom: @space;
@@ -47,22 +49,26 @@ main {
 
 		}
 		article {
+			max-width: 1000px;
 			padding-bottom: @space*2;
 			margin-bottom: @space*3;
-			display: flex;
+			//display: flex;
 			border-bottom: 1px solid fade(@black, 10%);
 		}
 		.list {
 			//margin: auto;
 		}
 		.list--left {
-			width: 135px;
+			//width: 135px;
 		}
 		.list--right {
-			flex: 1;
+			//flex: 1;
 		}
 		.date {
-
+			opacity: 0.25;
+			&, a {
+				border: none;
+			}
 		}
 		.date--normargin {
 			margin: 0;

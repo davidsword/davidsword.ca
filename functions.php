@@ -47,6 +47,7 @@ add_action( 'after_setup_theme', function () {
 
 // Navigation.
 register_nav_menu( 'main-nav', 'Main Navigation' );
+register_nav_menu( 'sec-nav',  'Secondary Navigation' );
 
 /**
  * Enqueue scripts into WordPress.

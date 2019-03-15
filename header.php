@@ -50,23 +50,37 @@ via https://github.com/davidsword/davidsword.ca-2018
 	<div id='trigger'></div>
 
 	<header id='head'>
-		<h1>
-			<a href='<?php bloginfo( 'url' ); ?>'><?php echo bloginfo( 'name' ); ?></a>
-			<span class='description'><?php bloginfo( 'description' ); ?></span>
-		</h1>
-		<nav id='main'>
-			<ul>
-				<?php
-				wp_nav_menu( [
-					'container'      => '',
-					'items_wrap'     => '%3$s',
-					'title_li'       => '',
-					'theme_location' => 'main-nav',
-				] );
-				?>
-				<li>
-					<a href='https://github.com/davidsword' target='_Blank' class='icon icon_git'>Github/davidsword</a>
-				</li>
-			</ul>
-		</nav>
+		<div class='head__inner'>
+			<h1>
+				<a href='<?php bloginfo( 'url' ); ?>'><?php echo bloginfo( 'name' ); ?></a>
+				<span class='description'><?php bloginfo( 'description' ); ?></span>
+			</h1>
+			<nav id='main'>
+				<ul>
+					<?php
+					wp_nav_menu( [
+						'container'      => '',
+						'items_wrap'     => '%3$s',
+						'title_li'       => '',
+						'theme_location' => 'main-nav',
+					] );
+					?>
+				</ul>
+			</nav>
+			<nav id='sec'>
+				<ul>
+					<?php
+					wp_nav_menu( [
+						'container'      => '',
+						'items_wrap'     => '%3$s',
+						'title_li'       => '',
+						'theme_location' => 'sec-nav',
+					] );
+					?>
+					<li>
+						<a href='https://github.com/davidsword' target='_Blank' class='icon icon_git'>Github/davidsword</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
 	</header>

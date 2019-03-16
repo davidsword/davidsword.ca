@@ -7,8 +7,6 @@
 ?>
 <article <?php post_class(); ?>>
 	<div class='entry'>
-		<?php
-			get_template_part( 'partials/content', 'page' );
-		?>
+		<h2>🤷🏼‍♂️ 404: Page not found</h2>
 	</div>
 </article>

@@ -20,7 +20,9 @@ get_header();
 		<section>
 
 			<?php
-			if ( have_posts() ) :
+			if ( is_404() ) :
+				get_template_part( 'partials/article', '404' );
+			elseif ( have_posts() ) :
 				while ( have_posts() ) :
 					the_post();
 					get_template_part( 'partials/article', get_post_type() );
@@ -28,6 +30,8 @@ get_header();
 						get_template_part( 'partials/post' , 'nav' );
 					}
 				endwhile;
+			else :
+				get_template_part( 'partials/article', 'not-found' );
 			endif;
 			?>
 

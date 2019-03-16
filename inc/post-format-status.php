@@ -3,16 +3,18 @@
 /**
  * STATUS remove title from RSS feed.
  */
-add_filter('the_title_rss', 'dsca_fix_post_format_status_titles', 10, 2 );
-
-function dsca_fix_post_format_status_titles( $title, $id ) {
+add_filter('the_title_rss', function ( $title, $id ) {
 	if ( 'status' === get_post_format() && $id === get_the_ID()) {
 		return get_the_date() . ' Status';
 	}
 	return $title;
-}
+}, 10, 2 );
 
-// Disable comments on STATUS posts
+
+
+/**
+ * Disable comments on STATUS posts
+ */
 add_action( 'the_post', function() {
 	if ( is_single() && 'status' === get_post_format() ) {
 		add_filter( 'comments_open', function($open, $post_id) {
@@ -24,6 +26,9 @@ add_action( 'the_post', function() {
 	}
 } );
 
+/**
+ * Add fake title for Search results and in admin.
+ */
 add_filter('the_title', function ( $title, $id ) {
 	if ( get_the_ID() == $id && 'status' === get_post_format( $id ) ) {
 		return get_the_date()." Status Update";
@@ -31,6 +36,9 @@ add_filter('the_title', function ( $title, $id ) {
 	return $title;
 }, 10, 2 );
 
+/**
+ * Add fake title for <title> tag.
+ */
 add_filter('wp_title', function ( $title ) {
 	if ( is_singular() ) {
 		global $post;

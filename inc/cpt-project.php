@@ -10,23 +10,25 @@
  */
 add_action( 'init' , function () {
 	$cpt_name = 'Project';
-	$cpt_slug = 'projects'; //@TODO should be singular.
+	$cpt_slug = 'project';
 	$args = [
-		'labels' => dsca_make_labels( $cpt_name ),
-		'public' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_menu' => true,
-		'query_var' => true,
-		'rewrite' => true,
-		'capability_type' => 'post',
-		'has_archive' => true,
-		'hierarchical' => false,
-		'menu_position' => 5,
-		'menu_icon' => 'dashicons-book',
-		'supports' => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
-		'show_in_rest' => true,
-		'rest_base' => 'projects',
+		'labels'                => dsca_make_labels( $cpt_name ),
+		'public'                => true,
+		'publicly_queryable'    => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'query_var'             => true,
+		'rewrite'               => true,
+		'has_archive'           => 'projects',
+		'capability_type'       => 'post',
+		'hierarchical'          => false,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-book',
+		'supports'              => [
+			'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'
+		],
+		'show_in_rest'          => true,
+		'rest_base'             => 'projects',
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
 	];
 	register_post_type( $cpt_slug, $args );
@@ -40,7 +42,7 @@ add_action( 'init' , function () {
  */
 add_filter('pre_get_posts', function ( $query ) {
 
-	$is_project = isset( $query->query['post_type'] ) && 'projects' === $query->query['post_type'];
+	$is_project = isset( $query->query['post_type'] ) && 'project' === $query->query['post_type'];
 	$is_archive = ( 1 == $query->is_archive );
 
 	// ONLY ON FRONT END ARCHIVES PAGE.
@@ -59,7 +61,7 @@ add_filter('pre_get_posts', function ( $query ) {
 add_action( 'init', function () {
 	$tax_name = 'Flag';
 	$tax_slug = 'flag';
-	register_taxonomy( $tax_slug, [ 'projects' ], array(
+	register_taxonomy( $tax_slug, [ 'project' ], array(
 		'hierarchical' => false,
 		'labels' => [
 			'name' => $tax_name, 'taxonomy general name',
@@ -123,3 +125,29 @@ function dsca_get_flag( $post_id = false, $only_slug = false ) {
 	}
 	return false;
 }
+
+
+
+/**
+ * Add projects to main RSS feed.
+ *
+ * This may cause a bug in the future if anything else edits this.
+ *
+ * @param $qv array
+ * @return array
+ */
+add_filter('request', function ( $qv ) {
+	if ( isset( $qv['feed'] ) ) {
+		if ( ! isset( $qv['post_type'] ) ) {
+			$qv['post_type'] = [ 'post', 'project' ];
+		}
+	}
+	return $qv;
+} );
+
+/**
+ * Allow featured image.
+ */
+add_action( 'after_setup_theme', function () {
+	add_theme_support( 'post-thumbnails', [ 'project' ] );
+});

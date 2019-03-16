@@ -8,6 +8,7 @@ header#head {
 		margin-left: -95px;
 		line-height: 1em;
 		width: 200px;
+		box-sizing: content-box;
 		&:before {
 			position: absolute;
 			left: 0;
@@ -66,7 +67,7 @@ header#head {
 				}
 
 				// Projects page highlighting on single.
-				.single-projects &.menu-item-object-projects > a,
+				.single-project &.menu-item-object-project > a,
 				// Blog page highlighting on single.
 				.single-post &.menu-item-home > a,
 				// Normal highlighting.

@@ -25,11 +25,11 @@
 		</span>
 		<?php edit_post_link() ?>
 	</header>
-	<div class='entry'>
+	<div class='content'>
 		<?php
 			$format = get_post_format() ? : 'standard';
 			if ( 'image' !== $format ) {
-				get_template_part( 'partials/post-format', $format );
+				get_template_part( 'partials/content', $format );
 			} else {
 				dsca_featured_image();
 			}

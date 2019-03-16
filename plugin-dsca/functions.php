@@ -71,6 +71,7 @@ function ds_makethumbnailcol( $columns ) {
 	unset( $columns['comments'] );
 	unset( $columns['author'] );
 	$columns['img_thumbnail'] = '';
+	$columns['url_name'] = '';
 	return $columns;
 }
 add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
@@ -84,6 +85,9 @@ add_action('manage_posts_custom_column', function ( $column_name, $id ) {
 		echo "<a href='" . get_edit_post_link() . "'>";
 		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
 		echo '</a>';
+	}
+	if ( 'url_name' === $column_name ) {
+		//echo get_post( $id )-> ; //@TODO
 	}
 }, 999, 2);
 
@@ -214,18 +218,6 @@ add_action( 'init' ,function () {
 });
 
 /**
- * Notify admin if FTP password is in code
- */
-add_action( 'init', function() {
-	if (defined('FTP_PASS')) {
-		if ( false === ( $value = get_transient( 'ds_nag' ) ) ) {
-			wp_mail(get_option('admin_email'), 'URGRENT ISSUE', 'FTP_PASS is defined for '.$_SERVER['HTTP_HOST']);
-			set_transient( 'ds_nag', 'yes', 60*60*4 );
-		}
-	}
-} );
-
-/**
  * Max out at 42 revisions
  */
 add_filter('wp_revisions_to_keep', function() { return 42; });
@@ -240,18 +232,12 @@ add_filter( 'xmlrpc_methods', 'ds_block_xmlrpc_attacks' );
  *
  * hiding that a username is correct against brute force attacks
  */
-add_filter('login_errors', function() { return 'Uh oh:'; });
+add_filter('login_errors', function() { return '💩'; });
 
 /**
  * make sure if comprimised, url_fopen won't work
  */
 ini_set('allow_url_fopen',0);
-
-/**
- * remove wordpress generator
- */
-remove_action('wp_head', 'wp_generator');
-add_filter('the_generator', function() { return ''; });
 
 /**
  * PLUGIN: Yoast remove nag

@@ -50,6 +50,16 @@ footer {
  * 📱 RESPONSIVE
  * ------------------------------------------------------------------
  */
+ @media screen and (max-height: 650px) and (min-width: @laptop) {
+	header#head {
+		padding: @spaceLayout*0.5 0 @spaceLayout*0.5 @spaceLayout;
+	}
+	footer,
+	main {
+		padding: @spaceLayout*0.5 @spaceLayout @spaceLayout*0.5 0;
+	}
+ }
+
  @media screen and (max-width: @laptop) {
 	header#head {
 		padding: @spaceLayout*0.75 0 @spaceLayout*0.75 @spaceLayout*0.75;
@@ -67,7 +77,6 @@ footer {
 
 @media screen and (max-width: @tablet) {
 	header#head {
-		border: 1px solid red;
 		padding: @spaceLayout*0.5;
 		width: 100%;
 		bottom: auto;
@@ -96,5 +105,20 @@ footer {
 }
 
 @media screen and (max-width: @phone) {
+	header#head {
+		padding: @spaceLayout*0.5 @spaceLayout*0.25 @spaceLayout*0.25 @spaceLayout*0.25;
+		.head__inner {
+			& > * {
+			}
+			nav {
+				&#sec {
+				}
+			}
+		}
+	}
+	footer,
+	main {
+		padding: @spaceLayout*0.25;
+	}
 
 }

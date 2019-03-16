@@ -24,12 +24,20 @@ add_action( 'the_post', function() {
 	}
 } );
 
-// add_filter('wp_title', function ( $title ) {
-// 	//if (  && $id === get_the_ID()) {
-// 		//return get_the_date() . ' Status';
-// 	//}
-// 	if ( is_singular( 'post' ) && 'status' === get_post_format() ) {
-// 		return "hi";
-// 	}
-// 	return get_theID().$title;
-// }, 10, 2 );
+add_filter('the_title', function ( $title, $id ) {
+	if ( get_the_ID() == $id && 'status' === get_post_format( $id ) ) {
+		return get_the_date()." Status Update";
+	}
+	return $title;
+}, 10, 2 );
+
+add_filter('wp_title', function ( $title ) {
+	if ( is_singular() ) {
+		global $post;
+		$id = get_the_ID();
+		if ( 'status' === get_post_format( $id ) ) {
+			return get_the_date()." Status Update ".$title;
+		}
+	}
+	return $title;
+}, 999 );

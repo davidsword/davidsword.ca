@@ -4,7 +4,6 @@
 main {
 	section {
 		.dsca_featured_image {
-			margin-top: @space;
 			margin-bottom: @space;
 		}
 
@@ -17,21 +16,28 @@ main {
 				border-bottom: none;
 			}
 		}
-		.post_meta {
-			font-size: 0.9em;
-			&, a {
-				color: fade( @gray, 80% );
-				border: none;
-			}
-			.post_meta__date {
-				display: inline-block;
-				padding-right: 10px;
-			}
-		}
 		.title--page {
 			display: none; // pages don't need a title. too redundent.
 		}
 
+	}
+}
+
+.post_meta {
+	font-size: 0.9em;
+	.format-status & {
+		margin-bottom: @space/4; // tiny padding.
+	}
+	&, a:link, a:visited {
+		color: fade( @gray, 80% );
+		border: none;
+	}
+	a:hover, a:active, a:focus {
+		color: fade( @blue, 70% );
+	}
+	.post_meta__date {
+		display: inline-block;
+		padding-right: 10px;
 	}
 }
 

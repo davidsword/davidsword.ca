@@ -287,11 +287,6 @@ add_action( 'init' ,function () {
 add_filter('wp_revisions_to_keep', function() { return 42; });
 
 /**
- * extra protocalls, remove
- */
-add_filter( 'xmlrpc_methods', 'ds_block_xmlrpc_attacks' );
-
-/**
  * remove login error
  *
  * hiding that a username is correct against brute force attacks

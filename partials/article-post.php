@@ -2,7 +2,7 @@
 /**
  * Content for Loop of POST post type.
  *
- * @package davidsword-2018
+ * @package davidsword-ca
  */
 ?>
 <article <?php post_class(); ?>>
@@ -23,6 +23,7 @@
 			}
 			?>
 		</span>
+		<?php edit_post_link() ?>
 	</header>
 	<div class='entry'>
 		<?php

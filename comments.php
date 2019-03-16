@@ -5,7 +5,9 @@
  * The area of the page that contains both current comments
  * and the comment form.
  *
- * @package davidsword-2018
+ * @TODO this was ripped from Twenty-x theme with little care, needs attention.
+ *
+ * @package davidsword-ca
  */
 
 // Go away, VIP only.

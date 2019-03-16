@@ -2,7 +2,7 @@
 /**
  * Header
  *
- * @package davidsword-2018
+ * @package davidsword-ca
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -44,10 +44,6 @@ via https://github.com/davidsword/davidsword.ca-2018
 
 </head>
 <body <?php body_class(); ?>>
-
-	<?php do_action( 'body_open' ); ?>
-
-	<div id='trigger'></div>
 
 	<header id='head'>
 		<div class='head__inner'>

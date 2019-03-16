@@ -4,7 +4,7 @@
         // Featured image.
         dsca_featured_image();
 
-        if ( is_home() || 'projects' === get_post_type() ) {
+        if ( ! is_single() ) {
             the_excerpt();
         } else {
             the_content();

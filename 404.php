@@ -2,7 +2,7 @@
 /**
  * Danger Will Robinson, Danger. 404.
  *
- * @package davidsword-2018
+ * @package davidsword-ca
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -15,20 +15,10 @@ get_header();
 	<main>
 		<section>
 
-			<h1 class='page_title heading_404'>ERROR 404</h1>
+			<h2 class='page_title heading_404'> 🥴 ERROR 404: Page not found!</h2>
 
 			<div class='entry'>
-				<div class='big'>
-					<p>Oh no! Sorry - page not found.</p>
-				</div>
-				<p>
-					This page was either deleted, changed,
-					or improperly linked to.<br />
-					Please refer to the active pages below.
-				</p>
-				<ul>
-					<?php wp_nav_menu( 'title_li=' ); ?>
-				</ul>
+				<p>This page was either deleted, changed, or improperly linked to.</p>
 			</div>
 
 		</section>

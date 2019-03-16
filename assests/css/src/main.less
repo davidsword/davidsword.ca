@@ -12,7 +12,6 @@ main {
 			max-width: 1000px;
 			padding-bottom: @space*2;
 			margin-bottom: @space*3;
-			//display: flex;
 			border-bottom: 1px solid fade(@black, 10%);
 			&:last-child {
 				border-bottom: none;
@@ -28,6 +27,9 @@ main {
 				display: inline-block;
 				padding-right: 10px;
 			}
+		}
+		.title--page {
+			display: none; // pages don't need a title. too redundent.
 		}
 
 		// .grid {
@@ -71,6 +73,7 @@ main {
 		clear: both;
 		padding: 0 0 0 0;
 		margin-top: 30px;
+		max-width: 1000px; //same as `article` and `footer`. @TODO make into a var.
 
 		a,
 		span.current,

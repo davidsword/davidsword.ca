@@ -2,9 +2,7 @@
 /**
  * Functions for this theme.
  *
- * See README.TXT for theme doc.
- *
- * @package davidsword-2018
+ * @package davidsword-ca
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -63,13 +61,13 @@ add_action( 'wp_enqueue_scripts', function () {
 	$is_localhost = ( 'vvv.davidswor' === $_SERVER['HTTP_HOST'] );
 	$ver = ( WP_DEBUG || $is_localhost ) ? time() : wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_script(
-		'swrdbs_js',
-		get_template_directory_uri() . '/assests/js/index.js',
-		[ 'jquery' ],
-		$ver,
-		true
-	);
+	// wp_enqueue_script(
+		// 'swrdbs_js',
+		// get_template_directory_uri() . '/assests/js/dist/index.js',
+		// [ 'jquery' ],
+		// $ver,
+		// true
+	// );
 
 	wp_enqueue_style(
 		'main',
@@ -89,7 +87,7 @@ add_action( 'wp_enqueue_scripts', function () {
 // add_action( 'enqueue_block_editor_assets', function () {
 // 	wp_enqueue_style(
 // 		'dsca-editor-css',
-// 		get_template_directory_uri() . '/assests/css/style-editor.css',
+// 		get_template_directory_uri() . '/assests/css/dist/style-editor.css',
 // 		[ 'wp-edit-blocks' ],
 // 		time()
 // 	);
@@ -108,7 +106,7 @@ add_action( 'wp_enqueue_scripts', function () {
  * @param  string  $cut what we replaced the chopped off value with.
  * @return string  possibly chopped content
  */
-function _return_chopstring( $string, $choplen = 20, $cut = '...' ) {
+function dsca_return_chopstring( $string, $choplen = 20, $cut = '...' ) {
 	if ( strlen( $string ) > $choplen ) {
 		$ashortertitle = wp_strip_all_tags( $string );
 

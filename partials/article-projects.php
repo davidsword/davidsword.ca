@@ -2,7 +2,7 @@
 /**
  *
  *
- * @package davidsword-2018
+ * @package davidsword-ca
  */
 ?>
 <article <?php post_class(); ?>>
@@ -26,8 +26,10 @@
 				dsca_featured_image();
 
 				if ( is_single() ) {
-					the_excerpt();
 					?>
+					<div class='has-medium-font-size center'>
+						<?php the_excerpt(); ?>
+					</div>
 					<hr />
 					<?php
 					the_content();

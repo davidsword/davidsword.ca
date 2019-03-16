@@ -2,7 +2,7 @@
 /**
  * Content for loop of IMAGE or ART post types.
  *
- * @package davidsword-2018
+ * @package davidsword-ca
  */
 
 if ( have_posts() ) :

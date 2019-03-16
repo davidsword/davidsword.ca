@@ -3,7 +3,7 @@ h1,
 h2 {
 	clear: both;
 	text-decoration: none;
-	margin-bottom: @space;
+	margin-bottom: 0px;
 	padding-bottom: 0px;
 	font-weight: 300;
 }
@@ -14,7 +14,6 @@ h1 {
 
 h2 {
 	// Used for titles of posts.
-
 	&,
 	a {
 		font-size: 1.2em;
@@ -24,11 +23,9 @@ h2 {
 
 	a:hover,
 	a:active {
-		color: @mainColour;
-		border-bottom: 1px solid @mainColour;
+		color: @blue;
+		border-bottom: 1px solid @blue;
 	}
-
-	margin-bottom: @space/4;
 }
 
 h3 {
@@ -43,8 +40,8 @@ h3 {
 
 	a:hover,
 	a:active {
-		color: @mainColour;
-		border-bottom: 1px solid @mainColour;
+		color: @blue;
+		border-bottom: 1px solid @blue;
 	}
 
 	margin-bottom: @space;
@@ -71,7 +68,7 @@ HR.wp-block-separator {
 	outline: none;
 	border: 0;
 	max-width: 100px;
-	margin: @space*2 AUTO @space*2+20px auto; // the "20px" is from the padding-bottom of <p>.
+	margin: @space auto; // the "20px" is from the padding-bottom of <p>.
 }
 
 blockquote {
@@ -117,7 +114,6 @@ i {
 
 table {
 	width: 100%;
-	;
 	margin-bottom: @space;
 
 	tbody tr:nth-child(odd) {
@@ -143,7 +139,7 @@ code {
 	color: fade(@black, 90%);
 	background: fade(@black, 4%);
 	border: 1px solid fade(@black, 15%);
-	font-family: @t2;
+	font-family: @fontMono;
 	font-size: 0.8em;
 	display: inline-block;
 }
@@ -177,26 +173,11 @@ figcaption {
 	margin-bottom: 2em;
 }
 
+/* Custom Classes ---------------------------------- */
+
 .has-medium-font-size {
 	font-size: 2rem;
 	line-height: 1.8em;
-}
-
-/* Custom Classes ---------------------------------- */
-
-.gray {
-	color: @gray;
-}
-
-.editor-writing-flow .big, // gutenberg.
-.big {
-
-	// excerpts and sub headings.
-	&,
-	p {
-		font-style: normal;
-		color: @black;
-	}
 }
 
 .editor-writing-flow .notice, // gutenberg.
@@ -204,15 +185,15 @@ figcaption {
 	background-color: #ffe454;
 	text-align: center;
 	margin-bottom: 20px; // same as "padding" for <p> tags.
-	padding: 10px;
+	padding: @space;
 }
 
-// Responsive ---
+/**
+ * ==================================================================
+ * 📱 RESPONSIVE
+ * ------------------------------------------------------------------
+ */
 
 @media screen and (max-width: @phone) {
-	.big {
-		&, p {
 
-		}
-	}
 }

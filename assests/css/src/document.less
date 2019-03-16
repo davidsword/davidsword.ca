@@ -5,7 +5,7 @@
 /* Body ---------------------------------- */
 body {
 	background: @white;
-	font-family: @t1;
+	font-family: @fontMain;
 	font-size: @font-size;
 	line-height: 1.8em;
 	color: @black;
@@ -39,11 +39,10 @@ a:visited {
 }
 
 main {
-	// content links
 
 	a:link,
 	a:visited {
-		border-bottom: 1px solid fade(@mainColour, 50%);
+		border-bottom: 1px solid fade(@blue, 50%);
 	}
 	a.noborder:link,
 	a.noborder:visited {
@@ -52,18 +51,14 @@ main {
 
 	a:hover,
 	a:active {
-		color: @mainColour;
-		border-bottom-color: @mainColour;
+		color: @blue;
+		border-bottom-color: @blue;
 	}
-}
 
-/* Lists ---------------------------------- */
-main {
 	// as to not use in header or footer.
-
 	ol,
 	ul {
-		margin: @space/3 0 @space @space*2;
+		margin: @space 0 @space @space;
 	}
 
 	ol li {
@@ -83,11 +78,30 @@ main {
 
 		ul {
 			margin-left: @space;
-			margin-bottom: @space/3
+			margin-bottom: @space
 		}
 	}
 }
 
 .center {
 	text-align: center;
+}
+
+/**
+ * ==================================================================
+ * 📱 RESPONSIVE
+ * ------------------------------------------------------------------
+ */
+ @media screen and (max-width: @laptop) {
+
+ }
+ @media screen and (max-width: @tablet) {
+	 body {
+		 font-size: @font-size*0.9;
+	 }
+}
+ @media screen and (max-width: @phone) {
+	 body {
+		 font-size: @font-size*0.7;
+	 }
 }

@@ -38,10 +38,11 @@ $s_value = ( is_search() ) ? 'value="' . get_search_query() . '"' : '';
 					}
 					?>
 					<div class='search_result'>
-						<a class='search_result_title' href='<?php echo the_permalink(); ?>'>
-							<?php the_title(); ?>
-						</a>
-						<br />
+						<?php if ( ! empty( get_the_title() ) ) : ?>
+							<a class='search_result_title' href='<?php echo the_permalink(); ?>'>
+								<?php the_title(); ?>
+							</a>
+						<?php endif; ?>
 						<a href='<?php echo the_permalink(); ?>' class='search_result_link'>
 							<?php echo the_permalink(); ?>
 						</a>

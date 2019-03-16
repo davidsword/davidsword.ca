@@ -18,7 +18,7 @@
 			foreach ( $terms as $term ) {
 				$link = get_term_link( $term->term_id, 'category' );
 				?>
-				<a href='<?php echo $link; ?>'>#<?php echo $term->name; ?></a>
+				<a href='<?php echo $link; ?>'>#<?php echo $term->slug; ?></a>
 				<?php
 			}
 			?>

@@ -1,11 +1,11 @@
 header#head {
 	h1 {
-		width: 200px;
-		padding: 0;margin: 0;
+		padding: 0;
+		margin: 0;
 		border: none;
 		position: relative;
-		padding-left: 75px+(@space/2);
-		margin-left: -75px - (@space/2);
+		padding-left: 95px;
+		margin-left: -95px;
 		line-height: 1em;
 		&:before {
 			position: absolute;
@@ -33,7 +33,7 @@ header#head {
 			transition: 0.6s all ease;
 		}
 		.description {
-			display:inline-block;
+			display:block;
 			color: @gray;
 			font-size: 0.8em;
 		}
@@ -72,16 +72,15 @@ header#head {
 				&.current-menu-item>a,
 				&.current_page_ancestor>a,
 				&.current_page_item>a {
-
 					&:link,
 					&:visited {
 						color: fade( #000, 90% );
-						border-bottom: 1px solid fade( @mainColour, 50% );
+						border-bottom: 1px solid fade( @blue, 50% );
 					}
 				}
 
 				a.icon {
-					text-indent: -1000px;
+					text-indent: -@width;
 					width: 1.8rem;
 					height: 1.8rem;
 					background-size: 100%;
@@ -91,9 +90,7 @@ header#head {
 						opacity: 1;
 					}
 				}
-
-				// Sub nav
-				ul {
+				&>ul {
 					display: none ;
 					//@TODO
 				}
@@ -102,13 +99,22 @@ header#head {
 	}
 }
 
-// Responsive ---
+/**
+ * ==================================================================
+ * 📱 RESPONSIVE
+ * ------------------------------------------------------------------
+ */
 
 @media screen and (max-width: @tablet) {
 	header#head {
-		padding-left: 5%;
-		padding-right: 5%;
+		h1 {
+			margin-left: 0;
+		}
 	}
+}
+
+@media screen and (max-width: @tablet) {
+
 }
 
 @media screen and (max-width: @phone) {

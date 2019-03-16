@@ -1,6 +1,6 @@
 header#head {
-	padding: 10rem 0 10rem 10rem;
-    width: calc( ( ( 100vw - 20rem ) * .25 ) );
+	padding: @spaceLayout 0 @spaceLayout @spaceLayout;
+    width: calc( ( ( 100vw - @spaceLayout ) * .25 ) );
 	display: flex;
 	overflow: auto;
 	position: fixed;
@@ -12,10 +12,8 @@ header#head {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		//justify-content: space-between;
 		& > * {
 			display: block;
-			//flex-grow: 1;
 		}
 		h1 {
 			margin-bottom: 3rem;
@@ -26,7 +24,6 @@ header#head {
 				flex: 2;
 			}
 			&#sec {
-				//margin-top: 10rem;
 				align-self: flex-end;
 			}
 		}
@@ -35,8 +32,8 @@ header#head {
 
 footer,
 main {
-	padding: 10rem 10rem 2rem 0;
-	width: calc( ( ( 100vw - 20rem ) * .75 ) - 4rem );
+	padding: @spaceLayout @spaceLayout 0 0;
+	width: calc( ( ( 100vw - @spaceLayout ) * .7 ) - 4rem );
 	margin: 0 0 0 auto;
 	display: block;
     position: relative;
@@ -44,70 +41,60 @@ main {
 }
 
 footer {
-    padding-bottom: 2rem;
+	padding-top: @spaceLayout/2;
+    padding-bottom: @spaceLayout;
 }
 
-
-
-
-@media screen and (max-width: 1440px) {
+/**
+ * ==================================================================
+ * 📱 RESPONSIVE
+ * ------------------------------------------------------------------
+ */
+ @media screen and (max-width: @laptop) {
 	header#head {
-		.head__inner {
-			& > * {
-			}
-			h1 {
-			}
-			nav {
-				&#sec {
-				}
-			}
-		}
+		padding: @spaceLayout*0.75 0 @spaceLayout*0.75 @spaceLayout*0.75;
+		width: calc( ( ( 100vw - @spaceLayout*0.75 ) * .25 ) );
 	}
 	footer,
 	main {
+		padding: @spaceLayout*0.75 @spaceLayout*0.75 @spaceLayout*0.75 0;
+		width: calc( ( ( 100vw - @spaceLayout*0.75 ) * .7 ) - 4rem );
 	}
 	footer {
+		padding-bottom: @spaceLayout*0.75;
 	}
-}
+ }
 
 @media screen and (max-width: @tablet) {
 	header#head {
+		border: 1px solid red;
+		padding: @spaceLayout*0.5;
+		width: 100%;
+		bottom: auto;
+		width: 100%;
+		position: relative;
+		box-sizing: border-box;
 		.head__inner {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
 			& > * {
-			}
-			h1 {
+				flex: 1 !important; // undoing `flex 2`.
 			}
 			nav {
 				&#sec {
+					align-self: auto; // undoing flex-end
 				}
 			}
 		}
 	}
 	footer,
 	main {
+		width: auto;
+		padding: @spaceLayout*0.5;
 	}
-	footer {
-	}
-
 }
 
 @media screen and (max-width: @phone) {
-	header#head {
-		.head__inner {
-			& > * {
-			}
-			h1 {
-			}
-			nav {
-				&#sec {
-				}
-			}
-		}
-	}
-	footer,
-	main {
-	}
-	footer {
-	}
 
 }

@@ -3,7 +3,7 @@ footer {
 		padding: 0;
 		text-align: center;
 		font-size: 0.8em;
-		max-width: 1000px; // @TODO same as `article`, use a var.
+		max-width: @width;
 		&,
 		a:link,
 		a:visited {
@@ -19,17 +19,20 @@ footer {
 
 		a:hover,
 		a:active {
-			color: @secColour;
+			color: @red;
 		}
 	}
 }
 
-// Responsive ---
+/**
+ * ==================================================================
+ * 📱 RESPONSIVE
+ * ------------------------------------------------------------------
+ */
 
 @media screen and (max-width: @tablet) {
 	footer {
-		// padding-left: 5%;
-		// padding-right: 5%;
+
 	}
 
 }

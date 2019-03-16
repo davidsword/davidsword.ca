@@ -9,9 +9,9 @@ main {
 		}
 
 		article {
-			max-width: 1000px;
-			padding-bottom: @space*2;
-			margin-bottom: @space*3;
+			max-width: @width;
+			padding-bottom: @space;
+			margin-bottom: @space*2;
 			border-bottom: 1px solid fade(@black, 10%);
 			&:last-child {
 				border-bottom: none;
@@ -32,73 +32,15 @@ main {
 			display: none; // pages don't need a title. too redundent.
 		}
 
-		// .grid {
-		// 	display: block;
-		// 	overflow: hidden;
-		// 	align-items: center;
-		// 	max-width: 100%;
-
-		// 	&>a {
-		// 		border: none;
-		// 	}
-
-		// 	img {
-		// 		max-width: 100%;
-		// 	}
-
-			// &.images {
-			// 	&>a[data-lightbox] {
-			// 		display: block;
-			// 		float: left;
-			// 		width: ~"calc(25% - 14px)";
-			// 		margin: 7px;
-			// 		background-size: cover;
-			// 		background-position: center;
-			// 		background-repeat: no-repeat;
-
-			// 		&:before {
-			// 			// keep things square
-			// 			content: '';
-			// 			padding-top: 100%;
-			// 			float: left;
-			// 		}
-			// 	}
-			// }
-
-	}
-
-	.navigation {
-		text-align: center;
-		overflow: hidden;
-		clear: both;
-		padding: 0 0 0 0;
-		margin-top: 30px;
-		max-width: 1000px; //same as `article` and `footer`. @TODO make into a var.
-
-		a,
-		span.current,
-		span.dots {
-			display: inline-block;
-			padding: 4px 0;
-			margin: 0 6px;
-			margin-right: 7px;
-		}
-
-		span.current {
-			color: @black;
-			border-color: @black;
-		}
-
-		span.dots {
-			border: none !important;
-		}
-
 	}
 }
 
 /**
+ * ==================================================================
  * 📱 RESPONSIVE
+ * ------------------------------------------------------------------
  */
+
 @media screen and (max-width: @tablet) {
 
 

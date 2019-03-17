@@ -2,8 +2,8 @@
 /**
  * Default content output.
  *
- * The template hiarchy is not being optimized for this site. Everything
- * is output in a very simple mannor, so most of the changes in content
+ * The template hiarchy is not being used for this site. Everything
+ * is output in a very simple mannor so most of the changes in content
  * reside in loading the correct `partials/*.php` files.
  *
  * @package davidsword-ca
@@ -21,27 +21,36 @@ get_header();
 
 			<?php
 			if ( is_404() ) :
+
 				get_template_part( 'partials/article', '404' );
+
 			elseif ( have_posts() ) :
+
 				while ( have_posts() ) :
 					the_post();
 					get_template_part( 'partials/article', get_post_type() );
 					if ( ! is_page() ) {
-						get_template_part( 'partials/post' , 'nav' );
+						get_template_part( 'partials/post', 'nav' );
 					}
 				endwhile;
-			else :
-				get_template_part( 'partials/article', 'not-found' );
-			endif;
-			?>
 
-			<?php if ( ! is_page() ) { ?>
+			else :
+
+				get_template_part( 'partials/article', 'not-found' );
+
+			endif;
+
+			if ( ! is_page() ) { ?>
+
 				<div class='clear navigation'>
-					<?php echo paginate_links([
+					<?php
+					echo paginate_links( [
 						'prev_text' => '« Prev',
 						'next_text' => 'Next »',
-					]); ?>
+					] );
+					?>
 				</div><!--/navigation-->
+
 			<?php } ?>
 
 		</section>

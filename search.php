@@ -2,7 +2,8 @@
 /**
  * Search template.
  *
- * @TODO This should all be changed and follow the <article> and partials/ design elsewhere.
+ * @TODO redesign the page to work off of index using `get_template_part()`
+ * and `partials/*` logic.
  *
  * @package davidsword-ca
  */

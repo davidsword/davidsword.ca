@@ -6,14 +6,11 @@ Author: 	  David Sword
 Author URI:   https://davidsword.ca/
 Version:  	  3.0.1
 License: 	  GPLv2 or later
-License URI:  https://github.com/davidsword/davidsword.ca-2018/blob/master/LICENSE
+License URI:  https://github.com/davidsword/davidsword.ca/blob/master/LICENSE
+
+Compiled from LESSCSS via GruntJS.
+run `grunt watch` during dev
+run `grunt less`  for build
 */
 
-/**
- * Compiled from LESSCSS via GruntJS.
- *
- * run `grunt watch` during dev
- * run `grunt less`  for build
- *
- **/
 @import 'assets/css/dist/style.css';

@@ -1,4 +1,8 @@
-/* Search Form ---------------------------------- */
+/**
+ * Styles for Search.
+ *
+ * @TODO This should all be changed and follow the <article> and partials/ design elsewhere.
+ */
 #searchform {
 	border: 1px solid fade(@black, 30%);
 	background: @white;
@@ -51,7 +55,7 @@
 
 	a:link,
 	a:visited {
-		border-color: transparent;
+		border: none !important; // @TODO change at somepoint.
 	}
 
 	a.search_result_title {
@@ -61,10 +65,11 @@
 	}
 
 	a.search_result_link {
-		display: inline-block;
+		display: block;
 		color: @green;
 		font-size: 0.7em;
-		line-height: 1em;
+		line-height: 1.8em;
+		margin-bottom: 0 !important; // @TODO should look more like normal posts.
 	}
 
 	a.search_result_title,

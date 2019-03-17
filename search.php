@@ -2,6 +2,8 @@
 /**
  * Search template.
  *
+ * @TODO This should all be changed and follow the <article> and partials/ design elsewhere.
+ *
  * @package davidsword-ca
  */
 
@@ -39,9 +41,10 @@ $s_value = ( is_search() ) ? 'value="' . get_search_query() . '"' : '';
 					?>
 					<div class='search_result'>
 						<?php if ( ! empty( get_the_title() ) ) : ?>
-							<a class='search_result_title' href='<?php echo the_permalink(); ?>'>
+							<h2><a class='search_result_title' href='<?php echo the_permalink(); ?>'>
 								<?php the_title(); ?>
 							</a>
+							</h2>
 						<?php endif; ?>
 						<a href='<?php echo the_permalink(); ?>' class='search_result_link'>
 							<?php echo the_permalink(); ?>

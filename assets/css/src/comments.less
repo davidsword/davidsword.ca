@@ -1,3 +1,7 @@
+article.comment-body {
+	margin-bottom:0;
+}
+
 ol.comment-list,
 ol.comment-list li {
 	list-style: none;
@@ -8,6 +12,7 @@ ol.comment-list li {
 
 footer.comment-meta {
 	padding: 0;
+	line-height: 1.3em;
 }
 
 .comment-author.vcard img {
@@ -19,11 +24,14 @@ footer.comment-meta {
 
 .comment-metadata {
 	.post_meta;
+	font-size: 0.8em;
 }
 
 .comment-content {
-	padding-left: 72px;
+	padding-left: 80px;
 	padding-top: 10px;
+	clear: both;
+	max-width: 600px;
 }
 
 h3.comment-reply-title {
@@ -83,12 +91,8 @@ h2.comments-title {
  * ------------------------------------------------------------------
  */
 
-@media screen and (max-width: @tablet) {
-	.comment-author.vcard img {
-		width: 42px;
-		height: 42px;
-	}
+@media screen and (max-width: @phone) {
 	.comment-content {
-		padding-left: 78px;
+		padding-left: 0;
 	}
 }

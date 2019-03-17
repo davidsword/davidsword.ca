@@ -159,7 +159,7 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 		echo '</a>';
 	}
 	if ( 'url_name' === $column_name ) {
-		echo urldecode( get_post( $id )->post_name );
+		echo esc_html( urldecode( get_post( $id )->post_name ) );
 	}
 }, 999, 2);
 
@@ -236,11 +236,6 @@ add_action('admin_head',function () {
 });
 
 /**
- * PLUGIN: header and footer, prevent PHP exc
- */
-add_filter( 'hefo_php_exec', '__return_false' );
-
-/**
  * Block Bad Queries
  */
 dsca_bbq_badrequests();
@@ -273,8 +268,7 @@ function dsca_bbq_badrequests() {
  * No PRIVATE posts on front end.
  */
 add_filter('posts_where', function ($where) {
-    if( is_admin() ) return $where;
-
-    global $wpdb;
-    return " $where AND {$wpdb->posts}.post_status != 'private' ";
+	if( is_admin() ) return $where;
+	global $wpdb;
+	return " $where AND {$wpdb->posts}.post_status != 'private' ";
 });

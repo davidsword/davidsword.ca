@@ -3,7 +3,7 @@
  * For IMAGEs and ART custom post types
  *
  * @TODO revisit this.
- * @package dsca
+ * @package davidsword-ca
  */
 
 /**

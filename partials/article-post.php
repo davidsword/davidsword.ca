@@ -1,14 +1,7 @@
-<?php
-/**
- * Content for Loop of POST post type.
- *
- * @package davidsword-ca
- */
-?>
 <article <?php post_class(); ?>>
 	<header class='post_meta'>
 		<time class='post_meta__date'>
-			<a href='<?php echo get_permalink(); ?>'>
+			<a href='<?php echo esc_attr( get_permalink() ); ?>'>
 				<?php echo get_the_date(); ?>
 			</a>
 		</time>
@@ -18,7 +11,7 @@
 			foreach ( $terms as $term ) {
 				$link = get_term_link( $term->term_id, 'category' );
 				?>
-				<a href='<?php echo $link; ?>'>#<?php echo $term->slug; ?></a>
+				<a href='<?php echo esc_attr( $link ); ?>'>#<?php echo esc_html( $term->slug ); ?></a>
 				<?php
 			}
 			?>

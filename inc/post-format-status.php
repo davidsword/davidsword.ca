@@ -1,5 +1,4 @@
 <?php
-
 /**
  * STATUS remove title from RSS feed.
  */
@@ -9,8 +8,6 @@ add_filter('the_title_rss', function ( $title, $id ) {
 	}
 	return $title;
 }, 10, 2 );
-
-
 
 /**
  * Disable comments on STATUS posts

@@ -2,7 +2,7 @@
 /**
  * Custom page for PROJECTs post type
  *
- * @package dsca
+ * @package davidsword-ca
  */
 
 /**
@@ -125,8 +125,6 @@ function dsca_get_flag( $post_id = false, $only_slug = false ) {
 	}
 	return false;
 }
-
-
 
 /**
  * Add projects to main RSS feed.

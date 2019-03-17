@@ -4,7 +4,7 @@
  *
  * See blockdocs for details.
  *
- * @package dsca
+ * @package davidsword-ca
  */
 
 /**

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Chop the length of a string without breaking word.
  *

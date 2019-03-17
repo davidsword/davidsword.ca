@@ -1,9 +1,6 @@
 <?php
 /**
  * Get the featured image
- *
- * @param [type] $id
- * @return void
  */
 function get_dsca_featured_image( $id = null, $size = 'full' ) {
 	$id = ! $id ? get_the_ID() : intval( $id );
@@ -19,10 +16,7 @@ function get_dsca_featured_image( $id = null, $size = 'full' ) {
 }
 
 /**
- * Get the featured image
- *
- * @param [type] $id
- * @return void
+ * Get and print the featured image.
  */
 function dsca_featured_image( $id = null, $size = 'full' ) {
 	echo get_dsca_featured_image( $id, $size );

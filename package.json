@@ -2,7 +2,7 @@
   "name": "davidsword-ca",
   "version": "1.0.15",
   "description": "theme for davidsword.ca",
-  "main": "assests",
+  "main": "assets",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

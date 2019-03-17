@@ -12,8 +12,8 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"./assests/css/dist/style-editor.css": "./assests/css/src/style-editor.less",
-					"./assests/css/dist/style.css":        "./assests/css/src/style.less"
+					"./assets/css/dist/style-editor.css": "./assets/css/src/style-editor.less",
+					"./assets/css/dist/style.css":        "./assets/css/src/style.less"
 				}
 			}
 		},
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		/*uglify: {
 			my_target: {
 				files: {
-					'./assests/js/assests': ['./assests/js/*.js', '!./assests/js/assests']
+					'./assets/js/index.js': ['./assets/js/*.js', '!./assets/js/index.js']
 				}
 			}
 		},*/
@@ -31,11 +31,11 @@ module.exports = function(grunt) {
 		// running `grunt watch` will watch for changes and run either.
 		watch: {
 			lesswatch: {
-				files: "./assests/css/src/*.less",
+				files: "./assets/css/src/*.less",
 				tasks: ["less"]
 			}
 			/*jswatch: {
-				files: "./assests/js/*.js",
+				files: "./assets/js/*.js",
 				tasks: ["uglify"]
 			}*/
 		},

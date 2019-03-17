@@ -223,7 +223,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/*  ---------------------------------- */
 	wp_enqueue_script(
 		'dsca',
-		get_template_directory_uri() . '/assets/js/assets',
+		get_template_directory_uri() . '/assets/js/index.js',
 		[ 'jquery', 'featherlight', 'dsca_gist', 'featherlight_swipe' ],
 		$ver,
 		true

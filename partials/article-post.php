@@ -23,7 +23,7 @@
 			}
 			?>
 		</span>
-		<?php edit_post_link() ?>
+		<?php edit_post_link('#edit-this', ' &nbsp; ') ?>
 	</header>
 	<div class='content'>
 		<?php

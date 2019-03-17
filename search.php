@@ -51,7 +51,7 @@ $s_value = ( is_search() ) ? 'value="' . get_search_query() . '"' : '';
 							<?php echo the_permalink(); ?>
 						</a>
 						<p>
-							<?php echo dsca_return_chopstring( $text, 150 ); ?>
+							<?php echo esc_html( dsca_return_chopstring( $text, 150 ) ); ?>
 						</p>
 					</div>
 

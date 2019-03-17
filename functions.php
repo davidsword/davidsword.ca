@@ -62,7 +62,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	// wp_enqueue_script(
 		// 'swrdbs_js',
-		// get_template_directory_uri() . '/assests/js/dist/index.js',
+		// get_template_directory_uri() . '/assets/js/dist/assets',
 		// [ 'jquery' ],
 		// $ver,
 		// true
@@ -81,12 +81,12 @@ add_action( 'wp_enqueue_scripts', function () {
  *
  * Just for gutenberg. Compiled with Grunt.
  *
- * @see assests/css/style-editor.less
+ * @see assets/css/style-editor.less
  */
 // add_action( 'enqueue_block_editor_assets', function () {
 // 	wp_enqueue_style(
 // 		'dsca-editor-css',
-// 		get_template_directory_uri() . '/assests/css/dist/style-editor.css',
+// 		get_template_directory_uri() . '/assets/css/dist/style-editor.css',
 // 		[ 'wp-edit-blocks' ],
 // 		time()
 // 	);
@@ -223,7 +223,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/*  ---------------------------------- */
 	wp_enqueue_script(
 		'dsca',
-		get_template_directory_uri() . '/inc/assets/index.js',
+		get_template_directory_uri() . '/assets/js/assets',
 		[ 'jquery', 'featherlight', 'dsca_gist', 'featherlight_swipe' ],
 		$ver,
 		true
@@ -232,7 +232,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/* GIST ---------------------------------- */
 	wp_enqueue_script(
 		'dsca_gist',
-		get_template_directory_uri() . '/inc/assets/gist.js',
+		get_template_directory_uri() . '/assets/js/vendor/gist.js',
 		[ 'jquery' ],
 		$ver,
 		true
@@ -241,7 +241,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/* LIGHTBOX ---------------------------------- */
 	wp_enqueue_script(
 		'featherlight',
-		get_template_directory_uri() . '/inc/assets/featherlight.js',
+		get_template_directory_uri() . '/assets/js/vendor/featherlight.js',
 		[ 'jquery', 'featherlight_swipe' ],
 		$ver,
 		true
@@ -249,7 +249,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	add_action( 'wp_footer', function() use ( $ver ) {
 		wp_enqueue_style(
 			'featherlight',
-			get_template_directory_uri() . '/inc/assets/featherlight.css',
+			get_template_directory_uri() . '/assets/vendor/featherlight.css',
 			[],
 			$ver
 		);
@@ -258,7 +258,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/* SWIPE ---------------------------------- */
 	wp_enqueue_script(
 		'featherlight_swipe',
-		get_template_directory_uri() . '/inc/assets/swipe.js',
+		get_template_directory_uri() . '/assets/js/vendor/swipe.js',
 		[ 'jquery' ],
 		$ver,
 		true

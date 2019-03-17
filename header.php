@@ -1,6 +1,6 @@
 <?php
 /**
- * Header
+ * Header.
  *
  * @package davidsword-ca
  */
@@ -15,10 +15,9 @@ defined( 'ABSPATH' ) || exit;
 
 👋🏻 Why hello there!
 
-v<?php echo wp_get_theme()->get( 'Version' ); ?> - synced with WPPusher
-via https://github.com/davidsword/davidsword.ca-2018
-
-🌷 Have a great rest of your day!
+v<?php echo wp_get_theme()->get( 'Version' ); ?>
+https://github.com/davidsword/davidsword.ca
+Synced to Pressable with https://wppusher.com/
 
 -->
 

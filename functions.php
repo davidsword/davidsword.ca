@@ -18,15 +18,18 @@ require 'inc/shortcodes.php';
  * Add various features for theme
  */
 add_action( 'after_setup_theme', function () {
-	add_theme_support( 'custom-logo', [
-		'height'      => 100,
-		'width'       => 400,
-		'flex-height' => true,
-		'flex-width'  => true,
-		'header-text' => [ 'site-title', 'site-description' ],
-	]);
+
 	add_theme_support( 'post-thumbnails', [ 'post', 'page' ] );
 	add_theme_support( 'html5', [ 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ] );
+
+	/**
+	 * Status has no title, just a blurb.
+	 * Image is just an image, not title or blurb.
+	 *
+	 * These formats typically stay in their own categories, but this is more future-friendly
+	 * to specify how the post should look via a post_format instead of a category.
+	 */
+	add_theme_support( 'post-formats', array( 'status', 'image' ) );
 
 	// gutenberg.
 	add_theme_support( 'align-wide' );
@@ -58,15 +61,7 @@ register_nav_menu( 'sec-nav',  'Secondary Navigation' );
 add_action( 'wp_enqueue_scripts', function () {
 
 	$is_localhost = ( 'vvv.davidswor' === $_SERVER['HTTP_HOST'] );
-	$ver = ( WP_DEBUG || $is_localhost ) ? time() : wp_get_theme()->get( 'Version' );
-
-	// wp_enqueue_script(
-		// 'swrdbs_js',
-		// get_template_directory_uri() . '/assets/js/dist/assets',
-		// [ 'jquery' ],
-		// $ver,
-		// true
-	// );
+	$ver = ( SCRIPT_DEBUG || $is_localhost ) ? time() : wp_get_theme()->get( 'Version' );
 
 	wp_enqueue_style(
 		'main',
@@ -74,135 +69,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		[],
 		$ver
 	);
-});
-
-
-/**
- * Adjust posts. Add formats and excerpts.
- */
-add_action( 'init', function() {
-	add_post_type_support( 'page', 'excerpt' );
-	/**
-	 * Status has no title, just a blurb.
-	 * Image is just an image, not title or blurb.
-	 *
-	 * These formats typically stay in their own categories, but this is more future-friendly
-	 * to specify how the post should look via a post_format instead of a category.
-	 */
-	add_theme_support( 'post-formats', array( 'status', 'image' ) );
-} );
-
-/**
- * Remove tags from POST post type.
- *
- * I never use them, it's overkill with categories already being used so well.
- */
-add_action('init', function () {
-	unregister_taxonomy_for_object_type( 'post_tag', 'post' );
-});
-
-/**
- * Allow featured image.
- */
-add_action( 'after_setup_theme', function () {
-	add_theme_support( 'post-thumbnails', [ 'post' ] );
-});
-
-/**
- * Display the post thumbnail in the edit page table for eaiser management
- *
- * @param array $columns from wp api.
- * @return array
- */
-function ds_makethumbnailcol( $columns ) {
-	unset( $columns['date'] );
-	unset( $columns['comments'] );
-	unset( $columns['author'] );
-	$columns['img_thumbnail'] = '';
-	$columns['url_name'] = '';
-	return $columns;
-}
-add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
-add_filter( 'manage_projects_posts_columns', 'ds_makethumbnailcol' );
-
-/**
- * Display the post thumbnail in the edit page table for eaiser management
- */
-add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
-	if ( 'img_thumbnail' === $column_name ) {
-		echo "<a href='" . get_edit_post_link() . "'>";
-		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
-		echo '</a>';
-	}
-	if ( 'url_name' === $column_name ) {
-		echo urldecode( get_post( $id )->post_name );
-	}
-}, 999, 2);
-
-/**
- * Dynamically Generate Labels for cpts admin interface.
- *
- * I'm really not sure why core doesn't do this.
- *
- * @param string $cpt name of the CPT, singular.
- * @return array of labels
- */
-function dsca_make_labels( $cpt ) {
-	return [
-		'name'               => $cpt,
-		'singular_name'      => $cpt,
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New ' . $cpt,
-		'edit_item'          => 'Edit ' . $cpt,
-		'new_item'           => 'New ' . $cpt,
-		'all_items'          => 'All ' . $cpt,
-		'view_item'          => 'View ' . $cpt,
-		'search_items'       => 'Search ' . $cpt,
-		'not_found'          => 'No ' . $cpt . ' found',
-		'not_found_in_trash' => 'No ' . $cpt . ' found in Trash',
-		'parent_item_colon'  => '',
-		'menu_name'          => $cpt,
-	];
-}
-
-/**
- * Convert a GIST link the the_content into an embed for `assets/gist.js`
- *
- * This works for singual gists, as well as gists that have multiple file.
- * Pasting a specific file will work.
- *
- * @param $content string the_content of a page/post
- */
-add_filter('the_content', function ( $content ) {
-
-	$pattern = '/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})[\n|<\/p]/';
-	preg_match_all( $pattern, $content, $matches );
-
-	foreach ( $matches[0] as $gist_url ) {
-		$pos = strpos( $gist_url, '#' );
-		if ( false === $pos ) {
-			$content = preg_replace(
-				"/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})([\n|<\/p>])/",
-				"<code class='oembed-gist' data-gist-id=$1 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>$2",
-				$content
-			);
-		} else {
-			$content = preg_replace(
-				"/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9-]{24,36})\#([a-zA-Z0-9#-\.]{1,99})([\n|<\/p>])/",
-				"<code class='oembed-gist' data-gist-id=$1 data-gist-file=$2 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>$3",
-				$content
-			);
-		}
-	}
-	return $content;
-});
-
-/**
- * Add in scripts.
- */
-add_action( 'wp_enqueue_scripts', function () {
-
-	$ver = ( WP_DEBUG ) ? time() : wp_get_theme()->get( 'Version' );
 
 	/*  ---------------------------------- */
 	wp_enqueue_script(
@@ -247,6 +113,86 @@ add_action( 'wp_enqueue_scripts', function () {
 		$ver,
 		true
 	);
+});
+
+
+/**
+ * Adjust posts. Add formats and excerpts.
+ */
+add_action( 'init', function() {
+	add_post_type_support( 'page', 'excerpt' );
+} );
+
+/**
+ * Remove tags from POST post type.
+ *
+ * I never use them, it's overkill with categories already being used so well.
+ */
+add_action('init', function () {
+	unregister_taxonomy_for_object_type( 'post_tag', 'post' );
+});
+
+/**
+ * Display the post thumbnail in the edit page table for eaiser management
+ *
+ * @param array $columns from wp api.
+ * @return array
+ */
+function ds_makethumbnailcol( $columns ) {
+	unset( $columns['date'] );
+	unset( $columns['comments'] );
+	unset( $columns['author'] );
+	$columns['img_thumbnail'] = '';
+	$columns['url_name'] = '';
+	return $columns;
+}
+add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
+add_filter( 'manage_projects_posts_columns', 'ds_makethumbnailcol' );
+
+/**
+ * Display the post thumbnail in the edit page table for eaiser management
+ */
+add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
+	if ( 'img_thumbnail' === $column_name ) {
+		echo "<a href='" . get_edit_post_link() . "'>";
+		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
+		echo '</a>';
+	}
+	if ( 'url_name' === $column_name ) {
+		echo urldecode( get_post( $id )->post_name );
+	}
+}, 999, 2);
+
+/**
+ * Convert a GIST link the the_content into an embed for `assets/gist.js`
+ *
+ * This works for singual gists, as well as gists that have multiple file.
+ * Pasting a specific file will work.
+ *
+ * @param $content string the_content of a page/post
+ */
+add_filter('the_content', function ( $content ) {
+
+	$pattern = '/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})[\n|<\/p]/';
+	preg_match_all( $pattern, $content, $matches );
+
+	foreach ( $matches[0] as $gist_url ) {
+		$pos = strpos( $gist_url, '#' );
+		if ( false === $pos ) {
+			$content = preg_replace(
+				"/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9#-\.]{24,99})([\n|<\/p>])/",
+				"<code class='oembed-gist' data-gist-id=$1 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>$2",
+				$content
+			);
+		} else {
+			$content = preg_replace(
+				"/https:\/\/gist\.github\.com\/davidsword\/([a-zA-Z0-9-]{24,36})\#([a-zA-Z0-9#-\.]{1,99})([\n|<\/p>])/",
+				"<code class='oembed-gist' data-gist-id=$1 data-gist-file=$2 data-gist-hide-footer=true data-gist-show-loading=false gist-enable-cache=true></code>$3",
+				$content
+			);
+		}
+	}
+	return $content;
 });
 
 /**

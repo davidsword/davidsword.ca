@@ -1,6 +1,6 @@
 {
   "name": "davidsword-ca",
-  "version": "1.0.15",
+  "version": "3.0.1",
   "description": "theme for davidsword.ca",
   "main": "assets",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidsword/davidsword.ca-2018.git"
+    "url": "git+https://github.com/davidsword/davidsword.ca.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davidsword/davidsword.ca-2018/issues"
+    "url": "https://github.com/davidsword/davidsword.ca/issues"
   },
-  "homepage": "https://github.com/davidsword/davidsword.ca-2018#readme",
+  "homepage": "https://github.com/davidsword/davidsword.ca#readme",
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-less": "^2.0.0",

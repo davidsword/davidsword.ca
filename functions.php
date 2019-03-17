@@ -76,22 +76,6 @@ add_action( 'wp_enqueue_scripts', function () {
 	);
 });
 
-/**
- * Enquque Editor Script
- *
- * Just for gutenberg. Compiled with Grunt.
- *
- * @see assets/css/style-editor.less
- */
-// add_action( 'enqueue_block_editor_assets', function () {
-// 	wp_enqueue_style(
-// 		'dsca-editor-css',
-// 		get_template_directory_uri() . '/assets/css/dist/style-editor.css',
-// 		[ 'wp-edit-blocks' ],
-// 		time()
-// 	);
-// }, 99 );
-
 
 /**
  * Adjust posts. Add formats and excerpts.

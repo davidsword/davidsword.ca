@@ -37,7 +37,10 @@ get_header();
 
 			<?php if ( ! is_page() ) { ?>
 				<div class='clear navigation'>
-					<?php echo paginate_links(); ?>
+					<?php echo paginate_links([
+						'prev_text' => '« Prev',
+						'next_text' => 'Next »',
+					]); ?>
 				</div><!--/navigation-->
 			<?php } ?>
 

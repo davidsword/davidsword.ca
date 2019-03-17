@@ -1,26 +1,19 @@
-/**
- * @TODO reduce the nesting.
- */
-main {
-	section {
-		.dsca_featured_image {
-			margin-bottom: @space;
-		}
-
-		article {
-			max-width: @width;
-			padding-bottom: @space;
-			margin-bottom: @space*2;
-			border-bottom: 1px solid fade(@black, 10%);
-			&:last-child {
-				border-bottom: none;
-			}
-		}
-		.title--page {
-			display: none; // pages don't need a title. too redundent.
-		}
-
+article {
+	max-width: @width;
+	padding-bottom: @space;
+	margin-bottom: @space*2;
+	border-bottom: 1px solid fade(@black, 10%);
+	&:last-child {
+		border-bottom-color: transparent;
 	}
+}
+
+.dsca_featured_image {
+	margin-bottom: @space;
+}
+
+.title--page {
+	display: none; // pages don't need a title. too redundent.
 }
 
 .post_meta {
@@ -53,11 +46,5 @@ main {
 }
 
 @media screen and (max-width: @phone) {
-
-	main .navigation a.prev:after {
-		content: '';
-		display: block;
-		clear: both;
-	}
 
 }

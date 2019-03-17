@@ -9,18 +9,21 @@
     margin-top: 30px;
     max-width: @width;
 
-    a,
+    a:link,
+    a:visited,
     span.current,
     span.dots {
         display: inline-block;
         padding: 4px 0;
         margin: 0 6px;
         margin-right: 7px;
+        color: @gray;
+        border: none;
     }
 
     span.current {
         color: @black;
-        border-color: @black;
+        font-weight: 500;
     }
 
     span.dots {

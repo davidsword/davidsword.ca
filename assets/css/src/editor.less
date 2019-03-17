@@ -63,13 +63,13 @@ hr,
 HR.wp-block-separator {
 	// via gutenberg.
 	clear: both;
-	background: fade(@black, 40%);
+	margin-top: @space;
+	margin-bottom: @space*2;
+	background: fade(@black, 10%);
 	height: 1px;
-	line-height: 5px;
+	line-height: 1px;
 	outline: none;
 	border: 0;
-	max-width: 100px;
-	margin: @space auto; // the "20px" is from the padding-bottom of <p>.
 }
 
 blockquote {
@@ -177,7 +177,7 @@ figcaption {
 /* Custom Classes ---------------------------------- */
 
 .has-medium-font-size {
-	font-size: 2rem;
+	font-size: 1.4em;
 	line-height: 1.8em;
 }
 

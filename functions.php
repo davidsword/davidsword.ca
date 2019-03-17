@@ -207,7 +207,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/*  ---------------------------------- */
 	wp_enqueue_script(
 		'dsca',
-		get_template_directory_uri() . '/assets/js/index.js',
+		get_template_directory_uri() . '/assets/js/dist/index.js',
 		[ 'jquery', 'featherlight', 'dsca_gist', 'featherlight_swipe' ],
 		$ver,
 		true

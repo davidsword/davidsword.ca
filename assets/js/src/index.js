@@ -3,7 +3,7 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 
 	// FIRE LIGHTBOX ----------------------------------
 	if (jQuery('.grid.images')) {
-		const gallery = jQuery('.grid.images a[data-lightbox]').featherlightGallery({
+		var gallery = jQuery('.grid.images a[data-lightbox]').featherlightGallery({
 			previousIcon: '&#9664;',
 			nextIcon: '&#9654;',
 			galleryFadeIn: 300,

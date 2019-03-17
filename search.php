@@ -55,10 +55,8 @@ $s_value = ( is_search() ) ? 'value="' . get_search_query() . '"' : '';
 						</p>
 					</div>
 
-			<?php endwhile; else :
-				// @TODO: this should be CSS, not inline.
-				?>
-				<p style='text-align:center;padding-bottom:100px;'>No posts found. Try another keyword instead.</p>
+			<?php endwhile; else : ?>
+				<p>No posts found. Try another keyword instead.</p>
 			<?php endif; ?>
 
 		</section>

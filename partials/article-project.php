@@ -1,3 +1,12 @@
+<?php
+/**
+ * Article template for Projects custom post type.
+ *
+ * Supporting both single and archive type pages.
+ *
+ * @package davidsword-ca
+ */
+?>
 <article <?php post_class(); ?>>
 	<header class='post_meta'>
 		<span class='post_meta__tags'>

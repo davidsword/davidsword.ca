@@ -1,6 +1,8 @@
 <?php
 /**
- * Custom page for PROJECTs post type
+ * Custom page for PROJECTs post type.
+ *
+ * @TODO these extend the functionality of WordPress and should likely be a plugin.
  *
  * @package davidsword-ca
  */

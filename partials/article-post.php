@@ -1,3 +1,12 @@
+<?php
+/**
+ * Article template for posts with the Status format.
+ *
+ * Supporting both single and archive type pages
+ *
+ * @package davidsword-ca
+ */
+?>
 <article <?php post_class(); ?>>
 	<header class='post_meta'>
 		<time class='post_meta__date'>

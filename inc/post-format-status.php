@@ -1,5 +1,13 @@
 <?php
 /**
+ * Tweaks to integrate the `status` post format slightly different than normal.
+ *
+ * @TODO these extend the functionality of WordPress and should likely be a plugin.
+ *
+ * @package davidsword-ca
+ */
+
+/**
  * STATUS remove title from RSS feed.
  */
 add_filter('the_title_rss', function ( $title, $id ) {

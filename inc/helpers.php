@@ -1,5 +1,11 @@
 <?php
 /**
+ * Helper functions for the theme.
+ *
+ * @package davidsword-ca
+ */
+
+/**
  * Chop the length of a string without breaking word.
  *
  * Only chops if string is > chop length.

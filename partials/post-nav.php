@@ -1,4 +1,13 @@
-<?php if ( is_singular() ) : ?>
+<?php
+/**
+ * Single Posts navigation
+ *
+ * Use to toggle to next/prev post. Supports multiple Custom Post Types.
+ *
+ * @package davidsword-ca
+ */
+
+if ( is_singular() ) : ?>
 	<div class='clear navigation'>
 		<?php
 		if ( false && $is_post_paged ) {

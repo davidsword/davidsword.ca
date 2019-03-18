@@ -1,3 +1,10 @@
+<?php
+/**
+ * Content template for posts with no post format (deafult).
+ *
+ * @package davidsword-ca
+ */
+?>
 <h2>
 	<?php
 	if ( ! is_single() ) {

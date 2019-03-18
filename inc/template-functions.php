@@ -1,5 +1,11 @@
 <?php
 /**
+ * Functions to be used in the template to placehold/display data.
+ *
+ * @package davidsword-ca
+ */
+
+/**
  * Get the featured image
  */
 function get_dsca_featured_image( $id = null, $size = 'full' ) {

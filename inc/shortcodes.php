@@ -1,8 +1,8 @@
 <?php
 /**
- * Shortcodes for davidsword.ca
+ * Shortcodes for the theme.
  *
- * See blockdocs for details.
+ * @TODO these extend the functionality of WordPress and should likely be a plugin.
  *
  * @package davidsword-ca
  */

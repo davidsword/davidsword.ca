@@ -135,8 +135,8 @@ add_action('init', function () {
 /**
  * Display the post thumbnail in the edit page table for eaiser management
  *
- * @param array $columns from wp api.
- * @return array
+ * @param array  $columns from wp api.
+ * @return array $columns for wp api.
  */
 function ds_makethumbnailcol( $columns ) {
 	unset( $columns['date'] );

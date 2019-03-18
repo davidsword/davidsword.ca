@@ -14,6 +14,9 @@
 				<a href='<?php echo esc_attr( $link ); ?>'>#<?php echo esc_html( $term->slug ); ?></a>
 				<?php
 			}
+			if ( is_sticky() ) {
+				echo "#sticky";
+			}
 			?>
 		</span>
 		<?php edit_post_link('#edit-this', ' &nbsp; ') ?>

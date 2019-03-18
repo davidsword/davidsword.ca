@@ -57,6 +57,9 @@ $s_value = ( is_search() ) ? 'value="' . get_search_query() . '"' : '';
 
 			<?php endwhile; else : ?>
 				<p>No posts found. Try another keyword instead.</p>
+				<?php
+				// @TODO combine `get_template_part( 'partials/article', 'not-found' );`
+				?>
 			<?php endif; ?>
 
 		</section>

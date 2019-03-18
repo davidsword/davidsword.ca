@@ -1,7 +1,5 @@
 /**
- * Styles for Search.
- *
- * @TODO This should all be changed and follow the <article> and partials/ design elsewhere.
+ * Styles for Search page.
  */
 #searchform {
 	border: 1px solid fade(@black, 30%);
@@ -43,43 +41,25 @@
 	}
 }
 
-/* Search Results ---------------------------------- */
-.search_result {
-	border-bottom: 1px solid fade(@black, 10%);
-	margin-bottom: @space;
-	padding: @space 0 @space 0;
+.title--search {
+	font-weight: 400;
+	color: @blue;
+}
 
-	&:last-child {
-		border-bottom: none;
-	}
-
-	a:link,
-	a:visited {
-		border: none !important; // @TODO change at somepoint.
-	}
-
-	a.search_result_title {
-		display: block;
-		font-weight: 400;
-		color: @blue;
-	}
-
-	a.search_result_link {
-		display: block;
+.search_result_link {
+	color: @green;
+	&:link,
+	&:visited {
 		color: @green;
-		font-size: 0.7em;
-		line-height: 1.8em;
-		margin-bottom: 0 !important; // @TODO should look more like normal posts.
+		border-color: transparent;
 	}
+}
 
-	a.search_result_title,
-	a.search_result_link {
-
-		&:hover,
-		&:active {
-			color: @red;
-			border-color: @red;
-		}
+.title--search,
+.search_result_link {
+	&:hover,
+	&:active {
+		color: @red;
+		border-color: @red;
 	}
-
 }

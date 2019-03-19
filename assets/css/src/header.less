@@ -54,16 +54,11 @@ header#head {
 			}
 			&>li {
 				padding: 0 5px;
-				a:link {
+				& > a:link {
 					display: inline-block;
 					text-decoration: none;
 					border-bottom: 1px solid transparent;
 					color: fade( #000, 70% );
-				}
-
-				a:hover,
-				a:focus {
-					border-bottom: 1px solid fade( @black, 50% );
 				}
 
 				// Projects page highlighting on single.
@@ -71,6 +66,7 @@ header#head {
 				// Blog page highlighting on single.
 				.single-post &.menu-item-home > a,
 				// Normal highlighting.
+				&.current-menu-parent>a,
 				&.current-menu-item>a,
 				&.current_page_ancestor>a,
 				&.current_page_item>a {
@@ -81,20 +77,35 @@ header#head {
 					}
 				}
 
-				a.icon {
-					text-indent: -@width;
-					width: 1.8rem;
-					height: 1.8rem;
-					background-size: 100%;
-					opacity: 0.6;
-					display: inline-block;
-					&:hover {
-						opacity: 1;
+				&, ul li {
+					a:hover,
+					a:focus {
+						color: fade( @black, 90% );
+						border-bottom: 1px solid fade( @black, 50% );
 					}
 				}
+
 				&>ul {
-					display: none ;
-					//@TODO
+					display: none;
+				}
+				&.current-menu-parent ul {
+					display: block;
+					li {
+						padding-left: 1rem;
+						.post_meta;
+						a {
+							display: inline-block;
+						}
+						a:hover,
+						a:focus {
+							color: fade( @black, 70% );
+							border-bottom: 1px solid fade( @black, 50% );
+						}
+						&.current-menu-item a {
+							color: @black;
+							border-bottom: 1px solid fade( @blue, 50% );
+						}
+					}
 				}
 			}
 		}
@@ -107,39 +118,41 @@ header#head {
  * ------------------------------------------------------------------
  */
 
+@media screen and (min-width: @tablet) {
+
+}
+
 @media screen and (max-width: @tablet) {
 	header#head {
 		.head__inner {
 			display: block;
 			h1 {
-				//padding-left: 65px;
 				margin-left: 0;
 				&:before {
-				// 	position: absolute;
-				// 	left: 0;
 					top: -12px;
-				// 	content: "";
-				// 	display: inline-block;
-				// 	width: 50px;
-				// 	height: 50px;
 				}
-			}
-			& > * {
-
 			}
 			nav {
 				display: inline-block;
 				width: auto;
-				&#main {
-				}
 				&#sec {
 					float: right;
 				}
-				& > ul {
-					&, & > li {
-						display: inline-block;
-						clear: none;
-					}
+				ul,
+				ul li,
+				ul li ul,
+				ul li ul li {
+					display: inline;
+					clear: none;
+				}
+				ul li ul li {
+					font-size: 1em;
+					line-height: inherit;
+					padding-left: 0;
+				}
+				ul li,
+				ul li ul li {
+					padding: 0 5px;
 				}
 			}
 		}

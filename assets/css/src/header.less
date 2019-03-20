@@ -78,10 +78,13 @@ header#head {
 				}
 
 				&, ul li {
+					a {
+						border-bottom: 1px solid transparent;
+					}
 					a:hover,
 					a:focus {
 						color: fade( @black, 90% );
-						border-bottom: 1px solid fade( @black, 50% );
+						border-bottom-color: fade( @black, 50% );
 					}
 				}
 
@@ -99,11 +102,11 @@ header#head {
 						a:hover,
 						a:focus {
 							color: fade( @black, 70% );
-							border-bottom: 1px solid fade( @black, 50% );
+							border-bottom-color: fade( @black, 50% );
 						}
 						&.current-menu-item a {
 							color: @black;
-							border-bottom: 1px solid fade( @blue, 50% );
+							border-bottom-color: fade( @blue, 50% );
 						}
 					}
 				}

@@ -72,19 +72,26 @@ HR.wp-block-separator {
 	border: 0;
 }
 
+.wp-block-quote,
 blockquote {
 	padding: 0 0 0 @space;
 	margin: 0 0 @space 0;
 	border-left: 2px solid fade(@black, 30%);
-	quotes: none;
-
-	p:last-child {
-		padding-bottom: 0;
+	p {
+		font-size: 2rem;
+		font-family: Georgia, 'Times New Roman', Times, serif; // only use of serif.
+		font-style: italic;
+		padding-bottom: @space/2;
 	}
 
 	&:before,
 	&:after {
 		content: '';
+	}
+	cite {
+		font-size: .9em;
+		margin: 0;
+		color: @gray;
 	}
 }
 

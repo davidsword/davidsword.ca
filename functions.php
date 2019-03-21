@@ -118,7 +118,6 @@ function ds_makethumbnailcol( $columns ) {
 	unset( $columns['comments'] );
 	unset( $columns['author'] );
 	$columns['img_thumbnail'] = '';
-	$columns['url_name'] = '';
 	return $columns;
 }
 add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
@@ -132,9 +131,6 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 		echo "<a href='" . get_edit_post_link() . "'>";
 		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
 		echo '</a>';
-	}
-	if ( 'url_name' === $column_name ) {
-		echo esc_html( urldecode( get_post( $id )->post_name ) );
 	}
 }, 999, 2);
 

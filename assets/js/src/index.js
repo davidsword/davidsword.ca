@@ -1,16 +1,6 @@
 /* eslint-disable */
 jQuery(document).ready(function() { // executes when HTML-Document is loaded and DOM is ready
 
-	// FIRE LIGHTBOX ----------------------------------
-	if (jQuery('.grid.images')) {
-		var gallery = jQuery('.grid.images a[data-lightbox]').featherlightGallery({
-			previousIcon: '&#9664;',
-			nextIcon: '&#9654;',
-			galleryFadeIn: 300,
-			galleryFadeOut: 300
-		});
-	}
-
 	// remove "SHOW MORE" on small GISTS
 	if (jQuery('html body .oembed-gist')) {
 		jQuery('html body .oembed-gist').click(function(){

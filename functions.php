@@ -74,7 +74,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script(
 		'dsca',
 		get_template_directory_uri() . '/assets/js/dist/index.js',
-		[ 'jquery', 'featherlight', 'dsca_gist', 'featherlight_swipe' ],
+		[ 'jquery', 'dsca_gist' ],
 		$ver,
 		true
 	);
@@ -88,31 +88,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 
-	/* LIGHTBOX ---------------------------------- */
-	wp_enqueue_script(
-		'featherlight',
-		get_template_directory_uri() . '/assets/js/vendor/featherlight.js',
-		[ 'jquery', 'featherlight_swipe' ],
-		$ver,
-		true
-	);
-	add_action( 'wp_footer', function() use ( $ver ) {
-		wp_enqueue_style(
-			'featherlight',
-			get_template_directory_uri() . '/assets/vendor/featherlight.css',
-			[],
-			$ver
-		);
-	});
-
-	/* SWIPE ---------------------------------- */
-	wp_enqueue_script(
-		'featherlight_swipe',
-		get_template_directory_uri() . '/assets/js/vendor/swipe.js',
-		[ 'jquery' ],
-		$ver,
-		true
-	);
 });
 
 

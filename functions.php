@@ -74,7 +74,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script(
 		'dsca',
 		get_template_directory_uri() . '/assets/js/dist/index.js',
-		[ 'jquery', 'featherlight', 'dsca_gist', 'featherlight_swipe' ],
+		[ 'jquery', 'dsca_gist' ],
 		$ver,
 		true
 	);
@@ -88,31 +88,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 
-	/* LIGHTBOX ---------------------------------- */
-	wp_enqueue_script(
-		'featherlight',
-		get_template_directory_uri() . '/assets/js/vendor/featherlight.js',
-		[ 'jquery', 'featherlight_swipe' ],
-		$ver,
-		true
-	);
-	add_action( 'wp_footer', function() use ( $ver ) {
-		wp_enqueue_style(
-			'featherlight',
-			get_template_directory_uri() . '/assets/vendor/featherlight.css',
-			[],
-			$ver
-		);
-	});
-
-	/* SWIPE ---------------------------------- */
-	wp_enqueue_script(
-		'featherlight_swipe',
-		get_template_directory_uri() . '/assets/js/vendor/swipe.js',
-		[ 'jquery' ],
-		$ver,
-		true
-	);
 });
 
 
@@ -143,7 +118,6 @@ function ds_makethumbnailcol( $columns ) {
 	unset( $columns['comments'] );
 	unset( $columns['author'] );
 	$columns['img_thumbnail'] = '';
-	$columns['url_name'] = '';
 	return $columns;
 }
 add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
@@ -157,9 +131,6 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 		echo "<a href='" . get_edit_post_link() . "'>";
 		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
 		echo '</a>';
-	}
-	if ( 'url_name' === $column_name ) {
-		echo esc_html( urldecode( get_post( $id )->post_name ) );
 	}
 }, 999, 2);
 

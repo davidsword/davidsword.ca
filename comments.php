@@ -31,7 +31,8 @@ if ( post_password_required() ) {
 				'style'       => 'ol',
 				'short_ping'  => true,
 				'avatar_size' => 60,
-				'format'      => 'html5'
+				'format'      => 'html5',
+				'reply_text'  => 'Reply to this.'
 			));
 			?>
 		</ol><!-- .comment-list -->

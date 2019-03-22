@@ -88,6 +88,10 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 
+	if ( is_singular() ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+
 });
 
 

@@ -1,5 +1,9 @@
 article.comment-body {
 	margin-bottom:0;
+	padding-top: @space;
+	&, &:last-child {
+		border-bottom: 1px solid fade(@black, 10%);
+	}
 }
 
 ol.comment-list,
@@ -8,6 +12,10 @@ ol.comment-list li {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+
+ol.children {
+	margin-left: @space*2.5;
 }
 
 footer.comment-meta {
@@ -27,11 +35,16 @@ footer.comment-meta {
 	font-size: 0.8em;
 }
 
+.reply,
 .comment-content {
 	padding-left: 80px;
 	padding-top: 10px;
 	clear: both;
-	max-width: 600px;
+}
+
+.reply {
+	.post_meta;
+	padding-top: 0;
 }
 
 h3.comment-reply-title {
@@ -92,7 +105,11 @@ h2.comments-title {
  */
 
 @media screen and (max-width: @phone) {
+	.reply,
 	.comment-content {
 		padding-left: 0;
+	}
+	ol.children {
+		margin-left: @space*1.5;
 	}
 }

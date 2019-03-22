@@ -25,11 +25,12 @@ HR.wp-block-separator {
 
 /* Quotes ---------------------------------- */
 
+.wp-block-quote:not(.is-large):not(.is-style-large),
 .wp-block-quote,
 blockquote {
-	padding: 0 0 0 @space;
+	padding: @space/2 0 @space/2 @space;
 	margin: 0 0 @space 0;
-	border-left: 2px solid fade(@black, 30%);
+	border-left-color: fade( @black, 80% );
 	p {
 		font-size: 2rem;
 		font-family: Georgia, 'Times New Roman', Times, serif; // only use of serif.

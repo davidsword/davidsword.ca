@@ -32,12 +32,8 @@
 	</header>
 	<div class='content'>
 		<?php
-			$format = get_post_format() ? : 'standard';
-			if ( 'image' !== $format ) {
-				get_template_part( 'partials/content', $format );
-			} else {
-				dsca_featured_image();
-			}
+			$format = dsca_get_pseduo_post_format();
+			get_template_part( 'partials/content', $format );
 		?>
 	</div>
 	<?php

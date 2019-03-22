@@ -1,13 +1,12 @@
 <?php
 /**
- * Content template for posts with the Status format.
+ * Content template for posts with the pseduo post format: STATUS.
  *
  * @package davidsword-ca
  */
 ?>
 <div class='content'>
 	<?php
-	// Featured image.
 	dsca_featured_image();
 	the_content();
 	?>

@@ -18,7 +18,6 @@
 </h2>
 <div class='content'>
 	<?php
-		// Featured image.
 		dsca_featured_image();
 
 		if ( ! is_single() ) {

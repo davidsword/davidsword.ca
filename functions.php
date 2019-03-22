@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // require 'inc/post-format-image.php'; //@TODO complete in near future.
-require 'inc/post-format-status.php';
+require 'inc/pseduo-post-format.php';
 require 'inc/cpt-project.php';
 require 'inc/helpers.php';
 require 'inc/template-functions.php';

@@ -1,24 +1,26 @@
-// @TODO this should be in `/inc/` and use a compiler there.
+/**
+ * Embeded Gists.
+ */
 
-@syntax-text-color: fade(@white, 70%);
+@syntax-text-color      : fade(@white, 70%);
 @syntax-background-color: @black;
-@syntax-bracket-matcher: fade(@white, 20%);
+@syntax-bracket-matcher : fade(@white, 20%);
 
 @syntax-constant: #e279d0;
-@syntax-entity: #6ba9df;
-@syntax-numeric: #d27070;
+@syntax-entity  : #6ba9df;
+@syntax-numeric : #d27070;
 @syntax-property: #6dbdac;
-@syntax-string: #7b82bd;
-@syntax-support: #B98EFF;
+@syntax-string  : #7b82bd;
+@syntax-support : #B98EFF;
 //#8aa2ff
 
-@syntax-keyword: @syntax-constant;
+@syntax-keyword         : @syntax-constant;
 @syntax-markup-attribute: @syntax-constant;
-@syntax-markup-tag: @syntax-entity;
-@syntax-style-at-rule: @syntax-entity;
-@syntax-style-class: @syntax-entity;
-@syntax-style-id: @syntax-constant;
-@syntax-variable: @syntax-entity;
+@syntax-markup-tag      : @syntax-entity;
+@syntax-style-at-rule   : @syntax-entity;
+@syntax-style-class     : @syntax-entity;
+@syntax-style-id        : @syntax-constant;
+@syntax-variable        : @syntax-entity;
 
 html body .oembed-gist {
 	margin-bottom: @space;

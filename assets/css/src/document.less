@@ -1,8 +1,12 @@
+/**
+ * Base Styles for site.
+ */
+
 ::selection {
 	background: fade(yellow, 40%);
 }
 
-/* Body ---------------------------------- */
+/* Basics ---------------------------------- */
 body {
 	background: @white;
 	font-family: @fontMain;
@@ -18,13 +22,165 @@ p {
 	padding-bottom: @space;
 }
 
+iframe {
+	max-width: 100%;
+	width: 100%;
+}
+
+/* Headings ---------------------------------- */
+h1,
+h2 {
+	clear: both;
+	text-decoration: none;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	font-weight: 300;
+}
+
+h1 {
+	// nothing should use <h1> except for the pages main header.
+}
+
+h2 {
+	// Used for titles of posts.
+	margin-bottom: @space;
+	font-size: 1.5em;
+	&,
+	a {
+		font-weight: 500;
+		border-bottom: 1px solid transparent;
+	}
+
+	a:hover,
+	a:active {
+		color: @blue;
+		border-bottom: 1px solid @blue;
+	}
+}
+
+h3 {
+	// Used for inline headings within a post.
+
+	&,
+	a {
+		font-size: 1.1em;
+		font-weight: 500;
+		border-bottom: 1px solid transparent;
+	}
+
+	a:hover,
+	a:active {
+		color: @blue;
+		border-bottom: 1px solid @blue;
+	}
+
+	margin-bottom: @space;
+
+}
+
+h4,
+h5,
+h6 { // shouldnt use these. This style notifies of that.
+	color: red;
+	font-weight: bold;
+}
+
+/* Text Styles/Formatting ---------------------------------- */
+
+small {
+
+}
+
+ins {
+	background: yellow;
+}
+
+address {
+	padding: @space
+}
+
+del,
+strikethrough {
+	// same in my books.
+	opacity: 50%;
+	text-decoration: line-through;
+}
+
+em,
+i {
+	font-style: italic;
+	font-weight: initial;
+}
+
 strong {
 	font-weight: 400;
 }
 
-iframe {
+/* Images ---------------------------------- */
+
+img {
 	max-width: 100%;
+	height: auto;
+}
+
+figcaption {
+	margin-top: 0;
+	margin-bottom: 2em;
+}
+
+/* Table ---------------------------------- */
+
+table {
 	width: 100%;
+	margin-bottom: @space;
+
+	tbody tr:nth-child(odd) {
+		background: fade(@black, 5%);
+		text-align: left;
+	}
+
+	td,
+	th {
+		padding: 5px;
+	}
+
+	th {
+		font-weight: bold;
+		text-align: left;
+	}
+}
+
+/* Code ---------------------------------- */
+
+pre,
+code {
+	padding: 0 10px;
+	border-radius: 2px;
+	color: fade(@black, 90%);
+	background: fade(@black, 4%);
+	border: 1px solid fade(@black, 15%);
+	font-family: @fontMono;
+	font-size: 0.8em;
+	display: inline-block;
+}
+
+code {
+	margin-right: 5px;
+}
+
+pre {
+	display: block;
+	border: none;
+	padding: 15px;
+	background: @black;
+	word-wrap: break-word;
+	word-break: break-all;
+	margin-bottom: @space;
+
+	&,
+	code {
+		color: fade(@white, 70%);
+	}
 }
 
 /* LINKS ---------------------------------- */
@@ -55,6 +211,7 @@ main {
 		border-bottom-color: @blue;
 	}
 
+	/* LISTS ---------------------------------- */
 	// as to not use in header or footer.
 	ol,
 	ul {
@@ -81,10 +238,6 @@ main {
 			margin-bottom: @space
 		}
 	}
-}
-
-.center {
-	text-align: center;
 }
 
 /**

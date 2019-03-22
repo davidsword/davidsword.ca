@@ -1,3 +1,11 @@
+/**
+ * The sites layout.
+ *
+ * The positioning of header, header > nav, main, footer. Placed here for eaiser
+ * tweaking and for eaiser responsive adjustments. See header.less, main.less,
+ * and footer.less for actual elements within the layout.
+ */
+
 header#head {
 	padding: @spaceLayout 0 @spaceLayout @spaceLayout;
     width: calc( ( ( 100vw - @spaceLayout ) * .25 ) );
@@ -50,6 +58,8 @@ footer {
  * 📱 RESPONSIVE
  * ------------------------------------------------------------------
  */
+
+ // Adjust when the height is small, but the width is big (ie: when Web Inspector is open)
  @media screen and (max-height: 650px) and (min-width: @laptop) {
 	header#head {
 		padding: @spaceLayout*0.5 0 @spaceLayout*0.5 @spaceLayout;
@@ -60,6 +70,7 @@ footer {
 	}
  }
 
+ // Smaller laptops need a little adjustment.
  @media screen and (max-width: @laptop) {
 	header#head {
 		padding: @spaceLayout*0.75 0 @spaceLayout*0.75 @spaceLayout*0.75;
@@ -123,6 +134,7 @@ footer {
 
 }
 
+// Smaller phone like iPhone SE need padding reduction.
 @media screen and (max-width: 400px) {
 	header#head {
 		padding: @spaceLayout*0.5 @spaceLayout*0.1 @spaceLayout*0.25 @spaceLayout*0.1;

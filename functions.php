@@ -247,3 +247,10 @@ add_filter('posts_where', function ($where) {
 	global $wpdb;
 	return " $where AND {$wpdb->posts}.post_status != 'private' ";
 });
+
+/**
+ * Change Excerpt cut off dots to a link.
+ */
+add_filter( 'excerpt_more', function ( $more ) {
+    return ' ... '."<a href='".get_permalink()."'>continue reading »</a>";
+} );

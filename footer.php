@@ -14,6 +14,8 @@ defined( 'ABSPATH' ) || exit;
 			Proudly powered by
 			<a href='https://wordpress.org' target='_Blank'>WordPress</a>
 			&nbsp; | &nbsp;
+			<a href='https://davidsword.ca/uses/'>What I use</a>
+			&nbsp; | &nbsp;
 			<a href='https://davidsword.ca/?s'>Search</a>
 			&nbsp; | &nbsp;
 			🇨🇦 <a href='https://davidsword.ca/🍺/'>🍻</a>

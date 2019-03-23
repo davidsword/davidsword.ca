@@ -144,9 +144,9 @@ header#head {
 				&#sec {
 					float: right;
 				}
-				ul,
+				& > ul,
 				ul li,
-				ul li ul,
+				ul li.current-menu-parent ul, //@TODO rethink this, it feels weird.
 				ul li ul li {
 					display: inline;
 					clear: none;

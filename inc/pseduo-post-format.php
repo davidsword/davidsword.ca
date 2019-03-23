@@ -12,7 +12,7 @@
  */
 add_filter('the_title_rss', function ( $title ) {
 	if ( 'status' === dsca_get_pseduo_post_format() ) {
-		return get_the_date() . ' Status';
+		return get_the_date();
 	}
 	return $title;
 }, 10, 1 );
@@ -21,8 +21,8 @@ add_filter('the_title_rss', function ( $title ) {
  * Add fake title for Search results and in admin.
  */
 add_filter('the_title', function ( $title, $id ) {
-	if ( get_the_ID() == $id && 'status' === dsca_get_pseduo_post_format( $id ) ) {
-		return get_the_date()." Status Update";
+	if ( ! is_admin() && get_the_ID() == $id && 'status' === dsca_get_pseduo_post_format( $id ) ) {
+		return get_the_date();
 	}
 	return $title;
 }, 10, 2 );
@@ -31,11 +31,11 @@ add_filter('the_title', function ( $title, $id ) {
  * Add fake title for <title> tag.
  */
 add_filter('wp_title', function ( $title ) {
-	if ( is_singular() ) {
+	if ( ! is_admin() && is_singular() ) {
 		global $post;
 		$id = get_the_ID();
 		if ( 'status' === dsca_get_pseduo_post_format( $id ) ) {
-			return get_the_date()." Status Update ".$title;
+			return get_the_date()." ".$title;
 		}
 	}
 	return $title;

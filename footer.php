@@ -2,8 +2,6 @@
 /**
  * Footer.
  *
- * @TODO this should be a dynamic menu, not hard coded.
- *
  * @package davidsword-ca
  */
 

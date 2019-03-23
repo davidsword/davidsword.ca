@@ -10,12 +10,12 @@
 /**
  * STATUS remove title from RSS feed.
  */
-add_filter('the_title_rss', function ( $title, $id ) {
-	if ( 'status' === dsca_get_pseduo_post_format() && $id === get_the_ID()) {
+add_filter('the_title_rss', function ( $title ) {
+	if ( 'status' === dsca_get_pseduo_post_format() ) {
 		return get_the_date() . ' Status';
 	}
 	return $title;
-}, 10, 2 );
+}, 10, 1 );
 
 /**
  * Add fake title for Search results and in admin.

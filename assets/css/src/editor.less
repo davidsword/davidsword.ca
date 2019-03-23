@@ -86,5 +86,12 @@ ul.wp-block-gallery {
  */
 
 @media screen and (max-width: @phone) {
-
+	.wp-block-quote:not(.is-large):not(.is-style-large),
+	.wp-block-quote,
+	blockquote {
+		padding: @space/2 0 @space/2 @space/2;
+		p {
+			font-size: 1.4rem;
+		}
+	}
 }

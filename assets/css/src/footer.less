@@ -3,27 +3,37 @@
  */
 
 footer {
-	p {
+	ul {
+		list-style: none;
+		list-style-type: none;
 		padding: 0;
 		text-align: center;
 		font-size: 0.8em;
 		max-width: @width;
-		&,
-		a:link,
-		a:visited {
-			color: fade(@gray, 80%);
-			text-decoration: none;
-			;
-		}
+		line-height: 1.4em;
+		li {
+			display: inline;
+			clear: none;
+			padding: 0 @space;
+			border-right: 1px solid fade( @gray, 50% );
+			&:last-child {
+				border-right: transparent;
+			}
+			a:link,
+			a:visited {
+				color: fade(@gray, 80%);
+				text-decoration: none;
+			}
 
-		a:link,
-		a:visited {
-			border-bottom: none;
-		}
+			a:link,
+			a:visited {
+				border-bottom: none;
+			}
 
-		a:hover,
-		a:active {
-			color: @red;
+			a:hover,
+			a:active {
+				color: @red;
+			}
 		}
 	}
 }
@@ -33,6 +43,17 @@ footer {
  * 📱 RESPONSIVE
  * ------------------------------------------------------------------
  */
+
+@media screen and (max-width: @phone) {
+	 footer {
+		ul {
+			li {
+				padding: 0 @space/3;
+			}
+		}
+	}
+
+}
 
 @media screen and (max-width: @tablet) {
 	footer {

@@ -10,16 +10,16 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 	<footer>
-		<p>
-			Proudly powered by
-			<a href='https://wordpress.org' target='_Blank'>WordPress</a>
-			&nbsp; | &nbsp;
-			<a href='https://davidsword.ca/uses/'>What I use</a>
-			&nbsp; | &nbsp;
-			<a href='https://davidsword.ca/?s'>Search</a>
-			&nbsp; | &nbsp;
-			🇨🇦 <a href='https://davidsword.ca/🍺/'>🍻</a>
-		</p>
+		<ul>
+			<?php
+			wp_nav_menu( [
+				'container'      => '',
+				'items_wrap'     => '%3$s',
+				'title_li'       => '',
+				'theme_location' => 'toe-nav',
+			] );
+			?>
+		</ul>
 	</footer>
 
 	<?php wp_footer(); ?>

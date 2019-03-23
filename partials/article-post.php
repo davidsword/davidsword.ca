@@ -24,11 +24,11 @@
 				<?php
 			}
 			if ( is_sticky() ) {
-				echo "#sticky";
+				echo "<a href='#'>#sticky</a>";
 			}
 			?>
 		</span>
-		<?php edit_post_link('#edit-this', ' &nbsp; ') ?>
+		<?php edit_post_link('#edit-this') ?>
 	</header>
 	<div class='content'>
 		<?php

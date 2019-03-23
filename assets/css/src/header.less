@@ -68,6 +68,8 @@ header#head {
 				.single-project &.menu-item-object-project > a,
 				// Blog page highlighting on single.
 				.single-post &.menu-item-home > a,
+				// Blog pag in sub-sub category.
+				.archive.category &.menu-item-home > a,
 				// Normal highlighting.
 				&.current-menu-parent>a,
 				&.current-menu-item>a,
@@ -94,10 +96,15 @@ header#head {
 				&>ul {
 					display: none;
 				}
+				.archive.category &.menu-item-home ul,
 				&.current-menu-parent ul {
 					display: block;
+					padding-right: @space/2;
+					line-height: 1.5em;
+					font-size: 0.8em;
+					padding-left: 1rem;
 					li {
-						padding-left: 1rem;
+						display: inline;
 						.post_meta;
 						a {
 							display: inline-block;
@@ -107,6 +114,7 @@ header#head {
 							color: fade( @black, 70% );
 							border-bottom-color: fade( @black, 50% );
 						}
+						&.current-category-ancestor a,
 						&.current-menu-item a {
 							color: @black;
 							border-bottom-color: fade( @blue, 50% );

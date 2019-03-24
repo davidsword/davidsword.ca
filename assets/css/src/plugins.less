@@ -22,3 +22,55 @@ html body #wpstats {
 	left: -6000px;
 	opacity: 0;
 }
+
+
+/**
+ * Jetpack Subscribe.
+ *
+ * @see https://github.com/automattic/jetpack
+ */
+
+.jetpack_subscription_widget form {
+	border: 1px solid fade(@black, 30%);
+	background: @white;
+	padding: 5px 5px 5px;
+	border-radius: 3px;
+	display: grid;
+	grid-template-columns: 2fr auto;
+	margin: 0 0 @space 0;
+	p {
+		margin: 0;
+		padding: 0;
+	}
+	p input,
+	p button {
+		padding: 10px;
+		border-radius: 3px;
+		margin: 0;
+		border: none;
+		background: transparent;
+		display: block;
+		font-size: 18px;
+		line-height: 1em;
+	}
+	p#subscribe-email {
+		label#jetpack-subscribe-label {
+			display: none;
+		}
+		input[name=email] {
+			width: 100%;
+		}
+	}
+	p#subscribe-submit {
+		button[type=submit] {
+			background: @blue;
+			color: @white;
+			transition: 0.5s all ease;
+			&:hover,
+			&:active,
+			&:focus {
+				background: @red;
+			}
+		}
+	}
+}

@@ -2,9 +2,9 @@
  * Embeded Gists.
  */
 
-@syntax-text-color      : fade(@white, 70%);
+@syntax-text-color      : fade(#fff, 70%);
 @syntax-background-color: #242836;
-@syntax-bracket-matcher : fade(@white, 20%);
+@syntax-bracket-matcher : fade(#fff, 20%);
 
 @syntax-constant: #e279d0;
 @syntax-entity  : #6ba9df;
@@ -23,7 +23,7 @@
 @syntax-variable        : @syntax-entity;
 
 html body .oembed-gist {
-	margin-bottom: @space;
+	margin-bottom: 2rem;
 	&, * {
 		font-size: 17px !important;
 		line-height: 1em;
@@ -67,7 +67,7 @@ html body .oembed-gist {
 		text-align: center;
 		z-index: 999;
 		color: white;
-		.down_arrow();
+		background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYzLjIxNSA2My4yMTUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDYzLjIxNSA2My4yMTU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTkuODA3LDE1LjcxN0wzMS40OTEsNDMuNzkxTDMuNDE5LDE1LjQ3NWMtMC43NzctMC43ODUtMi4wNDQtMC43ODktMi44MjgtMC4wMTJjLTAuNzg0LDAuNzc3LTAuNzg5LDIuMDQ0LTAuMDEyLDIuODI3ICAgIGwyOS4xOTQsMjkuNDQ4YzAuMzY1LDAuMzY4LDAuODM1LDAuNTYzLDEuMzEyLDAuNTg5YzAuMTM5LDAuMDA4LDAuMjc4LTAuMDAxLDAuNDE1LTAuMDIxYzAuMDU0LDAuMDA4LDAuMTA2LDAuMDIxLDAuMTYsMC4wMjIgICAgYzAuNTQ0LDAuMDI5LDEuMDk5LTAuMTYyLDEuNTE1LTAuNTc2bDI5LjQ0Ny0yOS4xOTZjMC43ODUtMC43NzcsMC43OS0yLjA0MywwLjAxMi0yLjgyOCAgICBDNjEuODU2LDE0Ljk0Myw2MC41OSwxNC45MzksNTkuODA3LDE1LjcxN3oiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K);
 		background-size: 14px 14px;
 		background-position: 10px center;
 		background-repeat: no-repeat;
@@ -196,7 +196,7 @@ html body .oembed-gist {
  * ------------------------------------------------------------------
  */
 
-@media screen and (max-width: @phone) {
+@media screen and (max-width: 400px) {
 	html body .oembed-gist {
 		&, * {
 			font-size: 15px !important;

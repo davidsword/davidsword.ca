@@ -8,6 +8,10 @@ Custom theme for https://davidsword.ca/
 
 `grunt less` compiles and minifies all `/assets/src/css/*.less` into `/assets/css/dist/style.css`. Use `grunt watch` during dev to fire this on any edit of a `*.less` file.
 
+### Pluggables
+
+Contents of `/pluggables/` extend the functionality of WordPress, they're technically plugins and will be portable from theme-to-theme.
+
 ### Pseudo Post Formats
 
 This theme does not use `post_formats` in the tradional sense. I found the added step of changing post formats easy-to-forget while creating content, and that my post formats were less about that flag and more about what type of content is in the post. There two conditions in which a `post` can have that will rendered in a slightly different post format. When a post has:

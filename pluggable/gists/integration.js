@@ -8,15 +8,6 @@ jQuery(document).ready(function() { // executes when HTML-Document is loaded and
 		})
 	}
 
-	if (jQuery('.skilltags')) {
-		var skills = jQuery('.skilltags').text().split(", ");
-		var newskills = '';
-		for (i = 0; i != skills.length; i++) {
-			newskills += "<code>"+skills[i]+"</code> ";
-		}
-		jQuery('.skilltags').html(newskills)
-	}
-
 	// remove "SHOW MORE" on small GISTS
 	setTimeout(function(){
 		if (jQuery('.oembed-gist')) {

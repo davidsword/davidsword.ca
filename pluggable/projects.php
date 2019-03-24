@@ -2,8 +2,6 @@
 /**
  * Custom page for PROJECTs post type.
  *
- * @TODO these extend the functionality of WordPress and should likely be a plugin.
- *
  * @package davidsword-ca
  */
 
@@ -151,3 +149,31 @@ add_filter('request', function ( $qv ) {
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails', [ 'project' ] );
 });
+
+/**
+ * Dynamically Generate Labels for cpts admin interface.
+ *
+ * I'm really not sure why core doesn't do this.
+ *
+ * @TODO abstracting this is no longer needed w/ just one post type.
+ *
+ * @param string $cpt name of the CPT, singular.
+ * @return array of labels
+ */
+function dsca_make_labels( $cpt ) {
+	return [
+		'name'               => $cpt,
+		'singular_name'      => $cpt,
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New ' . $cpt,
+		'edit_item'          => 'Edit ' . $cpt,
+		'new_item'           => 'New ' . $cpt,
+		'all_items'          => 'All ' . $cpt,
+		'view_item'          => 'View ' . $cpt,
+		'search_items'       => 'Search ' . $cpt,
+		'not_found'          => 'No ' . $cpt . ' found',
+		'not_found_in_trash' => 'No ' . $cpt . ' found in Trash',
+		'parent_item_colon'  => '',
+		'menu_name'          => $cpt,
+	];
+}

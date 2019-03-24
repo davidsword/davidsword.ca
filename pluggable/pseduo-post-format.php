@@ -2,7 +2,7 @@
 /**
  * Tweaks to integrate a fake post format `status` and `image`
  *
- * @TODO these extend the functionality of WordPress and should likely be a plugin.
+ * @TODO this pluggable file needs a layer for the plugin to interact with it.
  *
  * @package davidsword-ca
  */

@@ -61,7 +61,7 @@ add_filter('pre_get_posts', function ( $query ) {
 add_action( 'init', function () {
 	$tax_name = 'Flag';
 	$tax_slug = 'flag';
-	register_taxonomy( $tax_slug, [ 'project' ], array(
+	register_taxonomy( $tax_slug, [ 'project' ], [
 		'hierarchical' => false,
 		'labels' => [
 			'name' => $tax_name, 'taxonomy general name',
@@ -79,9 +79,9 @@ add_action( 'init', function () {
 		'show_ui' => true,
 		'public' => false,
 		'query_var' => false,
-		'rewrite' => array( 'slug' => '' ),
+		'rewrite' => [ 'slug' => '' ],
 		'show_in_quick_edit' => true
-	));
+	]);
 }, 0 );
 
 /**

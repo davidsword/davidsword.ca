@@ -70,6 +70,8 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 
 /**
  * Remove WordPress emojicon, rely on users systems instead.
+ *
+ * It's 2019 & my audience is of the technical-up-to-date crowd.
  */
 add_action( 'init', function() {
 

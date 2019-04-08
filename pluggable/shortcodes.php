@@ -61,7 +61,7 @@ add_shortcode('list_plugins', function(){
 		if ( in_array( $plugin['Name'], [ 'Gutenberg', 'Classic Editor' ] ) ) {
 			continue;
 		}
-		$list_plugins[] = "<a href='{$plugin['PluginURI']}'>{$plugin['Name']}</a>";
+		$list_plugins[] = "<a href='" . esc_url( $plugin['PluginURI'] ) . "'>" . esc_html( $plugin['Name'] ) . "</a>";
 	}
 	return implode( ', ', $list_plugins );
 });

@@ -18,8 +18,7 @@
   "homepage": "https://github.com/davidsword/davidsword.ca#readme",
   "devDependencies": {
     "grunt": "^1.0.3",
-    "grunt-contrib-less": "^2.0.0",
-    "grunt-contrib-uglify": "^4.0.0"
+    "grunt-contrib-less": "^2.0.0"
   },
   "dependencies": {
     "grunt-contrib-watch": "^1.1.0"

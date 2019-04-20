@@ -1,4 +1,4 @@
-=== David Sword ===
+=== 🦊 DavidSword.ca ===
 Contributors:      davidsword
 Donate link:       https://davidsword.ca/🍺/
 Tags:              clean, minimal, davidsword

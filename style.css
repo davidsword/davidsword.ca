@@ -4,7 +4,7 @@
  * Description:  David Sword's website for davidsword.ca!
  * Author: 	     David Sword
  * Author URI:   https://davidsword.ca/
- * Version:      3.0.7
+ * Version:      3.0.8
  * License:      GPLv2 or later
  * License URI:  https://github.com/davidsword/davidsword.ca/blob/master/LICENSE
 */
@@ -16,4 +16,4 @@
  * run `grunt less`  for build
  * This version number needs to change as it's cached remotly on a CDN.
 */
-@import 'assets/css/dist/style.css?v=3.0.7';
+@import 'assets/css/dist/style.css?v=3.0.8';

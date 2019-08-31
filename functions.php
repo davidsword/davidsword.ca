@@ -132,3 +132,16 @@ function dsca_return_chopstring( $string, $choplen = 20, $cut = '...' ) {
 		return $string;
 	}
 }
+
+/**
+ * Add Gravitar to footer.
+ */
+add_action( 'wp_footer', function() {
+	?>
+	<style>
+		header#head h1::before {
+			background-image: url('https://www.gravatar.com/avatar/<?php echo esc_html( dsca_get_admin_gravatar_hash() ); ?>?s=200');
+		}
+	</style>
+	<?php
+} );

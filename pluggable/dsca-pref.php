@@ -88,3 +88,26 @@ add_action( 'init', function() {
 	add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 	add_filter( 'emoji_svg_url',    '__return_false' );
 } );
+
+/**
+ * If no site icon - use the gravatar instead.
+ *
+ * @TODO use function instead.
+ */
+add_filter( 'get_site_icon_url', function( $url ) {
+	if ( empty( $url ) ) {
+		return dsca_get_admin_gravatar_hash();
+	}
+	return $url;
+}, 99, 1 );
+
+/**
+ * Get the md5 hash of the WP Admin email address.
+ *
+ * @TODO cache this.
+ *
+ * @return string hashed email address.
+ */
+function dsca_get_admin_gravatar_hash() {
+	return md5( get_option( 'admin_email' ) );
+}

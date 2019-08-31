@@ -12,10 +12,9 @@
 		<span class='post_meta__tags'>
 			<?php
 			$terms = wp_get_post_terms( get_the_ID(), 'flag' );
-			foreach ( $terms as $term ) {
-				$link = get_term_link( $term->term_id, 'flag' );
+			foreach ( $terms as $aterm ) {
 				?>
-				#<?php echo esc_html( $term->slug ); ?>
+				#<?php echo esc_html( $aterm->slug ); ?>
 				<?php
 			}
 			?>
@@ -26,7 +25,7 @@
 			<?php
 				if ( ! is_single() ) {
 					?>
-					<a href='<?php echo esc_attr( get_permalink() ); ?>'><?php the_title(); ?> &raquo;</a>
+					<a href='<?php echo esc_url( get_permalink() ); ?>'><?php the_title(); ?> &raquo;</a>
 					<?php
 				} else {
 					the_title();
@@ -42,7 +41,7 @@
 					<div class='has-medium-font-size center'>
 						<?php
 						// can't use `the_excerpt()` here, Jetpack will append a 'Like' button
-						echo wpautop( $post->post_excerpt );
+						echo wp_kses_post( wpautop( $post->post_excerpt ) );
 						?>
 					</div>
 					<hr />

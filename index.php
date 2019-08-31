@@ -44,7 +44,7 @@ get_header();
 
 				<div class='clear navigation'>
 					<?php
-					echo paginate_links( [
+					echo paginate_links( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						'prev_text' => '« Prev',
 						'next_text' => 'Next »',
 					] );

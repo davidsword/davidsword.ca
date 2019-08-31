@@ -62,8 +62,8 @@ add_filter( 'manage_projects_posts_columns', 'ds_makethumbnailcol' );
  */
 add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 	if ( 'img_thumbnail' === $column_name ) {
-		echo "<a href='" . get_edit_post_link() . "'>";
-		echo the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] );
+		echo "<a href='" . esc_url( get_edit_post_link() ) . "'>";
+		echo wp_kses_post( the_post_thumbnail( 'thumbnail', [ 'style' => 'max-width: 40px;height:auto' ] ) );
 		echo '</a>';
 	}
 }, 999, 2);

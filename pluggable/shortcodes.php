@@ -38,11 +38,11 @@ add_shortcode('years', function ( $atts ) {
  * @return string of html, entire thing wraped in div, individual words wraped in spans
  */
 add_shortcode('skilltags', function ( $args, $content ) {
-	$return = '';
+	$return = ''; // phpcs:ignore
 	$tags   = explode( ',', $content );
 
 	foreach ( $tags as $tag ) {
-		$return .= "<span class='skilltag'>" . ltrim( rtrim( ltrim( $tag ) ) ) . '</span> ';
+		$return .= "<span class='skilltag'>" . ltrim( rtrim( ltrim( esc_html( $tag ) ) ) ) . '</span> ';
 	}
 	return "<div class='skilltags'>" . $return . '</div>';
 });
@@ -58,7 +58,7 @@ add_shortcode('list_plugins', function(){
 	$list_plugins = [];
 	$plugins = get_plugins();
 	foreach ( $plugins as $plugin ) {
-		if ( in_array( $plugin['Name'], [ 'Gutenberg', 'Classic Editor' ] ) ) {
+		if ( in_array( $plugin['Name'], [ 'Gutenberg', 'Classic Editor' ], true ) ) {
 			continue;
 		}
 		$list_plugins[] = "<a href='" . esc_url( $plugin['PluginURI'] ) . "'>" . esc_html( $plugin['Name'] ) . "</a>";

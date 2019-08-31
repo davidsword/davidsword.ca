@@ -10,17 +10,17 @@
 <article <?php post_class(); ?>>
 	<header class='post_meta'>
 		<time class='post_meta__date'>
-			<a href='<?php echo esc_attr( get_permalink() ); ?>'>
+			<a href='<?php echo esc_url( get_permalink() ); ?>'>
 				<?php echo get_the_date(); ?>
 			</a>
 		</time>
 		<span class='post_meta__tags'>
 			<?php
 			$terms = wp_get_post_terms( get_the_ID(), 'category' );
-			foreach ( $terms as $term ) {
-				$link = get_term_link( $term->term_id, 'category' );
+			foreach ( $terms as $aterm ) {
+				$alink = get_term_link( $aterm->term_id, 'category' );
 				?>
-				<a href='<?php echo esc_attr( $link ); ?>'>#<?php echo esc_html( $term->slug ); ?></a>
+				<a href='<?php echo $alink ? esc_url( $alink ) : ''; ?>'>#<?php echo esc_html( $aterm->slug ); ?></a>
 				<?php
 			}
 			if ( is_sticky() ) {

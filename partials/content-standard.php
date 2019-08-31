@@ -9,7 +9,7 @@
 	<?php
 	if ( ! is_single() ) {
 		?>
-		<a href='<?php echo esc_attr( get_permalink() ); ?>'><?php the_title(); ?> &raquo;</a>
+		<a href='<?php echo esc_url( get_permalink() ); ?>'><?php the_title(); ?> &raquo;</a>
 	<?php
 	} else {
 		the_title();

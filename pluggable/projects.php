@@ -43,7 +43,7 @@ add_action( 'init' , function () {
 add_filter('pre_get_posts', function ( $query ) {
 
 	$is_project = isset( $query->query['post_type'] ) && 'project' === $query->query['post_type'];
-	$is_archive = ( 1 == $query->is_archive );
+	$is_archive = ( 1 === $query->is_archive );
 
 	// ONLY ON FRONT END ARCHIVES PAGE.
 	if ( ! is_admin() && $is_project && $is_archive && ! isset( $query->query['posts_per_page'] ) ) {
@@ -99,7 +99,7 @@ add_action('manage_posts_custom_column', function ( $column_name, $id ) {
 	if ( 'flag' === $column_name ) {
 		$flag = dsca_get_flag( $id );
 		if ( false !== $flag ) {
-			echo $flag;
+			echo wp_kses_post( $flag );
 		}
 	}
 }, 999, 2);

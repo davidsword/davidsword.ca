@@ -8,12 +8,12 @@
 defined( 'ABSPATH' ) || exit;
 
 // Load custom plugins.
-require 'pluggable/projects.php';
-require 'pluggable/dsca-pref.php';
-require 'pluggable/security.php';
-require 'pluggable/shortcodes.php';
-require 'pluggable/gists/gists.php';
-require 'pluggable/pseduo-post-format.php';
+require get_stylesheet_directory() . 'pluggable/projects.php';
+require get_stylesheet_directory() . 'pluggable/dsca-pref.php';
+require get_stylesheet_directory() . 'pluggable/security.php';
+require get_stylesheet_directory() . 'pluggable/shortcodes.php';
+require get_stylesheet_directory() . 'pluggable/gists/gists.php';
+require get_stylesheet_directory() . 'pluggable/pseduo-post-format.php';
 
 /**
  * Add various features for theme
@@ -31,7 +31,9 @@ add_action( 'after_setup_theme', function () {
 	$my_colours = [ '#333', '#fff', '#999', '#4d77e2', '#fc6f56', '#ffe454', '#e279d0', '#6ba9df', '#d27070', '#6dbdac', '#7b82bd', '#B98EFF', '#8aa2ff' ];
 	$palette    = [];
 	foreach ( $my_colours as $colour ) {
-		$palette[] = [ 'color' => $colour ];
+		$palette[] = [
+			'color' => $colour
+		];
 	}
 	add_theme_support( 'editor-color-palette', $palette );
 
@@ -61,14 +63,6 @@ add_action( 'wp_enqueue_scripts', function() {
 		[],
 		$ver
 	);
-
-	// wp_enqueue_script(
-		// 'dsca',
-		// get_template_directory_uri() . '/assets/js/dist/index.js',
-		// [ 'jquery' ],
-		// $ver,
-		// true
-	// );
 
 	if ( is_singular() ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -103,7 +97,7 @@ function get_dsca_featured_image( $id = null, $size = 'full' ) {
  * Get and print the featured image.
  */
 function dsca_featured_image( $id = null, $size = 'full' ) {
-	echo get_dsca_featured_image( $id, $size );
+	echo wp_kses_post( get_dsca_featured_image( $id, $size ) );
 }
 
 /**

@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 👋🏻 Why hello there!
 
-v<?php echo wp_get_theme()->get( 'Version' ); ?>
+v<?php echo esc_html( wp_get_theme()->get( 'Version' ) ); ?>
 https://github.com/davidsword/davidsword.ca
 Synced to Pressable with https://wppusher.com/
 
@@ -25,7 +25,7 @@ Synced to Pressable with https://wppusher.com/
 
 <!-- #### META #### -->
 <meta charset="utf-8">
-<meta name="author" content="<?php echo get_bloginfo( 'name' ); ?>" />
+<meta name="author" content="<?php bloginfo( 'name' ); ?>" />
 <meta name="robots" content="index, follow" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 

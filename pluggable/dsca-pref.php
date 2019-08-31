@@ -95,7 +95,7 @@ add_action( 'init', function() {
  * @TODO use function instead.
  */
 add_filter( 'get_site_icon_url', function( $url ) {
-	return empty( $url ) ? dsca_get_admin_gravatar_hash() : $url;
+	return empty( $url ) ? 'https://www.gravatar.com/avatar/'.rawurlencode( dsca_get_admin_gravatar_hash() ) . '?s=512' : $url;
 }, 99, 1 );
 
 /**

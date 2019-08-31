@@ -95,10 +95,7 @@ add_action( 'init', function() {
  * @TODO use function instead.
  */
 add_filter( 'get_site_icon_url', function( $url ) {
-	if ( empty( $url ) ) {
-		return dsca_get_admin_gravatar_hash();
-	}
-	return $url;
+	return empty( $url ) ? dsca_get_admin_gravatar_hash() : $url;
 }, 99, 1 );
 
 /**

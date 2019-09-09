@@ -64,6 +64,14 @@ add_action( 'wp_enqueue_scripts', function() {
 		$ver
 	);
 
+	wp_enqueue_script(
+		'main',
+		get_template_directory_uri() . '/assets/js/dist/index.js',
+		[],
+		$ver,
+		true
+	);
+
 	if ( is_singular() ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

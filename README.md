@@ -36,6 +36,7 @@ See [commit history](https://github.com/davidsword/davidsword.ca/commits/master)
 ## Contributors ##
 
 * `grunt less` compiles and minifies all `/assets/src/css/*.less` into `/assets/css/dist/style.css`
+* `grunt uglify` compiles and minifies all `/assets/src/js/*.js` into `/assets/js/dist/index.js`
 * `grunt readme` converts WordPress.org readme.txt to .md for Github
 * `grunt watch` will watch for file changes in aforementioned files and do tasks automatically during dev
 

@@ -122,6 +122,64 @@ header#head {
 			}
 		}
 	}
+
+	#burger-nav {
+		@barHeight: 15%;
+		@burgerSize: 20px;
+		position: absolute;
+		top:3px;
+		right:15px;
+		float: none;
+		display: block;
+		width: @burgerSize + 20px;
+		height: @burgerSize + 20px;
+		#hamburger {
+			width: @burgerSize;
+			height: @burgerSize;
+			overflow: hidden;
+			position: absolute;
+			border: 10px solid transparent;
+			border-radius: 3px;
+		}
+		#hamburger > div {
+			width: 100%;
+			height: @barHeight;
+			background: #333;
+			transition: 0.5s all ease;
+			position: relative;
+			position: absolute;
+			transform: rotate(0);
+		}
+		#hamburger > div:nth-child(1) {
+			top:0;
+		}
+		#hamburger > div:nth-child(2) {
+			top: calc( 50% - ( @barHeight / 2 ) );
+		}
+		#hamburger > div:nth-child(3) {
+			bottom:0;
+		}
+		/* opened */
+		&.open > #hamburger > div:nth-child(1) {
+			transform: rotate(45deg);
+			top: calc( 50% - ( @barHeight / 2 ) );
+		}
+		&.open > #hamburger > div:nth-child(2) {
+			transform: translateX(-100%);
+			transition: 0.25s transform ease;
+		}
+		&.open > #hamburger > div:nth-child(3) {
+			transform: rotate(-45deg) ;
+			bottom: calc( 50% - ( @barHeight / 2 ) );;
+		}
+
+		ul {
+			display: none;
+		}
+		&.open ul {
+			display: block;
+		}
+	}
 }
 
 /**

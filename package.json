@@ -4,7 +4,8 @@
   "description": "theme for davidsword.ca",
   "main": "assets",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "grunt watch",
+    "build": "grunt less && grunt readme && grunt uglify"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.1",
     "grunt-wp-readme-to-markdown": "~1.0.0"
   },
   "dependencies": {

@@ -1,0 +1,1 @@
+"use strict";var hamburger=document.querySelector("#burger-nav");hamburger.addEventListener("click",function(){hamburger.classList.toggle("open")});

@@ -88,7 +88,7 @@ add_filter( 'excerpt_more', function ( $more ) {
 /**
  * Get the featured image
  */
-function get_dsca_featured_image( $id = null, $size = 'full' ) {
+function get_dsca_featured_image( $id = null, $size = 'large' ) {
 	$id = ! $id ? get_the_ID() : intval( $id );
 	$img = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size );
 	if ( isset( $img[1] ) ) {

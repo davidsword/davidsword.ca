@@ -20,11 +20,7 @@ get_header();
 		<section>
 
 			<?php
-			if ( is_404() ) :
-
-				get_template_part( 'partials/article', '404' );
-
-			elseif ( have_posts() ) :
+			if ( have_posts() ) :
 
 				while ( have_posts() ) :
 					the_post();

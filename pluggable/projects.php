@@ -39,7 +39,7 @@ add_action( 'init', function () {
 /**
  * Add the Flag in the admin
  */
-add_filter( 'manage_projects_posts_columns', function( $columns ) {
+add_filter( 'manage_post_posts_columns', function( $columns ) {
 	$columns['flag'] = 'Project Flag';
 	return $columns;
 } );

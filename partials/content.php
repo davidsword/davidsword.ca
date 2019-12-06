@@ -7,15 +7,11 @@
 
 if ( get_the_title() ) :  ?>
 	<h2 class='title title--<?php echo get_post_type(); ?>'>
-		<?php
-		if ( ! is_single() ) {
-			?>
+		<?php if ( ! is_single() ) { ?>
 			<a href='<?php echo esc_url( get_permalink() ); ?>'><?php the_title(); ?> &raquo;</a>
-		<?php
-		} else {
+		<?php } else {
 			the_title();
-		}
-		?>
+		} ?>
 	</h2>
 <?php endif; ?>
 

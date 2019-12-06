@@ -16,6 +16,7 @@ defined( 'ABSPATH' ) || exit;
 👋🏻 Why hello there!
 
 v<?php echo esc_html( wp_get_theme()->get( 'Version' ) ); ?>
+
 https://github.com/davidsword/davidsword.ca
 Synced to Pressable with https://wppusher.com/
 

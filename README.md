@@ -43,18 +43,3 @@ See [commit history](https://github.com/davidsword/davidsword.ca/commits/master)
 ## Pluggables ##
 
 Contents of `/pluggables/` extend the functionality of WordPress, they're each technically plugins that could be fully developed one day. Until then, they're standalone and portable from theme-to-theme.
-
-# Pseudo Post Formats #
-
-Instead of assigning a post format, this theme looks at the content and determins the post format:
-
-| Post Format | Condition |
-| --- | --- |
-| IMAGE | title and featured image, no content |
-| IMAGE POST | title and featured image, and content as the expert |
-| STATUS | no title |
-| (Default Post) | title, feature image, content, optional excerpt |
-
-When no title is present, this theme will create a title of YYYYMMDD.
-
-See [`/pluggable/auto-post-format.php`](pluggable/auto-post-format.php) for more info.

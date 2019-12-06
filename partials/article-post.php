@@ -32,8 +32,7 @@
 	</header>
 	<div class='content'>
 		<?php
-			$format = dsca_get_pseduo_post_format();
-			get_template_part( 'partials/content', $format );
+			get_template_part( 'partials/content', get_post_type() );
 		?>
 	</div>
 	<?php

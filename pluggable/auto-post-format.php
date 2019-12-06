@@ -1,12 +1,14 @@
 <?php
 /**
- * Set post_formats at the Category level instead of the POST level.
+ * Modify Titles and output based on type of conetnt in post.
  *
- * When all posts in a specific category have the same format, marking it as such
- * is redundant. This plugin instead allows setting post_formats at the category
- * so all posts therein will have the format set.
+ * Instead of assigning a post format, this theme looks at the content and determins the post format:
  *
- * @todo posts with multiple categories that have conflicting formats (use primary)
+ * - IMAGE          - has title and featured image, no content
+ * - STATUS         - has content, no title
+ * - (Default Post) - has everything title, feature image, content, optional excerpt
+ *
+ * For single status's when no title is present, this theme will create a title of YYYYMMDD.
  *
  * @package davidsword-ca
  */
@@ -14,32 +16,33 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * STATUS remove title from RSS feed.
+ * STATUS: remove title from RSS feed.
  */
 add_filter('the_title_rss', function ( $title ) {
-	if ( 'status' === dsca_get_pseduo_post_format() ) {
+	if ( 'status' === dsca_get_format() ) {
 		return get_the_date();
 	}
 	return $title;
 }, 10, 1 );
 
 /**
- * Add fake title for Search results and in admin.
+ * STATUS: Add fake title for Search results and in admin.
  */
 add_filter('the_title', function ( $title, $id ) {
-	if ( ! is_admin() && get_the_ID() === $id && 'status' === dsca_get_pseduo_post_format( $id ) ) {
+	$is_status = 'status' === dsca_get_format( $id );
+	if ( ( is_admin() || is_search() ) && get_the_ID() === $id && $is_status ) {
 		return get_the_date();
 	}
 	return $title;
 }, 10, 2 );
 
 /**
- * Add fake title for <title> tag.
+ * STATUS: Add fake title for <title> tag.
  */
 add_filter('wp_title', function ( $title ) {
 	if ( ! is_admin() && is_singular() ) {
 		$id = get_the_ID();
-		if ( 'status' === dsca_get_pseduo_post_format( $id ) ) {
+		if ( 'status' === dsca_get_format( $id ) ) {
 			return get_the_date()." ".$title;
 		}
 	}
@@ -47,24 +50,37 @@ add_filter('wp_title', function ( $title ) {
 }, 999 );
 
 /**
- * Get Pseduo post format of post.
+ * IMAGES: remove the title on front end.
+ */
+add_filter('the_title', function ( $title, $id ) {
+	$is_image = 'image' === dsca_get_format( $id );
+	if ( ! ( is_admin() || is_search() ) && get_the_ID() === $id && $is_image ) {
+		return '';
+	}
+	return $title;
+}, 10, 2 );
+
+// Helper functions:
+
+/**
+ * Get the post format of post based on the type of content.
  *
  * Must be used inside the loop.
  *
- * @return mixed string of post format or false if not a Pseduo post format.
+ * @return string
  */
-function dsca_get_pseduo_post_format( $id = null ) {
-	if ( dsca_is_pseduo_post_format_status( $id ) )
+function dsca_get_format( $id = null ) {
+	if ( dsca_is_status( $id ) )
 		return 'status';
-	if ( dsca_is_pseduo_post_format_image( $id ) )
+	if ( dsca_is_image( $id ) )
 		return 'image';
 	return 'standard';
 }
 
 /**
- * Check if post is Pseduo post format IMAGE.
+ * Check if post is content resembles a IMAGE post format.
  */
-function dsca_is_pseduo_post_format_image( $id = null ) {
+function dsca_is_image( $id = null ) {
 	if ( ! $id ) {
 		global $post; // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UnusedVariable
 		$source = 'post';
@@ -72,13 +88,13 @@ function dsca_is_pseduo_post_format_image( $id = null ) {
 		$get_post = get_post( $id ); // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UnusedVariable
 		$source = 'get_post';
 	}
-	return ( ! empty( ${$source}->post_title ) && empty( ${$source}->post_content ) );
+	return ( empty( ${$source}->post_content ) );
 }
 
 /**
- * Check if post is Pseduo post format STATUS.
+ * Check if post is content resembles a STATUS post format.
  */
-function dsca_is_pseduo_post_format_status( $id = null ) {
+function dsca_is_status( $id = null ) {
 	if ( ! $id ) {
 		global $post; // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UnusedVariable
 		$source = 'post';

@@ -46,14 +46,15 @@ Contents of `/pluggables/` extend the functionality of WordPress, they're each t
 
 # Pseudo Post Formats #
 
-This theme does not use `post_formats` in the traditional sense. I found the added step of changing post formats easy-to-forget while creating content, and that my post formats were less about that flag and more about what category the post is in.
+Instead of assigning a post format, this theme looks at the content and determins the post format:
 
-Instead formats are assigned higher up in the categorys meta:
+| Post Format | Condition |
+| --- | --- |
+| IMAGE | title and featured image, no content |
+| IMAGE POST | title and featured image, and content as the expert |
+| STATUS | no title |
+| (Default Post) | title, feature image, content, optional excerpt |
 
-* IMAGE      - title and featured image, no content
-* IMAGE POST - title and featured image, and content as the expert
-* STATUS     - no title
+When no title is present, this theme will create a title of YYYYMMDD.
 
-Since "status" promotes no titles, this plugin will create a title for each post of YYYYMMDD instead of ID as it's much more of a visual cue in the URL than a database key interger.
-
-See [`/pluggable/pseduo-post-format.php`](pluggable/pseduo-post-format.php) for more info.
+See [`/pluggable/auto-post-format.php`](pluggable/auto-post-format.php) for more info.

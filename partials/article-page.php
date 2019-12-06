@@ -7,8 +7,12 @@
 ?>
 <article <?php post_class(); ?>>
 	<div class='entry'>
+	<h2 class='title title--page'><?php the_title(); ?></h2>
+	<div class='content'>
 		<?php
-			get_template_part( 'partials/content' );
+			dsca_featured_image();
+			the_content();
 		?>
+	</div>
 	</div>
 </article>

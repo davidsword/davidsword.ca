@@ -90,12 +90,12 @@ add_filter( 'excerpt_more', function ( $more ) {
  */
 function get_dsca_featured_image( $id = null, $size = 'large' ) {
 	$id = ! $id ? get_the_ID() : intval( $id );
-	$img = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size );
+	$img = esc_url( wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size ) );
 	if ( isset( $img[1] ) ) {
-		$alt = get_the_title( $id );
+		$alt = esc_attr( get_the_title( $id ) );
 		$img = "<img src='{$img[0]}' alt=\"{$alt}\" class='dsca_featured_image' />";
 		if ( ! is_single() ) {
-			$img = "<a href='".get_permalink($id)."' class='noborder'>".$img."</a>";
+			$img = "<a href='".get_permalink( $id )."' class='noborder'>".$img."</a>";
 		}
 		return $img;
 	}

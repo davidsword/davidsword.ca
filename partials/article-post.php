@@ -32,7 +32,7 @@
 	</header>
 	<div class='content'>
 		<?php
-			get_template_part( 'partials/content', get_post_type() );
+			get_template_part( 'partials/content' );
 		?>
 	</div>
 	<?php

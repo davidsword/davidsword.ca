@@ -6,7 +6,7 @@
  */
 
 if ( get_the_title() ) :  ?>
-	<h2>
+	<h2 class='title title--<?php echo get_post_type(); ?>'>
 		<?php
 		if ( ! is_single() ) {
 			?>

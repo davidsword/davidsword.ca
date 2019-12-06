@@ -13,7 +13,7 @@ require get_stylesheet_directory() . '/pluggable/dsca-pref.php';
 require get_stylesheet_directory() . '/pluggable/security.php';
 require get_stylesheet_directory() . '/pluggable/shortcodes.php';
 require get_stylesheet_directory() . '/pluggable/gists/gists.php';
-require get_stylesheet_directory() . '/pluggable/category-post-format.php';
+require get_stylesheet_directory() . '/pluggable/auto-post-format.php';
 
 /**
  * Add various features for theme

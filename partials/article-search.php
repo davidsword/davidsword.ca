@@ -6,15 +6,6 @@
  *
  * @package davidsword-ca
  */
-
-$text = get_the_excerpt();
-if ( empty( $text ) ) {
-	$text = strip_shortcodes( wp_strip_all_tags( get_the_content() ) );
-}
-
-if ( empty( $text ) ) {
-	$text = '';
-}
 ?>
 <article <?php post_class(); ?>>
 	<?php if ( ! empty( get_the_title() ) ) : ?>
@@ -29,7 +20,10 @@ if ( empty( $text ) ) {
 	</a>
 	<div class='content'>
 		<p>
-			<?php echo esc_html( dsca_return_chopstring( $text, 150 ) ); ?>
+			<?php
+				$excerpt = get_the_excerpt();
+				$text = empty( $excerpt ) ? strip_shortcodes( wp_strip_all_tags( get_the_content() ) ) : $excerpt;
+				echo esc_html( dsca_return_chopstring( $text, 150 ) ); ?>
 		</p>
 	</div>
 </article>

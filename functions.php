@@ -142,7 +142,7 @@ add_action( 'wp_footer', function() {
 	?>
 	<style>
 		header#head h1::before {
-			background-image: url('https://www.gravatar.com/avatar/<?php echo rawurlencode( dsca_get_admin_gravatar_hash() ); ?>?s=200');
+			background-image: url('https://www.gravatar.com/avatar/<?php echo md5( get_option( 'admin_email' ) ); ?>?s=200');
 		}
 	</style>
 	<?php

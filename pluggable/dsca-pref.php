@@ -2,11 +2,16 @@
 /**
  * Custom preferences for WordPress.
  *
+ * These are opinionated changes in how WordPress functions.
+ * These changes are a personal preference.
+ *
  * @package davidsword-ca
  */
 
 /**
- * Max out at 42 revisions
+ * Max out at 42 revisions.
+ *
+ * Anything beyond that is ridiculous.
  */
 add_filter('wp_revisions_to_keep', function() { return 42; });
 
@@ -21,21 +26,26 @@ add_filter('posts_where', function ($where) {
 
 /**
  * Redirect to media file itself if Attachment.
+ *
+ * The Attachment page is confusing and adds bloat to the site.
+ * "Why am I here and how did I get here"
  */
 add_action( 'init' ,function () {
 	global $post;
-	if (isset($post) && is_object($post)) {
+	if ( isset( $post ) && is_object( $post ) ) {
 		$media = wp_get_attachment_url( $post->ID);
 		if ( !is_admin() && is_attachment() ) {
-			header('Location: '.$media);
-			wp_die( 'No attachments page.' );
+			wp_safe_redirect( $media );
+			wp_die();
 		}
 	}
 });
 
 
 /**
- * Remove tags from POST post type.
+ * Remove TAGS from POST post type.
+ *
+ * Category is enough.
  */
 add_action('init', function () {
 	unregister_taxonomy_for_object_type( 'post_tag', 'post' );
@@ -74,9 +84,6 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
  * It's 2019 & my audience is of the technical-up-to-date crowd.
  */
 add_action( 'init', function() {
-
-	return; // disable this, yes use emojicon.
-
 	remove_action( 'admin_print_styles',  'print_emoji_styles' );
 	remove_action( 'wp_head',             'print_emoji_detection_script', 7 );
 	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -95,19 +102,8 @@ add_action( 'init', function() {
  * @TODO use function instead.
  */
 add_filter( 'get_site_icon_url', function( $url ) {
-	return empty( $url ) ? 'https://www.gravatar.com/avatar/'.rawurlencode( dsca_get_admin_gravatar_hash() ) . '?s=512' : $url;
+	return empty( $url ) ? 'https://www.gravatar.com/avatar/'. md5( get_option( 'admin_email' ) ) . '?s=512' : $url;
 }, 99, 1 );
-
-/**
- * Get the md5 hash of the WP Admin email address.
- *
- * @TODO cache this.
- *
- * @return string hashed email address.
- */
-function dsca_get_admin_gravatar_hash() {
-	return md5( get_option( 'admin_email' ) );
-}
 
 /**
  * Ensure blank searches (`/?s=`) return no results.

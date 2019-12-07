@@ -16,15 +16,6 @@
 add_filter('wp_revisions_to_keep', function() { return 42; });
 
 /**
- * No PRIVATE posts on front end.
- */
-add_filter('posts_where', function ($where) {
-	if( is_admin() ) return $where;
-	global $wpdb;
-	return " $where AND {$wpdb->posts}.post_status != 'private' ";
-});
-
-/**
  * Redirect to media file itself if Attachment.
  *
  * The Attachment page is confusing and adds bloat to the site.

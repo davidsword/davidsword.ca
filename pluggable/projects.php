@@ -30,6 +30,7 @@ add_action( 'init', function () {
 		],
 		'show_ui' => true,
 		'public' => false,
+		'show_in_rest' => true,
 		'query_var' => false,
 		'rewrite' => [ 'slug' => '' ],
 		'show_in_quick_edit' => true

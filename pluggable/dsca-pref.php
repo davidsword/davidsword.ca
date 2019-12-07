@@ -41,16 +41,6 @@ add_action( 'init' ,function () {
 	}
 });
 
-
-/**
- * Remove TAGS from POST post type.
- *
- * Category is enough.
- */
-add_action('init', function () {
-	unregister_taxonomy_for_object_type( 'post_tag', 'post' );
-});
-
 /**
  * Display the post thumbnail in the edit page table for eaiser management
  *

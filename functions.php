@@ -8,7 +8,6 @@
 defined( 'ABSPATH' ) || exit;
 
 // Load custom plugins.
-require get_stylesheet_directory() . '/pluggable/projects.php';
 require get_stylesheet_directory() . '/pluggable/dsca-pref.php';
 require get_stylesheet_directory() . '/pluggable/security.php';
 require get_stylesheet_directory() . '/pluggable/shortcodes.php';

@@ -88,12 +88,13 @@ add_filter( 'excerpt_more', function ( $more ) {
 /**
  * Get the featured image
  */
-function get_dsca_featured_image( $id = null, $size = 'large' ) {
+function get_dsca_featured_image( $id = null, $size = 'full' ) {
 	$id = ! $id ? get_the_ID() : intval( $id );
-	$img = esc_url( wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size ) );
+	$feature_img = get_post_thumbnail_id( $id );
+	$img = wp_get_attachment_image_src( $feature_img, $size );
 	if ( isset( $img[1] ) ) {
-		$alt = esc_attr( get_the_title( $id ) );
-		$img = "<img src='{$img[0]}' alt=\"{$alt}\" class='dsca_featured_image' />";
+		$alt = get_the_title( $id );
+		$img = "<img src='".esc_url( $img[0] )."' alt='".esc_attr( $alt )."' class='dsca_featured_image' />";
 		if ( ! is_single() ) {
 			$img = "<a href='".get_permalink( $id )."' class='noborder'>".$img."</a>";
 		}

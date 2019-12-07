@@ -51,7 +51,6 @@ Instead of assigning a post format, this theme looks at the content and determin
 | Post Format | Condition |
 | --- | --- |
 | IMAGE | title and featured image, no content |
-| IMAGE POST | title and featured image, and content as the expert |
 | STATUS | no title |
 | (Default Post) | title, feature image, content, optional excerpt |
 

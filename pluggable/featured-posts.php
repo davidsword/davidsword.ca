@@ -25,12 +25,17 @@ add_action( 'add_meta_boxes', function () {
 
 /**
  * Add custom Metabox.
+ *
+ * @todo make this prettier.
  */
 function dsca_ftr_mb( $post ) {
 	wp_nonce_field( plugin_basename( __FILE__ ), 'dsca_ftr_mb_nonce' );
 	$is_featured = (boolean) get_post_meta( get_the_ID(), 'featured', true );
 	?>
-	Featured: <input type="checkbox" name="featured" value='1' <?php checked( $is_featured )  ?>  />
+	<label>
+		Featured:
+		<input type="checkbox" name="featured" value='1' <?php checked( $is_featured )  ?> />
+	</label>
 	<?php
 }
 
@@ -55,3 +60,26 @@ add_action( 'save_post', function ( $post_id ) {
 	}
 });
 
+/**
+ * Display the FEATURED status in the edit page table for eaiser management.
+ *
+ * @param array  $columns from wp api.
+ * @return array $columns for wp api.
+ */
+
+add_filter( 'manage_post_posts_columns', function ( $columns ) {
+	$columns['featured'] = 'Featured';
+	return $columns;
+} );
+
+/**
+ * Display the post thumbnail in the edit page table for eaiser management
+ *
+ * @TODO add ajax here to change post_meta value via the table for quick featuring.
+ */
+add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
+	if ( 'featured' === $column_name ) {
+		$is_featured = (boolean) get_post_meta( $id, 'featured', true );
+		echo $is_featured ? "⭐" : '';
+	}
+}, 999, 2);

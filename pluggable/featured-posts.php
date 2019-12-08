@@ -74,40 +74,20 @@ add_filter( 'manage_post_posts_columns', function ( $columns ) {
 
 /**
  * Display the post thumbnail in the edit page table for eaiser management
- *
- * @TODO change the star into a checkbox as thats better WP default UI.
  */
 add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 	if ( 'featured' === $column_name ) {
-		$is_featured = (boolean) get_post_meta( $id, 'featured', true ) ? '1' : '0';
+		$is_featured = (boolean) get_post_meta( $id, 'featured', true );
 		?>
-		<span
-			data-featured="<?php echo esc_attr( $is_featured )  ?>"
+		<input
+			type="checkbox"
+			name="featured"
 			data-post-id="<?php echo (int) $id  ?>"
-		>⭐</span>
+			<?php checked( $is_featured )  ?>
+		/>
 		<?php
 	}
 }, 999, 2);
-
-/**
- * Styles
- *
- * @TODO enueue this properly, or at very least hook into posts page only.
- * @TODO don't use this star, use a checkbox instead.
- */
-add_action( 'admin_footer', function(){
-	?>
-	<style>
-		span[data-featured] {
-			padding: 5px;
-			font-size:25px
-		}
-		span[data-featured="0"] {
-			opacity: 0.2;
-		}
-	</style>
-	<?php
-});
 
 /**
  * Listen for feature image toggling.
@@ -139,11 +119,11 @@ add_action( 'admin_footer', function () {
     ?>
     <script>
 		jQuery(document).ready( function($) {
-			jQuery('[data-featured]').click( function(e) {
+			jQuery('input[name="featured"]').click( function(e) {
 				console.dir( e.srcElement.dataset );
 				let post_id = e.srcElement.dataset.postId;
 				// invert the current value for the toggle.
-				let featured = e.srcElement.dataset.featured == '1' ? '0' : '1';
+				let featured = jQuery(e.srcElement).is(':checked') ? '1' : '0';
 				var data = {
 					action: 'feature_toggle',
 					post_id,

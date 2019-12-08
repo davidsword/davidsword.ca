@@ -126,95 +126,6 @@ header#head {
 			}
 		}
 	}
-
-	#burger-nav {
-		@barHeight: 15%;
-		@burgerSize: 16px;
-		position: absolute;
-		top: 19px;
-		left: 200px; /* this needs to play nice with the caption */
-		float: none;
-		display: block;
-		width: @burgerSize + 20px;
-		height: @burgerSize + 20px;
-		overflow: visible;
-		box-sizing: content-box;
-		z-index: 99;
-		#hamburger {
-			width: @burgerSize;
-			height: @burgerSize;
-			overflow: hidden;
-			position: absolute;
-			border: 10px solid transparent;
-			border-radius: 3px;
-		}
-		#hamburger > div {
-			width: 100%;
-			height: @barHeight;
-			background: @gray;
-			transition: 0.5s all ease;
-			position: relative;
-			position: absolute;
-			transform: rotate(0);
-		}
-		#hamburger > div:nth-child(1) {
-			top:0;
-		}
-		#hamburger > div:nth-child(2) {
-			top: calc( 50% - ( @barHeight / 2 ) );
-		}
-		#hamburger > div:nth-child(3) {
-			bottom:0;
-		}
-
-		ul {
-			display: none;
-			background: @black;
-			position: absolute;
-			width: calc( ( ( 100vw - @spaceLayout ) * .25 ) - 30px );
-			right: 0;
-			top: @burgerSize + 20px;
-			padding: 20px;
-			box-sizing: border-box;
-			li {
-				font-size: 0.8em;
-				a {
-					color: @gray;
-				}
-				a:hover, a:active,
-				&.current-menu-item a {
-					color: white;
-					border-color: transparent;
-				}
-			}
-
-		}
-
-		/* opened */
-		&.open ul {
-			display: block;
-		}
-		&.open > #hamburger {
-			background: @black;
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: 0;
-		}
-		&.open > #hamburger > div {
-			background: white;
-		}
-		&.open > #hamburger > div:nth-child(1) {
-			transform: rotate(45deg);
-			top: calc( 50% - ( @barHeight / 2 ) );
-		}
-		&.open > #hamburger > div:nth-child(2) {
-			transform: translateX(-100%);
-			transition: 0.25s transform ease;
-		}
-		&.open > #hamburger > div:nth-child(3) {
-			transform: rotate(-45deg) ;
-			bottom: calc( 50% - ( @barHeight / 2 ) );;
-		}
-	}
 }
 
 /**
@@ -261,16 +172,6 @@ header#head {
 				}
 			}
 		}
-		#burger-nav {
-			left: 270px;
-			top: 15px;
-			ul {
-				width: 220px;
-				li {
-					display: block;
-				}
-			}
-		}
 	}
 }
 
@@ -291,10 +192,6 @@ header#head {
 					float: none;
 				}
 			}
-		}
-		#burger-nav {
-			left: 245px;
-			top: 11px;
 		}
 	}
 }

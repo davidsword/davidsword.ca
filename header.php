@@ -52,23 +52,6 @@ Synced to Pressable with https://wppusher.com/
 					<a href='<?php bloginfo( 'url' ); ?>'><?php echo bloginfo( 'name' ); ?></a>
 					<span class='description'><?php bloginfo( 'description' ); ?></span>
 				</h1>
-				<nav id='burger-nav'>
-					<div id='hamburger'>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-					<ul>
-						<?php
-						wp_nav_menu( [
-							'container'      => '',
-							'items_wrap'     => '%3$s',
-							'title_li'       => '',
-							'theme_location' => 'sec-nav',
-						] );
-						?>
-					</ul>
-				</nav>
 			</div>
 			<nav id='main'>
 				<ul>

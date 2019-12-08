@@ -1,1 +1,0 @@
-"use strict";var mainNav=document.querySelector("nav#main"),hamburger=document.querySelector("#burger-nav");hamburger.addEventListener("click",function(){hamburger.classList.toggle("open"),mainNav.classList.toggle("hide")});

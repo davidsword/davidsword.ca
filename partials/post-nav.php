@@ -16,8 +16,8 @@ if ( is_singular() ) : ?>
 			] );
 		}
 		$nav_post_type = get_post_type_object( get_post_type() );
-		next_post_link( '%link', '&laquo; Prev ' . $nav_post_type->labels->singular_name );
-		previous_post_link( '%link', 'Next '.$nav_post_type->labels->singular_name.' &raquo;' );
+		next_post_link( '%link', '&laquo; Prev ' . $nav_post_type->labels->singular_name, true );
+		previous_post_link( '%link', 'Next '.$nav_post_type->labels->singular_name.' &raquo;', true );
 		?>
 	</div><!--/navigation-->
 <?php endif ?>

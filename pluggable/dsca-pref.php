@@ -46,7 +46,6 @@ function ds_makethumbnailcol( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_post_posts_columns', 'ds_makethumbnailcol' );
-add_filter( 'manage_projects_posts_columns', 'ds_makethumbnailcol' );
 
 /**
  * Display the post thumbnail in the edit page table for eaiser management

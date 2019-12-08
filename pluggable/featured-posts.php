@@ -79,10 +79,88 @@ add_filter( 'manage_post_posts_columns', function ( $columns ) {
  */
 add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 	if ( 'featured' === $column_name ) {
-		$is_featured = (boolean) get_post_meta( $id, 'featured', true );
-		echo $is_featured ? "⭐" : '';
+		$is_featured = (boolean) get_post_meta( $id, 'featured', true ) ? '1' : '0';
+		?>
+		<span
+			data-featured="<?php echo esc_attr( $is_featured )  ?>"
+			data-post-id="<?php echo (int) $id  ?>"
+		>⭐</span>
+		<?php
 	}
 }, 999, 2);
+
+add_action( 'admin_footer', function(){
+	?>
+	<style>
+		span[data-featured] {
+			padding: 5px;
+			font-size:25px
+		}
+		span[data-featured="0"] {
+			opacity: 0.2;
+		}
+	</style>
+	<?php
+});
+
+/**
+ * Listen for feature image toggling.
+ */
+add_action( 'wp_ajax_feature_toggle', function() {
+	if ( ! wp_verify_nonce( $_POST['nonce'], 'feature_toggle_nonce' ) ) {
+		wp_send_json_error( 'invalid nonce' );
+	}
+
+	$post_id = (int) $_POST['post_id'];
+
+	$is_featued = ( isset( $_POST['featured'] ) && '1' === $_POST['featured'] );
+	if ( $is_featued ) {
+		update_post_meta( $post_id , 'featured', 1 );
+	} else {
+		delete_post_meta( $post_id, 'featured' );
+	}
+	wp_send_json_success( [ "update post {$post_id} to {$is_featued}" ] );
+
+	die();
+});
+
+/**
+ * Add JS to submit AJAX post on click.
+ */
+add_action( 'admin_footer', function () {
+    ?>
+    <script>
+		jQuery(document).ready( function($) {
+			jQuery('[data-featured]').click( function(e) {
+				console.dir( e.srcElement.dataset );
+				let post_id = e.srcElement.dataset.postId;
+				// invert the current value for the toggle.
+				let featured = e.srcElement.dataset.featured == '1' ? '0' : '1';
+				var data = {
+					action: 'feature_toggle',
+					post_id,
+					featured,
+					"nonce" : <?php echo wp_json_encode( wp_create_nonce( 'feature_toggle_nonce' ) ) ?>
+				};
+				// Post the request to WordPress' AJAX URL.
+				$.post( ajaxurl, data, function( response ) {
+					if ( response.success ) {
+						e.srcElement.dataset.featured = featured;
+					}
+					console.dir( response );
+				});
+
+			});
+		});
+    </script>
+    <?php
+});
+
+function my_plugin_ajax_submit() {
+    // some php code that fires from AJAX click of #buildButton
+    // wp_mail( 'user@domain.com', 'my_plugin_ajax_submit() fired', time());
+    return true;
+}
 
 /**
  * Filter posts on the front end to only FEATURED if set to do so.

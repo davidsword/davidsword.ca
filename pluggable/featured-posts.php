@@ -75,7 +75,7 @@ add_filter( 'manage_post_posts_columns', function ( $columns ) {
 /**
  * Display the post thumbnail in the edit page table for eaiser management
  *
- * @TODO add ajax here to change post_meta value via the table for quick featuring.
+ * @TODO change the star into a checkbox as thats better WP default UI.
  */
 add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 	if ( 'featured' === $column_name ) {
@@ -156,16 +156,13 @@ add_action( 'admin_footer', function () {
     <?php
 });
 
-function my_plugin_ajax_submit() {
-    // some php code that fires from AJAX click of #buildButton
-    // wp_mail( 'user@domain.com', 'my_plugin_ajax_submit() fired', time());
-    return true;
-}
-
 /**
  * Filter posts on the front end to only FEATURED if set to do so.
  */
 add_action( 'pre_get_posts', function ( $query ) {
+
+	// disable until content has been taged accordingly.
+	return;
 
 	if ( is_admin() || ! $query->is_main_query() )
 		return;

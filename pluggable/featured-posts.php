@@ -83,3 +83,27 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 		echo $is_featured ? "⭐" : '';
 	}
 }, 999, 2);
+
+/**
+ * Filter posts on the front end to only FEATURED if set to do so.
+ */
+add_action( 'pre_get_posts', function ( $query ) {
+
+	if ( is_admin() || ! $query->is_main_query() )
+		return;
+
+	$show_all = true; // @todo this will be set by the user.
+	if ( $show_all )
+		return;
+
+	// preserve any existing meta queries.
+	$meta_query = is_array( $query->get('meta_query') ) ? $query->get('meta_query')  : [];
+
+	// checking for exists is faster than checking the value thereof.
+    $meta_query[] = [
+		'key'     => 'featured',
+		'compare' => 'EXISTS'
+	];
+	$query->set('meta_query',$meta_query);
+
+} );

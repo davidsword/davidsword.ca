@@ -89,6 +89,12 @@ add_action( 'manage_posts_custom_column', function( $column_name, $id ) {
 	}
 }, 999, 2);
 
+/**
+ * Styles
+ *
+ * @TODO enueue this properly, or at very least hook into posts page only.
+ * @TODO don't use this star, use a checkbox instead.
+ */
 add_action( 'admin_footer', function(){
 	?>
 	<style>
@@ -126,6 +132,8 @@ add_action( 'wp_ajax_feature_toggle', function() {
 
 /**
  * Add JS to submit AJAX post on click.
+ *
+ * @TODO enqueue this properly - or at very least hook it to only show on posts page.
  */
 add_action( 'admin_footer', function () {
     ?>

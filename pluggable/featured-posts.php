@@ -5,8 +5,8 @@
  * Add a toggle button to show all posts, or just featured posts.
  * Featured posts are the vital few to show off.
  *
- * Basically the 80/20 rule for WordPress blog, toggle to only
- * show the top 20% of your posts.
+ * Basically the 80/20 rule for WordPress blog, toggle to reveal
+ * the remaining 80% of the site.
  *
  * @package davidsword-ca
  */
@@ -92,7 +92,8 @@ add_action( 'pre_get_posts', function ( $query ) {
 	if ( is_admin() || ! $query->is_main_query() )
 		return;
 
-	$show_all = true; // @todo this will be set by the user.
+	// 'Featured' content is implicit, 'Show All' is explicit.
+	$show_all = isset( $_COOKIE['show_all'] ) && '1' === $_COOKIE['show_all'];
 	if ( $show_all )
 		return;
 
@@ -105,5 +106,49 @@ add_action( 'pre_get_posts', function ( $query ) {
 		'compare' => 'EXISTS'
 	];
 	$query->set('meta_query',$meta_query);
+
+} );
+
+/**
+ * Add toggle form.
+ *
+ * @TODO hook this properly somewhere instead of relying on a custom template tag (function).
+ */
+function dsca_toggle_featured_showall() {
+	$show_all = isset( $_COOKIE['show_all'] ) && '1' === $_COOKIE['show_all'] ? '1' : '0';
+	?>
+	<form action='' method='POST'>
+		<?php wp_nonce_field( plugin_basename( __FILE__ ), 'show_all_nonce' ); ?>
+		<label>
+			<input type='radio' name='show_all' value='0' <?php checked( $show_all, '0' ) ?> onchange="this.form.submit()" />
+			Show Featured
+		</label>
+		<br />
+		<label>
+			<input type='radio' name='show_all' value='1' <?php checked( $show_all, '1' ) ?> onchange="this.form.submit()" />
+			Show All
+		</label>
+	</form>
+	<?php
+}
+
+/**
+ * Process request change.
+ *
+ * Since a reload is requied for WP_Query refresh, we'll handle the cookie in PHP.
+ */
+add_action( 'init', function() {
+	if ( ! isset( $_POST['show_all'] ) )
+		return;
+	if ( ! wp_verify_nonce( $_POST['show_all_nonce'], plugin_basename( __FILE__ ) ) )
+		return;
+
+	$show_all = ( isset( $_POST['show_all'] ) && '1' === $_POST['show_all'] ) ? '1' : '0';
+
+	$cookie = setcookie(
+		'show_all',
+		$show_all,
+		time() + YEAR_IN_SECONDS
+	);
 
 } );

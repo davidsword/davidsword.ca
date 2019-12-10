@@ -149,16 +149,17 @@ add_action( 'admin_footer', function () {
  */
 add_action( 'pre_get_posts', function ( $query ) {
 
-	// disable until content has been taged accordingly.
-	return;
-
-	if ( is_admin() || ! $query->is_main_query() )
+	// is_home() is here because my main /blog/ is unindexed via the ui, this most likley
+	// should be removed for other uses of this.
+	if ( is_admin() || is_singular() || is_home() || ! $query->is_main_query() )
 		return;
 
-	// 'Featured' content is implicit, 'Show All' is explicit.
-	$show_all = isset( $_COOKIE['show_all'] ) && '1' === $_COOKIE['show_all'];
-	if ( $show_all )
-		return;
+	// 'Featured' content is implied implicitly, 'Show All' is explicit.
+	if ( false ) { // turning the toggle off for the time being
+		$show_all = isset( $_COOKIE['show_all'] ) && '1' === $_COOKIE['show_all'];
+		if ( $show_all )
+			return;
+	}
 
 	// preserve any existing meta queries.
 	$meta_query = is_array( $query->get('meta_query') ) ? $query->get('meta_query')  : [];
@@ -166,7 +167,11 @@ add_action( 'pre_get_posts', function ( $query ) {
 	// checking for exists is faster than checking the value thereof.
     $meta_query[] = [
 		'key'     => 'featured',
-		'compare' => 'EXISTS'
+		'compare' => '='
+	];
+	$meta_query[] = [
+		'compare' => 'LIKE',
+		'value' => '1'
 	];
 	$query->set('meta_query',$meta_query);
 

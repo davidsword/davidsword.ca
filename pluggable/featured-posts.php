@@ -220,3 +220,44 @@ add_action( 'init', function() {
 	);
 
 } );
+
+/**
+ * Add a count of posts that are featured in Admin Notices.
+ *
+ * The point of this is the 80/20 rule. The law of the vital few. If I swarm this site with everything
+ * I do and treat it like a CMS for my portfolio and thoughts, I will drown out the quality content, that
+ * says more about everything I do. The goal is to keep all categories around 20%.
+ *
+ * The vital few.
+ * Less is more.
+ * Simple is better.
+ *
+ * @todo a better spot would be in the `subsubsub` list
+ * @todo this should be a cached value
+ * @todo query should be optimzied
+ * @todo this should specify that cat in the output
+ */
+add_action( 'admin_notices', function(){
+	global $current_screen, $wp_query;
+
+	if ( $current_screen->id !== 'edit-post'  )
+		return;
+
+	$get_posts = [
+		'post_type' => 'post',
+		'post_status' => 'publish',
+		'posts_per_page' => '-1',
+		'cat' => $wp_query->query['cat'] ?? ''
+	];
+	$all_posts = count( get_posts( $get_posts ) );
+
+	// now count just featured posts. New query better than looping individually.
+	$get_posts['meta_query'] = [[
+		'key' => 'featured',
+		'compare' => 'EXISTS'
+	]];
+	$featured_posts = count( get_posts( $get_posts ) );
+
+	$featured = floor( (  $featured_posts /  $all_posts  ) * 100 );
+	echo "<div class='notice notice-info'><p>Featured Posts: {$featured}%</p></div>";
+} );

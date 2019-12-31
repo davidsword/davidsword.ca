@@ -29,6 +29,7 @@
 			?>
 		</span>
 		<?php edit_post_link('#edit-this') ?>
+		<?php echo 'private' === get_post_status() ? '#private' : ''; ?>
 	</header>
 
 	<?php if ( get_the_title() ) :  ?>

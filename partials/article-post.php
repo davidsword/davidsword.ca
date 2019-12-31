@@ -29,7 +29,12 @@
 			?>
 		</span>
 		<?php edit_post_link('#edit-this') ?>
-		<?php echo 'private' === get_post_status() ? '#private' : ''; ?>
+		<?php
+			if ( is_user_logged_in() ) {
+				echo "<span data-private='".get_the_ID()."'>#".get_post_status()."</span>";
+			}
+		?>
+
 	</header>
 
 	<?php if ( get_the_title() ) :  ?>

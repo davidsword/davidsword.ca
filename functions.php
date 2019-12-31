@@ -14,6 +14,7 @@ require get_stylesheet_directory() . '/pluggable/security.php';
 require get_stylesheet_directory() . '/pluggable/shortcodes.php';
 require get_stylesheet_directory() . '/pluggable/gists/gists.php';
 require get_stylesheet_directory() . '/pluggable/auto-post-format.php';
+require get_stylesheet_directory() . '/pluggable/toggle-private.php';
 
 /**
  * Add various features for theme

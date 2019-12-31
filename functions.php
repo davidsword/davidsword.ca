@@ -42,7 +42,7 @@ add_action( 'after_setup_theme', function () {
 
 // Navigation.
 register_nav_menu( 'main-nav', 'Main Navigation' );
-register_nav_menu( 'sec-nav',  'Secondary Navigation' );
+register_nav_menu( 'priv-nav',  'Private Navigation' );
 register_nav_menu( 'toe-nav',  'Footer Navigation' );
 
 /**

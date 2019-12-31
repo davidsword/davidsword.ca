@@ -1,11 +1,11 @@
-# 🦊 DavidSword.ca #
+# DavidSword.ca #
 **Contributors:**      davidsword  
 **Donate link:**       https://davidsword.ca/🍺/  
 **Tags:**              clean, minimal, davidsword  
 **Requires at least:** 5.0  
-**Tested up to:**      5.1.1  
+**Tested up to:**      5.3.2  
 **Stable tag:**        3.1.6  
-**Requires PHP:**      7.2  
+**Requires PHP:**      7.4  
 **License:**           GPLv2 or later  
 **License URI:**       https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -26,7 +26,7 @@ A clean and minimal website with focus on content.
 ## Screenshots ##
 
 ### 1. Home Page ###
-![Home Page](http://ps.w.org/🦊-davidsword.ca/assets/screenshot-1.png)
+![Home Page](http://ps.w.org/davidsword.ca/assets/screenshot-1.png)
 
 
 ## Changelog ##

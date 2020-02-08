@@ -7,14 +7,14 @@
  */
 
 header#head {
-	padding: @spaceLayout 0 @spaceLayout @spaceLayout;
-    width: calc( ( ( 100vw - @spaceLayout ) * .25 ) );
-	display: flex;
+	padding: @spaceLayout 0 ;
+    //width: calc( ( ( 100vw - @spaceLayout ) * .25 ) );
+	//display: flex;
 	overflow: auto;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	top: 0;
+	//position: fixed;
+	//bottom: 0;
+	//left: 0;
+	//top: 0;
 	margin: 0 auto;
 	.head__inner {
 		width: 100%;
@@ -28,7 +28,9 @@ header#head {
 			position: relative;
 		}
 		h1 {
-			margin-bottom: 3rem;
+      margin-bottom: 3rem;
+      width:auto;
+      display: inline-block;
 		}
 		nav {
 			width: 100%;
@@ -42,11 +44,17 @@ header#head {
 	}
 }
 
+header,
+footer,
+main {
+	margin: 0 auto;
+  max-width:800px;
+}
+
 footer,
 main {
 	padding: @spaceLayout @spaceLayout 0 0;
-	width: calc( ( ( 100vw - @spaceLayout ) * .7 ) - 4rem );
-	margin: 0 0 0 auto;
+	//width: calc( ( ( 100vw - @spaceLayout ) * .7 ) - 4rem );
 	display: block;
     position: relative;
     top: 0;
@@ -64,7 +72,7 @@ footer {
  */
 
  // Adjust when the height is small, but the width is big (ie: when Web Inspector is open)
- @media screen and (max-height: 650px) and (min-width: @laptop) {
+ //@media screen and (max-height: 650px) and (min-width: @laptop) {
 	header#head {
 		padding: @spaceLayout*0.5 0 @spaceLayout*0.5 @spaceLayout;
 	}
@@ -72,13 +80,13 @@ footer {
 	main {
 		padding: @spaceLayout*0.5 @spaceLayout @spaceLayout*0.5 0;
 	}
- }
+ //}
 
  // Smaller laptops need a little adjustment.
- @media screen and (max-width: @laptop) {
+ //@media screen and (max-width: @laptop) {
 	header#head {
 		padding: @spaceLayout*0.75 0 @spaceLayout*0.75 @spaceLayout*0.75;
-		width: calc( ( ( 100vw - @spaceLayout*0.75 ) * .25 ) );
+		//width: calc( ( ( 100vw - @spaceLayout*0.75 ) * .25 ) );
 	}
 	footer,
 	main {
@@ -88,16 +96,14 @@ footer {
 	footer {
 		padding-bottom: @spaceLayout*0.75;
 	}
- }
+ //}
 
-@media screen and (max-width: @tablet) {
+//@media screen and (max-width: @tablet) {
 	header#head {
-		padding: @spaceLayout*0.5;
-		width: 100%;
-		bottom: auto;
-		width: 100%;
-		position: relative;
-		box-sizing: border-box;
+		padding: @spaceLayout*0.5 0;
+    bottom: auto;
+    display: block;
+		//box-sizing: border-box;
 		.head__inner {
 			width: 100%;
 			display: flex;
@@ -117,8 +123,12 @@ footer {
 		width: auto;
 		padding: @spaceLayout*0.5;
 	}
+//}
+@media screen and (max-width: @tablet) {
+	header#head {
+		padding: @spaceLayout*0.5;
+  }
 }
-
 @media screen and (max-width: @phone) {
 	header#head {
 		padding: @spaceLayout*0.5 @spaceLayout*0.25 @spaceLayout*0.25 @spaceLayout*0.25;

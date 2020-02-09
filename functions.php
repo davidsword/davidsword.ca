@@ -15,6 +15,10 @@ require get_stylesheet_directory() . '/pluggable/shortcodes.php';
 require get_stylesheet_directory() . '/pluggable/gists/gists.php';
 require get_stylesheet_directory() . '/pluggable/auto-post-format.php';
 require get_stylesheet_directory() . '/pluggable/toggle-private.php';
+require get_stylesheet_directory() . '/pluggable/cpts.php';
+require get_stylesheet_directory() . '/pluggable/cpt-photos.php';
+require get_stylesheet_directory() . '/pluggable/cpt-projects.php';
+require get_stylesheet_directory() . '/pluggable/cpt-status.php';
 
 /**
  * Add various features for theme

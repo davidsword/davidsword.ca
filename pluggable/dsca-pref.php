@@ -101,3 +101,24 @@ add_filter( 'found_posts', function ( $found, $query ) {
 	}
 	return $found;
 }, 10, 3 );
+
+/**
+ * Note enviroment.
+ */
+function dsca_add_env_to_admin_bar() {
+	global $wp_admin_bar;
+
+	$evn = strstr( get_home_url(), 'vvv.') ? 'local' : 'production';
+	$color = 'production' === $evn ? '#81e481' : 'orange';
+
+	$wp_admin_bar->add_node([
+		'id'     => 'env',
+		'title'  => sprintf(
+			'EVN: <strong style="font-weight:bold;color: %s;">%s</strong>',
+			esc_attr( $color ),
+			esc_html( strtoupper( $evn ) )
+		),
+		'parent' => 'top-secondary',
+	]);
+}
+add_action( 'wp_before_admin_bar_render', 'dsca_add_env_to_admin_bar' );

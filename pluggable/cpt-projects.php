@@ -23,6 +23,7 @@ add_action( 'init' , function () {
 			'title', 'editor', 'author', 'thumbnail' ,// 'excerpt', 'comments'
 		],
 		'show_in_rest'          => true,
+		'taxonomies'            => [ 'category' ],
 		//'rest_base'             => 'projects',
 		//'rest_controller_class' => 'WP_REST_Posts_Controller',
 	];

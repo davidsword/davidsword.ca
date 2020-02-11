@@ -20,7 +20,8 @@ get_header();
 		<section>
 
 			<?php
-			if ( have_posts() ) :
+			global  $wp_query;
+			if ( ! $wp_query->query['error'] && have_posts() ) :
 
 				while ( have_posts() ) :
 					the_post();

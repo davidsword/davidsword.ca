@@ -73,12 +73,5 @@ Synced to Pressable with https://wppusher.com/
 					?>
 				</ul>
 			</nav>
-
-			<?php
-				if ( function_exists('dsca_toggle_featured_showall') ) {
-					// remove until content has been taged accordingly.
-					// echo dsca_toggle_featured_showall();
-				}
-			?>
 		</div>
 	</header>

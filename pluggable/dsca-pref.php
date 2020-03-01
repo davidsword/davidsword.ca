@@ -115,8 +115,8 @@ add_filter( 'found_posts', function ( $found, $query ) {
 function dsca_add_env_to_admin_bar() {
 	global $wp_admin_bar;
 
-	$evn = strstr( get_home_url(), 'vvv.') ? 'local' : 'production';
-	$color = 'production' === $evn ? '#81e481' : 'orange';
+	$evn = strstr( get_home_url(), 'vvv.') ? 'local' : 'prod';
+	$color = 'prod' === $evn ? '#81e481' : 'orange';
 
 	$wp_admin_bar->add_node([
 		'id'     => 'env',

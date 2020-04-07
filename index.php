@@ -37,7 +37,7 @@ get_header();
 
 			endif;
 
-			if ( ! is_page() ) { ?>
+			if ( ! is_page() && ! is_404() ) { ?>
 
 				<div class='clear navigation'>
 					<?php

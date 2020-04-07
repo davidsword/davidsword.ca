@@ -135,7 +135,7 @@ add_action( 'wp_before_admin_bar_render', 'dsca_add_env_to_admin_bar' );
  * Don't put private posts on front end.
  */
 add_action( 'pre_get_posts', function ( $query ) {
-	if ( ! is_admin() && $query->is_main_query() ) {
+	if ( ! is_admin() && ! is_404() && $query->is_main_query() ) {
 		$query->set( 'post_status', 'publish' );
 	}
 } );

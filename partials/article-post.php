@@ -22,11 +22,7 @@
 		<?php
 			dsca_featured_image();
 
-			if ( is_single() || ( strlen( get_the_content() ) < 500 ) ) {
-				the_content();
-			} else {
-				the_excerpt();
-			}
+			the_content();
 		?>
 	</div>
 

@@ -7,15 +7,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Load custom plugins.
-require get_stylesheet_directory() . '/pluggable/dsca-pref.php';
-require get_stylesheet_directory() . '/pluggable/security.php';
-require get_stylesheet_directory() . '/pluggable/shortcodes.php';
-require get_stylesheet_directory() . '/pluggable/gists/gists.php';
-require get_stylesheet_directory() . '/pluggable/cpts.php';
-require get_stylesheet_directory() . '/pluggable/cpt-projects.php';
-require get_stylesheet_directory() . '/pluggable/cpt-status.php';
-
 /**
  * Add various features for theme
  */

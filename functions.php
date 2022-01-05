@@ -2,19 +2,10 @@
 /**
  * Functions for this theme.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 defined( 'ABSPATH' ) || exit;
-
-// Load custom plugins.
-require get_stylesheet_directory() . '/pluggable/dsca-pref.php';
-require get_stylesheet_directory() . '/pluggable/security.php';
-require get_stylesheet_directory() . '/pluggable/shortcodes.php';
-require get_stylesheet_directory() . '/pluggable/gists/gists.php';
-require get_stylesheet_directory() . '/pluggable/cpts.php';
-require get_stylesheet_directory() . '/pluggable/cpt-projects.php';
-require get_stylesheet_directory() . '/pluggable/cpt-status.php';
 
 /**
  * Add various features for theme
@@ -117,7 +108,7 @@ add_action( 'wp_footer', function() {
 	?>
 	<style>
 		header#head h1::before {
-			background-image: url('https://www.gravatar.com/avatar/<?php echo md5( get_option( 'admin_email' ) ); ?>?s=200');
+			background-image: url('<?php echo dsca_get_gravatar_from_admin_email( 200 ) ?>');
 		}
 	</style>
 	<?php

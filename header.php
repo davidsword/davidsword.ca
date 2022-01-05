@@ -2,7 +2,7 @@
 /**
  * Header.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -62,14 +62,6 @@ Synced to Pressable with https://wppusher.com/
 						'title_li'       => '',
 						'theme_location' => 'main-nav',
 					] );
-					if ( is_user_logged_in() ) {
-						wp_nav_menu( [
-							'container'      => '',
-							'items_wrap'     => '%3$s',
-							'title_li'       => '',
-							'theme_location' => 'priv-nav',
-						] );
-					}
 					?>
 				</ul>
 			</nav>

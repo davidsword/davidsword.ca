@@ -1,8 +1,9 @@
+
 <?php
 /**
  * Footer.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 defined( 'ABSPATH' ) || exit;

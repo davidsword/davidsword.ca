@@ -4,7 +4,7 @@
  *
  * Commonly used in Search or an empty category/term.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 ?>
 <article <?php post_class(); ?>>

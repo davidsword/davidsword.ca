@@ -6,7 +6,7 @@
  * is output in a very simple mannor so most of the changes in content
  * reside in loading the correct `partials/*.php` files.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 defined( 'ABSPATH' ) || exit;

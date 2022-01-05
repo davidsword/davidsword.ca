@@ -4,7 +4,7 @@
  *
  * Use to toggle to next/prev post. Supports multiple Custom Post Types.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 if ( is_singular() ) : ?>

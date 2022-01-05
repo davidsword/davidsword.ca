@@ -9,12 +9,12 @@
 /* Basics ---------------------------------- */
 body {
 	background: @white;
-	font-family: @fontMain;
-	font-size: @font-size;
-	line-height: 1.8em;
+	//font-family: @fontMain;
+	//font-size: @font-size;
+	//line-height: 1.8em;
+	font: 400 20px/1.85 Inter,-apple-system,sans-serif;
 	color: @black;
 	min-height: 100%;
-	font-weight: 300;
 	word-break: break-word;
 }
 
@@ -113,7 +113,21 @@ i {
 }
 
 strong {
-	font-weight: 400;
+	font-weight: 600;
+}
+
+
+body {
+	.wp-block-quote:not(.is-large):not(.is-style-large), .wp-block-quote, blockquote {
+		border-left-color: #d8d8d8;
+
+		p {
+			font-family: inherit;
+			font-size: 1em;
+			font-style: normal;
+			opacity: 0.8;
+		}
+	}
 }
 
 /* Images ---------------------------------- */

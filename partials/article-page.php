@@ -2,7 +2,7 @@
 /**
  * Article template for Pages.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 ?>
 <article <?php post_class(); ?>>

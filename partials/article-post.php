@@ -1,10 +1,10 @@
 <?php
 /**
- * Article template for posts with the Status format.
+ * Article template for posts with the Aside format.
  *
  * Supporting both single and archive type pages
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 ?>
 <article <?php post_class(); ?>>
@@ -20,9 +20,16 @@
 
 	<div class='content'>
 		<?php
-			dsca_featured_image();
+			if ( ! has_post_format( 'aside', get_the_ID() ) )
+				dsca_featured_image();
 
-			the_content();
+			if ( is_home() && ! has_post_format( 'aside', get_the_ID() ) )
+				the_excerpt();
+			else
+				the_content();
+
+			if ( has_post_format( 'aside', get_the_ID() ) )
+				dsca_featured_image();
 		?>
 	</div>
 

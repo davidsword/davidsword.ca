@@ -2,7 +2,7 @@
 /**
  * Functions for this theme.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -108,7 +108,7 @@ add_action( 'wp_footer', function() {
 	?>
 	<style>
 		header#head h1::before {
-			background-image: url('https://www.gravatar.com/avatar/<?php echo md5( get_option( 'admin_email' ) ); ?>?s=200');
+			background-image: url('<?php echo dsca_get_gravatar_from_admin_email( 200 ) ?>');
 		}
 	</style>
 	<?php

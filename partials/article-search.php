@@ -1,10 +1,10 @@
 <?php
 /**
- * Article template for posts with the Status format.
+ * Article template for posts with the Aside format.
  *
  * Supporting both single and archive type pages
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 ?>
 <article <?php post_class(); ?>>

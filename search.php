@@ -4,7 +4,7 @@
  *
  * No pagination intentional. If not top result, should refined search better.
  *
- * @package davidsword-ca
+ * @package davidsword-ca-custom-theme
  */
 
 defined( 'ABSPATH' ) || exit;

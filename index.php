@@ -21,7 +21,7 @@ get_header();
 
 			<?php
 			global  $wp_query;
-			if ( ! $wp_query->query['error'] && have_posts() ) :
+			if ( ! ( isset( $wp_query->query['error'] ) && $wp_query->query['error'] ) && have_posts() ) :
 
 				while ( have_posts() ) :
 					the_post();

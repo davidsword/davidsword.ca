@@ -17,7 +17,15 @@ defined( 'ABSPATH' ) || exit;
 				'title_li'       => '',
 				'theme_location' => 'toe-nav',
 			] );
+
+			// @TODO this should be dynamic from db
 			?>
+			<li>
+				Proudly Powered by
+				<a href="https://wordpress.org/" target='_Blank'>WordPress</a>,
+				<a href="https://jetpack.com/" target='_Blank'>Jetpack</a>, &amp;
+				<a href="https://pressable.com/" target='_Blank'>Pressable</a>.
+			</li>
 		</ul>
 	</footer>
 

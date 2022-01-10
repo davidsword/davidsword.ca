@@ -46,7 +46,7 @@ register_nav_menu( 'toe-nav',  'Footer Navigation' );
  */
 add_action( 'wp_enqueue_scripts', function() {
 
-	$ver = SCRIPT_DEBUG ? time() : wp_get_theme()->get( 'Version' );
+	$ver = ( SCRIPT_DEBUG || WP_DEBUG || dsca_is_develop() ) ? time() : wp_get_theme()->get( 'Version' );
 
 	wp_enqueue_style(
 		'main',

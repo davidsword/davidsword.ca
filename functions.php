@@ -108,7 +108,7 @@ add_action( 'wp_footer', function() {
 	?>
 	<style>
 		header#head h1::before {
-			background-image: url('<?php echo dsca_get_gravatar_from_admin_email( 200 ) ?>');
+			background-image: url('<?php echo esc_url( dsca_get_gravatar_from_admin_email( 200 ) ); ?>');
 		}
 	</style>
 	<?php

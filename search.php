@@ -18,7 +18,7 @@ get_header();
 	<main>
 		<section>
 
-			<form role="search" method="get" id="searchform" action="<?php echo esc_attr( home_url( '/' ) ); ?>">
+			<form role="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<input
 					type="text"
 					name="s"

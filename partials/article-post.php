@@ -9,7 +9,7 @@
 ?>
 <article <?php post_class(); ?>>
 	<?php if ( get_the_title() ) :  ?>
-		<h2 class='title title--<?php echo get_post_type(); ?>'>
+		<h2 class='title title--<?php echo esc_attr( get_post_type() ); ?>'>
 			<?php if ( ! is_single() ) { ?>
 				<a href='<?php echo esc_url( get_permalink() ); ?>'><?php the_title(); ?> &raquo;</a>
 			<?php } else {

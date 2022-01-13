@@ -19,6 +19,6 @@
 		<?php echo esc_html( the_permalink() ); ?> &raquo;
 	</a>
 	<div class='content'>
-		<?php echo the_excerpt() ?>
+		<?php echo wp_kses_post( the_excerpt() ) ?>
 	</div>
 </article>

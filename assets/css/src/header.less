@@ -22,7 +22,7 @@ header#head {
 			width: 75px;
 			height: 75px;
 			border-radius: 50%;
-			background: @gray;
+			background: var(--gray);
 			z-index: 1;
 			margin-right: 10px;
 			background-repeat: no-repeat;
@@ -31,14 +31,14 @@ header#head {
 			//filter: saturate(0%);
 		}
 		a {
-			color: fade(@black, 85%); //bit softer, take away focus
+			color: var(--Softblack);
 			letter-spacing: normal;
 			font-weight: 400;
 			transition: 0.6s all ease;
 		}
 		.description {
 			display:block;
-			color: @gray;
+			color: var(--gray);
 			font-size: 0.8em;
 		}
 	}
@@ -64,7 +64,7 @@ header#head {
 					display: inline-block;
 					text-decoration: none;
 					border-bottom: 1px solid transparent;
-					color: fade( #000, 70% );
+					color: var(--gray);//fade( #000, 70% );
 				}
 
 				// Blog page highlighting on single.
@@ -78,8 +78,8 @@ header#head {
 				&.current_page_item>a {
 					&:link,
 					&:visited {
-						color: fade( #000, 90% );
-						border-bottom: 1px solid fade( @blue, 50% );
+						color: var(--Softblack);
+						border-bottom: 1px solid var(--lightBlue); //fade( var(--blue), 50% );
 					}
 				}
 
@@ -89,8 +89,8 @@ header#head {
 					}
 					a:hover,
 					a:focus {
-						color: fade( @black, 90% );
-						border-bottom-color: fade( @black, 50% );
+						color: var(--Softblack); //fade( var(--black), 90% );
+						border-bottom-color: var(--gray); //fade( var(--black), 50% );
 					}
 				}
 
@@ -111,13 +111,13 @@ header#head {
 						}
 						a:hover,
 						a:focus {
-							color: fade( @black, 70% );
-							border-bottom-color: fade( @black, 50% );
+							color: var(--Softblack);// fade( var(--black), 70% );
+							border-bottom-color: var(--lightGray); //fade( var(--black), 50% );
 						}
 						&.current-category-ancestor a,
 						&.current-menu-item a {
-							color: @black;
-							border-bottom-color: fade( @blue, 50% );
+							color: var(--Softblack);
+							border-bottom-color: var(--lightBlue); //fade( var(--blue), 50% );
 						}
 					}
 				}

@@ -16,7 +16,7 @@ HR.wp-block-separator {
 	clear: both;
 	margin-top: @space;
 	margin-bottom: @space*2;
-	background: fade(@black, 10%);
+	background: var(--lightGray);//fade(var(--black), 10%);
 	height: 1px;
 	line-height: 1px;
 	outline: none;
@@ -30,7 +30,7 @@ HR.wp-block-separator {
 blockquote {
 	padding: @space/2 0 @space/2 @space;
 	margin: 0 0 @space 0;
-	border-left-color: fade( @black, 80% );
+	border-left-color: var(--lightGray); //fade( var(--black), 80% );
 	p {
 		font-size: 2rem;
 		font-family: Georgia, 'Times New Roman', Times, serif; // only use of serif.
@@ -45,7 +45,7 @@ blockquote {
 	cite {
 		font-size: .9em;
 		margin: 0;
-		color: @gray;
+		color: var(--gray);
 	}
 }
 

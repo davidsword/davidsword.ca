@@ -31,8 +31,8 @@ html body #wpstats {
  */
 
 .jetpack_subscription_widget form {
-	border: 1px solid fade(@black, 30%);
-	background: @white;
+	border: 1px solid var(--gray); //fade(var(--black), 30%);
+	background: var(--white);
 	padding: 5px 5px 5px;
 	border-radius: 3px;
 	display: grid;
@@ -63,13 +63,13 @@ html body #wpstats {
 	}
 	p#subscribe-submit {
 		button[type=submit] {
-			background: @blue;
-			color: @white;
+			background: var(--blue);
+			color: var(--white);
 			transition: 0.5s all ease;
 			&:hover,
 			&:active,
 			&:focus {
-				background: @red;
+				background: var(--red);
 			}
 		}
 	}

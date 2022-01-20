@@ -8,12 +8,12 @@
 
 /* Basics ---------------------------------- */
 body {
-	background: @white;
+	background: var(--white);
 	//font-family: @fontMain;
 	//font-size: @font-size;
 	//line-height: 1.8em;
 	font: 400 20px/1.85 Inter,-apple-system,sans-serif;
-	color: @black;
+	color: var(--black);
 	min-height: 100%;
 	word-break: break-word;
 }
@@ -53,8 +53,8 @@ h2 {
 
 	a:hover,
 	a:active {
-		color: @blue;
-		border-bottom: 1px solid @blue;
+		color: var(--blue);
+		border-bottom: 1px solid var(--blue);
 	}
 }
 
@@ -70,8 +70,8 @@ h3 {
 
 	a:hover,
 	a:active {
-		color: @blue;
-		border-bottom: 1px solid @blue;
+		color: var(--blue);
+		border-bottom: 1px solid var(--blue);
 	}
 
 	margin-bottom: @space;
@@ -149,7 +149,6 @@ table {
 	margin-bottom: @space;
 
 	tbody tr:nth-child(odd) {
-		background: fade(@black, 5%);
 		text-align: left;
 	}
 
@@ -165,13 +164,14 @@ table {
 }
 
 /* Code ---------------------------------- */
-
+.wp-block-code code,
 pre,
 code {
 	padding: 0 10px;
 	border-radius: 2px;
-	background: fade(@black, 4%);
-	border: 1px solid fade(@black, 15%);
+	color: var(--black);
+	background: var(--lightGray);//fade(var(--black), 4%);
+	border: none; //fade(var(--black), 15%);
 	font-family: @fontMono;
 	display: inline-block;
 	font-size: 0.8em;
@@ -179,6 +179,7 @@ code {
 
 code {
 	margin-right: 5px;
+	border:1px solid var(--lightGray);
 }
 
 pre {
@@ -202,7 +203,7 @@ a {
 
 a:link,
 a:visited {
-	color: @black;
+	color: var(--black);
 	text-decoration: none;
 }
 
@@ -210,7 +211,7 @@ main {
 
 	a:link,
 	a:visited {
-		border-bottom: 1px solid fade(@blue, 50%);
+		border-bottom: 1px solid var(--lightBlue); //fade(var(--blue), 50%);
 	}
 	a.noborder:link,
 	a.noborder:visited {
@@ -219,8 +220,8 @@ main {
 
 	a:hover,
 	a:active {
-		color: @blue;
-		border-bottom-color: @blue;
+		color: var(--blue);
+		border-bottom-color: var(--blue);
 	}
 
 	/* LISTS ---------------------------------- */

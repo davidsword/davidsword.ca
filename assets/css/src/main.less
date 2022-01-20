@@ -6,7 +6,7 @@ article {
 	max-width: @width;
 	padding-bottom: @space;
 	margin-bottom: @space*2;
-	border-bottom: 1px solid fade(@black, 10%);
+	border-bottom: 1px solid var(--lightGray); //fade(var(--black), 10%);
 	&:last-child {
 		border-bottom-color: transparent;
 	}
@@ -14,6 +14,11 @@ article {
 
 .dsca_featured_image {
 	margin-bottom: @space;
+}
+
+//temp
+.category-art .dsca_featured_image {
+	margin-bottom: @space/4;
 }
 
 .title--page {
@@ -26,11 +31,11 @@ article {
 		margin-bottom: @space/4; // tiny padding.
 	}
 	&, a:link, a:visited {
-		color: fade( @gray, 80% );
+		color: var(--gray); //fade( var(--gray), 80% );
 		border: none;
 	}
 	a:hover, a:active, a:focus {
-		color: fade( @blue, 70% );
+		color: var(--lightBlue); //fade( var(--blue), 70% );
 	}
 	.post_meta__date {
 		display: inline-block;

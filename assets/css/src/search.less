@@ -2,8 +2,8 @@
  * Styles for Search page.
  */
 #searchform {
-	border: 1px solid fade(@black, 30%);
-	background: @white;
+	border: 1px solid var(--gray); // fade(var(--black), 30%);
+	background: var(--white);
 	padding: 5px 5px 5px;
 	border-radius: 3px;
 	display: grid;
@@ -43,14 +43,14 @@
 
 .title--search {
 	font-weight: 400;
-	color: @blue;
+	color: var(--blue);
 }
 
 .search_result_link {
-	color: @green;
+	color: var(--green);
 	&:link,
 	&:visited {
-		color: @green;
+		color: var(--green);
 		border-color: transparent;
 	}
 }
@@ -59,7 +59,7 @@
 .search_result_link {
 	&:hover,
 	&:active {
-		color: @red;
-		border-color: @red;
+		color: var(--red);
+		border-color: var(--red);
 	}
 }

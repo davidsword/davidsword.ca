@@ -55,14 +55,13 @@ add_action( 'wp_enqueue_scripts', function() {
 		$ver
 	);
 
-	// remove until file has some code in it.
-	// wp_enqueue_script(
-	// 	'main',
-	// 	get_template_directory_uri() . '/assets/js/dist/index.js',
-	// 	[],
-	// 	$ver,
-	// 	true
-	// );
+	wp_enqueue_script(
+		'main',
+		get_template_directory_uri() . '/assets/js/dist/index.js',
+		[],
+		$ver,
+		false //footer
+	);
 
 	if ( is_singular() ) {
 		wp_enqueue_script( 'comment-reply' );

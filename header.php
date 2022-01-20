@@ -42,6 +42,9 @@ Synced to Pressable with https://wppusher.com/
 <!-- #### FEED #### -->
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for Posts" href="<?php bloginfo( 'rss2_url' ); ?>" />
 
+<script type='text/javascript'>
+	shade_init();
+</script>
 </head>
 <body <?php body_class(); ?>>
 
@@ -63,6 +66,9 @@ Synced to Pressable with https://wppusher.com/
 						'theme_location' => 'main-nav',
 					] );
 					?>
+					<li>
+						<a href='#' style='text-decoration: none !important;' onClick="shade_toggle()">🌗</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

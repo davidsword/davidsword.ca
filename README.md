@@ -4,7 +4,7 @@
 **Tags:**              theselfproclaimedbestthemeintheworld  
 **Requires at least:** 5.0
 **Tested up to:**      5.8.2
-**Stable tag:**        20220101
+**Stable tag:**        20220120
 **Requires PHP:**      7.4
 **License:**           GPLv2 or later  
 **License URI:**       https://www.gnu.org/licenses/gpl-2.0.html  

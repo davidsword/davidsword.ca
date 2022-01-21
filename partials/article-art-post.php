@@ -1,16 +1,6 @@
-<?php
-/**
- * Article template for posts with the Aside format.
- *
- * Supporting both single and archive type pages
- *
- * @package davidsword-ca-custom-theme
- */
-?>
 <article <?php post_class(); ?>>
 	<div class='content'>
 		<?php dsca_featured_image(); ?>
-		<div style='display:none'><?= the_content(); ?></div>
 	</div>
 
 	<header class='post_meta'>

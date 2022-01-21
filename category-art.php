@@ -13,8 +13,13 @@ get_header();
 	<main>
 		<section>
 
-			<h2><?= wp_kses_post( get_the_archive_title() ) ?></h2>
-			<p><?= wp_kses_post( get_the_archive_description() ) ?></p>
+			<?php
+			if ( $cat_description = get_the_archive_description() ) {
+				?>
+				<p><?= wp_kses_post( get_the_archive_description() ) ?></p>
+				<?php
+				}
+			?>
 
 			<?php
 			global  $wp_query;

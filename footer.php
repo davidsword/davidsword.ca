@@ -25,6 +25,9 @@ defined( 'ABSPATH' ) || exit;
 				<a href="https://jetpack.com/" target='_Blank'>Jetpack</a>, &amp;
 				<a href="https://pressable.com/" target='_Blank'>Pressable</a>.
 			</li>
+			<li>
+				<a href='#' style='text-decoration: none !important;' onClick="shade_toggle()">🌗</a>
+			</li>
 		</ul>
 	</footer>
 

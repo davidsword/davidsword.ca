@@ -17,8 +17,10 @@ article {
 }
 
 //temp
-.category-art .dsca_featured_image {
-	margin-bottom: @space/4;
+.category-art {
+	&.archive .dsca_featured_image {
+		margin-bottom: @space/4;
+	}
 }
 
 .title--page {
@@ -51,12 +53,38 @@ article {
  * ------------------------------------------------------------------
  */
 
-@media screen and (max-width: @tablet) {
-
-
+// viewport is less than width of @tablet
+@media screen and (max-width: 800px) { // @TODO this should be a var
+	.category-art {
+		// get images edge to edge.
+		main {
+			padding-left: 0;
+			padding-right: 0;
+			header.post_meta,
+			p {
+				padding-left: 5rem;
+				padding-right: 5rem;
+			}
+		}
+	}
 }
 
+// viewport is less than width of @phone
 @media screen and (max-width: @phone) {
+
+	.category-art {
+		// get images edge to edge.
+		main {
+			padding-left: 0;
+			padding-right: 0;
+			header.post_meta,
+			p {
+				padding-left: 2rem;
+				padding-right: 2rem;
+			}
+		}
+	}
+
 	.post_meta {
 		line-height: 1.4em;
 		padding-bottom: 5px;

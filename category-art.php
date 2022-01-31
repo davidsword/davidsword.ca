@@ -16,7 +16,9 @@ get_header();
 			<?php
 			if ( $cat_description = get_the_archive_description() ) {
 				?>
-				<p><?= wp_kses_post( get_the_archive_description() ) ?></p>
+				<p><em><?= wp_kses_post( get_the_archive_description() ) ?></em></p>
+
+				<hr />
 				<?php
 				}
 			?>

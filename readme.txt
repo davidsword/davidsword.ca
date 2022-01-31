@@ -4,7 +4,7 @@ Donate link:       https://davidsword.ca/🍺/
 Tags:              theselfproclaimedbestthemeintheworld
 Requires at least: 5.0
 Tested up to:      5.9
-Stable tag:        20220131
+Stable tag:        20220131-2
 Requires PHP:      7.4
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html

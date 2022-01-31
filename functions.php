@@ -77,15 +77,22 @@ add_filter( 'excerpt_more', function ( $more ) {
 } );
 
 /**
+ * Set the size of featured images.
+ */
+add_action( 'after_setup_theme', function () {
+	add_image_size( 'dsca-featured-image', 1000 );
+} );
+
+/**
  * Get the featured image
  */
-function get_dsca_featured_image( $id = null, $size = 'full' ) {
+function get_dsca_featured_image( $id = null, $size = 'dsca-featured-image' ) {
 	$id = ! $id ? get_the_ID() : intval( $id );
 	$feature_img = get_post_thumbnail_id( $id );
 	$img = wp_get_attachment_image_src( $feature_img, $size );
 	if ( isset( $img[1] ) ) {
 		$alt = get_the_title( $id );
-		$img = "<img src='".esc_url( $img[0] )."' alt='".esc_attr( $alt )."' class='dsca_featured_image' />";
+		$img = "<img src='".esc_url( $img[0] )."' alt='".esc_attr( $alt )."' loading='lazy' class='dsca_featured_image' />";
 		if ( ! is_single() ) {
 			$img = "<a href='".get_permalink( $id )."' class='noborder'>".$img."</a>";
 		}
@@ -96,7 +103,7 @@ function get_dsca_featured_image( $id = null, $size = 'full' ) {
 /**
  * Get and print the featured image.
  */
-function dsca_featured_image( $id = null, $size = 'full' ) {
+function dsca_featured_image( $id = null, $size = 'dsca-featured-image' ) {
 	echo wp_kses_post( get_dsca_featured_image( $id, $size ) );
 }
 

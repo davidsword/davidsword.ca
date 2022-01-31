@@ -7,100 +7,102 @@ header#head {
 	.head__inner {
 		display: grid;
 		grid-template-columns: 250px 1fr;
-	}
-	h1 {
-		padding: 0;
-		margin: 0;
-		border: none;
-		position: relative;
-		padding-left: 95px;
-		line-height: 1em;
-		box-sizing: content-box;
-		margin-left: 0;
-		&:before {
-			position: absolute;
-			left: 0;
-			top: -12px;
-			content: "";
+
+		h1 {
+			padding: 0;
+			margin: 0;
+			border: none;
+			position: relative;
+			padding-left: 95px;
+			line-height: 1em;
+			box-sizing: content-box;
+			margin-left: 0;
+			&:before {
+				position: absolute;
+				left: 0;
+				top: -12px;
+				content: "";
+				display: inline-block;
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				background: var(--gray);
+				z-index: 1;
+				margin-right: 10px;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: 100%;
+			}
+			a {
+				color: var(--Softblack);
+				letter-spacing: normal;
+				font-weight: 400;
+				transition: 0.6s all ease;
+			}
+			.description {
+				display:block;
+				color: var(--gray);
+				font-size: 0.8em;
+			}
+		}
+
+		nav {
 			display: inline-block;
-			width: 75px;
-			height: 75px;
-			border-radius: 50%;
-			background: var(--gray);
-			z-index: 1;
-			margin-right: 10px;
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: 100%;
-		}
-		a {
-			color: var(--Softblack);
-			letter-spacing: normal;
-			font-weight: 400;
-			transition: 0.6s all ease;
-		}
-		.description {
-			display:block;
-			color: var(--gray);
-			font-size: 0.8em;
-		}
-	}
-
-	// @TODO clean up this nesting.
-	nav {
-		display: inline-block;
-		width: auto;
-		text-align: right;
-		transition: 0.15s all ease;
-		&.hide {
-			opacity: 0.5;
-		}
-		&>ul {
-			&, li {
-				display: inline;
-				clear: none;
-				margin:0;
-				padding: 0;
-				list-style: none;
-				float: none;
+			width: auto;
+			text-align: right;
+			transition: 0.15s all ease;
+			&.hide {
+				opacity: 0.5;
 			}
-			&>li {
-				padding: 0 5px;
-				& > a:link {
-					display: inline-block;
-					text-decoration: none;
-					border-bottom: 1px solid transparent;
-					color: var(--Softblack);//fade( #000, 70% );
+			&>ul {
+				&, li {
+					display: inline;
+					clear: none;
+					margin:0;
+					padding: 0;
+					list-style: none;
+					float: none;
 				}
-
-				// Blog page highlighting on single.
-				.single-post &.menu-item-home > a,
-				// Blog pag in sub-sub category.
-				.archive.category &.menu-item-home > a,
-				// Normal highlighting.
-				&.current-menu-parent>a,
-				&.current-menu-item>a,
-				&.current_page_ancestor>a,
-				&.current_page_item>a {
-					&:link,
-					&:visited {
-						color: var(--Softblack);
-						border-bottom: 1px solid var(--lightBlue); //fade( var(--blue), 50% );
-					}
-				}
-
-				&, ul li {
-					a {
+				&>li {
+					padding: 0 5px;
+					& > a:link {
+						display: inline-block;
+						text-decoration: none;
 						border-bottom: 1px solid transparent;
+						color: var(--Softblack);//fade( #000, 70% );
 					}
-					a:hover,
-					a:focus {
-						color: var(--Softblack); //fade( var(--black), 90% );
-						border-bottom-color: var(--gray); //fade( var(--black), 50% );
+
+					// Blog page highlighting on single.
+					.single-post &.menu-item-home > a,
+					// Blog pag in sub-sub category.
+					.archive.category &.menu-item-home > a,
+					// Normal highlighting.
+					&.current-menu-parent>a,
+					&.current-menu-item>a,
+					&.current_page_ancestor>a,
+					&.current_page_item>a {
+						&:link,
+						&:visited {
+							color: var(--Softblack);
+							border-bottom: 1px solid var(--lightBlue); //fade( var(--blue), 50% );
+						}
+					}
+
+					&, ul li {
+						a {
+							border-bottom: 1px solid transparent;
+						}
+						a:hover,
+						a:focus {
+							color: var(--Softblack); //fade( var(--black), 90% );
+							border-bottom-color: var(--gray); //fade( var(--black), 50% );
+						}
 					}
 				}
 			}
 		}
+
+
 	}
 }
 
@@ -110,7 +112,7 @@ header#head {
  * ------------------------------------------------------------------
  */
 
-// when viewport is wider than `@tablet`
+// when viewport is wider than `@tablet` (1200px):
 @media screen and (min-width: @tablet) {
 }
 
@@ -127,7 +129,7 @@ header#head {
 	}
 }
 
-// when viewport less than `@phone` wide:
+// when viewport less than `@phone` (540px) wide:
 @media screen and (max-width: @phone) {
 	header#head {
 		.head__inner {
@@ -139,9 +141,6 @@ header#head {
 					width: 60px;
 					height: 60px;
 				}
-			}
-			nav {
-
 			}
 		}
 	}

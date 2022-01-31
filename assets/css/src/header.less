@@ -3,16 +3,20 @@
  */
 
 header#head {
+	overflow: visible;
+	.head__inner {
+		display: grid;
+		grid-template-columns: 250px 1fr;
+	}
 	h1 {
 		padding: 0;
 		margin: 0;
 		border: none;
 		position: relative;
 		padding-left: 95px;
-		margin-left: -95px;
 		line-height: 1em;
-		//width: 200px;
 		box-sizing: content-box;
+		margin-left: 0;
 		&:before {
 			position: absolute;
 			left: 0;
@@ -28,7 +32,6 @@ header#head {
 			background-repeat: no-repeat;
 			background-position: center center;
 			background-size: 100%;
-			//filter: saturate(0%);
 		}
 		a {
 			color: var(--Softblack);
@@ -45,17 +48,20 @@ header#head {
 
 	// @TODO clean up this nesting.
 	nav {
+		display: inline-block;
+		width: auto;
+		text-align: right;
 		transition: 0.15s all ease;
 		&.hide {
 			opacity: 0.5;
 		}
 		&>ul {
 			&, li {
-				display: block;
+				display: inline;
+				clear: none;
 				margin:0;
 				padding: 0;
 				list-style: none;
-				clear: both;
 				float: none;
 			}
 			&>li {
@@ -64,7 +70,7 @@ header#head {
 					display: inline-block;
 					text-decoration: none;
 					border-bottom: 1px solid transparent;
-					color: var(--gray);//fade( #000, 70% );
+					color: var(--Softblack);//fade( #000, 70% );
 				}
 
 				// Blog page highlighting on single.
@@ -93,34 +99,6 @@ header#head {
 						border-bottom-color: var(--gray); //fade( var(--black), 50% );
 					}
 				}
-
-				&>ul {
-					display: none;
-				}
-				.archive.category &.menu-item-home ul,
-				&.current-menu-parent ul {
-					display: block;
-					padding: 1rem 0;
-					line-height: 1.5em;
-					font-size: 0.8em;
-					li {
-						display: block;
-						.post_meta;
-						a {
-							display: inline-block;
-						}
-						a:hover,
-						a:focus {
-							color: var(--Softblack);// fade( var(--black), 70% );
-							border-bottom-color: var(--lightGray); //fade( var(--black), 50% );
-						}
-						&.current-category-ancestor a,
-						&.current-menu-item a {
-							color: var(--Softblack);
-							border-bottom-color: var(--lightBlue); //fade( var(--blue), 50% );
-						}
-					}
-				}
 			}
 		}
 	}
@@ -132,47 +110,24 @@ header#head {
  * ------------------------------------------------------------------
  */
 
+// when viewport is wider than `@tablet`
 @media screen and (min-width: @tablet) {
 }
 
-//@media screen and (max-width: @tablet) {
+// when viewport less than 996px wide:
+@media screen and (max-width: 996px) {
 	header#head {
-		overflow: visible;
 		.head__inner {
 			display: block;
-			h1 {
-				margin-left: 0;
-				&:before {
-					top: -12px;
-				}
-			}
-			nav {
-				display: inline-block;
-				width: auto;
-				&#sec {
-					float: right;
-				}
-				& > ul,
-				ul li,
-				ul li.current-menu-parent ul, //@TODO rethink this, it feels weird.
-				ul li ul li {
-					display: inline;
-					clear: none;
-				}
-				ul li ul li {
-					font-size: 1em;
-					line-height: inherit;
-					padding-left: 0;
-				}
-				ul li,
-				ul li ul li {
-					padding: 0 5px;
-				}
-			}
+			grid-template-columns: none;
+		}
+		nav {
+			text-align: left;
 		}
 	}
-//}
+}
 
+// when viewport less than `@phone` wide:
 @media screen and (max-width: @phone) {
 	header#head {
 		.head__inner {
@@ -186,9 +141,7 @@ header#head {
 				}
 			}
 			nav {
-				&#sec {
-					float: none;
-				}
+
 			}
 		}
 	}

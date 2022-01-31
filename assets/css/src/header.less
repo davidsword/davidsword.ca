@@ -3,126 +3,106 @@
  */
 
 header#head {
-	h1 {
-		padding: 0;
-		margin: 0;
-		border: none;
-		position: relative;
-		padding-left: 95px;
-		margin-left: -95px;
-		line-height: 1em;
-		//width: 200px;
-		box-sizing: content-box;
-		&:before {
-			position: absolute;
-			left: 0;
-			top: -12px;
-			content: "";
-			display: inline-block;
-			width: 75px;
-			height: 75px;
-			border-radius: 50%;
-			background: var(--gray);
-			z-index: 1;
-			margin-right: 10px;
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: 100%;
-			//filter: saturate(0%);
-		}
-		a {
-			color: var(--Softblack);
-			letter-spacing: normal;
-			font-weight: 400;
-			transition: 0.6s all ease;
-		}
-		.description {
-			display:block;
-			color: var(--gray);
-			font-size: 0.8em;
-		}
-	}
+	overflow: visible;
+	.head__inner {
+		display: grid;
+		grid-template-columns: 250px 1fr;
 
-	// @TODO clean up this nesting.
-	nav {
-		transition: 0.15s all ease;
-		&.hide {
-			opacity: 0.5;
-		}
-		&>ul {
-			&, li {
-				display: block;
-				margin:0;
-				padding: 0;
-				list-style: none;
-				clear: both;
-				float: none;
+		h1 {
+			padding: 0;
+			margin: 0;
+			border: none;
+			position: relative;
+			padding-left: 95px;
+			line-height: 1em;
+			box-sizing: content-box;
+			margin-left: 0;
+			&:before {
+				position: absolute;
+				left: 0;
+				top: -12px;
+				content: "";
+				display: inline-block;
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				background: var(--gray);
+				z-index: 1;
+				margin-right: 10px;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: 100%;
 			}
-			&>li {
-				padding: 0 5px;
-				& > a:link {
-					display: inline-block;
-					text-decoration: none;
-					border-bottom: 1px solid transparent;
-					color: var(--gray);//fade( #000, 70% );
-				}
+			a {
+				color: var(--Softblack);
+				letter-spacing: normal;
+				font-weight: 400;
+				transition: 0.6s all ease;
+			}
+			.description {
+				display:block;
+				color: var(--gray);
+				font-size: 0.8em;
+			}
+		}
 
-				// Blog page highlighting on single.
-				.single-post &.menu-item-home > a,
-				// Blog pag in sub-sub category.
-				.archive.category &.menu-item-home > a,
-				// Normal highlighting.
-				&.current-menu-parent>a,
-				&.current-menu-item>a,
-				&.current_page_ancestor>a,
-				&.current_page_item>a {
-					&:link,
-					&:visited {
-						color: var(--Softblack);
-						border-bottom: 1px solid var(--lightBlue); //fade( var(--blue), 50% );
-					}
+		nav {
+			display: inline-block;
+			width: auto;
+			text-align: right;
+			transition: 0.15s all ease;
+			&.hide {
+				opacity: 0.5;
+			}
+			&>ul {
+				&, li {
+					display: inline;
+					clear: none;
+					margin:0;
+					padding: 0;
+					list-style: none;
+					float: none;
 				}
-
-				&, ul li {
-					a {
+				&>li {
+					padding: 0 5px;
+					& > a:link {
+						display: inline-block;
+						text-decoration: none;
 						border-bottom: 1px solid transparent;
+						color: var(--Softblack);//fade( #000, 70% );
 					}
-					a:hover,
-					a:focus {
-						color: var(--Softblack); //fade( var(--black), 90% );
-						border-bottom-color: var(--gray); //fade( var(--black), 50% );
-					}
-				}
 
-				&>ul {
-					display: none;
-				}
-				.archive.category &.menu-item-home ul,
-				&.current-menu-parent ul {
-					display: block;
-					padding: 1rem 0;
-					line-height: 1.5em;
-					font-size: 0.8em;
-					li {
-						display: block;
-						.post_meta;
+					// Blog page highlighting on single.
+					.single-post &.menu-item-home > a,
+					// Blog pag in sub-sub category.
+					.archive.category &.menu-item-home > a,
+					// Normal highlighting.
+					&.current-menu-parent>a,
+					&.current-menu-item>a,
+					&.current_page_ancestor>a,
+					&.current_page_item>a {
+						&:link,
+						&:visited {
+							color: var(--Softblack);
+							border-bottom: 1px solid var(--lightBlue); //fade( var(--blue), 50% );
+						}
+					}
+
+					&, ul li {
 						a {
-							display: inline-block;
+							border-bottom: 1px solid transparent;
 						}
 						a:hover,
 						a:focus {
-							color: var(--Softblack);// fade( var(--black), 70% );
-							border-bottom-color: var(--lightGray); //fade( var(--black), 50% );
-						}
-						&.current-category-ancestor a,
-						&.current-menu-item a {
-							color: var(--Softblack);
-							border-bottom-color: var(--lightBlue); //fade( var(--blue), 50% );
+							color: var(--Softblack); //fade( var(--black), 90% );
+							border-bottom-color: var(--gray); //fade( var(--black), 50% );
 						}
 					}
 				}
 			}
 		}
+
+
 	}
 }
 
@@ -132,47 +112,25 @@ header#head {
  * ------------------------------------------------------------------
  */
 
+// when viewport is wider than `@tablet` (1200px):
 @media screen and (min-width: @tablet) {
 }
 
-//@media screen and (max-width: @tablet) {
+// when viewport less than 996px wide:
+@media screen and (max-width: 996px) {
 	header#head {
-		overflow: visible;
 		.head__inner {
 			display: block;
-			h1 {
-				margin-left: 0;
-				&:before {
-					top: -12px;
-				}
-			}
-			nav {
-				display: inline-block;
-				width: auto;
-				&#sec {
-					float: right;
-				}
-				& > ul,
-				ul li,
-				ul li.current-menu-parent ul, //@TODO rethink this, it feels weird.
-				ul li ul li {
-					display: inline;
-					clear: none;
-				}
-				ul li ul li {
-					font-size: 1em;
-					line-height: inherit;
-					padding-left: 0;
-				}
-				ul li,
-				ul li ul li {
-					padding: 0 5px;
-				}
-			}
+			grid-template-columns: none;
+		}
+		nav {
+			text-align: left !important; // @TODO not sure why this doesnt work without !important
+			padding-top: 2em;
 		}
 	}
-//}
+}
 
+// when viewport less than `@phone` (540px) wide:
 @media screen and (max-width: @phone) {
 	header#head {
 		.head__inner {
@@ -183,11 +141,6 @@ header#head {
 					top: -12px;
 					width: 60px;
 					height: 60px;
-				}
-			}
-			nav {
-				&#sec {
-					float: none;
 				}
 			}
 		}

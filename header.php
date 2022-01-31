@@ -66,9 +66,6 @@ Synced to Pressable with https://wppusher.com/
 						'theme_location' => 'main-nav',
 					] );
 					?>
-					<li>
-						<a href='#' style='text-decoration: none !important;' onClick="shade_toggle()">🌗</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

@@ -105,8 +105,10 @@ function dsca_featured_image( $id = null, $size = 'full' ) {
  */
 add_action( 'wp_footer', function() {
 	?>
+
+	<!-- set in themes/davidsword.ca/functions.php -->
 	<style>
-		header#head h1::before {
+		header#head .head__inner h1:before {
 			background-image: url('<?php echo esc_url( dsca_get_gravatar_from_admin_email( 200 ) ); ?>');
 		}
 	</style>

@@ -1,6 +1,5 @@
 === DavidSword.ca ===
 Contributors:      davidsword
-Donate link:
 Tags:              theselfproclaimedbestthemeintheworld
 Requires at least: 5.0
 Tested up to:      5.9

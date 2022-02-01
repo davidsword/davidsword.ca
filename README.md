@@ -1,6 +1,6 @@
 # DavidSword.ca #
 **Contributors:** [davidsword](https://profiles.wordpress.org/davidsword/)  
-**Donate link:**       https://davidsword.ca/🍺/  
+Donate link:
 **Tags:**              theselfproclaimedbestthemeintheworld  
 **Requires at least:** 5.0  
 **Tested up to:**      5.9  
@@ -13,8 +13,6 @@ A clean and minimal website with focus on content.
 
 ## Description ##
 
-![](screenshot.png)
-
 ## Installation ##
 
 1. Upload to themes dir
@@ -22,10 +20,7 @@ A clean and minimal website with focus on content.
 
 ## Frequently Asked Questions ##
 
-
 ## Screenshots ##
-
-1. Home Page
 
 ## Changelog ##
 
@@ -47,6 +42,6 @@ $ npm install
 * `grunt readme` converts WordPress.org readme.txt to .md for Github
 * `grunt watch` will watch for file changes in aforementioned files and do tasks automatically during dev
 
-## Pluggables ##
+## Notes ##
 
-Contents of `/pluggables/` extend the functionality of WordPress, they're each technically plugins that could be fully developed one day. Until then, they're standalone and portable from theme-to-theme.
+Used in conjunction with these plugins https://github.com/davidsword/davidsword.ca-custom-plugins

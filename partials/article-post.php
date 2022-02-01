@@ -53,7 +53,7 @@
 			}
 			?>
 		</span>
-		<?php edit_post_link('#edit-this') ?>
+		<?php edit_post_link('#edit-me') ?>
 
 	</header>
 

@@ -80,7 +80,7 @@ add_filter( 'excerpt_more', function ( $more ) {
  * Set the size of featured images.
  */
 add_action( 'after_setup_theme', function () {
-	add_image_size( 'dsca-featured-image', 1000 );
+	add_image_size( 'dsca-featured-image', 1600 ); // width of themes <main> x2 for retina.
 } );
 
 /**
@@ -116,7 +116,7 @@ add_action( 'wp_footer', function() {
 	<!-- set in themes/davidsword.ca/functions.php -->
 	<style>
 		header#head .head__inner h1:before {
-			background-image: url('<?php echo esc_url( dsca_get_gravatar_from_admin_email( 200 ) ); ?>');
+			background-image: url('<?php echo esc_url( dsca_get_gravatar_from_admin_email( 150 ) ); ?>');
 		}
 	</style>
 	<?php

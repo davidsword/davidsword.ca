@@ -1,6 +1,6 @@
 # DavidSword.ca
 
-A clean and minimal website with focus on content.
+A clean and minimal website with focus on aside posts and single column content.
 
 ## Contribution ##
 

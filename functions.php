@@ -107,6 +107,13 @@ function dsca_featured_image( $id = null, $size = 'dsca-featured-image' ) {
 	echo wp_kses_post( get_dsca_featured_image( $id, $size ) );
 }
 
+function get_first_img_id_in_post_content() {
+	global $post;
+	preg_match_all('/wp-image-([0-9]{1,999})/i',$post->post_content, $result);
+	return $result[1][0] ?? false;
+}
+
+
 /**
  * Add Gravitar to footer.
  */

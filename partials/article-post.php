@@ -23,10 +23,20 @@
 			if ( ! has_post_format( 'aside', get_the_ID() ) )
 				dsca_featured_image();
 
-			if ( is_home() && ! has_post_format( 'aside', get_the_ID() ) )
+			// home page uses exceprts, rest of site doesnt.
+			if ( is_home() && ! has_post_format( 'aside', get_the_ID() ) ) {
+
+				// thumbnail
+				if (  ! get_dsca_featured_image() ) {
+					$get_image_from_post = get_first_img_id_in_post_content();
+					if ( $get_image_from_post )
+						echo wp_get_attachment_image( $get_image_from_post, 'thumbnail' );
+				}
+
 				the_excerpt();
-			else
+			} else {
 				the_content();
+			}
 
 			if ( has_post_format( 'aside', get_the_ID() ) )
 				dsca_featured_image();

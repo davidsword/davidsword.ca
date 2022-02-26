@@ -16,6 +16,16 @@ article {
 	margin-bottom: @space;
 }
 
+.home .attachment-thumbnail {
+	width: 140px;
+	height: 140px;
+	float: right;
+	margin-left: 15px;
+	margin-top: 10px;
+	border-radius: 5px !important;
+	overflow:hidden;
+}
+
 //temp
 .category-art {
 	&.archive .dsca_featured_image {
@@ -71,6 +81,13 @@ article {
 
 // viewport is less than width of @phone
 @media screen and (max-width: @phone) {
+
+	.home .attachment-thumbnail {
+		width: 100px;
+		height: 100px;
+		margin-left: 7px;
+		margin-bottom: 7px;
+	}
 
 	.category-art {
 		// get images edge to edge.

@@ -1,11 +1,14 @@
 <?php
-
 // davidsword.ca TwentyFifteen Custom CSS
 
 /**
  * Add here instead of in Customizer for version control.
  */
 add_action( 'wp_head', function() {
+
+	if ( 'Twenty Fifteen' !== wp_get_theme()->get('Name') )
+		return;
+
 	?>
 	<!-- via davidsword/davidsword.ca-custom-plugins/change-twentyfifteen-custom-css.php -->
 	<style type='text/css'>

@@ -1,7 +1,11 @@
 .DS_Store
 vendor/
 node_modules/
+*vendor/
+*node_modules/
 
 # meh
 composer.lock
 package-lock.json
+*composer.lock
+*package-lock.json

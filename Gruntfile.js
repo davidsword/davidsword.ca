@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		wp_readme_to_markdown: {
 			your_target: {
 				files: {
-					'README.md': 'readme.txt'
+					'./dsca-theme/README.md': './dsca-theme/readme.txt'
 				}
 			},
 		},
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"./assets/css/dist/style.css" : "./assets/css/src/style.less"
+					"./dsca-theme/assets/css/dist/style.css" : "./dsca-theme/assets/css/src/style.less"
 				}
 			}
 		},
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 		uglify: {
 			my_target: {
 				files: {
-					'./assets/js/dist/index.js': ['./assets/js/src/*.js']
+					'./dsca-theme/assets/js/dist/index.js': ['./dsca-theme/assets/js/src/*.js']
 				}
 			}
 		},
@@ -52,15 +52,15 @@ module.exports = function(grunt) {
 		 */
 		watch: {
 			lesswatch: {
-				files: "./assets/css/src/*.less",
+				files: "./dsca-theme/assets/css/src/*.less",
 				tasks: ["less"]
 			},
 			readmewatch: {
-				files: "./readme.txt",
+				files: "./dsca-theme/readme.txt",
 				tasks: ["wp_readme_to_markdown"]
 			},
 			jswatch: {
-				files: "./assets/js/src/*.js",
+				files: "./dsca-theme/assets/js/src/*.js",
 				tasks: ["uglify"]
 			}
 		},

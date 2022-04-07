@@ -6,12 +6,10 @@
  *
  * - no post title
  * - post format of `aside`
- * - in category `micro-blog`
  * - no excerpts in feeds, must be full post
  *
  * No post title is an implicit indication it's a micro blog post
  * Post format aside is an explicit indication
- * The category is for organization/querying, as is set auto when confirmed is micro blog post
  *
  * Anything else: featured images, tags, other cats, content length, blocks used,
  * etc, is free game. Not using a custom post type as CPTs aren't supported
@@ -19,7 +17,6 @@
  */
 
 const MB_POST_SLUG_WORD_LENGTH  = 3;
-const MB_CAT_NAME 				= 'micro-blog';
 const MB_POST_FORMAT 			= 'aside';
 const MB_ONE_TIME_FIX_SLUG		= 'micro_blog_fix_posts';
 const MB_AUTHOR_ID 				= 1;
@@ -48,12 +45,12 @@ function dsca_microblog_save_post( $post_ID, $post, $update ) {
 
 	$title_is_blank = empty( $post->post_title );
 
-	// when title is blank it's implicitly a micro blog post, set format and cat incase it wasnt
+	// when title is blank it's implicitly a micro blog post, set format incase it wasnt
 	if ( $title_is_blank ) {
-		set_microblog_format_and_term( $post );
+		set_microblog_format( $post );
 	}
 
-	// a microblog post could have an explicit title IF the post_format andor term was set. this checks for that.
+	// a microblog post could have an explicit title IF the post_format was set. this checks for that.
 	if ( ! dsca_is_microblog_post( $post->ID ) )
 		return;
 
@@ -78,23 +75,17 @@ add_action( 'save_post', 'dsca_microblog_save_post', 10, 3 );
 add_action( 'future_post', 'dsca_microblog_save_post', 10, 3 ); // scheduled posts
 
 /**
- * Set nessisary term and post format if not set
+ * Set nessisary post format if not set
  *
  * @param WP_Post $post
  * @return void
  */
-function set_microblog_format_and_term( $post ) {
+function set_microblog_format( $post ) {
 	$has_aside_post_format = has_post_format( MB_POST_FORMAT, $post );
-	$has_micro_blog_term = has_term( MB_CAT_NAME, 'category', $post->ID );
 
 	if ( ! $has_aside_post_format )
 		set_post_format( $post->ID, MB_POST_FORMAT );
-	if ( ! $has_micro_blog_term )
-		wp_add_object_terms( $post->ID, MB_CAT_NAME, 'category' );
 
-	// remove default category
-	$default_category_id = get_option('default_category');
-	wp_remove_object_terms( $post->ID, intval( $default_category_id ), 'category' );
 }
 /**
  * Create micro blog post slug
@@ -145,21 +136,6 @@ add_filter( 'get_the_date', function( $date, $format, $id ) {
 }, 10, 3);
 
 /**
- * remove "micro-blog" tag from list of tags, this is more for organization than display
- */
-add_filter( 'wp_get_object_terms', function( $terms, $object_ids, $taxonomies, $args ) {
-	$is_rest = defined('REST_REQUEST') && REST_REQUEST;
-	if ( is_admin() || $is_rest )
-		return $terms;
-
-	foreach ( $terms as $k => $term )
-		if ( isset( $term->slug ) && $term->slug === MB_CAT_NAME )
-			unset($terms[$k]);
-
-	return $terms;
-}, 10, 4 );
-
-/**
  * One time repair of micro blog posts
  *
  * Would do cli, but Pressable doesnt allow wpcli cmds so need to trigger actions via querystring :upsidedownsmile:
@@ -170,19 +146,12 @@ add_action( 'init', function(){
 
 	$args = array(
 		'post_type' => 'post',
-		'tax_query' => array(
-			'relation' => 'OR',
-			array(
-				'taxonomy' => 'category',
-				'field'    => 'slug',
-				'terms'    => array( MB_CAT_NAME ),
-			),
+		'tax_query' =>
 			array(
 				'taxonomy' => 'post_format',
 				'field'    => 'slug',
 				'terms'    => array( 'post-format-'.MB_POST_FORMAT ),
 			),
-		),
 		'posts_per_page' => '-1',
 	);
 	$micro_blog_posts = new WP_Query( $args );
@@ -197,7 +166,7 @@ add_action( 'init', function(){
 				'ID' => $mpost->ID,
 				'post_name' => $new_slug
 			));
-			set_microblog_format_and_term( $mpost );
+			set_microblog_format( $mpost );
 			// @TODO maybe null or at least look for the post_title not empty
 		}
 	}
@@ -231,8 +200,6 @@ function dsca_is_microblog_post( $id = false ) {
 
 	if ( empty( get_post( $id )->post_title ) )
 		return true;
-
-	// not checking for micro-blog term. if default cat is micro-blog, this will accidentally fire on normal drafts.
 
 	return false;
 }

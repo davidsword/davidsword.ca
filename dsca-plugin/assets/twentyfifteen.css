@@ -33,6 +33,7 @@ body.category header.page-header {
 .entry-footer {
 	background: white;
 	border-top: 1px solid #efefef;
+	opacity: 0.8;
 }
 .entry-footer .edit-link {
 	opacity: 0.05;
@@ -93,26 +94,35 @@ html .social-navigation li {
 
 
 /* CONTENT */
-pre.wp-block-code, code {
-	background: #F7F7F7;
-	border: 1px solid #E4E4E4;
-	padding: 0 4px;
-	font-family: "Operator Mono", Courier, monospace;
-	font-weight: 300;
+pre, code, pre.wp-block-code {
+	font-family: monospace;
 }
-
+li code,
+p code {
+	background: #f7f7f7;
+	padding: 2px;
+	border: 1px solid #e6e6e6;
+	border-radius: 2px;
+}
 pre.wp-block-code {
-	padding: 15px;
+	background: #f9f9f9;
 }
-
-pre code {
-	border: none;
-	background: transparent;
-	padding:0;
-}
-
 html body .post-thumbnail img {
 	width: 100%;
+}
+
+.wp-block-quote,
+.wp-block-quote:not(.is-large):not(.is-style-large),
+[class^="wp-block-"] blockquote {
+	border-color: #eee;
+}
+
+.wp-block-quote p {
+	font-family: "Noto Serif", serif;;
+	font-style: italic;
+}
+.wp-block-quote cite, .wp-block-quote__citation {
+	color: rgba(51, 51, 51, 0.7);;
 }
 
 /* Footer */
@@ -126,6 +136,9 @@ html footer.site-footer {
 	body {
 		font-size: 1.7rem;
 	}
+	#sidebar li a {
+		font-size: 1.9rem;
+	}
 	.pagination,
 	.hentry + .hentry {
 		margin-top: 6%;
@@ -133,8 +146,10 @@ html footer.site-footer {
 	.site-main {
 		padding: 6% 0;
 	}
+	.post-navigation,
+	.comments-area,
 	.hentry {
-		margin: 0 6%;
+		/* margin: 0 6%; */
 	}
 	.custom-logo {
 		max-height: 75px;
@@ -159,3 +174,15 @@ html footer.site-footer {
 	display:none;
 }
 }
+
+
+
+/* @media screen and (min-width: 59.6875em) {
+	.comments-area {
+		margin: 6% 6% 0;
+		padding: 6%;
+	}
+	.post-navigation {
+		margin: 6% 6% 0;
+	}
+} */

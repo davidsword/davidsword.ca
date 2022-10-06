@@ -4,6 +4,7 @@ body {
 	/*background: #f9f9f9 !important;*/
 }
 body,
+h1.page-title,
 body .site-branding * {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -14,6 +15,10 @@ body.category header.page-header {
 
 .page-header + .hentry {
 	margin-top: 0 !important;
+}
+
+header.page-header {
+	margin-bottom: 6%;
 }
 
 /* ARTICLE */
@@ -50,7 +55,41 @@ html .entry-footer .entry-format {
 .comments-link {
 	display:none;
 }
-
+#comments #reply-title,
+#comments .bypostauthor > article .fn:after,
+#comments label[for=comment],
+#comments .logged-in-as,
+#comments li.pingback,
+#comments h2 {
+	display: none;;
+}
+#comments ol.comment-list li:first-child article {
+	border-top: none !important;
+	padding-top: 0;
+}
+#comments .comment-meta {
+	line-height: 1em;
+}
+#comments .comment-author.vcard img {
+	border: 1px solid #efefef;
+	transform: translate(0, -5px);
+}
+#comments .edit-link {
+	opacity: 0.05;
+}
+#comments .edit-link:hover {
+	opacity: 0.8;
+}
+@media screen and (min-width: 1232px) {
+#comments .comment-content,
+#comments .reply ,
+#comments .comment-list .children > li {
+	padding-left: 85px;
+}
+}
+#comments .comment-notes {
+	display: none;
+}
 
 /* ARTICLES - ART */
 html body .category-art.article-is-empty .post-thumbnail {
@@ -71,7 +110,7 @@ html body .category-art.article-is-empty > .entry-content {
 	overflow:hidden;
 }
 html body .custom-logo {
-	border-radius: 50%;
+	border-radius: 3px;
 	max-width: 100px;
 }
 .site-branding {
@@ -115,6 +154,13 @@ html body .post-thumbnail img {
 .wp-block-quote:not(.is-large):not(.is-style-large),
 [class^="wp-block-"] blockquote {
 	border-color: #eee;
+}
+
+h1.page-title {
+
+}
+.page-header {
+	border-left: none;
 }
 
 .wp-block-quote p {

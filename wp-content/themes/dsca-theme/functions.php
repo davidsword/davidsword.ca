@@ -118,6 +118,8 @@ function get_first_img_id_in_post_content() {
  * Add Gravitar to footer.
  */
 add_action( 'wp_footer', function() {
+	if ( ! defined('dsca_get_gravatar_from_admin_email') )
+		return;
 	?>
 
 	<!-- set in themes/davidsword.ca/functions.php -->

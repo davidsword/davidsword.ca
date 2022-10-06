@@ -225,3 +225,13 @@ add_filter( 'post_link', function( $url, $post, $leavename ) {
 	}
 	return $url;
 }, 10, 3 );
+
+// add_filter('pre_get_posts', function( $query ){
+// 	$query->set('tax_query', [
+//     [
+//         'taxonomy' => 'post_format',
+//         'field' => 'slug',
+//         'terms' => 'post-format-aside',
+//         'operator' => 'NOT IN'
+//     ]]);
+// });

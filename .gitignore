@@ -1,10 +1,17 @@
 .DS_Store
-vendor/
-node_modules/
+/vendor
+/node_modules
 *vendor/
 *node_modules/
+package-lock.json
 
 composer.lock
 package-lock.json
 *composer.lock
 *package-lock.json
+
+.env
+/_private
+*.sql
+*build/
+frontity/

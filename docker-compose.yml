@@ -1,0 +1,118 @@
+version: "3.9"
+
+# https://docs.docker.com/samples/wordpress/
+
+#
+# Database
+#
+services:
+  db:
+    container_name: wordpress_db
+    image: mariadb:10.6.4-focal
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    expose:
+      - 3306
+      - 33060
+  
+  
+  wordpress_davidsword_ca:
+    container_name: wordpress_davidsword_ca
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - ./server-configs/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./wp-content/plugins/dsca-plugin/:/var/www/html/wp-content/plugins/dsca-plugin/
+      - ./wp-content/themes/dsca-theme/:/var/www/html/wp-content/themes/dsca-theme/
+      - ./server-configs/htaccess:/var/www/html/.htaccess
+      - wordpress:/var/www/html
+    ports:
+      - "80:80"
+    restart: always
+    env_file: ./server-configs/.env
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_TABLE_PREFIX: dsca_
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('JETPACK_DEV_DEBUG', true );
+        define('WP_DEBUG', true);
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', true);
+        define('DSCA_LOCAL_DEV', true);
+
+  wordpress_davidsword_ca_cli:
+    container_name: wordpress_davidsword_ca_cli
+    depends_on:
+      - db
+      - wordpress_davidsword_ca
+    image: wordpress:cli
+    # user: 1000:1000
+    restart: always
+    command: tail -f /dev/null
+    volumes:
+      - wordpress:/var/www/html
+    env_file: .env
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_TABLE_PREFIX: dsca_
+    # profiles:
+    #   - dev
+
+  # https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-and-phpmyadmin-with-docker-compose-on-ubuntu-14-04
+  # https://www.jjwdesign.com/wordpress-docker-phpmyadmin-setup/
+  phpmyadmin:
+    container_name: wordpress_phpmyadmin
+    image: phpmyadmin:latest
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8181:80
+    environment:
+      PMA_HOST: db
+      #PMA_USER: 
+      #PMA_PASSWORD: 
+      UPLOAD_LIMIT: 300M
+
+#
+# NODE
+#
+  # nodejs:
+  #   image: node:latest
+  #   container_name: nodejs
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontity:/home/node/app
+  #     #- ./frontity/node_modules:/home/node/app/node_modules
+  #   working_dir: /home/node/app
+  #   #entrypoint: ["npm", "start"]
+  #   command: bash -c "npm install && npm run serve"
+  #   networks:
+  #     - my-network
+
+
+volumes:
+  db_data: {}
+  wordpress:
+
+networks:
+  my-network:
+    driver: bridge

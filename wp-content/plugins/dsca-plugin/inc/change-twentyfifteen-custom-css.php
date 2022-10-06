@@ -1,4 +1,5 @@
 <?php
+
 // davidsword.ca TwentyFifteen Custom CSS
 add_action( 'wp_enqueue_scripts', function() {
 

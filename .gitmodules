@@ -1,0 +1,9 @@
+[submodule "wp-content/plugins/jetpack"]
+	path = wp-content/plugins/jetpack
+	url = https://github.com/Automattic/jetpack-production
+[submodule "wp-content/plugins/query-monitor"]
+	path = wp-content/plugins/query-monitor
+	url = https://github.com/johnbillion/query-monitor
+[submodule "wp-content/plugins/google-authenticator"]
+	path = wp-content/plugins/google-authenticator
+	url = https://github.com/ivankruchkoff/google-authenticator

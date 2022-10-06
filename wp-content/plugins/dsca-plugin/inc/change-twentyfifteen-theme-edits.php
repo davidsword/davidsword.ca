@@ -36,9 +36,9 @@ function fix_2015_nav_links( $output, $format, $link, $post, $adjacent ) {
 	);
 }
 
-// for whatever reason, this theme doesn't render favicon so well.. shimming this in:
-
+// for whatever reason, NewsNetWire doesn't render this themes favicon so well.. shimming this in:
 add_action('wp_head', function(){
+	if ( function_exists('dsca_get_gravatar_from_admin_email') )
 	echo '
 	<link rel="apple-touch-icon-precomposed" href="'.esc_url( dsca_get_gravatar_from_admin_email( 256 ) ).'">
 	<link rel="shortcut icon" href="'.esc_url( dsca_get_gravatar_from_admin_email( 256 ) ).'">

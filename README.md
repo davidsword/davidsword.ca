@@ -1,34 +1,15 @@
 # davidsword.ca
 
-Decoupled, but legacy theme still in repo in case I bail on Frontity.
+https://davidsword.ca/
 
-## Front End
+## dsca-plugin
 
-http://localhost:3000
+* Place mini plugins for auto load in `wp-content/plugins/dsca-plugins/inc/`
+* To turn off, move to `wp-content/plugins/dsca-plugins/inc/_disabled/`
 
-* bootstrapped with [Frontity](https://frontity.org/)
-* dev: `npx frontity dev` 👉 http://localhost:3000
-* build:  `npx frontity build` (see `/build` after)
-* deploy: `npx frontity serve` or serverless upload `/static` & `server.js` to Vercel or Netlify ([how to deploy](https://docs.frontity.org/deployment))
-* more Frontity help: 
-    - **[Learn Frontity](https://frontity.org/learn/)**
-    - **[Community forum](https://community.frontity.org/)**
+## dsca-theme
 
-## Backend
-
-http://local.davidsword.ca/
-
-- dev: `docker-compose up -d`
-- database: `bash dsca-convert-db-to-localhost.sh <.sql from prod>`
-- deploy: push to `github.com/davidsword/davidsword.ca#main`
-
----
-
-## Legacy theme (deprecated)
-
-If using PHP dsca-theme instead of Fronity:
-
-dev:
+Dev:
 
 ```
 $ brew install node
@@ -47,3 +28,11 @@ build:
 ```
 $ npm run build
 ```
+
+## Local Docker Setup
+
+http://local.davidsword.ca/
+
+- dev: `docker-compose up -d`
+- database: `bash dsca-convert-db-to-localhost.sh <.sql from prod>`
+- deploy: push to `github.com/davidsword/davidsword.ca#main`

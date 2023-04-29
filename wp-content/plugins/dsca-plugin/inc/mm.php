@@ -17,6 +17,9 @@ function mm(){
 
 	if( is_user_logged_in() || is_admin() )
 		return;
+	
+	if ( defined('WP_CLI') && WP_CLI )
+		return;
 
 	if( is_login_page() )
 		return;
